@@ -1,48 +1,45 @@
 #intro
-  Rails 3 comes with baked in support with bundler.
+  레일즈 3 은 기본적으로 번들러를 지원합니다.
 
-%h2 Using Bundler with Rails 3
+%h2 번들러를 레일즈3과 사용하기
 
 .contents
   .bullet
     .description
-      Install Rails as you normally would. Use sudo
-      if you would normally use sudo to install gems.
+      평범하게 레일즈를 설치하세요. 평소에 젬을 설치할때
+      sudo로 하시면 sudo도 사용해 주세요.
     .how
       :highlight_plain
         $ gem install rails
       .notes
-        We recommend using rvm for dependable Ruby
-        installations, especially if you are switching
-        between different versions of Ruby
+        다른 루비버전들을 사용하실 일이 있다면, 신뢰할 수
+        있는 루비 설치관리를 위해 rvm을 추천합니다.
 
   .bullet
     .description
-      Generate a Rails app as usual
+      평소처럼 레일즈앱을 생성합니다.
     :highlight_plain
       $ rails new myapp
       $ cd myapp
 
   .bullet
     .description
-      Run the server. Bundler is transparently managing
-      your dependencies!
+      서버를 실행합니다. 이미 번들러는 의존성들을 투명하게
+      관리 하고있습니다!
     :highlight_plain
       $ rails server
 
   .bullet
     .description
-      Add new dependencies to your Gemfile as you
-      need them.
+      필요한 새 의존성을 Gemfile에 추가합니다.
     :highlight_ruby
       gem 'nokogiri'
       gem 'geokit'
 
   .bullet
     .description
-      If you want a dependency to be loaded only in
-      a certain Rails environment, place it in a group
-      named after that Rails environment
+      특정 레일즈 환경에서만 로드하고싶은 의존성들이 있다면,
+      레일즈 환경을 이름으로 한 그룹에 넣으세요.
     :highlight_ruby
       group :test do
         gem 'rspec'
@@ -51,23 +48,22 @@
 
   .bullet#shared_with_23
     .description
-      You can place a dependency in multiple groups
-      at once as well
+      한번에 여러 그룹에 의존성을 넣을 수도 있습니다.
     :highlight_ruby
       group :development, :test do
         gem 'wirble'
         gem 'ruby-debug'
       end
-    = link_to 'Learn More: Groups', './groups.html'
+    = link_to '자세한 내용은: 그룹', './groups.html'
 
   .bullet
     .description
-      After adding a dependency, if it is not yet
-      installed, install it
+      의존성을 추가하고 아직 설치하지 않았다면
+      설치하세요.
     .how
       :highlight_plain
         $ bundle install
       .notes
-        This will update all dependencies in your
-        Gemfile to the latest versions that do not
-        conflict with other dependencies
+        이 명령은 Gemfile 안의 모든 의존성들을
+        다른 의존성과 충돌하지 않는 최신버전으로
+        갱신합니다.
