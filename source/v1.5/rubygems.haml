@@ -1,47 +1,47 @@
-%h2 Using Bundler with Rubygem gemspecs
+%h2 번들러를 루비젬과 함께 사용하기
 
 .contents
   .bullet
     .description
-      If you're creating a gem from scratch, you can use bundler's built in gem skeleton to create a base gem for you to edit.
+      젬을 처음부터 만든다면, 번들러의 내장 젬 스켈레톤을 사용해, 수정할 베이스 젬을 만들 수 있습니다.
     .how
       :highlight_plain
         $ bundle gem my_gem
       .notes
-        This will create a new directory named <code>my_gem</code> with your new gem skeleton.
+        이 명령어는 젬 스켈레톤을 <code>my_gem</code> 디랙토리에 만듭니다.
 
   .bullet
     .description
-      If you already have a gem with a gemspec, you can generate a Gemfile for your gem.
+      gemspec으로 관리되는 젬이 이미 있다면 젬을위한 Gemfile을 생성할 수 있습니다.
     :highlight_plain
       $ bundle init
     .notes
-      Then, add the following to your new Gemfile
+      만들었으면, Gemfile에 밑의 내용을 넣으세요.
     :highlight_ruby
       gemspec
-      
+
   .bullet
     .description
-      Runtime dependencies in your gemspec are treated like base dependencies, and development dependencies are added by default to the group, <code>:development</code>. You can change that group with the <code>:development_group</code> option
+      gemspec안의 런타임 의존성들은 베이스 의존성으로 간주됩니다. 개발 의존성들은 기본치로 <code>:development</code> 그룹안에 들어가고요. 그룹명은 <code>:development_group</code> 옵션으로 변경할 수 있습니다.
     :highlight_ruby
       gemspec :development_group => :dev
 
   .bullet
     .description
-      As well, you can point to a specific gemspec using <code>:path</code>. If your gemspec is in <code>/gemspec/path</code>, use
+      또 <code>:path</code>를 이용해 특정 젬스팩을 지정할 수 도 있습니다. gemspec이 <code>/gemspec/path</code> 안에 있다면 이렇게 하세요.
     :highlight_ruby
       gemspec :path => '/gemspec/path'
-      
+
   .bullet
     .description
-      If you have multiple gemspecs in the same directory, specify which one you'd like to reference using <code>:name</code>
+      한 디렉토리에 여러 gemspec을 가지고 있다면, <code>:name</code>을 이용해 어느 것을 참조할지 지정할 수 있습니다.
     :highlight_ruby
       gemspec :name => 'my_awesome_gem'
     .notes
-      This will use <code>my_awesome_gem.gemspec</code>
-  
+      이렇게하면 <code>my_awesome_gem.gemspec</code>을 사용하겠죠.
+
   .bullet
     .description
-      That's it! Use bundler when developing your gem, and otherwise, use gemspecs normally!
+      끝입니다! 개발에 번들러를 사용하거나, 평범하게 gemspec을 사용하세요!
     :highlight_plain
       $ gem build my_gem.gemspec
