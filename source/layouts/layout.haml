@@ -10,7 +10,7 @@
   %body
     #body
       #header
-        - logo_img = image_tag('gembundler.png', :width => 725, :alt => "The best way to manage your application's dependencies")
+        - logo_img = image_tag('gembundler.png', :width => 725, :alt => "어플리케이션의 의존성을 관리하는 최선의 방법")
         = link_to logo_img, '/', :class => 'image'
       #container
         #contents
@@ -19,42 +19,42 @@
           #sidebar
             %h2 Would you like to
             %ul
-              %li= link_to 'Get started', '/#getting-started'
-              %li= link_to 'Report a bug', '/issues.html'
-              %li= link_to "See what's new", '/v1.5/whats_new.html'
-              %li= link_to 'Read documentation', '/v1.5/man/bundle.1.html'
-              %li= link_to 'Discuss and Contribute', '/#get-involved'
-              %li= link_to 'View FAQs', '/v1.5/faq.html'
-            %h2 Bundler Commands
+              %li= link_to '시작하기', '/#getting-started'
+              %li= link_to '버그 리포트', '/issues.html'
+              %li= link_to "새로운 기능 확인하기", '/v1.5/whats_new.html'
+              %li= link_to '문서 읽기', '/v1.5/man/bundle.1.html'
+              %li= link_to '기여하기', '/#get-involved'
+              %li= link_to 'FAQ 보기', '/v1.5/faq.html'
+            %h2 번들러 명령어
             %ul
               %li= link_to 'bundle install', '/v1.5/bundle_install.html'
               %li= link_to 'bundle update', '/v1.5/bundle_update.html'
               .buttons
-                = link_to 'View all commands', '/v1.5/commands.html'
-            %h2 Help With
+                = link_to '모든 명령어 보기', '/v1.5/commands.html'
+            %h2 사용법
             %ul
-              %li= link_to 'Gemfiles', '/v1.5/gemfile.html'
-              %li= link_to 'Groups', '/v1.5/groups.html'
-              %li= link_to 'Gems from git', '/v1.5/git.html'
+              %li= link_to '젬파일', '/v1.5/gemfile.html'
+              %li= link_to '그룹', '/v1.5/groups.html'
+              %li= link_to '깃으로부터의 젬', '/v1.5/git.html'
               %li= link_to 'Bundler.setup', '/v1.5/bundler_setup.html'
-              %li= link_to 'Deploying', '/v1.5/deploying.html'
-              %li= link_to 'Sharing', '/v1.5/bundler_sharing.html'
-              %li= link_to 'Updating Gems', '/v1.5/updating_gems.html'
-              %li= link_to 'Compatible versions', '/compatibility.html'
-            %h2 Use Bundler with
+              %li= link_to '배포하기', '/v1.5/deploying.html'
+              %li= link_to '공유하기', '/v1.5/bundler_sharing.html'
+              %li= link_to '젬 갱신하기', '/v1.5/updating_gems.html'
+              %li= link_to '호환가능한 버전', '/compatibility.html'
+            %h2 프레임워크와 함께 사용하기
             %ul
-              %li= link_to 'Rails 3', '/v1.5/rails3.html'
-              %li= link_to 'Rails 2.3', '/v1.5/rails23.html'
-              %li= link_to 'Sinatra', '/v1.5/sinatra.html'
-              %li= link_to 'Rubygems', '/v1.5/rubygems.html'
-              %li= link_to 'RubyMotion', '/v1.5/rubymotion.html'
+              %li= link_to '레일즈 3', '/v1.5/rails3.html'
+              %li= link_to '레일즈 2.3', '/v1.5/rails23.html'
+              %li= link_to '시나트라', '/v1.5/sinatra.html'
+              %li= link_to '루비젬', '/v1.5/rubygems.html'
+              %li= link_to '루비모션', '/v1.5/rubymotion.html'
 
             .shirts
               .content
                 = link_to 'http://www.devswag.com/collections/bundler', :class => 'image', :onclick => "ga('send', 'devswag');" do
                   = image_tag '/images/bundler-shirt.png'
                 %p
-                  =link_to 'Buy Bundler Shirts & Stickers!', 'http://www.devswag.com/collections/bundler', :onclick => "ga('send', 'devswag');"
+                  =link_to '번들러 셔츠와 스티커를 사세요!', 'http://www.devswag.com/collections/bundler', :onclick => "ga('send', 'devswag');"
 
     #footer
       = image_tag 'emocow.png'
@@ -62,8 +62,8 @@
       .spacer
       #credits
         %p
-          == Many thanks to Bundler's #{link_to 'contributors', '/contributors.html' }
-          == and #{link_to 'sponsors', '/sponsors.html' }
+          == Many thanks to Bundler's #{link_to '컨트리뷰터', '/contributors.html' }
+          == and #{link_to '스폰서', '/sponsors.html' }
       .spacer
       = image_tag 'bundler-small.png'
     %a#github{ :href => 'http://github.com/bundler/bundler/' }
