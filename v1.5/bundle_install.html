@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bundler: The best way to manage a Ruby application's gems</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
+    <link href='/bundler-site/images/favicon.png' rel='shortcut icon' type='image/png'>
+    <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/stylesheets/sunburst.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id='body'>
+      <div id='header'>
+        <a class="image" href="/bundler-site/"><img width="725" alt="어플리케이션의 의존성을 관리하는 최선의 방법" src="/bundler-site/images/gembundler.png" /></a>
+      </div>
+      <div id='container'>
+        <div id='contents'>
+          <h2>bundle install</h2>
+          <div class='contents'>
+            <div class='bullet'>
+              <div class='description'>
+                어플리케이션에서 Gemfile안에 있는 의존성이 만족하는지 확인합니다.
+              </div>
+              <pre class='sunburst'>$ bundle install [--binstubs=PATH] [--clean] [--deployment] [--frozen]&#x000A;                 [--full-index] [--gemfile=FILE] [--local] [--no-cache]&#x000A;                 [--no-prune] [--path=PATH] [--quiet] [--shebang=STRING]&#x000A;                 [--standalone=ARRAY] [--system] [--without=GROUP GROUP]</pre>
+              <div class='notes'>
+                <p>
+                  옵션들:
+                </p>
+                <p>
+                  <code>--binstubs</code>: ./bin폴더에 실행파일의 스텁을 생성합니다.
+                </p>
+                <p>
+                  <code>--clean</code>: 설치후 자동으로 bundle clean을 실행합니다.
+                </p>
+                <p>
+                  <code>--deployment</code>: 배포 환경에 촤적화된 기본값으로 인스톨 합니다.
+                </p>
+                <p>
+                  <code>--frozen</code>: 이번 설치 이후 Gemfile.lock을 업데이트 못하게합니다.
+                </p>
+                <p>
+                  <code>--full-index</code>: API 엔드포인트 대신 rubygems의 모던 인덱스를 사용합니다.
+                </p>
+                <p>
+                  <code>--no-cache</code>: 갱신에 케쉬된 젬을 사용하지 않습니다.
+                </p>
+                <p>
+                  <code>--no-prune</code>: 케쉬에서 오래된 젬을 제거하지 않습니다.
+                </p>
+                <p>
+                  <code>--path</code>: 시스템 기본값($BUNDLE_PATH 나 $GEM_HOME) 대신 다른 패스를 지정합니다. 번들러는 이 머신에서 이 값을 기억할 것 입니다.
+                </p>
+                <p>
+                  <code>--quiet</code>: 경고와 에러만 출력합니다.
+                </p>
+                <p>
+                  <code>--shebang</code>: 시스템 기본값(보통 'ruby')대신 다른 쉬뱅(#!) 실행 이름을 지정합니다.
+                </p>
+                <p>
+                  <code>--standalone</code>: 번들러 런타임없이 실행되는 번들을 만듭니다.
+                </p>
+                <p>
+                  <code>--system</code>: 시스템 로케일($BUNDLE_PATH 나 $GEM_HOME)에 설치합니다.
+                  이전에 이 어플리케이션에서 어디에 설치했던 관계없습니다.
+                </p>
+                <p>
+                  <code>--without</code>: 지정된 그룹의 젬들을 제외합니다.
+                </p>
+                <p>
+                  <code>--jobs</code>: 병렬 워커를 사용해 인스톨합니다.
+                </p>
+                <p>
+                  <code>--retry</code>: 실패한 네트워크, git  리퀘스트를 재시도합니다.
+                </p>
+              </div>
+              <div class='notes'>
+                <p>
+                  젬들은 기본 시스템 로케일에 설치될 것 입니다. 시스템 젬이 루트 권한의 장소(맥OSX 처럼)에
+                  설치 된다면 번들은 설치를 위해 루트 패스워드를 물어볼 것입니다.
+                </p>
+                <p>
+                  젬들을 설치할 동안, 번들러는 <code>vendor/cache</code>와 시스템 젬들을 체크합니다. 젬이
+                  케쉬되거나 인스톨 되지 않았다면, 번들러는 Gemfile에서 선언한 소스에서 설치할 것입니다.
+                </p>
+                <p>
+                  <code>--system</code> 옵션은 기본치입니다. 아래에 설명된 대로 <code>--path</code> 옵션을
+                  사용한 이후에 기본치로 돌릴고 싶을때 넘기세요.
+                </p>
+              </div>
+            </div>
+            <div class='bullet' id='path'>
+              <div class='description'>
+                이미 시스템 젬에 설치되어 있어도 시스템 젬의 저장소가 아닌곳에 의존성들을 설치합니다.
+                이 경우에는, <code>vendor/bundle</code>에 설치합니다.
+              </div>
+              <div class='how'>
+                <pre class='sunburst'>$ bundle install --path vendor/bundle</pre>
+                <div class='notes'>
+                  또한 <code>bundle</code> 명령어, <code>Bundler.setup</code>, <code>Bundler.require</code>를
+                  위해 이 위치를 기억해둡니다.
+                </div>
+                <a href="/v1.5/bundler_setup.html">자세한 내용은: Bundler.setup</a>
+                <a href="/v1.5/groups.html">자세한 내용은: Bundler.require</a>
+              </div>
+            </div>
+            <div class='bullet' id='without'>
+              <div class='description'>
+                명시적으로 재외한 그룹을 재외한 모든 의존성들을 설치합니다.
+              </div>
+              <pre class='sunburst'>$ bundle install --without development test</pre>
+              <a href="/v1.5/groups.html">자세한 내용은: 그룹</a>
+            </div>
+            <div class='bullet' id='deployment'>
+              <div class='description'>
+                프로덕션 서버에 모든 의존성들을 설치합니다.
+                개발머신에 이 플래그를 사용하지 <b>마세요.</b>
+              </div>
+              <pre class='sunburst'>$ bundle install --deployment</pre>
+              <div class='notes'>
+                <p>
+                  <code>--deployment</code> 플래그는 여러가지의 배포친화적인 규칙을 활성화시킵니다.
+                </p>
+                <ul>
+                  <li>모든 젬들을 <code>vendor/bundle</code>에 격리합니다.</li>
+                  <li>최신 <code>Gemfile.lock</code>을 필요로 합니다.</li>
+                  <li>
+                    <code>bundle package</code> 를 실행했었다면, rubygems.org에서 가져오지 않고,
+                    <code>vendor/cache</code>안의 젬들만 사용합니다.
+                  </li>
+                </ul>
+              </div>
+              <a href="/v1.5/deploying.html">자세한 내용은: 배포하기</a>
+            </div>
+            <div class='bullet' id='jobs'>
+              <div class='description'>
+                지정된 수의 워커를 시작하여 병행설치 합니다.
+              </div>
+              <pre class='sunburst'>$ bundle install --jobs 4&#x000A;</pre>
+            </div>
+            <div class='bullet' id='retry'>
+              <div class='description'>
+                실패한 네트워크, git  리퀘스트를 재시도합니다.
+              </div>
+              <pre class='sunburst'>$ bundle install --retry 3</pre>
+            </div>
+          </div>
+        </div>
+        <div id='sidebar'>
+          <h2>Would you like to</h2>
+          <ul>
+            <li><a href="/bundler-site/#getting-started">시작하기</a></li>
+            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
+            <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
+            <li><a href="/bundler-site/v1.5/man/bundle.1.html">문서 읽기</a></li>
+            <li><a href="/bundler-site/#get-involved">기여하기</a></li>
+            <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
+          </ul>
+          <h2>번들러 명령어</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.5/bundle_install.html">bundle install</a></li>
+            <li><a href="/bundler-site/v1.5/bundle_update.html">bundle update</a></li>
+            <div class='buttons'>
+              <a href="/bundler-site/v1.5/commands.html">모든 명령어 보기</a>
+            </div>
+          </ul>
+          <h2>사용법</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.5/gemfile.html">젬파일</a></li>
+            <li><a href="/bundler-site/v1.5/groups.html">그룹</a></li>
+            <li><a href="/bundler-site/v1.5/git.html">깃으로부터의 젬</a></li>
+            <li><a href="/bundler-site/v1.5/bundler_setup.html">Bundler.setup</a></li>
+            <li><a href="/bundler-site/v1.5/deploying.html">배포하기</a></li>
+            <li><a href="/bundler-site/v1.5/bundler_sharing.html">공유하기</a></li>
+            <li><a href="/bundler-site/v1.5/updating_gems.html">젬 갱신하기</a></li>
+            <li><a href="/bundler-site/compatibility.html">호환가능한 버전</a></li>
+          </ul>
+          <h2>프레임워크와 함께 사용하기</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.5/rails3.html">레일즈 3</a></li>
+            <li><a href="/bundler-site/v1.5/rails23.html">레일즈 2.3</a></li>
+            <li><a href="/bundler-site/v1.5/sinatra.html">시나트라</a></li>
+            <li><a href="/bundler-site/v1.5/rubygems.html">루비젬</a></li>
+            <li><a href="/bundler-site/v1.5/rubymotion.html">루비모션</a></li>
+          </ul>
+          <div class='shirts'>
+            <div class='content'>
+                            <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
+              </a>
+
+              <p>
+                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">번들러 셔츠와 스티커를 사세요!</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <img src="/bundler-site/images/emocow.png" />
+      <img src="/bundler-site/images/panda.jpg" />
+      <div class='spacer'></div>
+      <div id='credits'>
+        <p>
+          Many thanks to Bundler's <a href="/bundler-site/contributors.html">컨트리뷰터</a>
+          and <a href="/bundler-site/sponsors.html">스폰서</a>
+        </p>
+      </div>
+      <div class='spacer'></div>
+      <img src="/bundler-site/images/bundler-small.png" />
+    </div>
+    <a href='http://github.com/bundler/bundler/' id='github'>
+      <img alt='Fork me on GitHub' src='http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png'>
+    </a>
+    <div id='prod-versions'>
+      Docs:
+      <a href="/bundler-site/v0.9/index.html">v0.9</a>
+      <a href="/bundler-site/v1.0/index.html">v1.0</a>
+      <a href="/bundler-site/v1.1/index.html">v1.1</a>
+      <a href="/bundler-site/v1.2/index.html">v1.2</a>
+      <a href="/bundler-site/v1.3/index.html">v1.3</a>
+      <a class="current" href="/bundler-site/">v1.5</a>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-39559982-1', 'bundler.io');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
