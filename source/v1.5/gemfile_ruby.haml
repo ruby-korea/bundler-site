@@ -7,26 +7,29 @@
       이렇게 함으로써 어플리케이션이 루비VM의 특정 기능에 의존성이 있는 경우 빠르게 실패하도록 합니다.
       이런식으로, 배포서버의 루비VM이 로컬의 루비와 일치하는지 확인할 수 있습니다.
       의존성 지정은 <code>Gemfile</code>에 <code>ruby</code> 지시자를 사용함으로써 할 수 있습니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       ruby 'RUBY_VERSION', :engine => 'ENGINE', :engine_version => 'ENGINE_VERSION', :patchlevel => 'RUBY_PATCHLEVEL'
 
   .bullet
     .description
       루비 1.9.3을 사용해 JRuby 1.6.7을 사용하고 싶을때엔, 이렇게 하면 됩니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       ruby '1.9.3', :engine => 'jruby', :engine_version => '1.6.7'
 
   .bullet#patchlevel
     .description
       루비의 패치레벨을 제한하는 것도 가능합니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       ruby '1.9.3', :patchlevel => 448
 
   .bullet
     .description
       번들러는 현재 실행중인 루비VM이 <code>Gemfile</code>안에서 지정한 루비버전과 일치하는지 확인합니다.
       일치하지 않는다면, 번들러는 일치하지 않음을 설명하는 예외를 발생시킵니다.
-    :highlight_plain
+    :code
       Your Ruby version is 1.8.7, but your Gemfile specified 1.9.3
 
   .bullet
@@ -37,7 +40,7 @@
   .bullet
     .description
       <code>platform</code> 명령어를 <code>--ruby</code> 플래그와 사용할 경우, <code>Gemfile</code>안에 어떤 <code>ruby</code> 지시자가 지정되었는지 볼 수 있습니다.
-    :highlight_plain
+    :code
       ruby 1.9.3 (jruby 1.6.7)
     = link_to '자세한 내용은: bundle platform', './bundle_platform.html'
 

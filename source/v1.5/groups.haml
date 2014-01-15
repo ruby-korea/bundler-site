@@ -5,7 +5,8 @@
     .description
       의존성을 그룹화하면 전체 그룹에 대한
       작업을 수행할 수 있습니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       # 이 젬들은 :default 그룹에 포함됩니다.
       gem 'nokogiri'
       gem 'sinatra'
@@ -29,28 +30,31 @@
       나열된 그룹만 재외하고 모든 젬을 설치합니다.
       재외되지않은 그룹에 속해있는 젬들은 여전히
       설치됩니다.
-    :highlight_plain
+    :code
       $ bundle install --without test development
 
   .bullet
     .description
       특정 그룹을 요청(require)할때, 명명된 그룹
       밖의 젬들은 :default 그룹인 것에 주의합시다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       Bundler.require(:default, :development)
 
   .bullet
     .description
       기본 그룹과 현재 레일즈 환경과 같은 이름의
       그룹의 젬들을 요정합니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       Bundler.require(:default, Rails.env)
 
   .bullet
     .description
       로드 패스에 넣고 싶은 젬을 제한합니다.
       그 그룹에 포함된 젬들만 요청가능합니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       require 'rubygems'
       require 'bundler'
       Bundler.setup(:default, :ci)
@@ -68,7 +72,8 @@
 
       이렇게 하려면, 의존성을 그룹지으면 됩니다.
 
-    :highlight_ruby
+    :code
+      # lang: ruby
       source 'http://rubygems.org'
 
       gem 'rails', '3.2.2'
@@ -87,7 +92,7 @@
     .description
       이제, 개발환경에서 번들러에게 <code>production</code> 그룹을 무시하도록 지시할 수 있습니다.
 
-    :highlight_plain
+    :code
       $ bundle install --without production
 
   .bullet

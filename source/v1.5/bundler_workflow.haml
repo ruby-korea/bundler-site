@@ -7,38 +7,38 @@
         워크플로우를 사용하는게 바람직합니다.
       %p
         처음 <code>Gemfile</code>을 생성한 다음에 다음 명령어를 실행합니다.
-        :highlight_plain
+        :code
           $ bundle install
       %p
         결과로 나온 <code>Gemfile.lock</code>을 버전 관리합니다.
-        :highlight_plain
+        :code
           $ git add Gemfile.lock
       %p
         이 저장소를 다른 머신에서 체크아웃할 때엔 다음 명령어를 실행합니다.
-        :highlight_plain
+        :code
           $ bundle install
       %p
         이 저장소를 배포 머신에 체크아웃할 때엔 다음 명령어를 실행합니다.
-        :highlight_plain
+        :code
           $ bundle install --deployment
       %p
         <code>Gemfile</code>을 변경한 후에, 새로운 의존성이나 갱신된 의존성을
         반영하기 위해서는 다음 명령어를 실행합니다.
-        :highlight_plain
+        :code
           $ bundle install
       %p
         갱신된 <code>Gemfile.lock</code> 버전 관리되는지 확인합니다.
-        :highlight_plain
+        :code
           $ git add Gemfile.lock
       %p
         <code>bundle install</code>이 충돌을 보고하면, <code>Gemfile</code>
         에서 변경한 특정 젬을 수동으로 갱신해야 합니다.
-        :highlight_plain
+        :code
           $ bundle update rails thin
       %p
         <code>Gemfile</code>안에있는 젬의 조건을 만족하면서 가능한 최신 버전으로
         갱신하려면, 다음 명령어를 실행합니다.
-        :highlight_plain
+        :code
           $ bundle update
 
 %h2 번들러 워크플로우 철저하게 살펴보기
@@ -47,13 +47,13 @@
   .bullet
     .description
       번들러는 시작하기 쉽습니다! 터미널 윈도우를 열고 이 명령어를 실행합니다.
-    :highlight_plain
+    :code
       $ gem install bundler
     .notes
       %li
         처음 레일즈 어플리케이션을 생성했을때부터 <code>Gemfile</code>이 이미 포함되어 있습니다.
         (시나트라같은) 다른 종류의 어플리케이션은 이 명령어를 실행합니다.
-        :highlight_plain
+        :code
           $ bundle init
 
       %li
@@ -63,7 +63,8 @@
     .description
       <code>Gemfile</code>은 어플리케이션 루트에 의존성을 특정한 것 입니다.
       이런 내용들이 들어있습니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       source 'https://rubygems.org'
       gem 'nokogiri'
       gem 'rack', '~>1.1'
@@ -81,7 +82,7 @@
     .description
       %p
         첫 의존성을 선언한 이후, 번들러에게 받도록 해야합니다.
-        :highlight_plain
+        :code
           $ bundle install    # <code>bundle</code>은 <code>bundle install</code>의 단축입니다.
 
       %p
@@ -90,7 +91,7 @@
         각자 의존성을 가지고 있고 또 그의존성들의 일부는 각자의 의존성을 가지고 있기때문에,
         <code>bundle install</code>을 실행하면 위의 <code>Gemfile</code>로도 꽤 많은 젬이 설치됩니다.
 
-        :highlight_plain
+        :code
             $ bundle install
             Fetching gem metadata from https://rubygems.org/
             Resolving dependencies...
@@ -133,7 +134,7 @@
             <code>bundle install</code>이 <code>Gemfile</code>과 <code>Gemfile.lock</code>사이에
             충돌을 보고한다면 다음 명령을 실행합니다.
 
-            :highlight_plain
+            :code
               $ bundle update sinatra
 
           %li
@@ -143,7 +144,7 @@
             %li
               <code>Gemfile</code>안의 모든 가능한 최신 버전을 갱신하려면, 다음을 실행합니다.
 
-              :highlight_plain
+              :code
                 $ bundle update
 
           %li
@@ -159,7 +160,8 @@
   .bullet
     .description
       어플리케이션 안에서 번들된 환경을 로드합니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       require 'rubygems'
       require 'bundler/setup'
 
@@ -169,7 +171,7 @@
   .bullet
     .description
       번들안의 젬과 같이 오는 실행 파일을 실행합니다.
-    :highlight_plain
+    :code
       $ bundle exec rspec spec/models
     .notes
       %p
@@ -183,7 +185,7 @@
   .bullet
     .description
       마지막으로, 번들안에 있는 젬들의 단축 명령이 필요하다면 이렇게 할 수 있습니다.
-    :highlight_plain
+    :code
       $ bundle install --binstubs
       $ bin/rspec spec/models
     .notes

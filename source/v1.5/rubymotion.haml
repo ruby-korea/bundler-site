@@ -3,20 +3,22 @@
   .bullet
     .description
       아직 루비모션 앱이 없다면 만듭니다.
-    :highlight_plain
+    :code
       $ motion create myapp
       $ cd myapp
   .bullet
     .description
       Gemfile을 만들 필요가 있습니다. bubblewrap을 사용할 때는 이렇게 합니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       gem 'bubble-wrap'
 
   .bullet
     .description
       그리고나서 Rakefile을 컴파일할때 번들된 젬들을 require하도록 설정합니다.
       <code>require 'motion/project'</code> 바로 밑의 줄에 다음 코드를 추가합니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       require 'bundler'
 
       Bundler.require
@@ -24,11 +26,11 @@
   .bullet
     .description
       다음으로, 의존성들을 설치합니다.
-      :highlight_plain
+      :code
         $ bundle install
 
   .bullet
     .description
       이제 평범하게 앱을 컴파일 할 수 있습니다.
-      :highlight_plain
+      :code
         $ rake

@@ -4,7 +4,7 @@
   .bullet
     .description
       어플리케이션에서 Gemfile안에 있는 의존성이 만족하는지 확인합니다.
-    :highlight_plain
+    :code
       $ bundle install [--binstubs=PATH] [--clean] [--deployment] [--frozen]
                        [--full-index] [--gemfile=FILE] [--local] [--no-cache]
                        [--no-prune] [--path=PATH] [--quiet] [--shebang=STRING]
@@ -59,7 +59,7 @@
       이미 시스템 젬에 설치되어 있어도 시스템 젬의 저장소가 아닌곳에 의존성들을 설치합니다.
       이 경우에는, <code>vendor/bundle</code>에 설치합니다.
     .how
-      :highlight_plain
+      :code
         $ bundle install --path vendor/bundle
       .notes
         또한 <code>bundle</code> 명령어, <code>Bundler.setup</code>, <code>Bundler.require</code>를
@@ -70,7 +70,7 @@
   .bullet#without
     .description
       명시적으로 재외한 그룹을 재외한 모든 의존성들을 설치합니다.
-    :highlight_plain
+    :code
       $ bundle install --without development test
     = link_to '자세한 내용은: 그룹', './groups.html'
 
@@ -78,7 +78,7 @@
     .description
       프로덕션 서버에 모든 의존성들을 설치합니다.
       개발머신에 이 플래그를 사용하지 <b>마세요.</b>
-    :highlight_plain
+    :code
       $ bundle install --deployment
     .notes
       %p
@@ -95,11 +95,11 @@
   .bullet#jobs
     .description
       지정된 수의 워커를 시작하여 병행설치 합니다.
-    :highlight_plain
+    :code
       $ bundle install --jobs 4
 
   .bullet#retry
     .description
       실패한 네트워크, git  리퀘스트를 재시도합니다.
-    :highlight_plain
+    :code
       $ bundle install --retry 3

@@ -14,7 +14,7 @@
   .bullet
     .description
       레일즈 2.3 앱이 아직없다면, 생성합니다.
-    :highlight_plain
+    :code
       $ rails myapp
       $ cd myapp
 
@@ -22,7 +22,8 @@
     .description
       <code>config/boot.rb</code>의 밑에 있는
       <code>Rails.boot!</code>의 바로 다음 줄에 밑의 코드를 넣으세요.
-    :highlight_ruby
+    :code
+      # lang: ruby
       class Rails::Boot
         def run
           load_initializer
@@ -42,7 +43,8 @@
       새 파일 <code>config/preinitializer.rb</code>을 생성해,
       밑의 코드를 넣으세요. <code>config</code>입니다.
       <code>config/initializers</code>가 <strong>아닙니다</strong>.
-    :highlight_ruby
+    :code
+      # lang: ruby
       begin
         require 'rubygems'
         require 'bundler'
@@ -70,7 +72,8 @@
       development.rb안에 (다른 환경의 경우라도) 선언이 있다면 선언들을
       그 이름의 그룹에 넣으세요. 레일즈 자신과 적어도 한개이상의 소스가
       있는지도 확인하세요.
-    :highlight_ruby
+    :code
+      # lang: ruby
       source 'https://rubygems.org'
       gem 'rails', '~> 2.3.5'
       gem 'sqlite3-ruby', :require => 'sqlite3'
@@ -96,6 +99,6 @@
       한번 전부 설정했다면, script/console, script/server 나 다른
       레이크 테스트들도 평범하게 사용할수 있습니다. 여기서부터는
       레일즈 3의 가이드를 읽으시면 됩니다.
-    :highlight_plain
+    :code
       $ rake db:migrate
     = link_to '자세한 내용은: 레일즈 3', './rails3.html#shared_with_23'

@@ -9,7 +9,7 @@
       평범하게 레일즈를 설치하세요. 평소에 젬을 설치할때
       sudo로 하시면 sudo도 사용해 주세요.
     .how
-      :highlight_plain
+      :code
         $ gem install rails
       .notes
         다른 루비버전들을 사용하실 일이 있다면, 신뢰할 수
@@ -18,7 +18,7 @@
   .bullet
     .description
       평소처럼 레일즈앱을 생성합니다.
-    :highlight_plain
+    :code
       $ rails new myapp
       $ cd myapp
 
@@ -26,13 +26,14 @@
     .description
       서버를 실행합니다. 이미 번들러는 의존성들을 투명하게
       관리 하고있습니다!
-    :highlight_plain
+    :code
       $ rails server
 
   .bullet
     .description
       필요한 새 의존성을 Gemfile에 추가합니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       gem 'nokogiri'
       gem 'geokit'
 
@@ -40,7 +41,8 @@
     .description
       특정 레일즈 환경에서만 로드하고싶은 의존성들이 있다면,
       레일즈 환경을 이름으로 한 그룹에 넣으세요.
-    :highlight_ruby
+    :code
+      # lang: ruby
       group :test do
         gem 'rspec'
         gem 'faker'
@@ -49,7 +51,8 @@
   .bullet#shared_with_23
     .description
       한번에 여러 그룹에 의존성을 넣을 수도 있습니다.
-    :highlight_ruby
+    :code
+      # lang: ruby
       group :development, :test do
         gem 'wirble'
         gem 'ruby-debug'
@@ -61,7 +64,7 @@
       의존성을 추가하고 아직 설치하지 않았다면
       설치하세요.
     .how
-      :highlight_plain
+      :code
         $ bundle install
       .notes
         이 명령은 Gemfile 안의 모든 의존성들을

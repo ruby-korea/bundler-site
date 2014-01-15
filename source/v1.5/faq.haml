@@ -116,7 +116,7 @@
       %p
         만약 정말로 플레그를 넘길 필요가 있다면, <code>bundle config</code> 명령어를 사용하시면 됩니다.
 
-      :highlight_plain
+      :code
         $ bundle config build.mysql --with-mysql-config=/usr/local/mysql/bin/mysql_config
 
       %p
@@ -134,7 +134,7 @@
         <strong>A</strong>: bundle install 할때 --local 플레그를 사용하시면 됩니다. --local 플레그는 번들러에게
         리모트 젬서버 대신 로컬 젬 케쉬를 사용하게 합니다.
 
-      :highlight_plain
+      :code
         $ bundle install --local
 
       %h3
@@ -147,5 +147,5 @@
         <strong>A</strong>: rubygems서버에서 번들러를 실행할때 --full-index 플레그를 사용하세요. 이렇게하면
         api에 매번 리퀘스트를 보내는 대신에 모든 인덱스를 한 번에 다운로드합니다.
 
-      :highlight_plain
+      :code
         $ bundle install --full-index
