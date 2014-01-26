@@ -4,9 +4,8 @@
     <title>Bundler: The best way to manage a Ruby application's gems</title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/bundler-site/images/favicon.png' rel='shortcut icon' type='image/png'>
+    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
     <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="/bundler-site/stylesheets/sunburst.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id='body'>
@@ -21,7 +20,7 @@
               <div class='description'>
                 현재 환경을 갱신합니다.
               </div>
-              <pre class='sunburst'>$ bundle update [GEM] [--local] [--source=SOURCE]</pre>
+              <pre class="highlight plaintext">$ bundle update [GEM] [--local] [--source=SOURCE]</pre>
               <div class='notes'>
                 <p>
                   옵션:
@@ -34,14 +33,11 @@
                 </p>
               </div>
               <div class='description'>
-                특정 젬들을 갱신합니다. (지정하지 않았다면 전부 갱신합니다.)
-                <code>Gemfile.lock</code>
-                Update the gems specified (all gems, if none are specified), ignoring
-                the previously installed gems specified in the <code>Gemfile.lock</code>.
-                In general, you should use <code>bundle install</code> to install the same
-                exact gems and versions across machines.
-                You would use <code>bundle update</code> to explicitly update the version
-                of a gem.
+                <code>Gemfile.lock</code>안에 기술된 이전에 설치된 젬들을 제외하고, 지정한 젬들을
+                갱신합니다. (지정하지 않았다면 전부 갱신합니다.)
+                일반적으로, 머신간에 정확히 같은 젬을 설치하려면 <code>bundle install</code>을
+                사용해야 합니다.
+                <code>bundle update</code>는 명시적으로 젬 버전의 갱신이 필요할 때만 사용합시다.
               </div>
             </div>
             <div class='bullet'>
@@ -49,7 +45,7 @@
                 현재 환경을 갱신합니다.
               </div>
               <div class='how'>
-                <pre class='sunburst'>$ bundle update</pre>
+                <pre class="highlight plaintext">$ bundle update</pre>
               </div>
               <div class='notes'>
                 파라메터 없이 <code>bundle update</code>를 실행하면, 번들러는 전에 인스톨한
@@ -58,16 +54,16 @@
             </div>
             <div class='bullet' id='source'>
               <div class='description'>
-                Update a specific source (and all gems associated with it)
+                지정된 소스로부터 젬(과 관련된 모든 젬들)을 갱신합니다.
               </div>
               <div class='how'>
-                <pre class='sunburst'>$ bundle update --source=SOURCE</pre>
+                <pre class="highlight plaintext">$ bundle update --source=SOURCE</pre>
               </div>
               <div class='notes'>
-                The name of a <code>:git</code> or <code>:path</code> source used in the
-                <code>Gemfile</code>. For instance, with a <code>:git</code> source of
-                <code>http://github.com/rails/rails.git</code>, you would call
-                <code>bundle update --source rails</code>.
+                <code>Gemfile</code>안에서 사용된 <code>:git</code> 이나 <code>:path</code>
+                소스가 사용된 젬의 이름입니다. 예를 들어, <code>:git</code> 소스
+                <code>http://github.com/rails/rails.git</code>의 경우,
+                <code>bundle update --source rails</code>를 불러야 합니다.
               </div>
             </div>
           </div>
@@ -76,46 +72,42 @@
             <div class='bullet' id='update_all_extended'>
               <div class='description'>
                 <p>
-                  If you run <code>bundle update</code> with no parameters, bundler will
-                  ignore any previously installed gems and resolve all dependencies again
-                  based on the latest versions of all gems available in the sources.
+                  파라메터 없이 <code>bundle update</code> 실행했다면, 번들러는 모든
+                  이전에 설치된 젬들을 무시하고 소스안의 모든 젬의 가능한 최신버전을
+                  기반으로 모든 의존성을 다시 해결하려 합니다.
                 </p>
                 <p>
-                  Consider the following <code>Gemfile</code>:
-                  <pre class="sunburst">source <span class="String"><span class="String">&#39;</span>http://rubygems.org<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>rails<span class="String">&#39;</span></span>, <span class="String"><span class="String">&#39;</span>3.0.0.rc<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>nokogiri<span class="String">&#39;</span></span>&#x000A;</pre>
+                  다음과 같은 <code>Gemfile</code>이 있다고 해봅시다.
+                  <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'http://rubygems.org'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rails'</span><span class="p">,</span> <span class="s1">'3.0.0.rc'</span>&#x000A;<span class="n">gem</span> <span class="s1">'nokogiri'</span></pre>
                 </p>
                 <p>
-                  When you run <code>bundle install</code> the first time, bundler will
-                  resolve all of the dependencies, all the way down, and install what you
-                  need:
-                  <pre class='sunburst'>Fetching source index for http://rubygems.org/&#x000A;Installing rake (0.8.7)&#x000A;Installing abstract (1.0.0)&#x000A;Installing activesupport (3.0.0.rc)&#x000A;Installing builder (2.1.2)&#x000A;Installing i18n (0.4.1)&#x000A;Installing activemodel (3.0.0.rc)&#x000A;Installing erubis (2.6.6)&#x000A;Installing rack (1.2.1)&#x000A;Installing rack-mount (0.6.9)&#x000A;Installing rack-test (0.5.4)&#x000A;Installing tzinfo (0.3.22)&#x000A;Installing actionpack (3.0.0.rc)&#x000A;Installing mime-types (1.16)&#x000A;Installing polyglot (0.3.1)&#x000A;Installing treetop (1.4.8)&#x000A;Installing mail (2.2.5)&#x000A;Installing actionmailer (3.0.0.rc)&#x000A;Installing arel (0.4.0)&#x000A;Installing activerecord (3.0.0.rc)&#x000A;Installing activeresource (3.0.0.rc)&#x000A;Installing bundler (1.0.0.rc.3)&#x000A;Installing nokogiri (1.4.3.1) with native extensions&#x000A;Installing thor (0.14.0)&#x000A;Installing railties (3.0.0.rc)&#x000A;Installing rails (3.0.0.rc)&#x000A;&#x000A;Your bundle is complete! Use `bundle show [gemname]` to see where a&#x000A;bundled gem is installed.</pre>
+                  처음 <code>bundle install</code>을 실행할 때, 번들러는 필요한 모든
+                  의존성을 해결한 다음 설치할 것 입니다.
+                  <pre class="highlight plaintext">Fetching source index for http://rubygems.org/&#x000A;Installing rake (0.8.7)&#x000A;Installing abstract (1.0.0)&#x000A;Installing activesupport (3.0.0.rc)&#x000A;Installing builder (2.1.2)&#x000A;Installing i18n (0.4.1)&#x000A;Installing activemodel (3.0.0.rc)&#x000A;Installing erubis (2.6.6)&#x000A;Installing rack (1.2.1)&#x000A;Installing rack-mount (0.6.9)&#x000A;Installing rack-test (0.5.4)&#x000A;Installing tzinfo (0.3.22)&#x000A;Installing actionpack (3.0.0.rc)&#x000A;Installing mime-types (1.16)&#x000A;Installing polyglot (0.3.1)&#x000A;Installing treetop (1.4.8)&#x000A;Installing mail (2.2.5)&#x000A;Installing actionmailer (3.0.0.rc)&#x000A;Installing arel (0.4.0)&#x000A;Installing activerecord (3.0.0.rc)&#x000A;Installing activeresource (3.0.0.rc)&#x000A;Installing bundler (1.0.0.rc.3)&#x000A;Installing nokogiri (1.4.3.1) with native extensions&#x000A;Installing thor (0.14.0)&#x000A;Installing railties (3.0.0.rc)&#x000A;Installing rails (3.0.0.rc)&#x000A;&#x000A;Your bundle is complete! Use `bundle show [gemname]` to see where a&#x000A;bundled gem is installed.</pre>
                 </p>
                 <p>
-                  As you can see, even though you have just two gems in the
-                  <code>Gemfile</code>, your application actually needs 25 different gems
-                  in order to run. Bundler remembers the exact versions it installed in
-                  <code>Gemfile.lock</code>. The next time you run
-                  <code>bundle install</code>, bundler skips the dependency resolution and
-                  installs the same gems as it installed last time.
+                  보시다시피, <code>Gemfile</code>안에 두개의 젬만 있다고해도, 실제
+                  어플리케이션을 실행하려면 25개의 다른 젬이 필요합니다. 번들러는
+                  설치된 젬들의 정확한 버전을 <code>Gemfile.lock</code> 안에 기억해둡니다.
+                  다음에 <code>bundle install</code>을 실행할 때에는, 번들러는 마지막으로
+                  설치 됐었던 모든 젬들의 의존성 해결과 설치를 생략합니다.
                 </p>
                 <p>
-                  After checking in the <code>Gemfile.lock</code> into version control and
-                  cloning it on another machine, running <code>bundle install</code> will
-                  _still_ install the gems that you installed last time. You don't need to
-                  worry that a new release of <code>erubis</code> or <code>mail</code>
-                  changes the gems you use.
+                  <code>Gemfile.lock</code>를 버전관리에 넣고 다른 머신에서 클론한 후에
+                  <code>bundle install</code>을 실행하면 _여전히_ 마지막에 설치했던 젬들을
+                  설치 합니다.  <code>erubis</code>, <code>mail</code>의 새버전이 나왔는지
+                  걱정할 필요가 없어요.
                 </p>
                 <p>
-                  However, from time to time, you might want to update the gems you are
-                  using to the newest versions that still match the gems in your
-                  <code>Gemfile</code>.
+                  하지만 때때로 <code>Gemfile</code>의 정보와 일치하는 최신 버전으로
+                  갱신해야 할 때가 있습니다.
                 </p>
                 <p>
-                  To do this, run <code>bundle update</code>, which will ignore the
-                  <code>Gemfile.lock</code>, and resolve all the dependencies again. Keep
-                  in mind that this process can result in a significantly different set
-                  of the 25 gems, based on the requirements of new gems that the gem
-                  authors released since the last time you ran <code>bundle update</code>.
+                  이럴때엔 <code>bundle update</code>를 실행하시면 <code>Gemfile.lock</code>
+                  을 무시하고 모든 의존성을 다시 해결합니다. 이 과정은 마지막으로
+                  <code>bundle update</code>을 실행한 이후 젬의 저자들한 새로 릴리즈한 젬을
+                  기반으로 새로운 젬을 요청하므로 25개의 잼 모두 현저히 달라질 수 있으므로
+                  주의하세요.
                 </p>
               </div>
             </div>
@@ -125,20 +117,18 @@
             <div class='bullet' id='update_list_of_gems'>
               <div class='description'>
                 <p>
-                  Sometimes, you want to update a single gem in the <code>Gemfile</code>,
-                  and leave the rest of the gems that you specified locked to the
-                  versions in the <code>Gemfile.lock</code>.
+                  가끔 <code>Gemfile</code>안의 나머지 젬들은 <code>Gemfile.lock</code>안의
+                  버전으로 고정하고 하나의 젬만 갱신해야 할 때가 있습니다.
                 </p>
                 <p>
-                  For instance, in the scenario above, imagine that
-                  <code>nokogiri</code> releases version <code>1.4.4</code>, and you want
-                  to update it _without_ updating Rails and all of its dependencies. To
-                  do this, run
-                  <pre class='sunburst'>bundle update nokogiri&#x000A;</pre>
+                  예를들어 위의 시나리오에서 <code>nokogiri</code>의 릴리즈 버전이
+                  <code>1.4.4</code>이고 레일즈와 모든 의존성의 _갱신없이_ <code>nokogiri</code>만
+                  릴리즈 해야할 경우, 다음과 같이 하면 됩니다.
+                  <pre class="highlight plaintext">bundle update nokogiri&#x000A;</pre>
                 </p>
                 <p>
-                  Bundler will update <code>nokogiri</code> and any of its dependencies,
-                  but leave alone Rails and its dependencies.
+                  번들러는 <code>nokogiri</code>와 그 의존성만 갱신하고, 레일즈나 그 의존성들은
+                  그냥 둘 것 입니다.
                 </p>
               </div>
             </div>
@@ -148,38 +138,36 @@
             <div class='bullet' id='overlapping_dependencies'>
               <div class='description'>
                 <p>
-                  Sometimes, multiple gems declared in your <code>Gemfile</code> are
-                  satisfied by the same second-level dependency. For instance, consider the
-                  case of <code>thin</code> and <code>rack-perftools-profiler</code>.
-                  <pre class="sunburst">source <span class="String"><span class="String">&#39;</span>http://rubygems.org<span class="String">&#39;</span></span>&#x000A;&#x000A;gem <span class="String"><span class="String">&#39;</span>thin<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>rack-perftools-profiler<span class="String">&#39;</span></span>&#x000A;</pre>
+                  가끔 <code>Gemfile</code>안에 여러 젬들이 같은 하위(second-level) 의존성을
+                  만족할 수 있습니다. 예를들어 <code>thin</code>과
+                  <code>rack-perftools-profiler</code>가 있다고 해보죠.
+                  <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'http://rubygems.org'</span>&#x000A;&#x000A;<span class="n">gem</span> <span class="s1">'thin'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rack-perftools-profiler'</span>&#x000A;</pre>
                 </p>
                 <p>
-                  The <code>thin</code> gem depends on <code>rack >= 1.0</code>, while
-                  <code>rack-perftools-profiler</code> depends on <code>rack ~> 1.0</code>.
-                  If you run bundle install, you get:
-                  <pre class='sunburst'>Fetching source index for http://rubygems.org/&#x000A;Installing daemons (1.1.0)&#x000A;Installing eventmachine (0.12.10) with native extensions&#x000A;Installing open4 (1.0.1)&#x000A;Installing perftools.rb (0.4.7) with native extensions&#x000A;Installing rack (1.2.1)&#x000A;Installing rack-perftools_profiler (0.0.2)&#x000A;Installing thin (1.2.7) with native extensions&#x000A;Using bundler (1.0.0.rc.3)&#x000A;</pre>
+                  <code>thin</code> 젬은 <code>rack >= 1.0</code>에 의존합니다. 한편
+                  <code>rack-perftools-profiler</code>는 <code>rack ~> 1.0</code>에 의존
+                  합니다. 번들을 설치하면 다음 결과를 얻게 됩니다.
+                  <pre class="highlight plaintext">Fetching source index for http://rubygems.org/&#x000A;Installing daemons (1.1.0)&#x000A;Installing eventmachine (0.12.10) with native extensions&#x000A;Installing open4 (1.0.1)&#x000A;Installing perftools.rb (0.4.7) with native extensions&#x000A;Installing rack (1.2.1)&#x000A;Installing rack-perftools_profiler (0.0.2)&#x000A;Installing thin (1.2.7) with native extensions&#x000A;Using bundler (1.0.0.rc.3)&#x000A;</pre>
                 </p>
                 <p>
-                  In this case, the two gems have their own set of dependencies, but they
-                  share <code>rack</code> in common. If you run <code>bundle update
-                  thin</code>, bundler will update <code>daemons</code>,
-                  <code>eventmachine</code> and <code>rack</code>, which are dependencies
-                  of <code>thin</code>, but not <code>open4</code> or
-                  <code>perftools.rb</code>, which are dependencies of
-                  <code>rack-perftools_profiler</code>. Note that
-                  <code>bundle update thin</code> will update <code>rack</code> even though
-                  it's _also_ a dependency of <code>rack-perftools_profiler</code>.
+                  이 경우 두 젬들이 각각의 의존성을 가지고 있지만, 공통으로 <code>rack</code>
+                  을 공유하고 있습니다. <code>bundle update thin</code>을 실행하면 번들은
+                  <code>thin</code>에 의존성이 있는 <code>daemons</code>,
+                  <code>eventmachine</code>, <code>rack</code>을 갱신하지만
+                  <code>rack-perftools_profiler</code>에 의존성이 있는 <code>open4</code>,
+                  <code>perftools.rb</code>는 갱신하지 않습니다.
+                  <code>bundle update thin</code>는 <code>rack-perftools_profiler</code>_에도_
+                  의존성이 있음에도 불구하고 <code>rack</code>을 갱신함에 주의하세요.
                 </p>
                 <p>
-                  In short, when you update a gem using
-                  <code>bundle update</code>, bundler will update all dependencies of that
-                  gem, including those that are also dependencies of another gem.
+                  요약하면 <code>bundle update</code>를 이용해 젬을 갱신할 때는 번들러는
+                  다른 젬에 의존성이 있는 젬도 포함해 그 젬의 모든 의존성도 같이 갱신합니다.
                 </p>
                 <p>
-                  In this scenario, updating the <code>thin</code> version manually in the
-                  <code>Gemfile</code>, and then running <code>bundle install</code> will
-                  only update <code>daemons</code> and <code>eventmachine</code>, but not
-                  <code>rack</code>.
+                  이 시나리오에서 <code>Gemfile</code>에서 <code>thin</code>의 버전을
+                  수동으로 갱신하고 <code>bundle install</code>을 실행하면
+                  <code>daemons</code>과 <code>eventmachine</code>를 갱신하지만
+                  <code>rack</code>은 갱신하지 않습니다.
                 </p>
               </div>
             </div>
@@ -189,9 +177,9 @@
           <h2>Would you like to</h2>
           <ul>
             <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
+            <li><a href="/issues.html">버그 리포트</a></li>
             <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/bundler-site/v1.5/man/bundle.1.html">문서 읽기</a></li>
+            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
             <li><a href="/bundler-site/#get-involved">기여하기</a></li>
             <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
           </ul>
@@ -253,11 +241,11 @@
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/index.html">v0.9</a>
-      <a href="/bundler-site/v1.0/index.html">v1.0</a>
-      <a href="/bundler-site/v1.1/index.html">v1.1</a>
-      <a href="/bundler-site/v1.2/index.html">v1.2</a>
-      <a href="/bundler-site/v1.3/index.html">v1.3</a>
+      <a href="/bundler-site/v0.9/">v0.9</a>
+      <a href="/bundler-site/v1.0/">v1.0</a>
+      <a href="/bundler-site/v1.1/">v1.1</a>
+      <a href="/bundler-site/v1.2/">v1.2</a>
+      <a href="/bundler-site/v1.3/">v1.3</a>
       <a class="current" href="/bundler-site/">v1.5</a>
     </div>
     <script>

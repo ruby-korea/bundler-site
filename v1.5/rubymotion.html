@@ -4,9 +4,8 @@
     <title>Bundler: The best way to manage a Ruby application's gems</title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/bundler-site/images/favicon.png' rel='shortcut icon' type='image/png'>
+    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
     <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="/bundler-site/stylesheets/sunburst.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id='body'>
@@ -21,31 +20,31 @@
               <div class='description'>
                 아직 루비모션 앱이 없다면 만듭니다.
               </div>
-              <pre class='sunburst'>$ motion create myapp&#x000A;$ cd myapp</pre>
+              <pre class="highlight plaintext">$ motion create myapp&#x000A;$ cd myapp</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
                 Gemfile을 만들 필요가 있습니다. bubblewrap을 사용할 때는 이렇게 합니다.
               </div>
-              <pre class="sunburst">gem <span class="String"><span class="String">&#39;</span>bubble-wrap<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'bubble-wrap'</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
                 그리고나서 Rakefile을 컴파일할때 번들된 젬들을 require하도록 설정합니다.
                 <code>require 'motion/project'</code> 바로 밑의 줄에 다음 코드를 추가합니다.
               </div>
-              <pre class="sunburst"><span class="Keyword">require</span> <span class="String"><span class="String">&#39;</span>bundler<span class="String">&#39;</span></span>&#x000A;&#x000A;<span class="Support">Bundler</span>.<span class="Keyword">require</span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'bundler'</span>&#x000A;&#x000A;<span class="no">Bundler</span><span class="p">.</span><span class="nf">require</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
                 다음으로, 의존성들을 설치합니다.
-                <pre class='sunburst'>$ bundle install&#x000A;</pre>
+                <pre class="highlight plaintext">$ bundle install&#x000A;</pre>
               </div>
             </div>
             <div class='bullet'>
               <div class='description'>
                 이제 평범하게 앱을 컴파일 할 수 있습니다.
-                <pre class='sunburst'>$ rake</pre>
+                <pre class="highlight plaintext">$ rake</pre>
               </div>
             </div>
           </div>
@@ -54,9 +53,9 @@
           <h2>Would you like to</h2>
           <ul>
             <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
+            <li><a href="/issues.html">버그 리포트</a></li>
             <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/bundler-site/v1.5/man/bundle.1.html">문서 읽기</a></li>
+            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
             <li><a href="/bundler-site/#get-involved">기여하기</a></li>
             <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
           </ul>
@@ -118,11 +117,11 @@
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/index.html">v0.9</a>
-      <a href="/bundler-site/v1.0/index.html">v1.0</a>
-      <a href="/bundler-site/v1.1/index.html">v1.1</a>
-      <a href="/bundler-site/v1.2/index.html">v1.2</a>
-      <a href="/bundler-site/v1.3/index.html">v1.3</a>
+      <a href="/bundler-site/v0.9/">v0.9</a>
+      <a href="/bundler-site/v1.0/">v1.0</a>
+      <a href="/bundler-site/v1.1/">v1.1</a>
+      <a href="/bundler-site/v1.2/">v1.2</a>
+      <a href="/bundler-site/v1.3/">v1.3</a>
       <a class="current" href="/bundler-site/">v1.5</a>
     </div>
     <script>

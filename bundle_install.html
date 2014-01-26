@@ -4,9 +4,8 @@
     <title>Bundler: The best way to manage a Ruby application's gems</title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/bundler-site/images/favicon.png' rel='shortcut icon' type='image/png'>
+    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
     <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="/bundler-site/stylesheets/sunburst.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id='body'>
@@ -21,7 +20,7 @@
               <div class='description'>
                 어플리케이션에서 Gemfile안에 있는 의존성이 만족하는지 확인합니다.
               </div>
-              <pre class='sunburst'>$ bundle install [--binstubs=PATH] [--clean] [--deployment] [--frozen]&#x000A;                 [--full-index] [--gemfile=FILE] [--local] [--no-cache]&#x000A;                 [--no-prune] [--path=PATH] [--quiet] [--shebang=STRING]&#x000A;                 [--standalone=ARRAY] [--system] [--without=GROUP GROUP]</pre>
+              <pre class="highlight plaintext">$ bundle install [--binstubs=PATH] [--clean] [--deployment] [--frozen]&#x000A;                 [--full-index] [--gemfile=FILE] [--local] [--no-cache]&#x000A;                 [--no-prune] [--path=PATH] [--quiet] [--shebang=STRING]&#x000A;                 [--standalone=ARRAY] [--system] [--without=GROUP GROUP]</pre>
               <div class='notes'>
                 <p>
                   옵션들:
@@ -94,28 +93,28 @@
                 이 경우에는, <code>vendor/bundle</code>에 설치합니다.
               </div>
               <div class='how'>
-                <pre class='sunburst'>$ bundle install --path vendor/bundle</pre>
+                <pre class="highlight plaintext">$ bundle install --path vendor/bundle</pre>
                 <div class='notes'>
                   또한 <code>bundle</code> 명령어, <code>Bundler.setup</code>, <code>Bundler.require</code>를
                   위해 이 위치를 기억해둡니다.
                 </div>
-                <a href="/bundler_setup.html">자세한 내용은: Bundler.setup</a>
-                <a href="/groups.html">자세한 내용은: Bundler.require</a>
+                <a href="/bundler-site/bundler_setup.html">자세한 내용은: Bundler.setup</a>
+                <a href="/bundler-site/groups.html">자세한 내용은: Bundler.require</a>
               </div>
             </div>
             <div class='bullet' id='without'>
               <div class='description'>
                 명시적으로 재외한 그룹을 재외한 모든 의존성들을 설치합니다.
               </div>
-              <pre class='sunburst'>$ bundle install --without development test</pre>
-              <a href="/groups.html">자세한 내용은: 그룹</a>
+              <pre class="highlight plaintext">$ bundle install --without development test</pre>
+              <a href="/bundler-site/groups.html">자세한 내용은: 그룹</a>
             </div>
             <div class='bullet' id='deployment'>
               <div class='description'>
                 프로덕션 서버에 모든 의존성들을 설치합니다.
                 개발머신에 이 플래그를 사용하지 <b>마세요.</b>
               </div>
-              <pre class='sunburst'>$ bundle install --deployment</pre>
+              <pre class="highlight plaintext">$ bundle install --deployment</pre>
               <div class='notes'>
                 <p>
                   <code>--deployment</code> 플래그는 여러가지의 배포친화적인 규칙을 활성화시킵니다.
@@ -129,19 +128,19 @@
                   </li>
                 </ul>
               </div>
-              <a href="/deploying.html">자세한 내용은: 배포하기</a>
+              <a href="/bundler-site/deploying.html">자세한 내용은: 배포하기</a>
             </div>
             <div class='bullet' id='jobs'>
               <div class='description'>
                 지정된 수의 워커를 시작하여 병행설치 합니다.
               </div>
-              <pre class='sunburst'>$ bundle install --jobs 4&#x000A;</pre>
+              <pre class="highlight plaintext">$ bundle install --jobs 4&#x000A;</pre>
             </div>
             <div class='bullet' id='retry'>
               <div class='description'>
                 실패한 네트워크, git  리퀘스트를 재시도합니다.
               </div>
-              <pre class='sunburst'>$ bundle install --retry 3</pre>
+              <pre class="highlight plaintext">$ bundle install --retry 3</pre>
             </div>
           </div>
         </div>
@@ -149,9 +148,9 @@
           <h2>Would you like to</h2>
           <ul>
             <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
+            <li><a href="/issues.html">버그 리포트</a></li>
             <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/bundler-site/v1.5/man/bundle.1.html">문서 읽기</a></li>
+            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
             <li><a href="/bundler-site/#get-involved">기여하기</a></li>
             <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
           </ul>
@@ -213,11 +212,11 @@
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/index.html">v0.9</a>
-      <a href="/bundler-site/v1.0/index.html">v1.0</a>
-      <a href="/bundler-site/v1.1/index.html">v1.1</a>
-      <a href="/bundler-site/v1.2/index.html">v1.2</a>
-      <a href="/bundler-site/v1.3/index.html">v1.3</a>
+      <a href="/bundler-site/v0.9/">v0.9</a>
+      <a href="/bundler-site/v1.0/">v1.0</a>
+      <a href="/bundler-site/v1.1/">v1.1</a>
+      <a href="/bundler-site/v1.2/">v1.2</a>
+      <a href="/bundler-site/v1.3/">v1.3</a>
       <a class="current" href="/bundler-site/">v1.5</a>
     </div>
     <script>

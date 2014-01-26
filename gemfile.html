@@ -4,9 +4,8 @@
     <title>Bundler: The best way to manage a Ruby application's gems</title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/bundler-site/images/favicon.png' rel='shortcut icon' type='image/png'>
+    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
     <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="/bundler-site/stylesheets/sunburst.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id='body'>
@@ -30,14 +29,14 @@
               <div class='description'>
                 Gemfile에는 최소한 하나의 젬 소스가 필요합니다. 젬 소스에는 루비젬 서버가 URL형식으로 적혀있어야합니다. <code>bundle init</code>를 실행함으로써 rubygems.org 를 소스로한 기본값의 Gemfile을 만듭니다. 할 수만 있다면 <code>https</code>을 사용하여 rubygems.org 서버로의 연결이 SSL인증되도록 하세요.
               </div>
-              <pre class="sunburst">source <span class="String"><span class="String">&#39;</span>https://rubygems.org<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
                 필요한 젬들을 버전 번호와 함께 선언합니다. 의존성을 지원하기위한 버전 지정에는 루비젬에서
                 사용하는 것과 같은 문법을 사용합니다.
               </div>
-              <pre class="sunburst">gem <span class="String"><span class="String">&#39;</span>nokogiri<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>rails<span class="String">&#39;</span></span>, <span class="String"><span class="String">&#39;</span>3.0.0.beta3<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>rack<span class="String">&#39;</span></span>,  <span class="String"><span class="String">&#39;</span>&gt;=1.0<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>thin<span class="String">&#39;</span></span>,  <span class="String"><span class="String">&#39;</span>~&gt;1.1<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'nokogiri'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rails'</span><span class="p">,</span> <span class="s1">'3.0.0.beta3'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rack'</span><span class="p">,</span>  <span class="s1">'&gt;=1.0'</span>&#x000A;<span class="n">gem</span> <span class="s1">'thin'</span><span class="p">,</span>  <span class="s1">'~&gt;1.1'</span></pre>
               <div class='notes'>
                 <code>&gt;= 1.0</code>같은 대부분의 버전 지정자는 자기 자신을 설명합니다.
                 지정자 <code>~&gt;</code>는 특별한 의미가있습니다. 예제로 설명하겠습니다.
@@ -45,22 +44,22 @@
                 <code>~&gt; 2.1</code>는 <code>&gt;= 2.1</code> 그리고 <code>&lt; 3.0</code>와 같습니다.
                 <code>~&gt; 2.2.beta</code>는 <code>2.2.beta.12</code>같은 프리릴리즈 버전과 같습니다.
               </div>
-              <a href="http://docs.rubygems.org/read/chapter/16#page74">루비젬의 버전 지정자</a>
+              <a href="http://guides.rubygems.org/patterns/#pessimistic_version_constraint">루비젬의 버전 지정자</a>
             </div>
             <div class='bullet'>
               <div class='description'>
                 젬의 메인 파일이 젬의 이름과다르다면, require하는 방법을 지정할 필요가 있습니다.
               </div>
-              <pre class="sunburst">gem <span class="String"><span class="String">&#39;</span>rspec<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>require</span> =&gt; <span class="String"><span class="String">&#39;</span>spec<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>sqlite3<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'rspec'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="s1">'spec'</span>&#x000A;<span class="n">gem</span> <span class="s1">'sqlite3'</span></pre>
               <div class='description'>
                 <code>:require => false</code>을 지정함으로써 번들러가 젬을 require하는것을 방지할 수있습니다. 하지만 여전히 인스톨과 의존성의 유지보수는 이루어 집니다.
               </div>
-              <pre class="sunburst">gem <span class="String"><span class="String">&#39;</span>rspec<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>require</span> =&gt; <span class="Constant">false</span>&#x000A;gem <span class="String"><span class="String">&#39;</span>sqlite3<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'rspec'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>&#x000A;<span class="n">gem</span> <span class="s1">'sqlite3'</span></pre>
               <div class='notes'>
                 <code>Gemfile</code>안의 젬들을 require하려면, 어플리케이션에서
                 <code>Bundler.require</code>를 콜할 필요가 있습니다.
               </div>
-              <a href="/groups.html">자세한 내용은: Bundler.require</a>
+              <a href="/bundler-site/groups.html">자세한 내용은: Bundler.require</a>
             </div>
             <div class='bullet'>
               <div class='description'>
@@ -68,34 +67,34 @@
                 <code>:tag</code>나 <code>:branch</code>, <code>:ref</code>로 어느걸 체크아웃할지 정할 수
                 있습니다. 기본값은 <code>master</code>브랜치 입니다.
               </div>
-              <pre class="sunburst">gem <span class="String"><span class="String">&#39;</span>nokogiri<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>git</span> =&gt; <span class="String"><span class="String">&#39;</span>git://github.com/tenderlove/nokogiri.git<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>branch</span> =&gt; <span class="String"><span class="String">&#39;</span>1.4<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'nokogiri'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'git://github.com/tenderlove/nokogiri.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'1.4'</span></pre>
               <div class='notes'>
                 깃 저장소가 <code>.gemspec</code> 파일을 가지고있지 않다면, 번들러가 의존성, 실행파일,
                 C 확장 설정이 없는 간단한 <code>.gemspec</code> 파일을 생성합니다.
                 아마도 간단한 젬에서는 동작 할테지만, 동작하지 않을 수도 있습니다.
                 <code>.gemspec</code> 파일이 없다면 깃에서 젬을 사용하지 않는 것이 좋습니다.
               </div>
-              <a href="/git.html">자세한 내용은: 깃</a>
+              <a href="/bundler-site/git.html">자세한 내용은: 깃</a>
             </div>
             <div class='bullet'>
               <div class='description'>
                 파일시스템에서 직접 젬을 언팩하고 싶다면, <code>:path</code> 옵션에 젬의 파일들이 들어있는 경로를 지정하면 간단합니다.
               </div>
-              <pre class="sunburst">gem <span class="String"><span class="String">&#39;</span>extracted_library<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>path</span> =&gt; <span class="String"><span class="String">&#39;</span>./vendor/extracted_library<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'extracted_library'</span><span class="p">,</span> <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="s1">'./vendor/extracted_library'</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
                 의존성들은 그룹안에 있을 수 있습니다. 그룹은 설치시에 무시(<code>--without</code>을 사용)하거나 한번에 require(<code>Bundler.require</code>를 사용)할 수 있습니다.
               </div>
-              <pre class="sunburst">gem <span class="String"><span class="String">&#39;</span>wirble<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>group</span> =&gt; <span class="Constant"><span class="Constant">:</span>development</span>&#x000A;gem <span class="String"><span class="String">&#39;</span>debugger<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>group</span> =&gt; [<span class="Constant"><span class="Constant">:</span>development</span>, <span class="Constant"><span class="Constant">:</span>test</span>]&#x000A;&#x000A;group <span class="Constant"><span class="Constant">:</span>test</span> <span class="Keyword">do</span>&#x000A;  gem <span class="String"><span class="String">&#39;</span>rspec<span class="String">&#39;</span></span>&#x000A;<span class="Keyword">end</span>&#x000A;</pre>
-              <a href="/groups.html">자세한 내용은: 그룹</a>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'wirble'</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="ss">:development</span>&#x000A;<span class="n">gem</span> <span class="s1">'debugger'</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span><span class="o">]</span>&#x000A;&#x000A;<span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>&#x000A;  <span class="n">gem</span> <span class="s1">'rspec'</span>&#x000A;<span class="k">end</span></pre>
+              <a href="/bundler-site/groups.html">자세한 내용은: 그룹</a>
             </div>
             <div class='bullet'>
               <div class='description'>
                 <code>Gemfile</code>에 <code>ruby</code>를 사용하여 필요한 루비 버전을 지정할 수 있습니다.
                 <code>Gemfile</code>이 다른 루비 버전에서 로드 되었다면, 번들러는 설명과 함께 예외를 발생시킬 것 입니다.
               </div>
-              <pre class="sunburst">ruby <span class="String"><span class="String">&#39;</span>1.9.3<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="n">ruby</span> <span class="s1">'1.9.3'</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
@@ -103,8 +102,8 @@
                 버전을 채크해 맞지 않으면, 번들러는 예외를 발생시킵니다. 이 것은 실행중의 코드가 매치하는지 확인합니다.
                 <code>:engine</code>과 <code>:engine_version</code>버전 옵션을 사용해 좀 더 자세한 설정을 할 수 있습니다.
               </div>
-              <pre class="sunburst">ruby <span class="String"><span class="String">&#39;</span>1.9.3<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>engine</span> =&gt; <span class="String"><span class="String">&#39;</span>jruby<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>engine_version</span> =&gt; <span class="String"><span class="String">&#39;</span>1.6.7<span class="String">&#39;</span></span>&#x000A;</pre>
-              <a href="/gemfile_ruby.html">자세한 내용은: 루비 지시자</a>
+              <pre class="highlight ruby"><span class="n">ruby</span> <span class="s1">'1.9.3'</span><span class="p">,</span> <span class="ss">:engine</span> <span class="o">=&gt;</span> <span class="s1">'jruby'</span><span class="p">,</span> <span class="ss">:engine_version</span> <span class="o">=&gt;</span> <span class="s1">'1.6.7'</span></pre>
+              <a href="/bundler-site/gemfile_ruby.html">자세한 내용은: 루비 지시자</a>
             </div>
           </div>
         </div>
@@ -112,9 +111,9 @@
           <h2>Would you like to</h2>
           <ul>
             <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
+            <li><a href="/issues.html">버그 리포트</a></li>
             <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/bundler-site/v1.5/man/bundle.1.html">문서 읽기</a></li>
+            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
             <li><a href="/bundler-site/#get-involved">기여하기</a></li>
             <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
           </ul>
@@ -176,11 +175,11 @@
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/index.html">v0.9</a>
-      <a href="/bundler-site/v1.0/index.html">v1.0</a>
-      <a href="/bundler-site/v1.1/index.html">v1.1</a>
-      <a href="/bundler-site/v1.2/index.html">v1.2</a>
-      <a href="/bundler-site/v1.3/index.html">v1.3</a>
+      <a href="/bundler-site/v0.9/">v0.9</a>
+      <a href="/bundler-site/v1.0/">v1.0</a>
+      <a href="/bundler-site/v1.1/">v1.1</a>
+      <a href="/bundler-site/v1.2/">v1.2</a>
+      <a href="/bundler-site/v1.3/">v1.3</a>
       <a class="current" href="/bundler-site/">v1.5</a>
     </div>
     <script>

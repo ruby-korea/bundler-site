@@ -4,9 +4,8 @@
     <title>Bundler: The best way to manage a Ruby application's gems</title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/bundler-site/images/favicon.png' rel='shortcut icon' type='image/png'>
+    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
     <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="/bundler-site/stylesheets/sunburst.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id='body'>
@@ -25,38 +24,38 @@
                 </p>
                 <p>
                   처음 <code>Gemfile</code>을 생성한 다음에 다음 명령어를 실행합니다.
-                  <pre class='sunburst'>$ bundle install</pre>
+                  <pre class="highlight plaintext">$ bundle install</pre>
                 </p>
                 <p>
                   결과로 나온 <code>Gemfile.lock</code>을 버전 관리합니다.
-                  <pre class='sunburst'>$ git add Gemfile.lock</pre>
+                  <pre class="highlight plaintext">$ git add Gemfile.lock</pre>
                 </p>
                 <p>
                   이 저장소를 다른 머신에서 체크아웃할 때엔 다음 명령어를 실행합니다.
-                  <pre class='sunburst'>$ bundle install</pre>
+                  <pre class="highlight plaintext">$ bundle install</pre>
                 </p>
                 <p>
                   이 저장소를 배포 머신에 체크아웃할 때엔 다음 명령어를 실행합니다.
-                  <pre class='sunburst'>$ bundle install --deployment</pre>
+                  <pre class="highlight plaintext">$ bundle install --deployment</pre>
                 </p>
                 <p>
                   <code>Gemfile</code>을 변경한 후에, 새로운 의존성이나 갱신된 의존성을
                   반영하기 위해서는 다음 명령어를 실행합니다.
-                  <pre class='sunburst'>$ bundle install</pre>
+                  <pre class="highlight plaintext">$ bundle install</pre>
                 </p>
                 <p>
                   갱신된 <code>Gemfile.lock</code> 버전 관리되는지 확인합니다.
-                  <pre class='sunburst'>$ git add Gemfile.lock</pre>
+                  <pre class="highlight plaintext">$ git add Gemfile.lock</pre>
                 </p>
                 <p>
                   <code>bundle install</code>이 충돌을 보고하면, <code>Gemfile</code>
                   에서 변경한 특정 젬을 수동으로 갱신해야 합니다.
-                  <pre class='sunburst'>$ bundle update rails thin</pre>
+                  <pre class="highlight plaintext">$ bundle update rails thin</pre>
                 </p>
                 <p>
                   <code>Gemfile</code>안에있는 젬의 조건을 만족하면서 가능한 최신 버전으로
                   갱신하려면, 다음 명령어를 실행합니다.
-                  <pre class='sunburst'>$ bundle update&#x000A;</pre>
+                  <pre class="highlight plaintext">$ bundle update&#x000A;</pre>
                 </p>
               </div>
             </div>
@@ -67,12 +66,12 @@
               <div class='description'>
                 번들러는 시작하기 쉽습니다! 터미널 윈도우를 열고 이 명령어를 실행합니다.
               </div>
-              <pre class='sunburst'>$ gem install bundler</pre>
+              <pre class="highlight plaintext">$ gem install bundler</pre>
               <div class='notes'>
                 <li>
                   처음 레일즈 어플리케이션을 생성했을때부터 <code>Gemfile</code>이 이미 포함되어 있습니다.
                   (시나트라같은) 다른 종류의 어플리케이션은 이 명령어를 실행합니다.
-                  <pre class='sunburst'>$ bundle init&#x000A;</pre>
+                  <pre class="highlight plaintext">$ bundle init&#x000A;</pre>
                 </li>
                 <li>
                   <code>bundle init</code> 명령어는 수정할 수 있는 간단한 <code>Gemfile</code>을 생성합니다.
@@ -84,7 +83,7 @@
                 <code>Gemfile</code>은 어플리케이션 루트에 의존성을 특정한 것 입니다.
                 이런 내용들이 들어있습니다.
               </div>
-              <pre class="sunburst">source <span class="String"><span class="String">&#39;</span>https://rubygems.org<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>nokogiri<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>rack<span class="String">&#39;</span></span>, <span class="String"><span class="String">&#39;</span>~&gt;1.1<span class="String">&#39;</span></span>&#x000A;gem <span class="String"><span class="String">&#39;</span>rspec<span class="String">&#39;</span></span>, <span class="Constant"><span class="Constant">:</span>require</span> =&gt; <span class="String"><span class="String">&#39;</span>spec<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>&#x000A;<span class="n">gem</span> <span class="s1">'nokogiri'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rack'</span><span class="p">,</span> <span class="s1">'~&gt;1.1'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rspec'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="s1">'spec'</span>&#x000A;</pre>
               <div class='notes'>
                 이 <code>Gemfile</code>은 여러가지를 말해줍니다.
                 첫째, 번들러는 <code>Gemfile</code>안에 선언된 젬들을 <code>http://rubygems.org</code>
@@ -98,14 +97,14 @@
               <div class='description'>
                 <p>
                   첫 의존성을 선언한 이후, 번들러에게 받도록 해야합니다.
-                  <pre class='sunburst'>$ bundle install    # <code>bundle</code>은 <code>bundle install</code>의 단축입니다.&#x000A;</pre>
+                  <pre class="highlight plaintext">$ bundle install    # &lt;code&gt;bundle&lt;/code&gt;은 &lt;code&gt;bundle install&lt;/code&gt;의 단축입니다.&#x000A;</pre>
                 </p>
                 <p>
                   번들러는 <code>rubygems.org</code>(아니면 다른 선언된 소스)에 접속해, 모든 필요한 젬들의
                   목록(지정된 요구사항 충족하는 젬들의 목록)을 찾습니다. <code>Gemfile</code>안의 모든 젬들은
                   각자 의존성을 가지고 있고 또 그의존성들의 일부는 각자의 의존성을 가지고 있기때문에,
                   <code>bundle install</code>을 실행하면 위의 <code>Gemfile</code>로도 꽤 많은 젬이 설치됩니다.
-                  <pre class='sunburst'>  $ bundle install&#x000A;  Fetching gem metadata from https://rubygems.org/&#x000A;  Resolving dependencies...&#x000A;  Using rake (0.8.7)&#x000A;  Using abstract (1.0.0)&#x000A;  Installing activesupport (3.0.0.rc)&#x000A;  Using builder (2.1.2)&#x000A;  Using i18n (0.4.1)&#x000A;  Installing activemodel (3.0.0.rc)&#x000A;  Using erubis (2.6.6)&#x000A;  Using rack (1.2.1)&#x000A;  Installing rack-mount (0.6.9)&#x000A;  Using rack-test (0.5.4)&#x000A;  Using tzinfo (0.3.22)&#x000A;  Installing actionpack (3.0.0.rc)&#x000A;  Using mime-types (1.16)&#x000A;  Using polyglot (0.3.1)&#x000A;  Using treetop (1.4.8)&#x000A;  Using mail (2.2.5)&#x000A;  Installing actionmailer (3.0.0.rc)&#x000A;  Using arel (0.4.0)&#x000A;  Installing activerecord (3.0.0.rc)&#x000A;  Installing activeresource (3.0.0.rc)&#x000A;  Using bundler (1.0.0.rc.3)&#x000A;  Installing nokogiri (1.4.3.1) with native extensions&#x000A;  Installing rack-cache (0.5.2)&#x000A;  Installing thor (0.14.0)&#x000A;  Installing railties (3.0.0.rc)&#x000A;  Installing rails (3.0.0.rc)&#x000A;  Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.&#x000A;</pre>
+                  <pre class="highlight plaintext">  $ bundle install&#x000A;  Fetching gem metadata from https://rubygems.org/&#x000A;  Resolving dependencies...&#x000A;  Using rake (0.8.7)&#x000A;  Using abstract (1.0.0)&#x000A;  Installing activesupport (3.0.0.rc)&#x000A;  Using builder (2.1.2)&#x000A;  Using i18n (0.4.1)&#x000A;  Installing activemodel (3.0.0.rc)&#x000A;  Using erubis (2.6.6)&#x000A;  Using rack (1.2.1)&#x000A;  Installing rack-mount (0.6.9)&#x000A;  Using rack-test (0.5.4)&#x000A;  Using tzinfo (0.3.22)&#x000A;  Installing actionpack (3.0.0.rc)&#x000A;  Using mime-types (1.16)&#x000A;  Using polyglot (0.3.1)&#x000A;  Using treetop (1.4.8)&#x000A;  Using mail (2.2.5)&#x000A;  Installing actionmailer (3.0.0.rc)&#x000A;  Using arel (0.4.0)&#x000A;  Installing activerecord (3.0.0.rc)&#x000A;  Installing activeresource (3.0.0.rc)&#x000A;  Using bundler (1.0.0.rc.3)&#x000A;  Installing nokogiri (1.4.3.1) with native extensions&#x000A;  Installing rack-cache (0.5.2)&#x000A;  Installing thor (0.14.0)&#x000A;  Installing railties (3.0.0.rc)&#x000A;  Installing rails (3.0.0.rc)&#x000A;  Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.&#x000A;</pre>
                 </p>
                 <p>
                   필요한 잼들 중 일부가 이미 설치되어있다면, 번들러는 그것을 사용합니다. 시스템에서 필요한
@@ -115,7 +114,7 @@
                     <li>
                       <code>bundle install</code>이 <code>Gemfile</code>과 <code>Gemfile.lock</code>사이에
                       충돌을 보고한다면 다음 명령을 실행합니다.
-                      <pre class='sunburst'>$ bundle update sinatra&#x000A;</pre>
+                      <pre class="highlight plaintext">$ bundle update sinatra&#x000A;</pre>
                     </li>
                     <li>
                       이 명령어는 Sinatra젬 뿐만 아니라 시나트라의 모든 의존성을 갱신합니다.
@@ -123,7 +122,7 @@
                     <p>
                       <li>
                         <code>Gemfile</code>안의 모든 가능한 최신 버전을 갱신하려면, 다음을 실행합니다.
-                        <pre class='sunburst'>$ bundle update&#x000A;</pre>
+                        <pre class="highlight plaintext">$ bundle update&#x000A;</pre>
                       </li>
                     </p>
                     <li>
@@ -146,14 +145,14 @@
               <div class='description'>
                 어플리케이션 안에서 번들된 환경을 로드합니다.
               </div>
-              <pre class="sunburst"><span class="Keyword">require</span> <span class="String"><span class="String">&#39;</span>rubygems<span class="String">&#39;</span></span>&#x000A;<span class="Keyword">require</span> <span class="String"><span class="String">&#39;</span>bundler/setup<span class="String">&#39;</span></span>&#x000A;&#x000A;<span class="Comment"><span class="Comment">#</span> require your gems as usual</span>&#x000A;<span class="Keyword">require</span> <span class="String"><span class="String">&#39;</span>nokogiri<span class="String">&#39;</span></span>&#x000A;</pre>
+              <pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'rubygems'</span>&#x000A;<span class="nb">require</span> <span class="s1">'bundler/setup'</span>&#x000A;&#x000A;<span class="c1"># require your gems as usual</span>&#x000A;<span class="nb">require</span> <span class="s1">'nokogiri'</span></pre>
               <a href="/bundler-site/v1.5/bundler_setup.html">자세한 내용은: Bundler.setup</a>
             </div>
             <div class='bullet'>
               <div class='description'>
                 번들안의 젬과 같이 오는 실행 파일을 실행합니다.
               </div>
-              <pre class='sunburst'>$ bundle exec rspec spec/models</pre>
+              <pre class="highlight plaintext">$ bundle exec rspec spec/models</pre>
               <div class='notes'>
                 <p>
                   어떤 경우에는, <code>bundle exec</code>없이 실행 파일이 실행 될 수
@@ -171,12 +170,12 @@
               <div class='description'>
                 마지막으로, 번들안에 있는 젬들의 단축 명령이 필요하다면 이렇게 할 수 있습니다.
               </div>
-              <pre class='sunburst'>$ bundle install --binstubs&#x000A;$ bin/rspec spec/models</pre>
+              <pre class="highlight plaintext">$ bundle install --binstubs&#x000A;$ bin/rspec spec/models</pre>
               <div class='notes'>
                 이 실행 파일들은 번들의 범위로 <code>bin</code>안에 설치되며 언제나
                 동작 할 것입니다.
               </div>
-              <a href="/bundler-site/v1.5/man/bundle-exec.1.html">자세한 내용은: 실행파일</a>
+              <a href="/v1.5/man/bundle-exec.1.html">자세한 내용은: 실행파일</a>
             </div>
           </div>
         </div>
@@ -184,9 +183,9 @@
           <h2>Would you like to</h2>
           <ul>
             <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
+            <li><a href="/issues.html">버그 리포트</a></li>
             <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/bundler-site/v1.5/man/bundle.1.html">문서 읽기</a></li>
+            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
             <li><a href="/bundler-site/#get-involved">기여하기</a></li>
             <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
           </ul>
@@ -248,11 +247,11 @@
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/index.html">v0.9</a>
-      <a href="/bundler-site/v1.0/index.html">v1.0</a>
-      <a href="/bundler-site/v1.1/index.html">v1.1</a>
-      <a href="/bundler-site/v1.2/index.html">v1.2</a>
-      <a href="/bundler-site/v1.3/index.html">v1.3</a>
+      <a href="/bundler-site/v0.9/">v0.9</a>
+      <a href="/bundler-site/v1.0/">v1.0</a>
+      <a href="/bundler-site/v1.1/">v1.1</a>
+      <a href="/bundler-site/v1.2/">v1.2</a>
+      <a href="/bundler-site/v1.3/">v1.3</a>
       <a class="current" href="/bundler-site/">v1.5</a>
     </div>
     <script>
