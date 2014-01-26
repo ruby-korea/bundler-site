@@ -28,5 +28,6 @@ configure :development do
 end
 
 configure :build do
+  set :http_prefix, '/bundler-site/'
   activate :minify_css
 end
