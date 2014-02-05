@@ -3,21 +3,21 @@
 .contents
   .bullet
     .description
-      List installed gems with newer versions available
+      새로운 버전이 설치 가능한 설치된 젬들을 나열
     :code
       $ bundle outdated [GEM] [--local] [--pre] [--source] [--strict]
     .notes
       %p
-        Options:
+        옵션:
       %p
-        <code>--local</code>: Do not attempt to fetch gems remotely and use the gem cache instead
+        <code>--local</code>: 원격으로 젬들을 가져오지 않고 젬 케쉬를 사용
       %p
-        <code>--pre</code>: Check for newer pre-release gems
+        <code>--pre</code>: 새로운 pre-release 젬들을 체크
       %p
-        <code>--source</code>: Check against a specific source
+        <code>--source</code>: 특정 소스에대하여 체크
       %p
-        <code>--strict</code>: Display outdated gems that match the dependency requirements.
+        <code>--strict</code>: 의존성을 만족하는 오래된 젬들을 표시.
     .description
-      Outdated lists the names and versions of gems that have a newer version available
-      in the given source. Calling outdated with [GEM [GEM]] will only check for newer
-      versions of the given gems. By default, available prerelease gems will be ignored.
+      outdated는 특정 소스에서 새로운 버전이 설치 가능한 젬들의 이름과 버전을 나열합니다.
+      [GEM [GEM ...]]과 함께 outdated를 부르면 주어짐 젬에 대해서만 새로운 버전을 체크합니다.
+      기본 값으로 가능한 pre-release 젬들을 무시됩니다.
