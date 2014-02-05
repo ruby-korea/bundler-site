@@ -3,15 +3,15 @@
 .contents
   .bullet
     .description
-      Generates a Gemfile into the current working directory
+      현재 작업 디렉토리에 Gemfile을 생성
     :code
       $ bundle init [--gemspec=FILE]
     .notes
       %p
-        Options:
+        옵션:
       %p
-        <code>--gemspec</code>: Use the specified .gemspec to create the Gemfile
+        <code>--gemspec</code>: 지정한 .gemspec으로 Gemfile을 생성
     .description
-      Init generates a default Gemfile in the current working directory. When adding a
-      Gemfile to a gem with a gemspec, the --gemspec option will automatically add each
-      dependency listed in the gemspec file to the newly created Gemfile.
+      기본 Gemfile을 현재 작업 디렉토리에 생성합니다. Gemfile에 gemspec의 젬들을
+      추가하려면 --gemspec 옵션으로 gemspec파일안의 의존성들을 새로 생성된 Gemfile에
+      추가할 수 있습니다.
