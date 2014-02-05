@@ -3,17 +3,17 @@
 .contents
   .bullet
     .description
-      Checks if the dependencies listed in Gemfile are satisfied by currently installed gems
+      젬파일의 의존성들이 현제 설치된 젬들로 만족되는지 체크
     :code
       $ bundle check [--gemfile=FILE] [--path=PATH]
     .notes
       %p
-        Options:
+        옵션:
       %p
-        <code>--gemfile</code>: Use the specified gemfile instead of Gemfile.
+        <code>--gemfile</code>: Gemfile 대신 특정 젬파일 사용.
       %p
-        <code>--path</code>: Specify a different path than the system default ($BUNDLE_PATH or $GEM_HOME). Bundler will remember this value for future installs on this machine.
+        <code>--path</code>: 시스템 기본값($BUNDLE_PATH 이나 $GEM_HOME) 대신 다른 경로를 지정. 번들러는 이 머신에서 할 앞으로의 설치를 위해 이 값을 기억합니다.
     .description
-      Check searches the local machine for each of the gems requested in the Gemfile. If
-      all gems are found, Bundler prints a success message and exits with a status of 0.
-      If not, the first missing gem is listed and Bundler exits status 1.
+      Check는 로컬 머신에서 Gemfile에서 요청된 젬들을 찾습니다. 모든 젬들이 있다면 번들러는
+      성공 메세지를 출력하고 스테이더스 코드 0으로 종료합니다. 없다면 가장 처음에 없는 젬이
+      나열되며 스테이더스 1로 종료합니다.
