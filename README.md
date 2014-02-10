@@ -1,7 +1,7 @@
-# bundler.io
-bundler.io is intended to serve as a convenient source for documentation on the [bundler](https://github.com/bundler/bundler) gem. 
+# ruby-korea.github.io/bundler-site
+ruby-korea.github.io/bundler-site is intended to serve as a convenient source for documentation on the [bundler](https://github.com/bundler/bundler) gem. 
 
-The site bundler.io is a static site generated using [Middleman](http://middlemanapp.com/).
+The site ruby-korea.github.io/bundler-site is a static site generated using [Middleman](http://middlemanapp.com/).
 
 [Bundler's manual pages](https://github.com/bundler/bundler/tree/master/man) document much of its functionality and serve as an important part of the site. They are included via the **Rakefile**.
 
