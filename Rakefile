@@ -50,22 +50,22 @@ task :build => [:issues] do
   sh "middleman build --clean"
 end
 
-desc "Release the current commit to bundler/bundler@gh-pages"
+desc "Release the current commit to ruby-korea/bundler-site@gh-pages"
 task :release => [:update_vendor, :build, :man, :issues] do
   commit = `git rev-parse HEAD`.chomp
 
   Dir.chdir "vendor/bundler" do
     sh "git reset --hard HEAD"
     sh "git checkout gh-pages"
-    sh "git pull origin gh-pages"
+    sh "git pull ruby-korea gh-pages"
 
     rm_rf FileList["*"]
     cp_r FileList["../../build/*"], "./"
-    File.write("CNAME", "bundler.io")
+    File.write("CNAME", "ruby-korea.github.io/bundler-site")
 
     sh "git add -A ."
-    sh "git commit -m 'bundler/bundler-site@#{commit}'"
-    sh "git push origin gh-pages"
+    sh "git commit -m 'ruby-korea/bundler-site@#{commit}'"
+    sh "git push ruby-korea gh-pages"
   end
 end
 
