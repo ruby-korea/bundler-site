@@ -61,7 +61,6 @@ task :release => [:update_vendor, :build, :man, :issues] do
 
     rm_rf FileList["*"]
     cp_r FileList["../../build/*"], "./"
-    File.write("CNAME", "ruby-korea.github.io/bundler-site")
 
     sh "git add -A ."
     sh "git commit -m 'ruby-korea/bundler-site@#{commit}'"
