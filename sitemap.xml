@@ -1,603 +1,603 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://bundler.io</loc>
-    <lastmod>2014-02-10T05:54:41Z</lastmod>
+    <loc>http://ruby-korea.github.io/bundler-site</loc>
+    <lastmod>2014-02-10T08:27:16Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/404.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/404.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/compatibility.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/compatibility.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/conduct.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/conduct.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/contributors.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/contributors.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/issues.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/issues.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/sponsors.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/sponsors.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/bundle_install.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/bundle_install.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/bundle_lock.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/bundle_lock.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/bundle_package.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/bundle_package.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/bundler_setup.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/bundler_setup.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/deploying.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/deploying.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/gemfile.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/gemfile.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/git.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/git.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/groups.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/groups.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/rails23.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/rails23.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/rails3.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/rails3.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/rubygems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/rubygems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v0.9/sinatra.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v0.9/sinatra.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/bundle_install.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/bundle_install.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/bundle_package.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/bundle_package.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/bundler_setup.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/bundler_setup.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/deploying.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/deploying.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/gemfile.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/gemfile.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/git.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/git.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/groups.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/groups.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/rails23.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/rails23.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/rails3.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/rails3.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/rationale.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/rationale.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/rubygems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/rubygems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.0/sinatra.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.0/sinatra.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_cache.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_cache.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_check.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_check.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_clean.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_clean.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_config.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_config.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_console.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_console.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_exec.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_exec.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_gem.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_gem.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_init.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_init.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_install.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_install.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_open.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_open.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_outdated.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_outdated.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_package.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_package.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_show.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_show.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_update.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_update.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_version.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_version.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundle_viz.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundle_viz.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/bundler_setup.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/bundler_setup.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/commands.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/commands.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/deploying.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/deploying.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/gemfile.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/gemfile.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/git.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/git.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/groups.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/groups.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/rails23.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/rails23.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/rails3.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/rails3.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/rationale.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/rationale.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/rubygems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/rubygems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.1/sinatra.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.1/sinatra.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_check.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_check.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_clean.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_clean.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_config.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_config.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_console.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_console.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_exec.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_exec.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_gem.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_gem.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_init.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_init.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_install.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_install.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_open.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_open.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_outdated.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_outdated.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_package.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_package.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_platform.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_platform.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_show.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_show.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_update.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_update.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_version.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_version.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundle_viz.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundle_viz.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/bundler_setup.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/bundler_setup.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/commands.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/commands.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/deploying.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/deploying.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/gemfile.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/gemfile.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/gemfile_ruby.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/gemfile_ruby.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/git.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/git.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/groups.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/groups.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/rails23.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/rails23.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/rails3.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/rails3.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/rationale.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/rationale.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/rubygems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/rubygems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/rubymotion.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/rubymotion.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/sinatra.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/sinatra.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.2/whats_new.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.2/whats_new.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_check.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_check.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_clean.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_clean.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_config.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_config.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_console.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_console.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_exec.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_exec.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_gem.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_gem.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_help.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_help.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_init.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_init.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_install.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_install.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_open.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_open.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_outdated.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_outdated.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_package.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_package.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_platform.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_platform.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_show.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_show.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_update.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_update.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_version.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_version.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundle_viz.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundle_viz.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundler_setup.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundler_setup.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundler_sharing.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundler_sharing.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/bundler_workflow.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/bundler_workflow.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/commands.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/commands.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/deploying.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/deploying.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/faq.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/faq.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/gemfile.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/gemfile.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/gemfile_ruby.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/gemfile_ruby.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/git.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/git.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/groups.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/groups.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/rails23.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/rails23.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/rails3.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/rails3.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/rationale.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/rationale.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/rubygems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/rubygems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/rubymotion.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/rubymotion.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/sinatra.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/sinatra.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/updating_gems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/updating_gems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.3/whats_new.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.3/whats_new.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_check.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_check.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_clean.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_clean.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_config.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_config.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_console.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_console.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_exec.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_exec.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_gem.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_gem.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_help.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_help.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_init.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_init.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_install.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_install.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_open.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_open.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_outdated.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_outdated.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_package.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_package.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_platform.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_platform.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_show.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_show.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_update.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_update.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_version.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_version.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundle_viz.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundle_viz.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundler_setup.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundler_setup.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundler_sharing.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundler_sharing.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/bundler_workflow.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/bundler_workflow.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/commands.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/commands.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/deploying.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/deploying.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/faq.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/faq.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/gemfile.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/gemfile.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/gemfile_ruby.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/gemfile_ruby.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/git.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/git.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/groups.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/groups.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/rails23.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/rails23.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/rails3.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/rails3.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/rationale.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/rationale.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/rubygems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/rubygems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/rubymotion.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/rubymotion.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/sinatra.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/sinatra.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/updating_gems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/updating_gems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/v1.5/whats_new.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/v1.5/whats_new.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_check.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_check.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_clean.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_clean.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_config.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_config.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_console.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_console.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_exec.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_exec.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_gem.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_gem.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_help.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_help.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_init.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_init.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_install.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_install.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_open.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_open.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_outdated.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_outdated.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_package.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_package.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_platform.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_platform.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_show.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_show.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_update.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_update.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_version.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_version.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundle_viz.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundle_viz.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundler_setup.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundler_setup.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundler_sharing.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundler_sharing.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/bundler_workflow.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/bundler_workflow.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/commands.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/commands.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/deploying.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/deploying.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/faq.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/faq.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/gemfile.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/gemfile.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/gemfile_ruby.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/gemfile_ruby.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/git.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/git.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/groups.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/groups.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/rails23.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/rails23.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/rails3.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/rails3.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/rationale.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/rationale.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/rubygems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/rubygems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/rubymotion.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/rubymotion.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/sinatra.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/sinatra.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/updating_gems.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/updating_gems.html</loc>
   </url>
   <url>
-    <loc>http://bundler.io/bundler-site/whats_new.html</loc>
+    <loc>http://ruby-korea.github.io/bundler-site/whats_new.html</loc>
   </url>
 </urlset>

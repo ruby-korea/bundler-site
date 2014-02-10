@@ -1,4 +1,4 @@
 # www.robotstxt.org
 User-agent: *
 Allow: /
-Sitemap: http://bundler.io/sitemap.xml
+Sitemap: http://ruby-korea.github.io/bundler-site/sitemap.xml
