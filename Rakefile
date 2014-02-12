@@ -2,15 +2,16 @@ require "bundler/setup"
 
 directory "vendor"
 directory "vendor/bundler" => ["vendor"] do
-  system "git clone git@github.com:bundler/bundler.git vendor/bundler"
-  # Some users don't have private permissions
-  if !File.exist?("vendor/bundler")
-    system "git clone git://github.com/bundler/bundler.git vendor/bundler"
+  system "git clone git://github.com/bundler/bundler.git vendor/bundler"
+  Dir.chdir("vendor/bundler") do
+    sh "git remote add ruby-korea git@github.com:ruby-korea/bundler-site.git"
+    sh "git fetch --all"
+    sh "git checkout -b gh-pages ruby-korea/gh-pages"
   end
 end
 
 task :update_vendor => ["vendor/bundler"] do
-  Dir.chdir("vendor/bundler") { sh "git fetch" }
+  Dir.chdir("vendor/bundler") { sh "git fetch --all" }
 end
 
 desc "Pull in the man pages for the specified gem versions."
