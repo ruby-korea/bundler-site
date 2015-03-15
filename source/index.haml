@@ -1,15 +1,15 @@
 %h2 번들러란?
 
 %p#intro
-  번들러는 루비 어플리케이션을 위한 일관된 환경을 관리합니다. 번들러는 어플리케이션
-  코드와 실행하는데 필요한 루비젬을 추적하여 어플리케이션으로 하여금 항상 실행할때
+  번들러는 루비 애플리케이션을 위한 일관된 환경을 관리합니다. 번들러는 애플리케이션
+  코드와 실행하는데 필요한 루비젬을 추적하여 애플리케이션으로 하여금 항상 실행할 때
   필요한 정확한 젬과 버전을 쓰도록 합니다.
   %br
   %br
-  번들러를 사용하면 개발, 스테이징, 프로덕션 머신에서의 코드공유가 쉬워집니다.
-  당연히 어플리케이션이나 젬을 공유하는 방법을 아시겠지만, 깃허브에 붙여넣고 필요한
+  번들러를 사용하면 개발, 스테이징, 프로덕션 기기에서의 코드 공유가 쉬워집니다.
+  당연히 애플리케이션이나 젬을 공유하는 방법을 아시겠지만, 깃허브에 붙여넣고 필요한
   곳에서 클론하시면 됩니다.
-  번들러는 어플리케이션이 에러없이 켜지고 실행하는데 필요한 의존성을 해결하는 일을
+  번들러는 애플리케이션이 에러 없이 켜지고 실행하는데 필요한 의존성을 해결하는 일을
   쉽게 합니다.
 
 .buttons
@@ -28,7 +28,7 @@
 
   .bullet
     .description
-      프로젝트의 최상위 디렉토리의 Gemfile에 의존성을 기술하세요.
+      프로젝트의 최상위 디렉터리의 Gemfile에 의존성을 기술하세요.
     :code
       # lang: ruby
       source 'https://rubygems.org'
@@ -39,19 +39,19 @@
 
   .bullet
     .description
-      필요한 모든 젬을 지정된 sources로 부터 인스톨하세요.
+      필요한 모든 젬을 지정된 sources로부터 설치하세요.
     :code
       $ bundle install
       $ git add Gemfile Gemfile.lock
     = link_to '자세한 내용은: bundle install', '/v1.5/bundle_install.html'
     .notes
-      두번째 명령어는 저장소에 Gemfile, Gemfile.lock 파일을 추가합니다. 이렇게 해두면 디플로이
-      환경, 어플리케이션의 다른 개발자 모두 지금 사용중인 서드파티 코드를 사용하도록할 수
+      두 번째 명령어는 저장소에 Gemfile, Gemfile.lock 파일을 추가합니다. 이렇게 해두면 배포
+      환경, 애플리케이션의 다른 개발자 모두 지금 사용 중인 서드파티 코드를 사용하도록 할 수
       있습니다.
 
   .bullet
     .description
-      어플리케이션의 안에서, 번들이 적용된 환경 로드하기
+      애플리케이션의 안에서, 번들이 적용된 환경 로드하기
     :code
       # lang: ruby
       require 'rubygems'
@@ -62,26 +62,26 @@
     = link_to '자세한 내용은: Bundler.setup', '/v1.5/bundler_setup.html'
   .bullet
     .description
-      번들안의 젬에 들어있는 실행파일 실행하기
+      번들 안의 젬에 들어있는 실행 파일 실행하기
     :code
       $ bundle exec rspec spec/models
     .notes
       %p
-        어떤때는, <code>bundle exec</code>없이도 실행파일을 실행할 수 있습니다.
-        번들러안의 어떤 잼과도 충돌하지 않고 시스템에 실행파일이 인스톨되어
+        어떤 때는, <code>bundle exec</code> 없이도 실행 파일을 실행할 수 있습니다.
+        번들러 안의 어떤 젬과도 충돌하지 않고 시스템에 실행 파일이 설치되어
         있는 경우가 그 경우죠.
       %p
         하지만, 이 상황은 신뢰하기 힘들고 고통의 근원이 됩니다.
-        동작하는 것처럼 보이더래도, 다른머신에서나 미래에 움직이지 않게 될
+        동작하는 것처럼 보이더래도, 다른 기기에서나 미래에 움직이지 않게 될
         가능성이 있습니다.
 
     .description
-      마지막으로, 원한다면 번들안의 젬들의 단축 실행파일을 만들 수 있습니다.
+      마지막으로, 원한다면 번들 안의 젬의 단축 실행 파일을 만들 수 있습니다.
     :code
       $ bundle install --binstubs
       $ bin/rspec spec/models
     .notes
-      <code>bin</code>안의 실행파일들은 번들로 스코프되고 항상 동작합니다.
+      <code>bin</code> 안의 실행 파일들은 번들로 스코프되고 항상 동작합니다.
     = link_to '자세한 내용은: Executables', '/v1.5/man/bundle-exec.1.html'
 
 %h2#use-bundler 번들러와 함께 사용할 수 있는 것들
@@ -93,11 +93,11 @@
   = link_to '루비모션', '/v1.5/rubymotion.html'
 
 %h2#get-involved 기여하기
-%p== 번들러는 많은 기여자와 유저를 가지고 있고 상당히 많이 논의되고 있습니다. 질문이 있으시다면, #{link_to 'IRC 체널', 'http://webchat.freenode.net/?channels=bundler'}이나 #{link_to '메일링 리스트', 'http://groups.google.com/group/ruby-bundler'}에 해보세요. 프로젝트에 기여하는데 관심이 있으시다면(프로그레밍 스킬은 필요없습니다), #{link_to '기여하기 가이드', 'https://github.com/bundler/bundler/blob/master/DEVELOPMENT.md'}를 읽으세요. 번들러 프로젝트에 참여하는 동안, #{link_to '행동강령', '/conduct.html'}을 명심하고, 모두에게 포용적이고 우호적으로 행동해 주시길 바랍니다. 스폰서를 하실 생각이 있으시거나 보안 관련 질문이 있으시면, 코어 팀에 직접 연락 주세요.
+%p== 번들러는 많은 기여자와 사용자를 가지고 있고 상당히 많이 논의되고 있습니다. 질문이 있으시다면, #{link_to 'IRC 채널', 'http://webchat.freenode.net/?channels=bundler'}이나 #{link_to '메일링 리스트', 'http://groups.google.com/group/ruby-bundler'}에 해보세요. 프로젝트에 기여하는데 관심이 있으시다면(프로그래밍 스킬은 필요 없습니다), #{link_to '기여하기 가이드', 'https://github.com/bundler/bundler/blob/master/DEVELOPMENT.md'}를 읽으세요. 번들러 프로젝트에 참여하는 동안, #{link_to '행동강령', '/conduct.html'}을 명심하고, 모두에게 포용적이고 우호적으로 행동해 주시길 바랍니다. 스폰서를 하실 생각이 있으시거나 보안 관련 질문이 있으시면, 코어 팀에 직접 연락 주세요.
 
 .buttons
   = link_to '행동 강령', '/conduct.html'
-  = link_to 'IRC의 #bundler체널', 'http://webchat.freenode.net/?channels=bundler'
+  = link_to 'IRC의 #bundler 채널', 'http://webchat.freenode.net/?channels=bundler'
   = link_to '메일링 리스트', 'http://groups.google.com/group/ruby-bundler'
   = link_to '기여하기', 'https://github.com/bundler/bundler/blob/master/DEVELOPMENT.md'
   = link_to '코어 팀 메일 주소', 'mailto:andre.arko+terence.lee@gmail.com'

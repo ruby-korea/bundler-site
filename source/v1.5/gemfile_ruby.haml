@@ -3,9 +3,9 @@
 .contents
   .bullet
     .description
-      개발자는 젬 처럼 루비의 의존성도 지정할 수 있습니다.
-      이렇게 함으로써 어플리케이션이 루비VM의 특정 기능에 의존성이 있는 경우 빠르게 실패하도록 합니다.
-      이런식으로, 배포서버의 루비VM이 로컬의 루비와 일치하는지 확인할 수 있습니다.
+      개발자는 젬처럼 루비의 의존성도 지정할 수 있습니다.
+      이렇게 함으로써 애플리케이션이 루비VM의 특정 기능에 의존성이 있는 경우 빠르게 실패하도록 합니다.
+      이런 식으로, 배포서버의 루비VM이 로컬의 루비와 일치하는지 확인할 수 있습니다.
       의존성 지정은 <code>Gemfile</code>에 <code>ruby</code> 지시자를 사용함으로써 할 수 있습니다.
     :code
       # lang: ruby
@@ -13,7 +13,7 @@
 
   .bullet
     .description
-      루비 1.9.3을 사용해 JRuby 1.6.7을 사용하고 싶을때엔, 이렇게 하면 됩니다.
+      루비 1.9.3을 사용해 JRuby 1.6.7을 사용하고 싶을 때엔, 이렇게 하면 됩니다.
     :code
       # lang: ruby
       ruby '1.9.3', :engine => 'jruby', :engine_version => '1.6.7'
@@ -27,19 +27,19 @@
 
   .bullet
     .description
-      번들러는 현재 실행중인 루비VM이 <code>Gemfile</code>안에서 지정한 루비버전과 일치하는지 확인합니다.
+      번들러는 현재 실행 중인 루비VM이 <code>Gemfile</code> 안에서 지정한 루비버전과 일치하는지 확인합니다.
       일치하지 않는다면, 번들러는 일치하지 않음을 설명하는 예외를 발생시킵니다.
     :code
       Your Ruby version is 1.8.7, but your Gemfile specified 1.9.3
 
   .bullet
     .description
-      <code>:engine</code>과 <code>:engine_version</code>는 선택적입니다.
-      이 옵션을 생략할 경우, 이 어플리케이션이 특정 루비ABI와 호환하지만 엔진은 무관하다는 의미가 됩니다.
+      <code>:engine</code>과 <code>:engine_version</code>은 선택적입니다.
+      이 옵션을 생략할 경우, 이 애플리케이션이 특정 루비ABI와 호환하지만 엔진은 무관하다는 의미가 됩니다.
       <code>:engine</code>을 사용할 경우 반드시 <code>:engine_version</code>도 지정해야 합니다.
   .bullet
     .description
-      <code>platform</code> 명령어를 <code>--ruby</code> 플래그와 사용할 경우, <code>Gemfile</code>안에 어떤 <code>ruby</code> 지시자가 지정되었는지 볼 수 있습니다.
+      <code>platform</code> 명령어를 <code>--ruby</code> 플래그와 사용할 경우, <code>Gemfile</code> 안에 어떤 <code>ruby</code> 지시자가 지정되었는지 볼 수 있습니다.
     :code
       ruby 1.9.3 (jruby 1.6.7)
     = link_to '자세한 내용은: bundle platform', './bundle_platform.html'
@@ -47,5 +47,5 @@
   .bullet
     .description
       <code>ruby</code> 지시자에서, <code>:patchlevel</code>은 선택적입니다.
-      패치레벨 릴리즈는 보통 호환가능하며 중요한 보안 픽스를 포함하고 있습니다.
-      패치레벨 옵션은 <code>RUBY_PATCHLEVEL</code>상수를 채크하며, 지정되어 있지 않으면 그냥 무시합니다.
+      패치레벨 릴리스는 보통 호환가능하며 중요한 보안 픽스를 포함하고 있습니다.
+      패치레벨 옵션은 <code>RUBY_PATCHLEVEL</code> 상수를 채크하며, 지정되어 있지 않으면 그냥 무시합니다.

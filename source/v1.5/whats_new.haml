@@ -5,7 +5,7 @@
 .contents
   .bullet
     .description
-      이 단락에서는 이번 릴리즈에 도입된 주요 기능을 찾으실 수 있습니다. 보든 변경점을 보시려면 번들러 1.5의 changelog에 문서화되어 있습니다.
+      이 단락에서는 이번 릴리즈에 도입된 주요 기능을 찾으실 수 있습니다. 모든 변경점을 보시려면 번들러 1.5의 changelog에 문서화되어 있습니다.
       = link_to '1.5의 전체 changelog', 'https://github.com/bundler/bundler/blob/1-5-stable/CHANGELOG.md'
 
 %h2#parallel-install
@@ -13,7 +13,7 @@
 .contents
   .bullet
     .description
-      <code>--jobs</code> (줄여서 <code>-j</code>)옵션으로 페러럴 인스톨이 가능합니다. 예를들어, <code>bundle install -j4</code>는 4개의 워커를 사용합니다. 새로 번들 인스톨을 할경우 40-60%정도의 속도 향상이 있었습니다. 항상 페러럴하게 인스톨 하려면 <code>bundle config --global jobs 4</code> 를 실행하거나 <code>BUNDLE_JOBS</code>를 설정하세요.
+      <code>--jobs</code>(줄여서 <code>-j</code>) 옵션으로 병렬 설치가 가능합니다. 예를 들어, <code>bundle install -j4</code>는 4개의 워커를 사용합니다. 새로 번들 인스톨을 할 경우 40-60% 정도의 속도 향상이 있었습니다. 항상 패러렐하게 설치하려면 <code>bundle config --global jobs 4</code>를 실행하거나 <code>BUNDLE_JOBS</code>를 설정하세요.
     = link_to '자세한 내용은: Parallel Install', './bundle_install.html#jobs'
 
 %h2#gem-source-mirrors
@@ -29,7 +29,7 @@
 .contents
   .bullet
     .description
-      DSL ruby 에서 이제 특정 패치레벨을 찾기위해 <code>:patchlevel</code> 옵션을 사용할 수 있습니다. <code>ruby '2.0.0', :patchlevel => "247"</code>
+      DSL ruby에서 이제 특정 패치레벨을 찾기 위해 <code>:patchlevel</code> 옵션을 사용할 수 있습니다. <code>ruby '2.0.0', :patchlevel => "247"</code>
     = link_to '자세한 내용은: Ruby Directive', './gemfile_ruby.html#patchlevel'
 
 %h2#outdated-strict
@@ -37,8 +37,7 @@
 .contents
   .bullet
     .description
-      <code>bundle outdated --strict</code> 의존성을 충족하는 새로운 버전이 나온 젬들을 표시합니다.
-      displays outdated gems that match the dependency requirements.
+      <code>bundle outdated --strict</code> 의존성을 충족하는 새로운 버전이 나온 젬을 표시합니다.
     = link_to '자세한 내용은: outdated --strict', './bundle_outdated.html#strict'
 
 %h2#retry-install
@@ -46,7 +45,7 @@
 .contents
   .bullet
     .description
-      <code>bundle install</code> 에서 이제 실패한 다운로드를 재시도할 수 있습니다. 재시도 횟 수를 <code>--retry</code> 옵션으로 조정하세요.
+      <code>bundle install</code>에서 이제 실패한 다운로드를 재시도할 수 있습니다. 재시도 횟수를 <code>--retry</code> 옵션으로 조정하세요.
     = link_to '자세한 내용은: Retry', './bundle_install.html#retry'
 
 %h2#other-changes
@@ -54,12 +53,12 @@
 .contents
   .bullet
     .description
-      번들러 1.5에는 다음 패치들도 포함됩니다.
+      번들러 1.5는 다음 패치들도 포함합니다.
       %ul
-        %li resolve와 인스톨을 빠르게 하기위한 많은 작은 성능개선
+        %li resolve와 설치를 빠르게 하기 위한 많은 작은 성능 개선
         %li 무한 루프 방지용, 순환참조 감지
         %li <code>bundle binstubs</code> 명령어에 다중 인자
         %li <code>bundle</code>에서 오타 냈을 경우를 위한 <code>bundler</code> 명령어
-        %li 윈도우즈와의 더 좋은 호환성을 위한 RUBYLIB
+        %li 윈도우와의 더 좋은 호환성을 위한 RUBYLIB
         = link_to '1.5의 전체 changelog', 'https://github.com/bundler/bundler/blob/1-5-stable/CHANGELOG.md'
 

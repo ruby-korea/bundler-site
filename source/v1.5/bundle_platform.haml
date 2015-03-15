@@ -3,18 +3,18 @@
 .contents
   .bullet
     .description
-      플렛폼 호환성 정보를 표시
+      플랫폼 호환성 정보를 표시
     :code
       $ bundle platform [--ruby]
     .notes
       %p
         옵션:
       %p
-        <code>--ruby</code>: 루비와 관련된 플렛폼 정보만 표시
+        <code>--ruby</code>: 루비와 관련된 플랫폼 정보만 표시
 
   .bullet
     .description
-      아무런 옵션도 넘기지 않으면 platform은 플렛폼의 <code>Gemfile</code>, <code>Gemfile.lock</code>,
+      아무런 옵션도 넘기지 않으면 platform은 플랫폼의 <code>Gemfile</code>, <code>Gemfile.lock</code>,
       Ruby VM에서 정보를 출력합니다. 다음과 같은 출력을 보실 수 있습니다.
     :code
       $ bundle platform
@@ -34,7 +34,7 @@
 
   .bullet#ruby
     .description
-      <code>--ruby</code> 플래그를 사용하면 <code>ruby</code> 지정 정보만 표시합니다. 이걸 이용하면 Gemfile에서 부터 파싱할 필요가 없죠.
+      <code>--ruby</code> 플래그를 사용하면 <code>ruby</code> 지정 정보만 표시합니다. 이걸 이용하면 Gemfile에서부터 파싱할 필요가 없죠.
     :code
       $ bundle platform --ruby
       ruby 1.9.3 (jruby 1.6.7)

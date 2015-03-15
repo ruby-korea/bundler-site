@@ -8,11 +8,11 @@
       :code
         $ bundle gem my_gem
       .notes
-        이 명령어는 젬 스켈레톤을 <code>my_gem</code> 디랙토리에 만듭니다.
+        이 명령어는 젬 스켈레톤을 <code>my_gem</code> 디렉터리에 만듭니다.
 
   .bullet
     .description
-      gemspec으로 관리되는 젬이 이미 있다면 젬을위한 Gemfile을 생성할 수 있습니다.
+      gemspec으로 관리되는 젬이 이미 있다면 젬을 위한 Gemfile을 생성할 수 있습니다.
     :code
       $ bundle init
     .notes
@@ -23,26 +23,26 @@
 
   .bullet
     .description
-      gemspec안의 런타임 의존성들은 베이스 의존성으로 간주됩니다. 개발 의존성들은 기본치로 <code>:development</code> 그룹안에 들어가고요. 그룹명은 <code>:development_group</code> 옵션으로 변경할 수 있습니다.
+      gemspec 안의 런타임 의존성들은 베이스 의존성으로 간주됩니다. 개발 의존성들은 기본치로 <code>:development</code> 그룹 안에 들어가고요. 그룹명은 <code>:development_group</code> 옵션으로 변경할 수 있습니다.
     :code
       # lang: ruby
       gemspec :development_group => :dev
 
   .bullet
     .description
-      또 <code>:path</code>를 이용해 특정 젬스팩을 지정할 수 도 있습니다. gemspec이 <code>/gemspec/path</code> 안에 있다면 이렇게 하세요.
+      또 <code>:path</code>를 이용해 특정 젬스펙을 지정할 수도 있습니다. gemspec이 <code>/gemspec/path</code> 안에 있다면 이렇게 하세요.
     :code
       # lang: ruby
       gemspec :path => '/gemspec/path'
 
   .bullet
     .description
-      한 디렉토리에 여러 gemspec을 가지고 있다면, <code>:name</code>을 이용해 어느 것을 참조할지 지정할 수 있습니다.
+      한 디렉터리에 여러 gemspec을 가지고 있다면, <code>:name</code>을 이용해 어느 것을 참조할지 지정할 수 있습니다.
     :code
       # lang: ruby
       gemspec :name => 'my_awesome_gem'
     .notes
-      이렇게하면 <code>my_awesome_gem.gemspec</code>을 사용하겠죠.
+      이렇게 하면 <code>my_awesome_gem.gemspec</code>을 사용하겠죠.
 
   .bullet
     .description

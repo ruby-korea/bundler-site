@@ -1,23 +1,23 @@
 #intro
-  레일즈 3 은 기본적으로 번들러를 지원합니다.
+  레일즈 3은 기본적으로 번들러를 지원합니다.
 
 %h2 번들러를 레일즈 3과 사용하기
 
 .contents
   .bullet
     .description
-      평범하게 레일즈를 설치하세요. 평소에 젬을 설치할때
+      평범하게 레일즈를 설치하세요. 평소에 젬을 설치할 때
       sudo로 하시면 sudo도 사용해 주세요.
     .how
       :code
         $ gem install rails
       .notes
-        다른 루비버전들을 사용하실 일이 있다면, 신뢰할 수
+        다른 루비 버전들을 사용하실 일이 있다면, 신뢰할 수
         있는 루비 설치관리를 위해 rvm을 추천합니다.
 
   .bullet
     .description
-      평소처럼 레일즈앱을 생성합니다.
+      평소처럼 레일즈 앱을 생성합니다.
     :code
       $ rails new myapp
       $ cd myapp
@@ -25,7 +25,7 @@
   .bullet
     .description
       서버를 실행합니다. 이미 번들러는 의존성들을 투명하게
-      관리 하고있습니다!
+      관리하고 있습니다!
     :code
       $ rails server
 
@@ -39,7 +39,7 @@
 
   .bullet
     .description
-      특정 레일즈 환경에서만 로드하고싶은 의존성들이 있다면,
+      특정 레일즈 환경에서만 로드하고 싶은 의존성이 있다면,
       레일즈 환경을 이름으로 한 그룹에 넣으세요.
     :code
       # lang: ruby
@@ -50,7 +50,7 @@
 
   .bullet#shared_with_23
     .description
-      한번에 여러 그룹에 의존성을 넣을 수도 있습니다.
+      한 번에 여러 그룹에 의존성을 넣을 수도 있습니다.
     :code
       # lang: ruby
       group :development, :test do
@@ -67,6 +67,6 @@
       :code
         $ bundle install
       .notes
-        이 명령은 Gemfile 안의 모든 의존성들을
-        다른 의존성과 충돌하지 않는 최신버전으로
+        이 명령은 Gemfile 안의 모든 의존성을
+        다른 의존성과 충돌하지 않는 최신 버전으로
         갱신합니다.
