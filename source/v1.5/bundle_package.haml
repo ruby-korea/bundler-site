@@ -3,29 +3,29 @@
 .contents
   .bullet
     .description
-      젬들을 <code>./vendor/cache</code>에 고정하고 케쉬함.
+      젬을 <code>./vendor/cache</code>에 고정하고 캐시함
     :code
       $ bundle package [--no-prune] [--all]
     .notes
       %p
         옵션:
       %p
-        <code>--no-prune</code>: 오래된 젬들을 케쉬에서 제거하지 않습니다.
+        <code>--no-prune</code>: 오래된 젬을 캐시에서 제거하지 않습니다.
       %p
-        <code>--all</code>: <code>:git</code>, <code>:path</code>, <code>.gem</code> 의존성을 팩키징. 한번 사용되면 <code>--all</code> 옵션은 기억됩니다.
+        <code>--all</code>: <code>:git</code>, <code>:path</code>, <code>.gem</code> 의존성을 패키징. 한 번 사용되면 <code>--all</code> 옵션은 기억됩니다.
     .description
       %p
-        package명령어는 번들안의 젬들을 위한 <code>.gem</code> 파일들을 <code>./vendor/cache</code>에
+        package 명령어는 번들 안의 젬을 위한 <code>.gem</code> 파일을 <code>./vendor/cache</code>에
         복사합니다. 그 후 <code>bundle install</code>을 실행하면 번들러는 rubygems.org보다 높은
-        우선순위로 케쉬안의 젬들을 사용합니다.
+        우선순위로 캐시 안의 젬을 사용합니다.
 
       %p
-        추가적으로 버전 관리 저장소에 케쉬 디렉토리를 체크인하면 다른 사람들이 체크아웃할때
-        추가적인 젬의 다운로드 없이 설치하게할 수 있습니다.
+        추가적으로 버전 관리 저장소에 캐시 디렉터리를 체크인하면 다른 사람들이 체크아웃할 때
+        추가적인 젬의 다운로드 없이 설치하게 할 수 있습니다.
 
   .bullet
     .description
-      젬들을 <code>./vendor/cache</code>에 고정하고 케쉬함.
+      RubyGems의 젬을 <code>./vendor/cache</code>에 고정하고 캐시함
 
     .how
       :code
@@ -33,19 +33,19 @@
 
     .notes
       %p
-        기본 값으로 <code>bundle package</code>후에 <code>bundle install</code>를 실행하면
-        번들러는 여전히 rubygems.org에 접속해 <code>vendor/cache</code>안의 젬들 중
-        플렛폼 지정 젬이 있는지 체크합니다.
+        기본 값으로 <code>bundle package</code> 후에 <code>bundle install</code>을 실행하면
+        번들러는 여전히 rubygems.org에 접속해 <code>vendor/cache</code>안의 젬 중
+        플랫폼 지정 젬이 있는지 확인합니다.
 
       %p
-        이 행동은 <code>bundle install --local</code>를 실행함으로써 회피 할 수 있습니다.
-        이 명령은 캐쉬된 모든 젬들에 대해 정확한 플렛폼 버전이 필요하니 주의하세요. 이 목표를
-        달성하기 위한 가장 쉬운 방법은 동일한 기계에서 <code>bundle package</code>를 실행하고
-        벤더의 젬들을 확인하는 것입니다.
+        이 행동은 <code>bundle install --local</code>을 실행함으로써 회피할 수 있습니다.
+        이 명령은 캐시된 모든 젬에 대해 정확한 플랫폼 버전이 필요하니 주의하세요. 이 목표를
+        달성하기 위한 가장 쉬운 방법은 동일한 기기에서 <code>bundle package</code>를 실행하고
+        벤더의 젬을 확인하는 것입니다.
 
   .bullet#no-prune
     .description
-      젬들을 <code>./vendor/cache</code>에 고정하고 케쉬하고 오래된 젬들을 케쉬에서 제거하지 않음.
+      젬을 <code>./vendor/cache</code>에 고정, 캐시하고 오래된 젬을 캐시에서 제거하지 않음.
 
     .how
       :code
@@ -53,14 +53,14 @@
 
   .bullet#all
     .description
-      <code>:git</code>, <code>:path</code>, <code>.gem</code>의존성을 포함해 젬들을 <code>./vendor/cache</code>에 고정하고 케쉬함.
+      <code>:git</code>, <code>:path</code>, <code>.gem</code> 의존성을 포함해 젬을 <code>./vendor/cache</code>에 고정하고 캐시함.
 
     .how
       :code
         $ bundle package --all
     .notes
       %p
-        한번 사용되면 <code>--all</code> 옵션은 기억됩니다.
+        한 번 사용되면 <code>--all</code> 옵션은 기억됩니다.
 
       %p
         이 옵션은 번들러 2.0에서 기본 값이 됩니다.
