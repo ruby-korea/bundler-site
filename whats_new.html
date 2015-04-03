@@ -1,95 +1,85 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bundler: The best way to manage a Ruby application's gems</title>
+    <title>
+      Bundler: The best way to manage a Ruby application's gems
+    </title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
-    <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/images/images/favicon.png" rel="icon" type="image/png" />
+    <link href="/bundler-site/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
   </head>
   <body>
     <div id='body'>
       <div id='header'>
-        <a class="image" href="/bundler-site/"><img width="725" alt="어플리케이션의 의존성을 관리하는 최선의 방법" src="/bundler-site/images/gembundler.png" /></a>
+        <a class="image" href="/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
       </div>
       <div id='container'>
         <div id='contents'>
           <h1>What's New in each Release</h1>
           <div class='buttons'>
-            <a href="/bundler-site/v1.5/whats_new.html#version15">Latest Version v1.5</a>
+            <a href="/bundler-site/v1.9/whats_new.html#version19">Latest Version v1.9</a>
+            <a href="/bundler-site/v1.8/whats_new.html#version18">v1.8</a>
+            <a href="/bundler-site/v1.7/whats_new.html#version17">v1.7</a>
+            <a href="/bundler-site/v1.6/whats_new.html#version16">v1.6</a>
+            <a href="/bundler-site/v1.5/whats_new.html#version15">v1.5</a>
             <a href="/bundler-site/v1.3/whats_new.html#version13">v1.3</a>
             <a href="/bundler-site/v1.2/whats_new.html#version12">v1.2</a>
             <a href="https://github.com/bundler/bundler/blob/master/CHANGELOG.md#110-mar-7-2012">v1.1</a>
             <a href="https://github.com/bundler/bundler/blob/master/CHANGELOG.md#100-august-29-2010">v1.0</a>
           </div>
-          <h2 id='version15'>v1.5의 새로운 기능</h2>
+          <h2 id='version19'>What's New in v1.9</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                이 단락에서는 이번 릴리즈에 도입된 주요 기능을 찾으실 수 있습니다. 보든 변경점을 보시려면 번들러 1.5의 changelog에 문서화되어 있습니다.
-                <a href="https://github.com/bundler/bundler/blob/1-5-stable/CHANGELOG.md">1.5의 전체 changelog</a>
+                <p>
+                  Bundler 1.9 comes with a new dependency resolver, called <em>Molinillo</em>,
+                  among other changes.
+                </p>
+                <p>
+                  In this section, you’ll find the major features introduced in this release. All the changes are documented in the Bundler 1.9 changelog.
+                  <a href="https://github.com/bundler/bundler/blob/1-9-stable/CHANGELOG.md">Full 1.9 changelog</a>
+                </p>
               </div>
             </div>
           </div>
-          <h2 id='parallel-install'></h2>
+          <h2 id='molinillo'>Using Molinillo for Dependency Resolution</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                <code>--jobs</code> (줄여서 <code>-j</code>)옵션으로 페러럴 인스톨이 가능합니다. 예를들어, <code>bundle install -j4</code>는 4개의 워커를 사용합니다. 새로 번들 인스톨을 할경우 40-60%정도의 속도 향상이 있었습니다. 항상 페러럴하게 인스톨 하려면 <code>bundle config --global jobs 4</code> 를 실행하거나 <code>BUNDLE_JOBS</code>를 설정하세요.
+                <p>
+                  Bundler's dependency resolver is now powered by Molinillo, the CocoaPods
+                  dependency resolution algorithm sponsored by Stripethat is fully
+                  documented, tested, and built for use across different dependency
+                  managers built in Ruby.
+                  <a href="https://github.com/CocoaPods/Molinillo">Molinillo</a>
+                </p>
               </div>
-              <a href="/bundler-site/bundle_install.html#jobs">자세한 내용은: Parallel Install</a>
             </div>
           </div>
-          <h2 id='gem-source-mirrors'></h2>
+          <h2 id='path-gemspec-detection'>Improved gemspec detection</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                번들러는 이제 <code>bundle config</code>로 Gemfile에 지역적으로 미러를 사용할 수 있게 되었습니다. <code> bundle config mirror.http://rubygems.org http://rubygems-mirror.org/</code>
+                <p>
+                  Directories are now searched resursively for gemspecs, with specs found
+                  closer to the root being preferred.
+                </p>
               </div>
-              <a href="/bundler-site/bundle_config.html#gem-source-mirrors">자세한 내용은: Source Mirrors</a>
             </div>
           </div>
-          <h2 id='ruby-patchlevel'></h2>
+          <h2 id='other-changes'>Other changes</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                DSL ruby 에서 이제 특정 패치레벨을 찾기위해 <code>:patchlevel</code> 옵션을 사용할 수 있습니다. <code>ruby '2.0.0', :patchlevel => "247"</code>
-              </div>
-              <a href="/bundler-site/gemfile_ruby.html#patchlevel">자세한 내용은: Ruby Directive</a>
-            </div>
-          </div>
-          <h2 id='outdated-strict'></h2>
-          <div class='contents'>
-            <div class='bullet'>
-              <div class='description'>
-                <code>bundle outdated --strict</code> 의존성을 충족하는 새로운 버전이 나온 젬들을 표시합니다.
-                displays outdated gems that match the dependency requirements.
-              </div>
-              <a href="/bundler-site/bundle_outdated.html#strict">자세한 내용은: outdated --strict</a>
-            </div>
-          </div>
-          <h2 id='retry-install'></h2>
-          <div class='contents'>
-            <div class='bullet'>
-              <div class='description'>
-                <code>bundle install</code> 에서 이제 실패한 다운로드를 재시도할 수 있습니다. 재시도 횟 수를 <code>--retry</code> 옵션으로 조정하세요.
-              </div>
-              <a href="/bundler-site/bundle_install.html#retry">자세한 내용은: Retry</a>
-            </div>
-          </div>
-          <h2 id='other-changes'></h2>
-          <div class='contents'>
-            <div class='bullet'>
-              <div class='description'>
-                번들러 1.5에는 다음 패치들도 포함됩니다.
+                Bundler 1.9 also includes:
                 <ul>
-                  <li>resolve와 인스톨을 빠르게 하기위한 많은 작은 성능개선</li>
-                  <li>무한 루프 방지용, 순환참조 감지</li>
-                  <li><code>bundle binstubs</code> 명령어에 다중 인자</li>
-                  <li><code>bundle</code>에서 오타 냈을 경우를 위한 <code>bundler</code> 명령어</li>
-                  <li>윈도우즈와의 더 좋은 호환성을 위한 RUBYLIB</li>
-                  <a href="https://github.com/bundler/bundler/blob/1-5-stable/CHANGELOG.md">1.5의 전체 changelog</a>
+                  <li>improved vendoring of <code>thor</code> that will make conflicts less common</li>
+                  <li>fixed gemspecs generated by <code>bundle gem</code> from a pre-release bundler version</li>
+                  <li><code>bundle which</code> will no longer be confused by directories</li>
                 </ul>
+                <a href="https://github.com/bundler/bundler/blob/1-9-stable/CHANGELOG.md">Full 1.9 changelog</a>
               </div>
             </div>
           </div>
@@ -97,47 +87,59 @@
         <div id='sidebar'>
           <h2>Would you like to</h2>
           <ul>
-            <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
-            <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
-            <li><a href="/bundler-site/#get-involved">기여하기</a></li>
-            <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
+            <li><a href="/#getting-started">Get started</a></li>
+            <li><a href="/bundler-site/issues.html">Report a bug</a></li>
+            <li><a href="/bundler-site/v1.9/whats_new.html">See what's new</a></li>
+            <li><a href="/v1.9/man/bundle.1.html">Read documentation</a></li>
+            <li><a href="/#get-involved">Discuss and Contribute</a></li>
+            <li><a href="/bundler-site/v1.9/faq.html">View FAQs</a></li>
           </ul>
-          <h2>번들러 명령어</h2>
+          <h2>Read the latest news</h2>
           <ul>
-            <li><a href="/bundler-site/v1.5/bundle_install.html">bundle install</a></li>
-            <li><a href="/bundler-site/v1.5/bundle_update.html">bundle update</a></li>
+            <li>
+              <a href="/bundler-site/blog/2015/03/21/hello-bundler-19.html">Hello, Bundler 1.9!</a>
+            </li>
+            <li>
+              <a href="/bundler-site/blog/2015/03/20/moving-bins-to-exe.html">Bundler template moves bins to exe</a>
+            </li>
             <div class='buttons'>
-              <a href="/bundler-site/v1.5/commands.html">모든 명령어 보기</a>
+              <a href="/blog/">All posts</a>
             </div>
           </ul>
-          <h2>사용법</h2>
+          <h2>Bundler commands</h2>
           <ul>
-            <li><a href="/bundler-site/v1.5/gemfile.html">젬파일</a></li>
-            <li><a href="/bundler-site/v1.5/groups.html">그룹</a></li>
-            <li><a href="/bundler-site/v1.5/git.html">깃으로부터의 젬</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_setup.html">Bundler.setup</a></li>
-            <li><a href="/bundler-site/v1.5/deploying.html">배포하기</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_sharing.html">공유하기</a></li>
-            <li><a href="/bundler-site/v1.5/updating_gems.html">젬 갱신하기</a></li>
-            <li><a href="/bundler-site/compatibility.html">호환가능한 버전</a></li>
+            <li><a href="/bundler-site/v1.9/bundle_install.html">bundle install</a></li>
+            <li><a href="/bundler-site/v1.9/bundle_update.html">bundle update</a></li>
+            <div class='buttons'>
+              <a href="/bundler-site/v1.9/commands.html">View all commands</a>
+            </div>
           </ul>
-          <h2>프레임워크와 함께 사용하기</h2>
+          <h2>Help with</h2>
           <ul>
-            <li><a href="/bundler-site/v1.5/rails3.html">레일즈 3</a></li>
-            <li><a href="/bundler-site/v1.5/rails23.html">레일즈 2.3</a></li>
-            <li><a href="/bundler-site/v1.5/sinatra.html">시나트라</a></li>
-            <li><a href="/bundler-site/v1.5/rubygems.html">루비젬</a></li>
-            <li><a href="/bundler-site/v1.5/rubymotion.html">루비모션</a></li>
+            <li><a href="/bundler-site/v1.9/gemfile.html">Gemfiles</a></li>
+            <li><a href="/bundler-site/v1.9/groups.html">Groups</a></li>
+            <li><a href="/bundler-site/v1.9/git.html">Gems from git</a></li>
+            <li><a href="/bundler-site/v1.9/bundler_setup.html">Bundler.setup</a></li>
+            <li><a href="/bundler-site/v1.9/deploying.html">Deploying</a></li>
+            <li><a href="/bundler-site/v1.9/bundler_sharing.html">Sharing</a></li>
+            <li><a href="/bundler-site/v1.9/updating_gems.html">Updating Gems</a></li>
+            <li><a href="/bundler-site/compatibility.html">Compatiblity</a></li>
+            <li><a href="/bundler-site/older_versions.html">Older Versions</a></li>
+          </ul>
+          <h2>Use Bundler with</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.9/rails3.html">Rails 3</a></li>
+            <li><a href="/bundler-site/v1.9/rails23.html">Rails 2.3</a></li>
+            <li><a href="/bundler-site/v1.9/sinatra.html">Sinatra</a></li>
+            <li><a href="/bundler-site/v1.9/rubygems.html">RubyGems</a></li>
+            <li><a href="/bundler-site/v1.9/rubymotion.html">RubyMotion</a></li>
           </ul>
           <div class='shirts'>
             <div class='content'>
-                            <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
+              <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
               </a>
-
               <p>
-                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">번들러 셔츠와 스티커를 사세요!</a>
+                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">Buy Bundler Shirts & Stickers!</a>
               </p>
             </div>
           </div>
@@ -150,31 +152,27 @@
       <div class='spacer'></div>
       <div id='credits'>
         <p>
-          Many thanks to Bundler's <a href="/bundler-site/contributors.html">컨트리뷰터</a>
-          and <a href="/bundler-site/sponsors.html">스폰서</a>
+          Many thanks to Bundler's <a href="/bundler-site/contributors.html">contributors</a>
+          and <a href="/bundler-site/sponsors.html">sponsors</a>
         </p>
       </div>
       <div class='spacer'></div>
       <img src="/bundler-site/images/bundler-small.png" />
     </div>
-    <a href='http://github.com/ruby-korea/bundler-site/' id='github'>
+    <a href='http://github.com/bundler/bundler/' id='github'>
       <img alt='Fork me on GitHub' src='http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png'>
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/">v0.9</a>
-      <a href="/bundler-site/v1.0/">v1.0</a>
-      <a href="/bundler-site/v1.1/">v1.1</a>
-      <a href="/bundler-site/v1.2/">v1.2</a>
-      <a href="/bundler-site/v1.3/">v1.3</a>
-      <a class="current" href="/bundler-site/">v1.5</a>
+      <a href="/bundler-site/v1.8/">Previous Version (v1.8)</a>
+      <a class="current" href="/">Current Version (v1.9)</a>
     </div>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-39559982-1', 'ruby-korea.github.io/bundler-site');
+      ga('create', 'UA-39559982-1', 'bundler.io');
       ga('send', 'pageview');
     </script>
   </body>

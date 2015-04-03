@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Bundler Blog</title>
+  <subtitle>The latest news on Bundler</subtitle>
+  <id>http://bundler.io/blog</id>
+  <link href="http://bundler.io/blog"/>
+  <link href="http://bundler.io/blog/feed.xml" rel="self"/>
+  <updated>2015-03-21T09:00:00+09:00</updated>
+  <author>
+    <name>The Bundler Team</name>
+  </author>
+  <entry>
+    <title>Hello, Bundler 1.9!</title>
+    <link rel="alternate" href="http://bundler.io/bundler-site/blog/2015/03/21/hello-bundler-19.html"/>
+    <id>http://bundler.io/bundler-site/blog/2015/03/21/hello-bundler-19.html</id>
+    <published>2015-03-21T09:00:00+09:00</published>
+    <updated>2015-04-03T09:55:46+09:00</updated>
+    <author>
+      <name>Samuel Giddins</name>
+    </author>
+    <content type="html">&lt;p&gt;A mere month and a half after the release of Bundler 1.8, we're happy to announce our next act: Bundler 1.9.&lt;/p&gt;
+
+&lt;p&gt;While the &lt;a href="https://github.com/bundler/bundler/blob/v1.9.0/CHANGELOG.md#190-2015-03-20"&gt;CHANGELOG&lt;/a&gt; for this version might seem rather short (and light on big new features), there is one cool thing to talk about: &lt;a href="https://github.com/CocoaPods/Molinillo"&gt;Molinillo&lt;/a&gt;. Molinillo is a new dependency resolution algorithm developed for &lt;a href="http://cocoapods.org"&gt;CocoaPods&lt;/a&gt; – the Cocoa dependency manager. Now, Bundler shares it's dependency resolver – one of the most integral parts of a dependency manager – with CocoaPods, with the core logic being independently documented and tested. Molinillo was developed thanks to a &lt;a href="https://stripe.com/blog/stripe-open-source-retreat"&gt;generous grant from Stripe&lt;/a&gt; for the express purpose of being a generic dependency resolution algorithm that was sharable across different code bases – specifically CocoaPods and Bundler (and possibly even &lt;a href="https://github.com/rubygems/rubygems/pull/1189"&gt;RubyGems&lt;/a&gt;)!&lt;/p&gt;
+
+&lt;h4 id="dependencies-in-bundler"&gt;Dependencies in Bundler?&lt;/h4&gt;
+
+&lt;p&gt;Having dependencies inside Bundler itself is a bit crazy: Bundler is a dependency manager &lt;em&gt;for&lt;/em&gt; gems, written in Ruby. How could it use gems itself? Well, it can't &lt;em&gt;really&lt;/em&gt;. But we can cheat a bit by shipping Molinillo's source files inside the &lt;code&gt;bundler&lt;/code&gt; gem. This has its own challenge – what if a gem (such as CocoaPods), requires a different version of &lt;code&gt;molinillo&lt;/code&gt; (or &lt;code&gt;thor&lt;/code&gt;, which is likewise vendored in Bundler)? The solution is to prefix the top-level namespace constant in the vendored gem with Bundler's own namespace. The upshot of this song-and-dance is that Bundler can share open source libraries just like every other gem!&lt;/p&gt;
+
+&lt;h4 id="updating"&gt;Updating&lt;/h4&gt;
+
+&lt;p&gt;To install the last release of Bundler you can run:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+$ [sudo] gem install bundler
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For all the details, don’t miss the Changelog!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Bundler template moves bins to exe</title>
+    <link rel="alternate" href="http://bundler.io/bundler-site/blog/2015/03/20/moving-bins-to-exe.html"/>
+    <id>http://bundler.io/bundler-site/blog/2015/03/20/moving-bins-to-exe.html</id>
+    <published>2015-03-20T09:00:00+09:00</published>
+    <updated>2015-04-03T09:55:46+09:00</updated>
+    <author>
+      <name>Benjamin Fleischer</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href="https://github.com/bundler/bundler/blob/v1.8.0/lib/bundler/templates/newgem/newgem.gemspec.tt"&gt;Bundler 1.8&lt;/a&gt;
+&lt;a href="https://github.com/bundler/bundler/commit/ab3e21784c6c18702869c771fbe7ae23c82cc7c0"&gt;moves the executables directory in generated gemspecs from &lt;code&gt;bin/&lt;/code&gt; to &lt;code&gt;exe/&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre class="highlight diff"&gt;&lt;span class="gd"&gt;-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+&lt;/span&gt;&lt;span class="gi"&gt;+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+&lt;/span&gt;&lt;/pre&gt;
+&lt;p&gt;This means that the Bundler-generated gems can use and commit binstubs,
+such as &lt;code&gt;bin/rake&lt;/code&gt;, to the &lt;code&gt;bin/&lt;/code&gt; directory.  Only files in the &lt;code&gt;exe/&lt;/code&gt; directory
+will be built with the gem.  Prior to this change, we would need to either not
+commit binstubs or change the gemspec not to include all files in &lt;code&gt;bin&lt;/code&gt; as
+executables.&lt;/p&gt;
+
+&lt;p&gt;There's nothing that needs to be done for existing gems.  To modify an existing gem
+to use this convention, we only need to move the executable(s), if any, into &lt;code&gt;exe/&lt;/code&gt;,
+and modify the gemspec &lt;code&gt;executables&lt;/code&gt; directory to &lt;code&gt;exe/&lt;/code&gt;, as above.&lt;/p&gt;
+
+&lt;p&gt;Using the &lt;code&gt;exe/&lt;/code&gt; directory for gem executables frees up &lt;code&gt;bin/&lt;/code&gt; to be used for
+&lt;code&gt;bundle binstubs rspec-core; bin/rspec&lt;/code&gt; and other libraries that have adopted this
+convention, such as Rails, which installs the scripts &lt;code&gt;bin/rails&lt;/code&gt;, &lt;code&gt;bin/rake&lt;/code&gt;, and
+&lt;code&gt;bin/setup&lt;/code&gt; with all generated apps.&lt;/p&gt;
+
+&lt;h3 id="background"&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;This is a new convention.  The current practice of both specifying &lt;code&gt;bin/&lt;/code&gt; as the
+&lt;code&gt;executables&lt;/code&gt; directory and where we put binstubs and other development-only
+executables such as &lt;code&gt;bin/rails&lt;/code&gt; or &lt;code&gt;bin/setup&lt;/code&gt;, meant that Bundler-generated
+gems with executables were quite likely to have these development executables
+included in the built gem, and then installed along with the gem.&lt;/p&gt;
+
+&lt;p&gt;Rather than make the gemspec template more restrictive by only specifying one
+executable in &lt;code&gt;bin/&lt;/code&gt; as an &lt;code&gt;executable&lt;/code&gt;, the Bundler team has chosen to use a
+different directory, &lt;code&gt;exe/&lt;/code&gt;, as the &lt;code&gt;executables&lt;/code&gt; directory in the template.&lt;/p&gt;
+
+&lt;p&gt;This change is just part of the evolving conventions in gem development.  RSpec,
+for example, has had its executable &lt;a href="https://github.com/RSpec/RSpec-core/blob/v2.7.0/RSpec-core.gemspec#L19"&gt;in &lt;code&gt;exe&lt;/code&gt; since 2011&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here's an example of the kind of buggy behavior you might see when binstubs are
+build with a gem as executables.&lt;/p&gt;
+
+&lt;h4 id="demo"&gt;Demo&lt;/h4&gt;
+
+&lt;pre class="highlight shell"&gt;bundle gem new_gem
+git add .; git commit -am &lt;span class="s2"&gt;"Initial Commit"&lt;/span&gt;
+bundle binstub rake
+git add bin/rake; git commit -am &lt;span class="s2"&gt;"bundle binstub rake"&lt;/span&gt;
+bundle
+which rake &lt;span class="c"&gt;#=&amp;gt;  ~/.rvm/gems/ruby-2.1.5/bin/rake&lt;/span&gt;
+cat &lt;span class="sb"&gt;`&lt;/span&gt;which rake&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;&lt;span class="c1"&gt;#!/usr/bin/env ruby_executable_hooks&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This file was generated by RubyGems.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# The application 'new_gem' is installed as part of a gem, and&lt;/span&gt;
+&lt;span class="c1"&gt;# this file is here to facilitate running it.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'rubygems'&lt;/span&gt;
+
+&lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"&amp;gt;= 0"&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;first&lt;/span&gt;
+  &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;first&lt;/span&gt;
+  &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;dup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;force_encoding&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"BINARY"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;respond_to?&lt;/span&gt; &lt;span class="ss"&gt;:force_encoding&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=~&lt;/span&gt; &lt;span class="sr"&gt;/\A_(.*)_\z/&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="no"&gt;Gem&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Version&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;correct?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vg"&gt;$1&lt;/span&gt;
+    &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;shift&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;gem&lt;/span&gt; &lt;span class="s1"&gt;'new_gem'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;
+&lt;span class="nb"&gt;load&lt;/span&gt; &lt;span class="no"&gt;Gem&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;bin_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'new_gem'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'rake'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;The problem is found in the last two lines:&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;&lt;span class="n"&gt;gem&lt;/span&gt; &lt;span class="s1"&gt;'new_gem'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;
+&lt;span class="nb"&gt;load&lt;/span&gt; &lt;span class="no"&gt;Gem&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;bin_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'new_gem'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'rake'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;The rake executable no longer uses the &lt;code&gt;rake&lt;/code&gt; gem. It now requires &lt;code&gt;rake&lt;/code&gt; from &lt;code&gt;new_gem&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, when I run rake elsewhere, I get the warning:&lt;/p&gt;
+
+&lt;pre class="highlight shell"&gt;Bundler is using a binstub that was created &lt;span class="k"&gt;for &lt;/span&gt;a different gem.
+This is deprecated, &lt;span class="k"&gt;in &lt;/span&gt;future versions you may need to &lt;span class="sb"&gt;`&lt;/span&gt;bundle binstub new_gem&lt;span class="sb"&gt;`&lt;/span&gt; to work around a system/bundle conflict.
+&lt;/pre&gt;
+&lt;p&gt;This happened because of the line in the gemspec that installed all git-versioned files in &lt;code&gt;bin/&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;  &lt;span class="n"&gt;spec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;executables&lt;/span&gt;   &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;spec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;files&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;grep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;%r{^bin/}&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;basename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;To fix our rake install:&lt;/p&gt;
+
+&lt;pre class="highlight shell"&gt;gem pristine rake
+&lt;span class="c"&gt;# (In your gem folder, you may also want to run `bundle exec gem pristine rake`)&lt;/span&gt;
+cat &lt;span class="sb"&gt;`&lt;/span&gt;which rake&lt;span class="sb"&gt;`&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;&lt;span class="c1"&gt;#!/usr/bin/env ruby_executable_hooks&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# This file was generated by RubyGems.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+&lt;span class="c1"&gt;# The application 'rake' is installed as part of a gem, and&lt;/span&gt;
+&lt;span class="c1"&gt;# this file is here to facilitate running it.&lt;/span&gt;
+&lt;span class="c1"&gt;#&lt;/span&gt;
+
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'rubygems'&lt;/span&gt;
+
+&lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"&amp;gt;= 0"&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;first&lt;/span&gt;
+  &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;first&lt;/span&gt;
+  &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;dup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;force_encoding&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"BINARY"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;respond_to?&lt;/span&gt; &lt;span class="ss"&gt;:force_encoding&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt; &lt;span class="o"&gt;=~&lt;/span&gt; &lt;span class="sr"&gt;/\A_(.*)_\z/&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="no"&gt;Gem&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Version&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;correct?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vg"&gt;$1&lt;/span&gt;
+    &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;shift&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;gem&lt;/span&gt; &lt;span class="s1"&gt;'rake'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;
+&lt;span class="nb"&gt;load&lt;/span&gt; &lt;span class="no"&gt;Gem&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;bin_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'rake'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'rake'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;To fix our gemspec:&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;  &lt;span class="n"&gt;spec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;executables&lt;/span&gt;   &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;spec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;files&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;grep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;%r{^exe/}&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;basename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Or just delete the line altogether, since new_gem doesn't have an executable.&lt;/p&gt;
+
+&lt;p&gt;If it did, we could continue to use &lt;code&gt;bin/&lt;/code&gt;, create the file as &lt;code&gt;bin/new_gem&lt;/code&gt; and
+specify it as the only executable.&lt;/p&gt;
+
+&lt;pre class="highlight ruby"&gt;  &lt;span class="n"&gt;spec&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;executables&lt;/span&gt;   &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"new_gem"&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Or use the new &lt;code&gt;exe/&lt;/code&gt; convention, create a file such as &lt;code&gt;exe/new_gem&lt;/code&gt;, and not worry.&lt;/p&gt;
+
+&lt;p&gt;Enjoy!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Announcing Ruby Together</title>
+    <link rel="alternate" href="http://bundler.io/bundler-site/blog/2015/03/19/announcing-ruby-together.html"/>
+    <id>http://bundler.io/bundler-site/blog/2015/03/19/announcing-ruby-together.html</id>
+    <published>2015-03-19T11:56:00+09:00</published>
+    <updated>2015-04-03T09:55:46+09:00</updated>
+    <author>
+      <name/>
+    </author>
+    <content type="html">&lt;p&gt;All of the infrastructure used by Ruby developers today, including &lt;a href="https://bundler.io"&gt;Bundler&lt;/a&gt;, &lt;a href="https://rubygems.org/pages/download"&gt;RubyGems&lt;/a&gt;, and &lt;a href="https://rubygems.org/"&gt;RubyGems.org&lt;/a&gt; is maintained and developed by volunteers.  While it's good that no one company controls resources shared by the community, it's terrible that the only people who work on our shared infrastructure are doing so for free and in their spare time.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://rubytogether.org"&gt;Ruby Together&lt;/a&gt; was founded so the community can cooperate to solve that problem. It will fund on-call rotations, maintenance work, and improvements to the &lt;a href="https://rubytogether.org/projects"&gt;shared, public infrastructure&lt;/a&gt; used by the entire community.&lt;/p&gt;
+
+&lt;p&gt;We'll also provide &lt;a href="https://rubytogether.org/benefits"&gt;benefits just for members&lt;/a&gt;. To begin with, opportunities to connect and exchange knowledge, turning &lt;a href="https://rubybench.org"&gt;RubyBench.org&lt;/a&gt; into a fully-fledged community performance benchmarking resource, and tracking and reporting on important deprecations and security issues for members.&lt;/p&gt;
+
+&lt;p&gt;The community that has grown up around Ruby is amazing, and provides many fantastic (and fantastically useful) tools that any developer can use. Let's work together to make sure those tools (and the community) are the best that they can be, for everyone.&lt;/p&gt;
+
+&lt;p&gt;If you or your company has benefited from the free and open-source tools available in Ruby, support those tools by becoming a member of Ruby Together. Membership dues directly fund work that benefits everyone using Ruby, and are usually tax-deductible. Both individual and corporate memberships are available. &lt;a href="https://rubytogether.org/join"&gt;Join us today&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;span style="font-size: 80%"&gt;This post was originally written for &lt;a href="https://rubytogether.org/news/2015-03-17-announcing-ruby-together"&gt;Ruby Together&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;
+
+</content>
+  </entry>
+  <entry>
+    <title>Gem not found error on 1.7.0</title>
+    <link rel="alternate" href="http://bundler.io/bundler-site/blog/2014/08/15/gem-not-found-error-on-1-7-0.html"/>
+    <id>http://bundler.io/bundler-site/blog/2014/08/15/gem-not-found-error-on-1-7-0.html</id>
+    <published>2014-08-16T02:02:00+09:00</published>
+    <updated>2015-04-03T09:55:46+09:00</updated>
+    <author>
+      <name>André Arko</name>
+    </author>
+    <content type="html">&lt;p&gt;After the release of Bundler 1.7.0 yesterday, we discovered a bug that can cause Bundler to report that a gem was not found, even though that gem is available from one of the relevant sources. We're understand the problem, and we're working on a fix as fast as we can. In the meantime, it's possible to work completely around the problem by adding the &lt;code&gt;--full-index&lt;/code&gt; option when you run &lt;code&gt;bundle install&lt;/code&gt;. I fully recognize that it sucks to have a regression in a security update, and I'm sorry that this happened. I can't guarantee something like this well never happen again, but we're adding tests to prevent this particular bug from recurring.&lt;/p&gt;
+
+&lt;p&gt;Sorry it's broken; we're working on fixing it. In the meantime, please work around the issue with &lt;code&gt;bundle install --full-index&lt;/code&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Bundler may install gems from a different source than expected (CVE-2013-0334)</title>
+    <link rel="alternate" href="http://bundler.io/bundler-site/blog/2014/08/14/bundler-may-install-gems-from-a-different-source-than-expected-cve-2013-0334.html"/>
+    <id>http://bundler.io/bundler-site/blog/2014/08/14/bundler-may-install-gems-from-a-different-source-than-expected-cve-2013-0334.html</id>
+    <published>2014-08-14T10:22:00+09:00</published>
+    <updated>2015-04-03T09:55:46+09:00</updated>
+    <author>
+      <name>André Arko</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;strong&gt;Versions Affected&lt;/strong&gt;: All versions &amp;lt; 1.7.0&lt;br /&gt;
+&lt;strong&gt;Not Affected&lt;/strong&gt;: Any Gemfile with one or zero sources&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fixed Versions&lt;/strong&gt;: 1.7.0&lt;br /&gt;
+&lt;strong&gt;Releases&lt;/strong&gt;: 1.7.0&lt;/p&gt;
+
+&lt;p&gt;Bundler 1.7 is a security-only release to address CVE-2013-0334, a vulnerability where a gem might be installed from an unintended source server, particularly while using both rubygems.org and gems.github.com.&lt;/p&gt;
+
+&lt;h3 id="impact"&gt;Impact&lt;/h3&gt;
+
+&lt;p&gt;Any Gemfile with multiple top-level &lt;code&gt;source&lt;/code&gt; lines cannot reliably control the gem server that a particular gem is fetched from. As a result, Bundler might install the wrong gem if more than one source provides a gem with the same name.&lt;/p&gt;
+
+&lt;p&gt;This is especially possible in the case of Github's legacy gem server, hosted at gems.github.com. An attacker might create a malicious gem on RubyGems.org with the same name as a commonly-used Github gem. From that point forward, running &lt;code&gt;bundle install&lt;/code&gt; might result in the malicious gem being used instead of the expected gem.&lt;/p&gt;
+
+&lt;p&gt;To mitigate this, the Bundler and RubyGems.org teams worked together to copy almost every gem hosted on gems.github.com to rubygems.org, reducing the number of gems that can be used for such an attack.&lt;/p&gt;
+
+&lt;h3 id="resolution"&gt;Resolution&lt;/h3&gt;
+
+&lt;p&gt;To resolve this issue, upgrade to Bundler 1.7 by running &lt;code&gt;gem install bundler&lt;/code&gt;. The next time you run &lt;code&gt;bundle install&lt;/code&gt; for any Gemfile that contains multiple sources, each gem available from multiple sources will print a warning.&lt;/p&gt;
+
+&lt;p&gt;For every warning printed, edit the Gemfile to either specify a &lt;code&gt;:source&lt;/code&gt; option for that gem, or move the &lt;code&gt;gem&lt;/code&gt; line into a block that is passed to a &lt;code&gt;source&lt;/code&gt; method call.&lt;/p&gt;
+
+&lt;p&gt;For detailed information about the changes to how sources are handled in Bundler version 1.7, see the &lt;a href="http://bundler.io/bundler-site/v1.7/whats_new.html"&gt;release announcement&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id="workarounds"&gt;Workarounds&lt;/h3&gt;
+
+&lt;p&gt;If you are unable to upgrade to Bundler 1.7, it is possible to work around the issue by removing all but one &lt;code&gt;source&lt;/code&gt; line from your Gemfile. Gems from other sources must be installed via the &lt;code&gt;:git&lt;/code&gt; option, which is not susceptible to this issue, or unpacked into the application repository and used via the &lt;code&gt;:path&lt;/code&gt;option.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, backporting a fix for this issue proved impractical, as previous versions of Bundler lacked the ability to distinguish between gem servers.&lt;/p&gt;
+
+&lt;h3 id="credits"&gt;Credits&lt;/h3&gt;
+
+&lt;p&gt;Thanks to Andreas Loupasakis and Fotos Georgiadis for reporting this issue, James Tucker, Tony Arcieri, Eric Hodel, Michael Koziarski, and Kurt Seifried for assistance with the eventual solution, and David Radcliffe for importing legacy Github gems into RubyGems.org.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Bundler API outages on July 15 &amp; 16, 2014</title>
+    <link rel="alternate" href="http://bundler.io/bundler-site/blog/2014/07/16/bundler-api-outages.html"/>
+    <id>http://bundler.io/bundler-site/blog/2014/07/16/bundler-api-outages.html</id>
+    <published>2014-07-17T08:29:00+09:00</published>
+    <updated>2015-04-03T09:55:46+09:00</updated>
+    <author>
+      <name>André Arko</name>
+    </author>
+    <content type="html">&lt;p&gt;In the last couple of days, the Bundler API has seen some downtime: 53 minutes on July 15 and 3 hours  and 16 minutes on July 16. Here's what happened, and how we're working to keep it from happening again in the future.&lt;/p&gt;
+
+&lt;p&gt;The Bundler API provides information about specific gems, allowing &lt;code&gt;bundle install&lt;/code&gt; to run more quickly. Without the API installing multiple gems is much slower, because information about every single gem has to be downloaded, instead of just information about the gems that are needed.&lt;/p&gt;
+
+&lt;p&gt;Starting with RubyGems version 2.2.0 (which is included with Ruby 2.1), the &lt;code&gt;gem install&lt;/code&gt; also uses the API to download gem metadata more quickly. As users upgraded RubyGems (or were upgraded by upgrading their Ruby version), the load on the API slowly started to increase. We are usually able to successfully handle the increased load, but only up to a point. When enough large, slow requests are made simultaneously (some of you have really big Gemfiles!), unanswered API requests started to pile up while the slow requests ran. At that point, the problem snowballs pretty naturally, and the API starts responding very sluggishly, if it even manages to respond at all inside the hard 30 second timeout imposed by Heroku.&lt;/p&gt;
+
+&lt;p&gt;This snowball effect happens on occasion, and the solution is often as simple as dropping all the requests in the queue so that incoming requests can be served immediately. Yesterday, that wasn't enough. There were too many requests to handle even after dropping the backed up queue of waiting requests. Adding application servers is extremely straightforward, but there was a problem: the database server had reached its connection limit. If we added any more application servers, we would need additional database connections, and our current server was at the limits of its hardware.&lt;/p&gt;
+
+&lt;p&gt;To increase the number of allowed database connections, we had to upgrade to a bigger database. Fortunately, Heroku's Postgres tools make it simple to create a bigger database that follows the existing database, and then turn off replication and switch to using that bigger database as the new main database. Yesterday, I took down the API, created a new follower database that was able to support more connections, and then failed over to use it as the primary database. This resulted in roughly 53 minutes of downtime on July 15.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, replication to the new, bigger database was only partially complete when I manually failed over to that database. The automated process that synchronizes the main RubyGems.org database to the API database wasn't able to fill in all of the missing data due to the way replication had copied only part of the information about some gems.&lt;/p&gt;
+
+&lt;p&gt;Today, while investigating reports of failures during &lt;code&gt;bundle install&lt;/code&gt;, we discovered the missing database data, and took down the API entirely to force everyone to use the accurate (but slower) full gem index. To repair the missing data, we restored a database backup from yesterday, and then synchronized the API database with the main RubyGems.org database to catch up on new gems. This caused roughly 3 hours and 16 minutes of downtime on July 16.&lt;/p&gt;
+
+&lt;p&gt;Since the API was already down, we took the opportunity to improve the API database infrastructure. With the bigger database, we were able to remove our replica setup and instead just use a single database. We were also able to upgrade from Postgres 9.2.4 to 9.3.4, with performance enhancements and automatic failover. In the future, primary database failures should now be handled automatically.&lt;/p&gt;
+
+&lt;p&gt;At this point, we have successfully upgraded to the latest version of Postgres, dramatically increased the hardware the database runs on, and increased the number of application servers from 15 to 20. We believe this fully armed and operational database will be faster and more reliable. Sorry for the downtime. Happy Bundling!&lt;/p&gt;
+</content>
+  </entry>
+</feed>

@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bundler: The best way to manage a Ruby application's gems</title>
+    <title>
+      Bundler: The best way to manage a Ruby application's gems
+    </title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
-    <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/images/images/favicon.png" rel="icon" type="image/png" />
+    <link href="/bundler-site/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
   </head>
   <body>
     <div id='body'>
       <div id='header'>
-        <a class="image" href="/bundler-site/"><img width="725" alt="어플리케이션의 의존성을 관리하는 최선의 방법" src="/bundler-site/images/gembundler.png" /></a>
+        <a class="image" href="/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
       </div>
       <div id='container'>
         <div id='contents'>
@@ -18,56 +21,69 @@
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                젬들을 <code>./vendor/cache</code>에 고정하고 케쉬함.
+                Locks and then caches the gems into <code>./vendor/cache</code>.
               </div>
-              <pre class="highlight plaintext">$ bundle package [--no-prune] [--all]</pre>
+              <pre class="highlight plaintext">$ bundle package [--all] [--all-platforms] [--gemfile=GEMFILE] [--no-prune]&#x000A;                 [--path=PATH] [--quiet]</pre>
               <div class='notes'>
                 <p>
-                  옵션:
+                  Options:
                 </p>
                 <p>
-                  <code>--no-prune</code>: 오래된 젬들을 케쉬에서 제거하지 않습니다.
+                  <code>--all</code>: package <code>:git</code>, <code>:path</code>, and <code>.gem</code> dependencies. Once used, the <code>--all</code> option will be remembered.
                 </p>
                 <p>
-                  <code>--all</code>: <code>:git</code>, <code>:path</code>, <code>.gem</code> 의존성을 팩키징. 한번 사용되면 <code>--all</code> 옵션은 기억됩니다.
+                  <code>--all-platforms</code>: package dependencies for all known platforms, not only the one that <code>bundle package</code> is run on. This option will be remembered in your local Bundler configuration.
+                </p>
+                <p>
+                  <code>--gemfile</code>: Use the specified gemfile instead of Gemfile.
+                </p>
+                <p>
+                  <code>--no-install</code>: Don't actually install the gems, just package.
+                </p>
+                <p>
+                  <code>--no-prune</code>: Don't remove stale gems from the cache.
+                </p>
+                <p>
+                  <code>--path</code>: Specify a different path than the system default.
+                </p>
+                <p>
+                  <code>--quiet</code>: Only output warnings and errors.
                 </p>
               </div>
               <div class='description'>
                 <p>
-                  package명령어는 번들안의 젬들을 위한 <code>.gem</code> 파일들을 <code>./vendor/cache</code>에
-                  복사합니다. 그 후 <code>bundle install</code>을 실행하면 번들러는 rubygems.org보다 높은
-                  우선순위로 케쉬안의 젬들을 사용합니다.
+                  The package command will copy the <code>.gem</code> files for your gems in the
+                  bundle into <code>./vendor/cache</code>. Afterward, when you run <code>bundle install</code>, Bundler will use the gems in the cache in preference to the ones on rubygems.org.
                 </p>
                 <p>
-                  추가적으로 버전 관리 저장소에 케쉬 디렉토리를 체크인하면 다른 사람들이 체크아웃할때
-                  추가적인 젬의 다운로드 없이 설치하게할 수 있습니다.
+                  Additionally, if you then check that directory into your source control repository, others who check out your source will be able to install the bundle without having to download any additional gems.
                 </p>
               </div>
             </div>
             <div class='bullet'>
               <div class='description'>
-                젬들을 <code>./vendor/cache</code>에 고정하고 케쉬함.
+                Lock and cache gems from RubyGems into <code>./vendor/cache</code>.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle package&#x000A;</pre>
               </div>
               <div class='notes'>
                 <p>
-                  기본 값으로 <code>bundle package</code>후에 <code>bundle install</code>를 실행하면
-                  번들러는 여전히 rubygems.org에 접속해 <code>vendor/cache</code>안의 젬들 중
-                  플렛폼 지정 젬이 있는지 체크합니다.
+                  By default, if you simply run <code>bundle install</code> after running
+                  <code>bundle package</code>, Bundler will still connect to rubygems.org to check
+                  whether a platform-specific gem exists for any of the gems in <code>vendor/cache</code>.
                 </p>
                 <p>
-                  이 행동은 <code>bundle install --local</code>를 실행함으로써 회피 할 수 있습니다.
-                  이 명령은 캐쉬된 모든 젬들에 대해 정확한 플렛폼 버전이 필요하니 주의하세요. 이 목표를
-                  달성하기 위한 가장 쉬운 방법은 동일한 기계에서 <code>bundle package</code>를 실행하고
-                  벤더의 젬들을 확인하는 것입니다.
+                  This behavior can be avoided by instead running <code>bundle install --local</code>.
+                  Note that this requires you to have the correctly platformed version for all of your gems
+                  already cached. The easiest way to achieve this is to run <code>bundle package</code>
+                  on an identical machine and then check in those vendored gems.
                 </p>
               </div>
             </div>
             <div class='bullet' id='no-prune'>
               <div class='description'>
-                젬들을 <code>./vendor/cache</code>에 고정하고 케쉬하고 오래된 젬들을 케쉬에서 제거하지 않음.
+                Lock and cache gems from RubyGems into <code>./vendor/cache</code>, and don't remove any stale gems from the existing cache.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle package --no-prune&#x000A;</pre>
@@ -75,17 +91,17 @@
             </div>
             <div class='bullet' id='all'>
               <div class='description'>
-                <code>:git</code>, <code>:path</code>, <code>.gem</code>의존성을 포함해 젬들을 <code>./vendor/cache</code>에 고정하고 케쉬함.
+                Lock and cache all gems into <code>./vendor/cache</code>, including <code>:git</code>, <code>:path</code>, and <code>.gem</code> dependencies.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle package --all</pre>
               </div>
               <div class='notes'>
                 <p>
-                  한번 사용되면 <code>--all</code> 옵션은 기억됩니다.
+                  Once used, the <code>--all</code> option will be remembered.
                 </p>
                 <p>
-                  이 옵션은 번들러 2.0에서 기본 값이 됩니다.
+                  This will be the default on Bundler 2.0.
                 </p>
               </div>
             </div>
@@ -94,47 +110,59 @@
         <div id='sidebar'>
           <h2>Would you like to</h2>
           <ul>
-            <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
-            <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
-            <li><a href="/bundler-site/#get-involved">기여하기</a></li>
-            <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
+            <li><a href="/#getting-started">Get started</a></li>
+            <li><a href="/bundler-site/issues.html">Report a bug</a></li>
+            <li><a href="/bundler-site/v1.9/whats_new.html">See what's new</a></li>
+            <li><a href="/v1.9/man/bundle.1.html">Read documentation</a></li>
+            <li><a href="/#get-involved">Discuss and Contribute</a></li>
+            <li><a href="/bundler-site/v1.9/faq.html">View FAQs</a></li>
           </ul>
-          <h2>번들러 명령어</h2>
+          <h2>Read the latest news</h2>
           <ul>
-            <li><a href="/bundler-site/v1.5/bundle_install.html">bundle install</a></li>
-            <li><a href="/bundler-site/v1.5/bundle_update.html">bundle update</a></li>
+            <li>
+              <a href="/bundler-site/blog/2015/03/21/hello-bundler-19.html">Hello, Bundler 1.9!</a>
+            </li>
+            <li>
+              <a href="/bundler-site/blog/2015/03/20/moving-bins-to-exe.html">Bundler template moves bins to exe</a>
+            </li>
             <div class='buttons'>
-              <a href="/bundler-site/v1.5/commands.html">모든 명령어 보기</a>
+              <a href="/blog/">All posts</a>
             </div>
           </ul>
-          <h2>사용법</h2>
+          <h2>Bundler commands</h2>
           <ul>
-            <li><a href="/bundler-site/v1.5/gemfile.html">젬파일</a></li>
-            <li><a href="/bundler-site/v1.5/groups.html">그룹</a></li>
-            <li><a href="/bundler-site/v1.5/git.html">깃으로부터의 젬</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_setup.html">Bundler.setup</a></li>
-            <li><a href="/bundler-site/v1.5/deploying.html">배포하기</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_sharing.html">공유하기</a></li>
-            <li><a href="/bundler-site/v1.5/updating_gems.html">젬 갱신하기</a></li>
-            <li><a href="/bundler-site/compatibility.html">호환가능한 버전</a></li>
+            <li><a href="/bundler-site/v1.9/bundle_install.html">bundle install</a></li>
+            <li><a href="/bundler-site/v1.9/bundle_update.html">bundle update</a></li>
+            <div class='buttons'>
+              <a href="/bundler-site/v1.9/commands.html">View all commands</a>
+            </div>
           </ul>
-          <h2>프레임워크와 함께 사용하기</h2>
+          <h2>Help with</h2>
           <ul>
-            <li><a href="/bundler-site/v1.5/rails3.html">레일즈 3</a></li>
-            <li><a href="/bundler-site/v1.5/rails23.html">레일즈 2.3</a></li>
-            <li><a href="/bundler-site/v1.5/sinatra.html">시나트라</a></li>
-            <li><a href="/bundler-site/v1.5/rubygems.html">루비젬</a></li>
-            <li><a href="/bundler-site/v1.5/rubymotion.html">루비모션</a></li>
+            <li><a href="/bundler-site/v1.9/gemfile.html">Gemfiles</a></li>
+            <li><a href="/bundler-site/v1.9/groups.html">Groups</a></li>
+            <li><a href="/bundler-site/v1.9/git.html">Gems from git</a></li>
+            <li><a href="/bundler-site/v1.9/bundler_setup.html">Bundler.setup</a></li>
+            <li><a href="/bundler-site/v1.9/deploying.html">Deploying</a></li>
+            <li><a href="/bundler-site/v1.9/bundler_sharing.html">Sharing</a></li>
+            <li><a href="/bundler-site/v1.9/updating_gems.html">Updating Gems</a></li>
+            <li><a href="/bundler-site/compatibility.html">Compatiblity</a></li>
+            <li><a href="/bundler-site/older_versions.html">Older Versions</a></li>
+          </ul>
+          <h2>Use Bundler with</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.9/rails3.html">Rails 3</a></li>
+            <li><a href="/bundler-site/v1.9/rails23.html">Rails 2.3</a></li>
+            <li><a href="/bundler-site/v1.9/sinatra.html">Sinatra</a></li>
+            <li><a href="/bundler-site/v1.9/rubygems.html">RubyGems</a></li>
+            <li><a href="/bundler-site/v1.9/rubymotion.html">RubyMotion</a></li>
           </ul>
           <div class='shirts'>
             <div class='content'>
-                            <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
+              <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
               </a>
-
               <p>
-                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">번들러 셔츠와 스티커를 사세요!</a>
+                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">Buy Bundler Shirts & Stickers!</a>
               </p>
             </div>
           </div>
@@ -147,31 +175,27 @@
       <div class='spacer'></div>
       <div id='credits'>
         <p>
-          Many thanks to Bundler's <a href="/bundler-site/contributors.html">컨트리뷰터</a>
-          and <a href="/bundler-site/sponsors.html">스폰서</a>
+          Many thanks to Bundler's <a href="/bundler-site/contributors.html">contributors</a>
+          and <a href="/bundler-site/sponsors.html">sponsors</a>
         </p>
       </div>
       <div class='spacer'></div>
       <img src="/bundler-site/images/bundler-small.png" />
     </div>
-    <a href='http://github.com/ruby-korea/bundler-site/' id='github'>
+    <a href='http://github.com/bundler/bundler/' id='github'>
       <img alt='Fork me on GitHub' src='http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png'>
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/">v0.9</a>
-      <a href="/bundler-site/v1.0/">v1.0</a>
-      <a href="/bundler-site/v1.1/">v1.1</a>
-      <a href="/bundler-site/v1.2/">v1.2</a>
-      <a href="/bundler-site/v1.3/">v1.3</a>
-      <a class="current" href="/bundler-site/">v1.5</a>
+      <a href="/bundler-site/v1.8/">Previous Version (v1.8)</a>
+      <a class="current" href="/">Current Version (v1.9)</a>
     </div>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-39559982-1', 'ruby-korea.github.io/bundler-site');
+      ga('create', 'UA-39559982-1', 'bundler.io');
       ga('send', 'pageview');
     </script>
   </body>

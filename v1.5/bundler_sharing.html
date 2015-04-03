@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bundler: The best way to manage a Ruby application's gems</title>
+    <title>
+      Bundler: The best way to manage a Ruby application's gems
+    </title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
-    <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/images/favicon.png" rel="icon" type="image/png" />
+    <link href="/bundler-site/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
   </head>
   <body>
     <div id='body'>
       <div id='header'>
-        <a class="image" href="/bundler-site/"><img width="725" alt="어플리케이션의 의존성을 관리하는 최선의 방법" src="/bundler-site/images/gembundler.png" /></a>
+        <a class="image" href="/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
       </div>
       <div id='container'>
         <div id='contents'>
           <h2 id='sharing'>
-            Sharing
+            공유하기
           </h2>
           <div class='contents'>
             <div class='bullet'>
@@ -24,105 +27,59 @@
                   코드를 버전 관리하기
                 </h3>
                 <p>
-                  한동안 어플리케이션을 개발한 다음 어플리케이션을 <code>Gemfile</code>,
-                  <code>Gemfile.lock</code>과 함께 체크인하세요. 이 때 저장소는 마지막으로 어플리케이션이
-                  동작했었을때 사용한 젬들의 정확한 버전의 기록을 가지고 있습니다. <code>Gemfile</code>에
-                  (버전의 엄격함의 정도에 차이도 있겠지만) 3개의 젬만 있다고 하더라도 어플리케이션은
-                  수십개의 젬들을 의존하고 의존하는 모든 암시적인 젬들의 요구사항을 고려해야 합니다.
+                  한동안 애플리케이션을 개발한 다음 애플리케이션을 <code>Gemfile</code>,
+                  <code>Gemfile.lock</code>과 함께 체크인하세요. 이때 저장소는 마지막으로 애플리케이션이
+                  동작했을 때 사용한 젬의 정확한 버전의 기록을 가지고 있습니다.
+                  <code>Gemfile</code>에(버전의 엄격함의 정도에 차이도 있겠지만)
+                  3개의 젬만 있다고 하더라도 애플리케이션은 수십 개의 젬을 의존하고 의존하는
+                  모든 암시적인 젬의 요구사항을 고려해야 합니다.
                 </p>
               </div>
               <p class='description'>
-                <strong> <code>Gemfile.lock</code>이 어플리케이션의 코드와 젬들이 재대로 동작했었다는
-                확신이있는 최후의 순간을 하나의 묶음으로 만든다</strong>는 점은 중요합니다.
-                <code>Gemfile</code>에 젬들의 정확한 버전을 지정한다하여도 같은 수준의 보장은 안됩니다.
-                왜냐하면 젬들은 보통 의존성을 범위로 지정하기 때문입니다.
+                <strong><code>Gemfile.lock</code>이 애플리케이션의 코드와 젬이 제대로 동작했다는
+                확신이 있는 최후의 순간을 하나의 묶음으로 만든다</strong>는 점은 중요합니다.
+                <code>Gemfile</code>에 젬의 정확한 버전을 지정한다 하여도 같은 수준의 보장은 안 됩니다.
+                왜냐하면 젬은 보통 의존성을 범위로 지정하기 때문입니다.
               </p>
               <p class='description'>
                 이후 같은 머신에서 <code>bundle install</code>을 실행하면, 모든 필요한 의존성을 만족하므로
-                번들러가 설치 과정을 생략하는것을 볼 수 있습니다.
+                번들러가 설치 과정을 생략하는 것을 볼 수 있습니다.
               </p>
               <p class='description'>
-                <code>.bundle</code> 디렉토리와 그안에 어떤 내용도 체크인하지 말아 주세요. 그 파일들을
-                각각의 머신의 특성에 따라 달라지고 <code>bundle install</code> 명령어간의 영속적인 설치
+                <code>.bundle</code> 디렉터리와 그 안의 어떤 내용도 체크인하지 말아 주세요. 그 파일들을
+                각각의 기기의 특성에 따라 달라지고 <code>bundle install</code> 명령어 간의 영속적인 설치
                 옵션을 사용합니다.
               </p>
               <p class='description'>
-                <code>bundle pack</code> 명령어를 실행했고 깃의 젬이 아니라면, 번들러에서 요구된 젬들은
-                모두 <code>vendor/cache</code>에 다운로드 됩니다. 모든 필요한 젬들이 폴더에 들어있고
+                <code>bundle pack</code> 명령어를 실행했고 깃의 젬이 아니라면, 번들러에서 요구된 젬은
+                모두 <code>vendor/cache</code>에 다운로드 됩니다. 모든 필요한 젬이 폴더에 들어있고
                 버전관리에 체크인 되어있다면 인터넷이나 루비젬 서버에 접속하지 않고 실행할 수 있습니다.
-                이 것은 <strong>생략가능</strong>한 과정이며, 버전관리 저장소의 크기를 늘리므로 추천하지
+                이것은 <strong>생략가능</strong>한 과정이며, 버전관리 저장소의 크기를 늘리므로 추천하지
                 않습니다.
               </p>
             </div>
             <div class='bullet'>
               <h3 id='sharing-your-application-with-other-developers'>
-                어플리케이션을 다른 개발자에게 공유하기
+                애플리케이션을 다른 개발자와 공유하기
               </h3>
               <p class='description'>
-                동료 개발자가 코드를 채크아웃하거나 당신이 다른 머신에 채크아웃하면 개발할때 어플리케이션에서
-                사용했던 모든 젬들의 정확한 버전도 (<code>Gemfile.lock</code>안에) 함께 옵니다.
-                **거기서** <code>bundle install</code>을 실행하면 번들러는 <code>Gemfile.lock</code>를 찾고
-                의존성 해결과정을 생략합니다. 대신에 원래 머신에서 사용했던 것과 같은 모든 젬들을 설치합니다.
+                동료 개발자가 코드를 채크아웃하거나 당신이 다른 기기에 체크아웃하면 개발할 때 애플리케이션에서
+                사용했던 모든 젬의 정확한 버전도(<code>Gemfile.lock</code> 안에) 함께 옵니다.
+                **거기서** <code>bundle install</code>을 실행하면 번들러는 <code>Gemfile.lock</code>을 찾고
+                의존성 해결과정을 생략합니다. 대신에 원래 기기에서 사용했던 것과 같은 모든 젬을 설치합니다.
               </p>
               <p class='description'>
-                다시 말하자면 어떤 버전의 의존성을 설치해야하는지 고민할 필요가 없습니다. 아까 보았던
+                다시 말하자면 어떤 버전의 의존성을 설치해야 하는지 고민할 필요가 없습니다. 아까 보았던
                 예제에서 <code>rack-cache</code>가 <code>rack >= 0.4</code>에 의존성이 있다고 정의되어도
-                <code>rack 1.2.1</code>에서 움직인다고 확신할 수 있습니다. Rack팀이 <code>rack 1.2.2</code>를
-                릴리즈하더래도 번들러는 항상 동작이 보장되는 <code>1.2.1</code>을 설치합니다. 이것은
-                개발자로 하여금 많은 관리부담을 덜게 합니다. 왜냐하면, 모든 머신에서 똑같은 젬들을 사용하기
+                <code>rack 1.2.1</code>에서 움직인다고 확신할 수 있습니다. Rack 팀이 <code>rack 1.2.2</code>를
+                릴리스하더라도 번들러는 항상 동작이 보장되는 <code>1.2.1</code>을 설치합니다. 이것은
+                개발자로 하여금 많은 관리부담을 덜게 합니다. 왜냐하면, 모든 머신에서 똑같은 젬을 사용하기
                 때문입니다.
               </p>
             </div>
           </div>
         </div>
-        <div id='sidebar'>
-          <h2>Would you like to</h2>
-          <ul>
-            <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
-            <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
-            <li><a href="/bundler-site/#get-involved">기여하기</a></li>
-            <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
-          </ul>
-          <h2>번들러 명령어</h2>
-          <ul>
-            <li><a href="/bundler-site/v1.5/bundle_install.html">bundle install</a></li>
-            <li><a href="/bundler-site/v1.5/bundle_update.html">bundle update</a></li>
-            <div class='buttons'>
-              <a href="/bundler-site/v1.5/commands.html">모든 명령어 보기</a>
-            </div>
-          </ul>
-          <h2>사용법</h2>
-          <ul>
-            <li><a href="/bundler-site/v1.5/gemfile.html">젬파일</a></li>
-            <li><a href="/bundler-site/v1.5/groups.html">그룹</a></li>
-            <li><a href="/bundler-site/v1.5/git.html">깃으로부터의 젬</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_setup.html">Bundler.setup</a></li>
-            <li><a href="/bundler-site/v1.5/deploying.html">배포하기</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_sharing.html">공유하기</a></li>
-            <li><a href="/bundler-site/v1.5/updating_gems.html">젬 갱신하기</a></li>
-            <li><a href="/bundler-site/compatibility.html">호환가능한 버전</a></li>
-          </ul>
-          <h2>프레임워크와 함께 사용하기</h2>
-          <ul>
-            <li><a href="/bundler-site/v1.5/rails3.html">레일즈 3</a></li>
-            <li><a href="/bundler-site/v1.5/rails23.html">레일즈 2.3</a></li>
-            <li><a href="/bundler-site/v1.5/sinatra.html">시나트라</a></li>
-            <li><a href="/bundler-site/v1.5/rubygems.html">루비젬</a></li>
-            <li><a href="/bundler-site/v1.5/rubymotion.html">루비모션</a></li>
-          </ul>
-          <div class='shirts'>
-            <div class='content'>
-                            <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
-              </a>
-
-              <p>
-                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">번들러 셔츠와 스티커를 사세요!</a>
-              </p>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
     <div id='footer'>
@@ -131,31 +88,27 @@
       <div class='spacer'></div>
       <div id='credits'>
         <p>
-          Many thanks to Bundler's <a href="/bundler-site/contributors.html">컨트리뷰터</a>
-          and <a href="/bundler-site/sponsors.html">스폰서</a>
+          Many thanks to Bundler's <a href="/bundler-site/contributors.html">contributors</a>
+          and <a href="/bundler-site/sponsors.html">sponsors</a>
         </p>
       </div>
       <div class='spacer'></div>
       <img src="/bundler-site/images/bundler-small.png" />
     </div>
-    <a href='http://github.com/ruby-korea/bundler-site/' id='github'>
+    <a href='http://github.com/bundler/bundler/' id='github'>
       <img alt='Fork me on GitHub' src='http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png'>
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/">v0.9</a>
-      <a href="/bundler-site/v1.0/">v1.0</a>
-      <a href="/bundler-site/v1.1/">v1.1</a>
-      <a href="/bundler-site/v1.2/">v1.2</a>
-      <a href="/bundler-site/v1.3/">v1.3</a>
-      <a class="current" href="/bundler-site/">v1.5</a>
+      <a href="/bundler-site/v1.8/">Previous Version (v1.8)</a>
+      <a href="/">Current Version (v1.9)</a>
     </div>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-39559982-1', 'ruby-korea.github.io/bundler-site');
+      ga('create', 'UA-39559982-1', 'bundler.io');
       ga('send', 'pageview');
     </script>
   </body>

@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bundler: The best way to manage a Ruby application's gems</title>
+    <title>
+      Bundler: The best way to manage a Ruby application's gems
+    </title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
-    <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/images/favicon.png" rel="icon" type="image/png" />
+    <link href="/bundler-site/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
   </head>
   <body>
     <div id='body'>
       <div id='header'>
-        <a class="image" href="/bundler-site/"><img width="725" alt="어플리케이션의 의존성을 관리하는 최선의 방법" src="/bundler-site/images/gembundler.png" /></a>
+        <a class="image" href="/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
       </div>
       <div id='container'>
         <div id='contents'>
@@ -18,7 +21,7 @@
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                설정값을 검색하거나 설정
+                설정 값을 검색하거나 설정
               </div>
               <pre class="highlight plaintext">$ bundle config [NAME [VALUE]] [--local] [--global] [--delete]</pre>
               <div class='notes'>
@@ -37,15 +40,15 @@
               </div>
               <div class='description'>
                 <p>
-                  설정값을 검색하거나 설정합니다. 하나의 파라메터만 주어지면 값을 검색합니다.
-                  두개의 파라메터가 주어지면 기존의 값을 주어진 값으로 대체합니다.
+                  설정 값을 검색하거나 설정합니다. 하나의 매개변수만 주어지면 값을 검색합니다.
+                  두 개의 매개변수가 주어지면 기존의 값을 주어진 값으로 대체합니다.
                 </p>
                 <p>
-                  기본값으로 설정 값들을 설정하면 머신의 모든 프로젝트에 설정됩니다.
+                  기본 값으로 설정 값들을 설정하면 기기의 모든 프로젝트에 설정됩니다.
                 </p>
                 <p>
-                  글로벌 설정이 로컬 설정에의해 대체된다면 이 명령어는 현재 값뿐만 아니라
-                  대체값과 값들이 어디에 지정되었는지를 보여줍니다.
+                  글로벌 설정이 로컬 설정에 의해 대체된다면 이 명령어는 현재 값뿐만 아니라
+                  대체 값과 값들이 어디에 지정되었는지를 보여줍니다.
                 </p>
               </div>
             </div>
@@ -56,15 +59,14 @@
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config</pre>
                 <div class='notes'>
-                  파라메터없이 <code>bundle config</code>를 실행하면 현재 번들을 위한
+                  매개변수 없이 <code>bundle config</code>을 실행하면 현재 번들을 위한
                   모든 번들러 설정과 어디에서 설정되었는지를 출력합니다.
                 </div>
               </div>
             </div>
             <div class='bullet' id='get'>
               <div class='description'>
-                <code>NAME</code>변수의 번들 설정을 읽음.
-                Get your bundle configuration for <code>NAME</code> variable.
+                <code>NAME</code> 변수의 번들 설정을 읽음.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config NAME</pre>
@@ -81,10 +83,10 @@
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config NAME VALUE</pre>
                 <div class='notes'>
-                  글로벌 설정의 경우라면 현제 유저로서 설정되는 모든 번들에 대해
+                  글로벌 설정의 경우라면 현재 유저로서 설정되는 모든 번들에 대해
                   <code>NAME</code>에 <code>VALUE</code>를 설정합니다. 설정은
                   <code>~/.bundle/config</code>에 저장됩니다. <code>NAME</code>이
-                  이미 설정되어 있다면 경고와함께 <code>NAME</code>을 덮어씁니다.
+                  이미 설정되어 있다면 경고와 함께 <code>NAME</code>을 덮어씁니다.
                 </div>
               </div>
             </div>
@@ -106,7 +108,7 @@
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config --local NAME VALUE</pre>
                 <div class='notes'>
-                  위의 명령어와 같은 동작을 하지만 로컬 어플리케이션용 입니다.
+                  위의 명령어와 같은 동작을 하지만 로컬 애플리케이션용 입니다.
                   설정은 <code>app/.bundle/config</code>에 저장됩니다.
                 </div>
               </div>
@@ -118,7 +120,7 @@
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config --delete NAME</pre>
                 <div class='notes'>
-                  글로벌과 로컬에서 <code>NAME</code>의 설정 값을 삭제합니다. --global이나 --local플레그와는 호환되지 않습니다.
+                  글로벌과 로컬에서 <code>NAME</code>의 설정 값을 삭제합니다. --global이나 --local 플래그와는 호환되지 않습니다.
                 </div>
               </div>
             </div>
@@ -132,42 +134,42 @@
                   넘겨주는 용도로도 사용할 수 있습니다.
                 </p>
                 <p>
-                  매우 일반적인 예로 <code>mysql</code>젬은 스노우 레오파드에서 <code>gem
-                  install</code>을 할 때 <code>mysql_config</code> 실행파일을 찾기 위한 설정
-                  플래그를 필요로합니다.
+                  매우 일반적인 예로 <code>mysql</code> 젬은 스노우 레퍼드에서 <code>gem
+                  install</code>을 할 때 <code>mysql_config</code> 실행 파일을 찾기 위한 설정
+                  플래그를 필요로 합니다.
                 </p>
                 <div class='how'>
                   <pre class="highlight plaintext">$ gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config&#x000A;</pre>
                 </div>
                 <p>
-                  <code>mysql_config</code>의 실행파일의 구체적인 위치가 머신마다 다를 수
-                  있으므로 각 머신마다 이 플래그를 지정시킬 수 있습니다.
+                  <code>mysql_config</code>의 실행 파일의 구체적인 위치가 기기마다 다를 수
+                  있으므로 각 머신마다 이 플래그를 지정할 수 있습니다.
                 </p>
                 <div class='how'>
                   <pre class="highlight plaintext">$ bundle config build.mysql --with-mysql-config=/usr/local/mysql/bin/mysql_config</pre>
                 </div>
                 <p>
-                  이 명령어를 실행하면 <code>mysql</code>젬을 설치해야 할때마다 지정한
+                  이 명령어를 실행하면 <code>mysql</code> 젬을 설치해야 할 때마다 지정한
                   플레그를 함께 넘겨 줍니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2>설정키</h2>
+          <h2>설정 키</h2>
           <div class='contents'>
             <div class='bullet' id='configuration_keys'>
               <div class='description'>
                 <p>
-                  번들러에서의 설정키는 두가지 양식이 있습니다. 표준 양식과 환경 변수
+                  번들러에서의 설정 키는 두 가지 양식이 있습니다. 표준 양식과 환경 변수
                   양식입니다.
                 </p>
                 <p>
-                  예를들어, <code>bundle install</code>에 <code>--without</code> 플레그를
+                  예를 들어, <code>bundle install</code>에 <code>--without</code> 플래그를
                   넘겨주어 번들러가 <code>Gemfile</code>의 특정그룹을 설치하는 것을 막는
-                  경우 번들러는 이 값을 <code>app/.bundle/config</code>안에 남겨두어
+                  경우 번들러는 이 값을 <code>app/.bundle/config</code> 안에 남겨두어
                   <code>Bundler.setup</code>이 <code>Gemfile</code>에서 설치되지 않은 젬을
-                  찾으려 하지 않도록 합니다. 덤으로 <code>bundle install</code>를 또 실행
-                  할때 이 설정을 기억해 두었다가 그 그룹들을 생략 합니다.
+                  찾으려 하지 않도록 합니다. 덤으로 <code>bundle install</code>을 또 실행
+                  할 때 이 설정을 기억해 두었다가 그 그룹들을 생략합니다.
                 </p>
                 <p>
                   이 설정의 표준 양식은 <code>"without"</code>입니다. 표준 양식에서 환경
@@ -189,7 +191,7 @@
                 <ul>
                   <li>
                     <code>path</code> (<code>BUNDLE_PATH</code>): 젬을 설치할 디스크에서의
-                    위치입니다. 기본값은 개발환경에서는 <code>$GEM_HOME</code>,
+                    위치입니다. 기본 값은 개발환경에서는 <code>$GEM_HOME</code>,
                     <code>--deployment</code>가 사용되었다면 <code>vendor/bundle</code>입니다.
                   </li>
                   <li>
@@ -202,8 +204,8 @@
                     그룹의 목록입니다. <code>:</code>으로 구분됩니다.
                   </li>
                   <li>
-                    <code>bin</code> (<code>BUNDLE_BIN</code>): 번들안의 젬에서 실행파일을
-                    특정 디렉토리에 설치합니다. 기본 값은 <code>false</code>입니다.
+                    <code>bin</code> (<code>BUNDLE_BIN</code>): 번들 안의 젬에서 실행 파일을
+                    특정 디렉터리에 설치합니다. 기본 값은 <code>false</code>입니다.
                   </li>
                   <li>
                     <code>gemfile</code> (<code>BUNDLE_GEMFILE</code>): 번들러가
@@ -213,12 +215,12 @@
                   </li>
                 </ul>
                 <p>
-                  일반적으로 해당 플레그를 <code>bundle install</code> 명령어에 사용함으로써
+                  일반적으로 해당 플래그를 <code>bundle install</code> 명령어에 사용함으로써
                   애플리케이션 별 설정을 해야합니다.
                 </p>
                 <p>
-                  환경 변수나 <code>bundle config</code> 어느쪽이든 좀더 상황에 맞는 쪽을 골라
-                  글로벌하게 설정할 수 있습니다. 양쪽 다 사용한다면 환경 변수가 글로벌 셋팅보다
+                  환경 변수나 <code>bundle config</code> 어느 쪽이든 좀 더 상황에 맞는 쪽을 골라
+                  글로벌하게 설정할 수 있습니다. 양쪽 다 사용한다면 환경 변수가 글로벌 설정보다
                   우선됩니다.
                 </p>
               </div>
@@ -229,7 +231,7 @@
             <div class='bullet' id='local_git_repos'>
               <div class='description'>
                 <p>
-                  번들러는 리모트 버전이아닌 로컬 깃 저장소로 작업하게 할수도 있습니다.
+                  번들러는 리모트 버전이 아닌 로컬 깃 저장소로 작업하게 할 수도 있습니다.
                   이렇게 하려면 로컬 우선으로 설정하실 필요가 있습니다.
                 </p>
                 <pre class="highlight plaintext">$ bundle config local.GEM_NAME /path/to/local/git/repository&#x000A;</pre>
@@ -238,25 +240,25 @@
                 </p>
                 <pre class="highlight plaintext">$ bundle config local.rack ~/Work/git/rack&#x000A;</pre>
                 <p>
-                  이제 리모드 깃 저장소에서 체크아웃 하는 대신, 로컬 저장소가 우선됩니다.
-                  소스 패스와 비슷하게 로컬 깃 저장소가 변경 될 때 마다 변경 내용은
+                  이제 리모트 깃 저장소에서 체크아웃 하는 대신, 로컬 저장소가 우선됩니다.
+                  소스 패스와 비슷하게 로컬 깃 저장소가 변경 될 때마다 변경 내용은
                   자동으로 번들러가 반영해줍니다. 이 말은 로컬 깃 저장소의 커밋은
-                  <code>Gemfile.lock</code>안의 리비전을 로컬 깃 저장소의 리비전으로
-                  갱신한다는 뜻입니다. 이 것은 깃 서브모듈의 사용할때 처럼 주의가
-                  필요합니다. 리모트에 푸쉬하기 전에 로컬에 있는게 전부 푸쉬돼어 있는지
-                  확인하셔야 합니다. 그렇지 않으면 로컬 머신에만 있는 커밋을 가르키게
+                  <code>Gemfile.lock</code> 안의 리비전을 로컬 깃 저장소의 리비전으로
+                  갱신한다는 뜻입니다. 이것은 깃 서브모듈을 사용할 때처럼 주의가
+                  필요합니다. 리모트에 푸시하기 전에 로컬에 있는 게 전부 푸시되어 있는지
+                  확인하셔야 합니다. 그렇지 않으면 로컬 기기에만 있는 커밋을 가리키게
                   됩니다.
                 </p>
                 <p>
-                  번들러는 잘못된 참조로 작동하지 않는지 확인하기 위해 여러번 체크합니다.
+                  번들러는 잘못된 참조로 작동하지 않는지 확인하기 위해 여러 번 체크합니다.
                   특히 이 기능을 사용하기 위해서는 <code>Gemfile</code>에서 브랜치를
-                  적도록 합니다. <code>Gemfile</code>안에 지정되어있는 브랜치와 로컬 저장소의
-                  현재 브랜치가 맞지 않으면 번들러는 실행을 정지합니다. 이 것은 항상
-                  정확한 브랜치에 대해 작업하고있는지 확인하고 의도치않게 다른 브랜치를
-                  보는 것을 예방합니다.
+                  적도록 합니다. <code>Gemfile</code> 안에 지정되어 있는 브랜치와 로컬
+                  저장소의 현재 브랜치가 맞지 않으면 번들러는 실행을 정지합니다. 이것은
+                  항상 정확한 브랜치에 대해 작업하고 있는지 확인하고 의도치 않게 다른
+                  브랜치를 보는 것을 예방합니다.
                 </p>
                 <p>
-                  마지막으로 번들러는 <code>Gemfile.lock</code>안의 맞는 리비전이
+                  마지막으로 번들러는 <code>Gemfile.lock</code> 안의 맞는 리비전이
                   로컬 깃 저장소에 있는지도 확인합니다. 이렇게 함으로써 번들러는
                   리모트의 마지막 변경들을 가져오도록 합니다.
                 </p>
@@ -268,64 +270,16 @@
             <div class='bullet' id='gem-source-mirrors'>
               <div class='description'>
                 <p>
-                  환경이 <code>mirror.URL</code>설정 옵션에 미러의 주소를 설정해
-                  rubygems.org서버의 로컬 미러를 가지고 있다면 그 시점에서 번들러는
-                  젬들과 젬스팩들을 Gemfile안에 있는 소스가아닌 미러에서 다운로드
-                  합니다.
+                  환경이 rubygems.org 서버의 로컬 미러를 가지고 있다면,
+                  <code>mirror.URL</code>에 미러의 주소를 설정합니다. 그 시점에서 번들러는
+                  Gemfile 안의 소스 대신, 미러에서 젬과 젬스펙을 다운로드 합니다.
                 </p>
                 <pre class="highlight plaintext">$ bundle config mirror.https://rubygems.org https://localgems.lan&#x000A;  &lt;code&gt;--deployment&lt;/code&gt; is used.</pre>
               </div>
             </div>
           </div>
         </div>
-        <div id='sidebar'>
-          <h2>Would you like to</h2>
-          <ul>
-            <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
-            <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
-            <li><a href="/bundler-site/#get-involved">기여하기</a></li>
-            <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
-          </ul>
-          <h2>번들러 명령어</h2>
-          <ul>
-            <li><a href="/bundler-site/v1.5/bundle_install.html">bundle install</a></li>
-            <li><a href="/bundler-site/v1.5/bundle_update.html">bundle update</a></li>
-            <div class='buttons'>
-              <a href="/bundler-site/v1.5/commands.html">모든 명령어 보기</a>
-            </div>
-          </ul>
-          <h2>사용법</h2>
-          <ul>
-            <li><a href="/bundler-site/v1.5/gemfile.html">젬파일</a></li>
-            <li><a href="/bundler-site/v1.5/groups.html">그룹</a></li>
-            <li><a href="/bundler-site/v1.5/git.html">깃으로부터의 젬</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_setup.html">Bundler.setup</a></li>
-            <li><a href="/bundler-site/v1.5/deploying.html">배포하기</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_sharing.html">공유하기</a></li>
-            <li><a href="/bundler-site/v1.5/updating_gems.html">젬 갱신하기</a></li>
-            <li><a href="/bundler-site/compatibility.html">호환가능한 버전</a></li>
-          </ul>
-          <h2>프레임워크와 함께 사용하기</h2>
-          <ul>
-            <li><a href="/bundler-site/v1.5/rails3.html">레일즈 3</a></li>
-            <li><a href="/bundler-site/v1.5/rails23.html">레일즈 2.3</a></li>
-            <li><a href="/bundler-site/v1.5/sinatra.html">시나트라</a></li>
-            <li><a href="/bundler-site/v1.5/rubygems.html">루비젬</a></li>
-            <li><a href="/bundler-site/v1.5/rubymotion.html">루비모션</a></li>
-          </ul>
-          <div class='shirts'>
-            <div class='content'>
-                            <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
-              </a>
-
-              <p>
-                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">번들러 셔츠와 스티커를 사세요!</a>
-              </p>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
     <div id='footer'>
@@ -334,31 +288,27 @@
       <div class='spacer'></div>
       <div id='credits'>
         <p>
-          Many thanks to Bundler's <a href="/bundler-site/contributors.html">컨트리뷰터</a>
-          and <a href="/bundler-site/sponsors.html">스폰서</a>
+          Many thanks to Bundler's <a href="/bundler-site/contributors.html">contributors</a>
+          and <a href="/bundler-site/sponsors.html">sponsors</a>
         </p>
       </div>
       <div class='spacer'></div>
       <img src="/bundler-site/images/bundler-small.png" />
     </div>
-    <a href='http://github.com/ruby-korea/bundler-site/' id='github'>
+    <a href='http://github.com/bundler/bundler/' id='github'>
       <img alt='Fork me on GitHub' src='http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png'>
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/">v0.9</a>
-      <a href="/bundler-site/v1.0/">v1.0</a>
-      <a href="/bundler-site/v1.1/">v1.1</a>
-      <a href="/bundler-site/v1.2/">v1.2</a>
-      <a href="/bundler-site/v1.3/">v1.3</a>
-      <a class="current" href="/bundler-site/">v1.5</a>
+      <a href="/bundler-site/v1.8/">Previous Version (v1.8)</a>
+      <a href="/">Current Version (v1.9)</a>
     </div>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-39559982-1', 'ruby-korea.github.io/bundler-site');
+      ga('create', 'UA-39559982-1', 'bundler.io');
       ga('send', 'pageview');
     </script>
   </body>

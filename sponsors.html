@@ -1,123 +1,147 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bundler: The best way to manage a Ruby application's gems</title>
+    <title>
+      Bundler: The best way to manage a Ruby application's gems
+    </title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href='/images/favicon.png' rel='shortcut icon' type='image/png'>
-    <link href="/bundler-site/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/images/images/favicon.png" rel="icon" type="image/png" />
+    <link href="/bundler-site/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
   </head>
   <body>
     <div id='body'>
       <div id='header'>
-        <a class="image" href="/bundler-site/"><img width="725" alt="어플리케이션의 의존성을 관리하는 최선의 방법" src="/bundler-site/images/gembundler.png" /></a>
+        <a class="image" href="/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
       </div>
       <div id='container'>
         <div id='contents'>
           <h2>Bundler Project Sponsors</h2>
           <p>Development work on Bundler has been sponsored by many companies over the years. Here, we thank the companies that have directly contributed money or significant paid time to implement features or fix bugs.</p>
-          <div class='contributor'>
-            <a href="http://heroku.com"><img class="avatar" src="/bundler-site/images/sponsors/heroku.png" /></a>
-            <h3><a href="http://heroku.com">Heroku</a></h3>
-            <p>Heroku employs <a href="https://github.com/hone">Terence Lee</a> to maintain the Ruby platform on Heroku, including ongoing contributions to Bundler.</p>
-          </div>
-          <div class='contributor'>
-            <a href="http://engineyard.com"><img class="avatar" src="/bundler-site/images/sponsors/engineyard.png" /></a>
-            <h3><a href="http://engineyard.com">Engine Yard</a></h3>
-            <p>Engine Yard employed <a href="https://github.com/wycats">Yehuda Katz</a>, <a href="https://github.com/carllerche">Carl Lerche</a>, and <a href="https://github.com/indirect">André Arko</a> during the initial development of Bundler. Later, they sponsored the development of the <code>bundle inject</code> command.</p>
-          </div>
-          <div class='contributor'>
-            <a href="http://www.mavenlink.com"><img class="avatar" src="/bundler-site/images/sponsors/mavenlink.png" /></a>
-            <h3><a href="http://www.mavenlink.com">Mavenlink</a></h3>
-            <p>Mavenlink employed <a href="https://github.com/indirect">André Arko</a> to work full-time on open source software, including Bundler, for several months.</p>
-          </div>
-          <div class='contributor'>
-            <a href="http://travis-ci.org"><img class="avatar" src="/bundler-site/images/sponsors/travis.png" /></a>
-            <h3><a href="http://travis-ci.org">Travis CI</a></h3>
-            <p>Travis provides <a href="http://travis-ci.org/bundler/bundler/">Bundler's continuous integration</a> infrastructure, which uses servers donated by <a href="http://bluebox.net">BlueBox</a> to automatically test Bundler against all of the Ruby and Rubygems versions that we support.</p>
-          </div>
-          <div class='contributor'>
-            <a href="http://www.globalsign.com"><img class="avatar" src="/bundler-site/images/sponsors/globalsign.png" /></a>
-            <h3><a href="http://www.globalsign.com">Globalsign</a></h3>
-            <p>Globalsign donates SSL certificates for Bundler's website, <a href="http://ruby-korea.github.io/bundler-site">ruby-korea.github.io/bundler-site</a></p>
+          <div class='sponsors'>
+            <div class='sponsor'>
+              <a href="http://heroku.com"><img class="avatar" src="/bundler-site/images/sponsors/heroku.png" /></a>
+              <h3><a href="http://heroku.com">Heroku</a></h3>
+              <p>Heroku employs <a href="https://github.com/hone">Terence Lee</a> to maintain the Ruby platform on Heroku, including ongoing contributions to Bundler.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="http://engineyard.com"><img class="avatar" src="/bundler-site/images/sponsors/engineyard.png" /></a>
+              <h3><a href="http://engineyard.com">Engine Yard</a></h3>
+              <p>Engine Yard employed <a href="https://github.com/wycats">Yehuda Katz</a>, <a href="https://github.com/carllerche">Carl Lerche</a>, and <a href="https://github.com/indirect">André Arko</a> during the initial development of Bundler and sponsored the development of the <code>bundle inject</code> command. They also provide a weekly sponsorship to support ongoing development work on Bundler.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="http://stripe.com"><img class="avatar" src="/bundler-site/images/sponsors/stripe.png" /></a>
+              <h3><a href="http://stripe.com">Stripe</a></h3>
+              <p>Stripe provides a weekly sponsorship to support ongoing development work on Bundler.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="http://travis-ci.org"><img class="avatar" src="/bundler-site/images/sponsors/travis.png" /></a>
+              <h3><a href="http://travis-ci.org">Travis CI</a></h3>
+              <p>Travis provides <a href="http://travis-ci.org/bundler/bundler/">Bundler's continuous integration</a> infrastructure, which uses servers donated by <a href="http://bluebox.net">BlueBox</a> to automatically test Bundler against all of the Ruby and RubyGems versions that we support.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="http://www.mavenlink.com"><img class="avatar" src="/bundler-site/images/sponsors/mavenlink.png" /></a>
+              <h3><a href="http://www.mavenlink.com">Mavenlink</a></h3>
+              <p>Mavenlink employed <a href="https://github.com/indirect">André Arko</a> to work full-time on open source software, including Bundler, for several months.</p>
+            </div>
           </div>
           <h2>Bundler API Sponsors</h2>
           <p>The <a href="http://github.com/rubygems/bundler-api">Bundler dependency API</a> provides dependency information to Bundler version 1.1 and higher. It speeds up `bundle install` by several times over, but requires server capacity beyond what RubyCentral is able to provide for rubygems.org. These sponsors have provided the resources that make hosting the Bundler API possible.</p>
-          <div class='contributor'>
-            <a href="http://heroku.com"><img class="avatar" src="/bundler-site/images/sponsors/heroku.png" /></a>
-            <h3><a href="http://heroku.com">Heroku</a></h3>
-            <p>Heroku provides the Ruby and Postgres servers that the API runs on.</p>
-          </div>
-          <div class='contributor'>
-            <a href="http://librato.com"><img class="avatar" src="/bundler-site/images/sponsors/librato.png" /></a>
-            <h3><a href="http://librato.com">Librato</a></h3>
-            <p>Librato provides metrics, analytics, and <a href="https://metrics.librato.com/share/dashboards/k4b5bhm8">the API dashboard</a>.</p>
-          </div>
-          <div class='contributor'>
-            <a href="http://honeybadger.io"><img class="avatar" src="/bundler-site/images/sponsors/honeybadger.png" /></a>
-            <h3><a href="http://honeybadger.io">Honeybadger</a></h3>
-            <p>Honeybadger provides exception reporting, tracking, and alerting.</p>
-          </div>
-          <div class='contributor'>
-            <a href="http://pagerduty.com"><img class="avatar" src="/bundler-site/images/sponsors/pagerduty.png" /></a>
-            <h3><a href="http://pagerduty.com">PagerDuty</a></h3>
-            <p>PagerDuty provides operational alerting, notifications, and on-call schedule rotation.</p>
-          </div>
-          <div class='contributor'>
-            <a href="http://papertrailapp.com"><img class="avatar" src="/bundler-site/images/sponsors/papertrail.png" /></a>
-            <h3><a href="http://papertrailapp.com">Papertrail</a></h3>
-            <p>Papertrail provides hosted log management for all of the API servers.</p>
-          </div>
-          <div class='contributor'>
-            <a href="http://rollbar.com"><img class="avatar" src="/bundler-site/images/sponsors/rollbar.png" /></a>
-            <h3><a href="http://rollbar.com">Rollbar</a></h3>
-            <p>Rollbar provides exception tracking and analysis.</p>
+          <div class='sponsors'>
+            <div class='sponsor'>
+              <a href="http://heroku.com"><img class="avatar" src="/bundler-site/images/sponsors/heroku.png" /></a>
+              <h3><a href="http://heroku.com">Heroku</a></h3>
+              <p>Heroku provides the Ruby and Postgres servers that the API runs on.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="http://librato.com"><img class="avatar" src="/bundler-site/images/sponsors/librato.png" /></a>
+              <h3><a href="http://librato.com">Librato</a></h3>
+              <p>Librato provides metrics, analytics, and <a href="https://metrics.librato.com/share/dashboards/k4b5bhm8">the API dashboard</a>.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="http://honeybadger.io"><img class="avatar" src="/bundler-site/images/sponsors/honeybadger.png" /></a>
+              <h3><a href="http://honeybadger.io">Honeybadger</a></h3>
+              <p>Honeybadger provides exception reporting, tracking, and alerting.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="http://pagerduty.com"><img class="avatar" src="/bundler-site/images/sponsors/pagerduty.png" /></a>
+              <h3><a href="http://pagerduty.com">PagerDuty</a></h3>
+              <p>PagerDuty provides operational alerting, notifications, and on-call schedule rotation.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="http://papertrailapp.com"><img class="avatar" src="/bundler-site/images/sponsors/papertrail.png" /></a>
+              <h3><a href="http://papertrailapp.com">Papertrail</a></h3>
+              <p>Papertrail provides hosted log management for all of the API servers.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="//appsignal.com"><img class="avatar" src="/bundler-site/images/sponsors/appsignal.png" /></a>
+              <h3><a href="//appsignal.com">AppSignal</a></h3>
+              <p>AppSignal provides error tracking and performance monitoring.</p>
+            </div>
+            <div class='sponsor'>
+              <a href="http://rollbar.com"><img class="avatar" src="/bundler-site/images/sponsors/rollbar.png" /></a>
+              <h3><a href="http://rollbar.com">Rollbar</a></h3>
+              <p>Rollbar provides exception tracking and analysis.</p>
+            </div>
           </div>
         </div>
         <div id='sidebar'>
           <h2>Would you like to</h2>
           <ul>
-            <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
-            <li><a href="/bundler-site/v1.5/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/v1.5/man/bundle.1.html">문서 읽기</a></li>
-            <li><a href="/bundler-site/#get-involved">기여하기</a></li>
-            <li><a href="/bundler-site/v1.5/faq.html">FAQ 보기</a></li>
+            <li><a href="/#getting-started">Get started</a></li>
+            <li><a href="/bundler-site/issues.html">Report a bug</a></li>
+            <li><a href="/bundler-site/v1.9/whats_new.html">See what's new</a></li>
+            <li><a href="/v1.9/man/bundle.1.html">Read documentation</a></li>
+            <li><a href="/#get-involved">Discuss and Contribute</a></li>
+            <li><a href="/bundler-site/v1.9/faq.html">View FAQs</a></li>
           </ul>
-          <h2>번들러 명령어</h2>
+          <h2>Read the latest news</h2>
           <ul>
-            <li><a href="/bundler-site/v1.5/bundle_install.html">bundle install</a></li>
-            <li><a href="/bundler-site/v1.5/bundle_update.html">bundle update</a></li>
+            <li>
+              <a href="/bundler-site/blog/2015/03/21/hello-bundler-19.html">Hello, Bundler 1.9!</a>
+            </li>
+            <li>
+              <a href="/bundler-site/blog/2015/03/20/moving-bins-to-exe.html">Bundler template moves bins to exe</a>
+            </li>
             <div class='buttons'>
-              <a href="/bundler-site/v1.5/commands.html">모든 명령어 보기</a>
+              <a href="/blog/">All posts</a>
             </div>
           </ul>
-          <h2>사용법</h2>
+          <h2>Bundler commands</h2>
           <ul>
-            <li><a href="/bundler-site/v1.5/gemfile.html">젬파일</a></li>
-            <li><a href="/bundler-site/v1.5/groups.html">그룹</a></li>
-            <li><a href="/bundler-site/v1.5/git.html">깃으로부터의 젬</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_setup.html">Bundler.setup</a></li>
-            <li><a href="/bundler-site/v1.5/deploying.html">배포하기</a></li>
-            <li><a href="/bundler-site/v1.5/bundler_sharing.html">공유하기</a></li>
-            <li><a href="/bundler-site/v1.5/updating_gems.html">젬 갱신하기</a></li>
-            <li><a href="/bundler-site/compatibility.html">호환가능한 버전</a></li>
+            <li><a href="/bundler-site/v1.9/bundle_install.html">bundle install</a></li>
+            <li><a href="/bundler-site/v1.9/bundle_update.html">bundle update</a></li>
+            <div class='buttons'>
+              <a href="/bundler-site/v1.9/commands.html">View all commands</a>
+            </div>
           </ul>
-          <h2>프레임워크와 함께 사용하기</h2>
+          <h2>Help with</h2>
           <ul>
-            <li><a href="/bundler-site/v1.5/rails3.html">레일즈 3</a></li>
-            <li><a href="/bundler-site/v1.5/rails23.html">레일즈 2.3</a></li>
-            <li><a href="/bundler-site/v1.5/sinatra.html">시나트라</a></li>
-            <li><a href="/bundler-site/v1.5/rubygems.html">루비젬</a></li>
-            <li><a href="/bundler-site/v1.5/rubymotion.html">루비모션</a></li>
+            <li><a href="/bundler-site/v1.9/gemfile.html">Gemfiles</a></li>
+            <li><a href="/bundler-site/v1.9/groups.html">Groups</a></li>
+            <li><a href="/bundler-site/v1.9/git.html">Gems from git</a></li>
+            <li><a href="/bundler-site/v1.9/bundler_setup.html">Bundler.setup</a></li>
+            <li><a href="/bundler-site/v1.9/deploying.html">Deploying</a></li>
+            <li><a href="/bundler-site/v1.9/bundler_sharing.html">Sharing</a></li>
+            <li><a href="/bundler-site/v1.9/updating_gems.html">Updating Gems</a></li>
+            <li><a href="/bundler-site/compatibility.html">Compatiblity</a></li>
+            <li><a href="/bundler-site/older_versions.html">Older Versions</a></li>
+          </ul>
+          <h2>Use Bundler with</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.9/rails3.html">Rails 3</a></li>
+            <li><a href="/bundler-site/v1.9/rails23.html">Rails 2.3</a></li>
+            <li><a href="/bundler-site/v1.9/sinatra.html">Sinatra</a></li>
+            <li><a href="/bundler-site/v1.9/rubygems.html">RubyGems</a></li>
+            <li><a href="/bundler-site/v1.9/rubymotion.html">RubyMotion</a></li>
           </ul>
           <div class='shirts'>
             <div class='content'>
-                            <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
+              <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
               </a>
-
               <p>
-                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">번들러 셔츠와 스티커를 사세요!</a>
+                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">Buy Bundler Shirts & Stickers!</a>
               </p>
             </div>
           </div>
@@ -130,31 +154,27 @@
       <div class='spacer'></div>
       <div id='credits'>
         <p>
-          Many thanks to Bundler's <a href="/bundler-site/contributors.html">컨트리뷰터</a>
-          and <a href="/bundler-site/sponsors.html">스폰서</a>
+          Many thanks to Bundler's <a href="/bundler-site/contributors.html">contributors</a>
+          and <a href="/bundler-site/sponsors.html">sponsors</a>
         </p>
       </div>
       <div class='spacer'></div>
       <img src="/bundler-site/images/bundler-small.png" />
     </div>
-    <a href='http://github.com/ruby-korea/bundler-site/' id='github'>
+    <a href='http://github.com/bundler/bundler/' id='github'>
       <img alt='Fork me on GitHub' src='http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png'>
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v0.9/">v0.9</a>
-      <a href="/bundler-site/v1.0/">v1.0</a>
-      <a href="/bundler-site/v1.1/">v1.1</a>
-      <a href="/bundler-site/v1.2/">v1.2</a>
-      <a href="/bundler-site/v1.3/">v1.3</a>
-      <a class="current" href="/bundler-site/">v1.5</a>
+      <a href="/bundler-site/v1.8/">Previous Version (v1.8)</a>
+      <a class="current" href="/">Current Version (v1.9)</a>
     </div>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-39559982-1', 'ruby-korea.github.io/bundler-site');
+      ga('create', 'UA-39559982-1', 'bundler.io');
       ga('send', 'pageview');
     </script>
   </body>
