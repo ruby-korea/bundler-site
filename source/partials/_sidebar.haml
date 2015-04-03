@@ -1,47 +1,47 @@
 #sidebar
   %h2 Would you like to
   %ul
-    %li= link_to 'Get started', '/#getting-started'
-    %li= link_to 'Report a bug', '/issues.html'
-    %li= link_to "See what's new", "/#{current_version}/whats_new.html"
-    %li= link_to 'Read documentation', "/#{current_version}/man/bundle.1.html"
-    %li= link_to 'Discuss and Contribute', '/#get-involved'
-    %li= link_to 'View FAQs', "/#{current_version}/faq.html"
+    %li= link_to '시작하기', '/#getting-started'
+    %li= link_to '버그 리포트', '/issues.html'
+    %li= link_to '새로운 기능 확인하기', "/#{current_version}/whats_new.html"
+    %li= link_to '문서 읽기', "/#{current_version}/man/bundle.1.html"
+    %li= link_to '토론하고 기여하기', '/#get-involved'
+    %li= link_to 'FAQ 보기', "/#{current_version}/faq.html"
 
-  %h2 Read the latest news
+  %h2 최신 뉴스 읽기
   %ul
     - blog.articles[0..1].each_with_index do |article, index|
       %li
         = link_to article.title, article.url
     .buttons
-      = link_to 'All posts', '/blog/'
+      = link_to '모든 기사', '/blog/'
 
-  %h2 Bundler commands
+  %h2 번들러 명령어
   %ul
     %li= link_to 'bundle install', "/#{current_version}/bundle_install.html"
     %li= link_to 'bundle update', "/#{current_version}/bundle_update.html"
     .buttons
-      = link_to 'View all commands', "/#{current_version}/commands.html"
+      = link_to '모든 명령어 보기', "/#{current_version}/commands.html"
 
-  %h2 Help with
+  %h2 사용법
   %ul
-    %li= link_to 'Gemfiles', "/#{current_version}/gemfile.html"
-    %li= link_to 'Groups', "/#{current_version}/groups.html"
-    %li= link_to 'Gems from git', "/#{current_version}/git.html"
+    %li= link_to 'Gemfile', "/#{current_version}/gemfile.html"
+    %li= link_to '그룹', "/#{current_version}/groups.html"
+    %li= link_to 'git으로부터의 gem', "/#{current_version}/git.html"
     %li= link_to 'Bundler.setup', "/#{current_version}/bundler_setup.html"
-    %li= link_to 'Deploying', "/#{current_version}/deploying.html"
-    %li= link_to 'Sharing', "/#{current_version}/bundler_sharing.html"
-    %li= link_to 'Updating Gems', "/#{current_version}/updating_gems.html"
-    %li= link_to 'Compatiblity', '/compatibility.html'
-    %li= link_to 'Older Versions', '/older_versions.html'
+    %li= link_to '배포하기', "/#{current_version}/deploying.html"
+    %li= link_to '공유하기', "/#{current_version}/bundler_sharing.html"
+    %li= link_to 'gem 갱신하기', "/#{current_version}/updating_gems.html"
+    %li= link_to '호환가능한 버전', '/compatibility.html'
+    %li= link_to '이전 버전', '/older_versions.html'
 
   %h2 Use Bundler with
   %ul
-    %li= link_to 'Rails 3', "/#{current_version}/rails3.html"
-    %li= link_to 'Rails 2.3', "/#{current_version}/rails23.html"
-    %li= link_to 'Sinatra', "/#{current_version}/sinatra.html"
-    %li= link_to 'RubyGems', "/#{current_version}/rubygems.html"
-    %li= link_to 'RubyMotion', "/#{current_version}/rubymotion.html"
+    %li= link_to '레일스 3', "/#{current_version}/rails3.html"
+    %li= link_to '레일스 2.3', "/#{current_version}/rails23.html"
+    %li= link_to '시나트라', "/#{current_version}/sinatra.html"
+    %li= link_to '루비젬스', "/#{current_version}/rubygems.html"
+    %li= link_to '루비모션', "/#{current_version}/rubymotion.html"
 
   .shirts
     .content
