@@ -27,12 +27,12 @@
       gem 'rack',  '>=1.0'
       gem 'thin',  '~>1.1'
     .notes
-      <code>&gt;= 1.0</code> 같은 대부분의 버전 지정자는 자기 자신을 설명합니다.
-      지정자 <code>~&gt;</code>는 특별한 의미가 있습니다. 예제로 설명하겠습니다.
-      <code>~&gt; 2.0.3</code>은 <code>&gt;= 2.0.3</code> 그리고 <code>&lt; 2.1</code>과 같습니다.
-      <code>~&gt; 2.1</code>은 <code>&gt;= 2.1</code> 그리고 <code>&lt; 3.0</code>과 같습니다.
-      <code>~&gt; 2.2.beta</code>는 <code>2.2.beta.12</code> 같은 사전 릴리스 버전과 같습니다.
-    = link_to '루비젬의 버전 지정자', 'http://guides.rubygems.org/patterns/#pessimistic_version_constraint'
+      Most of the version specifiers, like <code>>= 1.0</code>, are self-explanatory.
+      The specifier <code>~></code> has a special meaning, best shown by example.
+      <code>~> 2.0.3</code> is identical to <code>>= 2.0.3</code> and <code>< 2.1</code>.
+      <code>~> 2.1</code> is identical to <code>>= 2.1</code> and <code>< 3.0</code>.
+      <code>~> 2.2.beta</code> will match prerelease versions like <code>2.2.beta.12</code>.
+    = link_to 'RubyGems version specifiers', 'http://guides.rubygems.org/patterns/#pessimistic_version_constraint'
 
   .bullet
     .description
@@ -59,7 +59,7 @@
       있습니다. 기본 값은 <code>master</code> 브랜치입니다.
     :code
       # lang: ruby
-      gem 'nokogiri', :git => 'git://github.com/tenderlove/nokogiri.git', :branch => '1.4'
+      gem 'nokogiri', :git => 'https://github.com/tenderlove/nokogiri.git', :branch => '1.4'
     .notes
       깃 저장소가 <code>.gemspec</code> 파일을 가지고 있지 않다면, 번들러가 의존성, 실행 파일,
       C 확장 설정이 없는 간단한 <code>.gemspec</code> 파일을 생성합니다.

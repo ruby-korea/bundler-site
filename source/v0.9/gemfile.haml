@@ -3,12 +3,12 @@
 .contents
   .bullet
     .description
-      Gemfiles require at least one gem source, in the form of the URL for a Rubygems server.
+      Gemfiles require at least one gem source, in the form of the URL for a RubyGems server.
       There are shortcuts for the default gem server, so all of these sources are the same.
     :code
       # lang: ruby
       source :rubygems
-      source 'http://rubygems.org'
+      source 'https://rubygems.org'
       source :rubyforge
       source 'http://gems.rubyforge.org'
       source :gemcutter
@@ -17,7 +17,7 @@
   .bullet
     .description
       Declare the gems that you need, including version numbers. Specify versions using the same
-      syntax that Rubygems supports for dependencies.
+      syntax that RubyGems supports for dependencies.
     :code
       # lang: ruby
       gem 'nokogiri'
@@ -39,9 +39,9 @@
       Specify what to check out with :tag, :branch, or :ref. The default is the master branch.
     :code
       # lang: ruby
-      gem 'nokogiri', :git => 'git://github.com/tenderlove/nokogiri.git', :branch => '1.4'
+      gem 'nokogiri', :git => 'https://github.com/tenderlove/nokogiri.git', :branch => '1.4'
 
-      git 'git://github.com/wycats/thor.git', :tag => 'v0.13.4'
+      git 'https://github.com/wycats/thor.git', :tag => 'v0.13.4'
       gem 'thor'
     = link_to 'Learn more: Git', 'git.html'
 

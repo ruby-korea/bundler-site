@@ -1,83 +1,15 @@
 !!!
-- v = current_page.url.scan(/v\d\.\d/).first || 'v1.5'
+- v = current_page.url.scan(/v\d\.\d/).first || current_version
 %html
   %head
-    %title Bundler: The best way to manage a Ruby application's gems
-    %meta{'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=UTF-8'}
-    %meta{'name' => 'globalsign-domain-verification', 'content' => '276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL'}
-    %link{:rel => 'shortcut icon', :href => '/images/favicon.png', :type => 'image/png'}
-    = stylesheet_link_tag 'application'
+    = partial 'partials/head'
   %body
     #body
       #header
-        - logo_img = image_tag('gembundler.png', :width => 725, :alt => '애플리케이션의 의존성을 관리하는 최선의 방법')
-        = link_to logo_img, '/index.html', :class => 'image'
+        - logo_img = image_tag('gembundler.png', :width => 725, :alt => "The best way to manage your application's dependencies")
+        = link_to logo_img, '/', :class => 'image'
       #container
         #contents
           = yield
-        - if v == 'v1.5'
-          #sidebar
-            %h2 Would you like to
-            %ul
-              %li= link_to '시작하기', '/index.html#getting-started'
-              %li= link_to '버그 리포트', '/issues.html'
-              %li= link_to '새로운 기능 확인하기', '/v1.5/whats_new.html'
-              %li= link_to '문서 읽기', '/v1.5/man/bundle.1.html'
-              %li= link_to '기여하기', '/index.html#get-involved'
-              %li= link_to 'FAQ 보기', '/v1.5/faq.html'
-            %h2 번들러 명령어
-            %ul
-              %li= link_to 'bundle install', '/v1.5/bundle_install.html'
-              %li= link_to 'bundle update', '/v1.5/bundle_update.html'
-              .buttons
-                = link_to '모든 명령어 보기', '/v1.5/commands.html'
-            %h2 사용법
-            %ul
-              %li= link_to '젬파일', '/v1.5/gemfile.html'
-              %li= link_to '그룹', '/v1.5/groups.html'
-              %li= link_to '깃으로부터의 젬', '/v1.5/git.html'
-              %li= link_to 'Bundler.setup', '/v1.5/bundler_setup.html'
-              %li= link_to '배포하기', '/v1.5/deploying.html'
-              %li= link_to '공유하기', '/v1.5/bundler_sharing.html'
-              %li= link_to '젬 갱신하기', '/v1.5/updating_gems.html'
-              %li= link_to '호환가능한 버전', '/compatibility.html'
-            %h2 프레임워크와 함께 사용하기
-            %ul
-              %li= link_to '레일즈 3', '/v1.5/rails3.html'
-              %li= link_to '레일즈 2.3', '/v1.5/rails23.html'
-              %li= link_to '시나트라', '/v1.5/sinatra.html'
-              %li= link_to '루비젬', '/v1.5/rubygems.html'
-              %li= link_to '루비모션', '/v1.5/rubymotion.html'
-
-            .shirts
-              .content
-                = link_to 'http://www.devswag.com/collections/bundler', :class => 'image', :onclick => "ga('send', 'devswag');" do
-                  = image_tag '/images/bundler-shirt.png'
-                %p
-                  =link_to '번들러 셔츠와 스티커를 사세요!', 'http://www.devswag.com/collections/bundler', :onclick => "ga('send', 'devswag');"
-
-    #footer
-      = image_tag 'emocow.png'
-      = image_tag 'panda.jpg'
-      .spacer
-      #credits
-        %p
-          == Many thanks to Bundler's #{link_to '컨트리뷰터', '/contributors.html' }
-          == and #{link_to '스폰서', '/sponsors.html' }
-      .spacer
-      = image_tag 'bundler-small.png'
-    %a#github{ :href => 'http://github.com/ruby-korea/bundler-site/' }
-      %img{ :src => 'http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png', :alt => 'Fork me on GitHub' }
-    #prod-versions
-      Docs:
-      - %w(v0.9 v1.0 v1.1 v1.2 v1.3).each do |lv|
-        = link_to(lv, "/#{lv}/index.html", :class => ('current' if v == lv))
-      = link_to("v1.5", "/index.html", :class => ('current' if v == 'v1.5'))
-
-    :javascript
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-39559982-1', 'ruby-korea.github.io/bundler-site');
-      ga('send', 'pageview');
+        = partial 'partials/sidebar' if v == current_version
+    = partial 'partials/footer', locals: { v: v }

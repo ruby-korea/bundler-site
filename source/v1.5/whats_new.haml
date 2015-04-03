@@ -21,8 +21,8 @@
 .contents
   .bullet
     .description
-      번들러는 이제 <code>bundle config</code>로 Gemfile에 지역적으로 미러를 사용할 수 있게 되었습니다. <code> bundle config mirror.http://rubygems.org http://rubygems-mirror.org/</code>
-    = link_to '자세한 내용은: Source Mirrors', './bundle_config.html#gem-source-mirrors'
+      Bundler now supports the ability to use a gem mirror in a Gemfile locally by using <code>bundle config</code>. <code> bundle config mirror.https://rubygems.org https://rubygems-mirror.org/</code>
+    = link_to 'Learn More: Source Mirrors', './bundle_config.html#gem-source-mirrors'
 
 %h2#ruby-patchlevel
 
@@ -61,4 +61,3 @@
         %li <code>bundle</code>에서 오타 냈을 경우를 위한 <code>bundler</code> 명령어
         %li 윈도우와의 더 좋은 호환성을 위한 RUBYLIB
         = link_to '1.5의 전체 changelog', 'https://github.com/bundler/bundler/blob/1-5-stable/CHANGELOG.md'
-

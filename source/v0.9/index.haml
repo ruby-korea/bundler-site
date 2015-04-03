@@ -13,7 +13,7 @@
 
   .bullet
     .description
-      If you're on an old version of Rubygems
+      If you're on an old version of RubyGems
       (before 1.3.6)
     :code
       $ gem update --system
@@ -23,7 +23,7 @@
       Specify your dependencies in a Gemfile in your project's root
     :code
       # lang: ruby
-      source 'http://rubygems.org'
+      source 'https://rubygems.org'
       gem 'nokogiri'
       gem 'rack', '~>1.1'
       gem 'rspec', :require => 'spec'
@@ -117,7 +117,7 @@
       Use a gem that is stored in git and has a .gemspec at its root. Gemspecs with bins or C extensions are supported
     :code
       # lang: ruby
-      gem 'nokogiri', :git => 'git://github.com/tenderlove/nokogiri.git'
+      gem 'nokogiri', :git => 'https://github.com/tenderlove/nokogiri.git'
     = link_to 'Learn more: Git', 'git.html'
 
   .bullet
