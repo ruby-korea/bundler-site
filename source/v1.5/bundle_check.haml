@@ -3,7 +3,7 @@
 .contents
   .bullet
     .description
-      Gemfile의 의존성들이 현재 설치된 젬들로 만족되는지 체크
+      Gemfile의 의존성들이 현재 설치된 gem으로 만족되는지 체크
     :code
       $ bundle check [--gemfile=FILE] [--path=PATH]
     .notes
@@ -14,6 +14,6 @@
       %p
         <code>--path</code>: 시스템 기본값($BUNDLE_PATH 이나 $GEM_HOME) 대신 다른 경로를 지정. 번들러는 이 기기에서 할 앞으로의 설치를 위해 이 값을 기억합니다.
     .description
-      Check는 로컬 기기에서 Gemfile에서 요청된 젬을 찾습니다. 모든 젬이 있다면 번들러는
-      성공 메세지를 출력하고 상태 코드 0으로 종료합니다. 없다면 가장 처음에 없는 젬이
+      Check는 로컬 기기에서 Gemfile에서 요청된 gem을 찾습니다. 모든 gem이 있다면 번들러는
+      성공 메세지를 출력하고 상태 코드 0으로 종료합니다. 없다면 가장 처음에 없는 gem이
       나열되며 상태 코드 1로 종료합니다.

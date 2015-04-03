@@ -9,12 +9,12 @@
         사용가능한 옵션
     = command_table_row do |command|
       - command.name   = 'check'
-      - command.desc   = 'Gemfile의 목록이 현재 설치된 젬의 의존성을 만족하는지 확인'
+      - command.desc   = 'Gemfile의 목록이 현재 설치된 gem의 의존성을 만족하는지 확인'
       - command.option = 'gemfile'
       - command.option = 'path'
     = command_table_row do |command|
       - command.name   = 'clean'
-      - command.desc   = '번들러 디렉터리에서 사용하지 않는 젬을 청소'
+      - command.desc   = '번들러 디렉터리에서 사용하지 않는 gem을 청소'
       - command.option = 'force'
     = command_table_row do |command|
       - command.name   = 'config'
@@ -27,7 +27,7 @@
       - command.desc   = '번들의 컨텍스트에서 명령어 실행'
     = command_table_row do |command|
       - command.name   = 'gem'
-      - command.desc   = '루비젬을 만들기 위한 템플릿 생성'
+      - command.desc   = '루비젬을 만들기 위한 뼈대 생성'
       - command.option = 'bin or -b'
     = command_table_row do |command|
       - command.name   = 'help'
@@ -56,16 +56,16 @@
       - command.option = 'without'
     = command_table_row do |command|
       - command.name   = 'open'
-      - command.desc   = '주어진 번들 젬의 소스 디렉터리 열기'
+      - command.desc   = '주어진 번들 gem의 소스 디렉터리 열기'
     = command_table_row do |command|
       - command.name   = 'outdated'
-      - command.desc   = '새로운 버전이 나온 설치된 젬 목록'
+      - command.desc   = '새로운 버전이 나온 설치된 gem 목록'
       - command.option = 'local'
       - command.option = 'pre'
       - command.option = 'source'
     = command_table_row do |command|
       - command.name   = 'package'
-      - command.desc   = 'vendor/cache에 모든 젬을 캐시, 락'
+      - command.desc   = 'vendor/cache에 모든 gem을 캐시, 락'
       - command.option = 'no-prune'
       - command.option = 'all'
     = command_table_row do |command|
@@ -74,7 +74,7 @@
       - command.option = 'ruby'
     = command_table_row do |command|
       - command.name   = 'show'
-      - command.desc   = '번들에 포함된 모든 젬의 목록이나, 특정 젬의 경로를 표시'
+      - command.desc   = '번들에 포함된 모든 gem의 목록이나, 특정 gem의 경로를 표시'
       - command.option = 'paths'
     = command_table_row do |command|
       - command.name   = 'update'

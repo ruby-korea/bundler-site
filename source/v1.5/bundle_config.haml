@@ -90,11 +90,11 @@
   .bullet#build_options
     .description
       %p
-        <code>bundle config</code>는 특정 젬을 설치할 때마다 인스톨러에 플래그를
+        <code>bundle config</code>는 특정 gem을 설치할 때마다 인스톨러에 플래그를
         넘겨주는 용도로도 사용할 수 있습니다.
 
       %p
-        매우 일반적인 예로 <code>mysql</code> 젬은 스노우 레퍼드에서 <code>gem
+        매우 일반적인 예로 <code>mysql</code> gem은 스노우 레퍼드에서 <code>gem
         install</code>을 할 때 <code>mysql_config</code> 실행 파일을 찾기 위한 설정
         플래그를 필요로 합니다.
 
@@ -110,7 +110,7 @@
         :code
           $ bundle config build.mysql --with-mysql-config=/usr/local/mysql/bin/mysql_config
       %p
-        이 명령어를 실행하면 <code>mysql</code> 젬을 설치해야 할 때마다 지정한
+        이 명령어를 실행하면 <code>mysql</code> gem을 설치해야 할 때마다 지정한
         플레그를 함께 넘겨 줍니다.
 
 
@@ -126,7 +126,7 @@
         예를 들어, <code>bundle install</code>에 <code>--without</code> 플래그를
         넘겨주어 번들러가 <code>Gemfile</code>의 특정그룹을 설치하는 것을 막는
         경우 번들러는 이 값을 <code>app/.bundle/config</code> 안에 남겨두어
-        <code>Bundler.setup</code>이 <code>Gemfile</code>에서 설치되지 않은 젬을
+        <code>Bundler.setup</code>이 <code>Gemfile</code>에서 설치되지 않은 gem을
         찾으려 하지 않도록 합니다. 덤으로 <code>bundle install</code>을 또 실행
         할 때 이 설정을 기억해 두었다가 그 그룹들을 생략합니다.
 
@@ -145,7 +145,7 @@
         <code>bundle install</code>을 실행하면 작업에 대해 더 많이 배울 수 있습니다.
       %ul
         %li
-          <code>path</code> (<code>BUNDLE_PATH</code>): 젬을 설치할 디스크에서의
+          <code>path</code> (<code>BUNDLE_PATH</code>): gem을 설치할 디스크에서의
           위치입니다. 기본 값은 개발환경에서는 <code>$GEM_HOME</code>,
           <code>--deployment</code>가 사용되었다면 <code>vendor/bundle</code>입니다.
         %li
@@ -156,7 +156,7 @@
           <code>without</code> (<code>BUNDLE_WITHOUT</code>): 설치하지 말아야 할
           그룹의 목록입니다. <code>:</code>으로 구분됩니다.
         %li
-          <code>bin</code> (<code>BUNDLE_BIN</code>): 번들 안의 젬에서 실행 파일을
+          <code>bin</code> (<code>BUNDLE_BIN</code>): 번들 안의 gem에서 실행 파일을
           특정 디렉터리에 설치합니다. 기본 값은 <code>false</code>입니다.
         %li
           <code>gemfile</code> (<code>BUNDLE_GEMFILE</code>): 번들러가
@@ -213,14 +213,14 @@
         로컬 깃 저장소에 있는지도 확인합니다. 이렇게 함으로써 번들러는
         리모트의 마지막 변경들을 가져오도록 합니다.
 
-%h2 젬 소스 미러
+%h2 gem 소스 미러
 .contents
   .bullet#gem-source-mirrors
     .description
       %p
         환경이 rubygems.org 서버의 로컬 미러를 가지고 있다면,
         <code>mirror.URL</code>에 미러의 주소를 설정합니다. 그 시점에서 번들러는
-        Gemfile 안의 소스 대신, 미러에서 젬과 젬스펙을 다운로드 합니다.
+        Gemfile 안의 소스 대신, 미러에서 gem과 gemspec을 다운로드 합니다.
 
       :code
         $ bundle config mirror.https://rubygems.org https://localgems.lan
