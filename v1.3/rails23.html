@@ -18,55 +18,55 @@
       <div id='container'>
         <div id='contents'>
           <div id='intro'>
-            Rails 2.3 comes with its own gem handling. We're going to
-            override that and replace it with support for Bundler.
+            레일스 2.3은 독자적으로 젬을 관리합니다. 하지만 번들러 설정을
+            덮어씌워 번들러를 지원하게 할 수 있습니다.
             <div class='notes'>
-              <b>NB:</b> This <i>may</i> work with Rails versions lower than 2.3.
-              The Bundler team has not tested those versions, and will not provide
-              support for anyone on Rails older than 2.3, but feel free to try it. :)
+              <b>NB:</b> <i>아마도</i> 2.3보다 낮은 버전의 레일스에서 움직일 수 있지만,
+              번들러 팀에서는 테스트하지 않았고 2.3보다 낮은 버전의 레일스를
+              지원할 계획도 없습니다. 하지만 시도는 자유죠. :)
             </div>
           </div>
-          <h2>Using Bundler with Rails 2.3</h2>
+          <h2>번들러를 레일스 2.3과 사용하기</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                If you don't have a Rails 2.3 app yet, generate one
+                레일스 2.3 앱이 아직없다면, 생성합니다.
               </div>
               <pre class="highlight plaintext">$ rails myapp&#x000A;$ cd myapp&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Insert the following code at the bottom of config/boot.rb,
-                right above the line `Rails.boot!`
+                <code>config/boot.rb</code>의 밑에 있는
+                <code>Rails.boot!</code>의 바로 다음 줄에 아래 코드를 넣으세요.
               </div>
               <pre class="highlight ruby"><span class="k">class</span> <span class="nc">Rails</span><span class="o">::</span><span class="no">Boot</span>&#x000A;  <span class="k">def</span> <span class="nf">run</span>&#x000A;    <span class="n">load_initializer</span>&#x000A;&#x000A;    <span class="no">Rails</span><span class="o">::</span><span class="no">Initializer</span><span class="p">.</span><span class="nf">class_eval</span> <span class="k">do</span>&#x000A;      <span class="k">def</span> <span class="nf">load_gems</span>&#x000A;        <span class="vi">@bundler_loaded</span> <span class="o">||=</span> <span class="no">Bundler</span><span class="p">.</span><span class="nf">require</span> <span class="ss">:default</span><span class="p">,</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">env</span>&#x000A;      <span class="k">end</span>&#x000A;    <span class="k">end</span>&#x000A;&#x000A;    <span class="no">Rails</span><span class="o">::</span><span class="no">Initializer</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="ss">:set_load_path</span><span class="p">)</span>&#x000A;  <span class="k">end</span>&#x000A;<span class="k">end</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Create a new file, <code>config/preinitializer.rb</code>,
-                and insert the following. That is <code>config</code> <strong>NOT</strong>
-                <code>config/initializers</code>.
+                새 파일 <code>config/preinitializer.rb</code>를 생성해,
+                밑의 코드를 넣으세요. <code>config</code>입니다.
+                <code>config/initializers</code>가 <strong>아닙니다</strong>.
               </div>
               <pre class="highlight ruby"><span class="k">begin</span>&#x000A;  <span class="nb">require</span> <span class="s1">'rubygems'</span>&#x000A;  <span class="nb">require</span> <span class="s1">'bundler'</span>&#x000A;<span class="k">rescue</span> <span class="no">LoadError</span>&#x000A;  <span class="k">raise</span> <span class="s2">"Could not load the bundler gem. Install it with `gem install bundler`."</span>&#x000A;<span class="k">end</span>&#x000A;&#x000A;<span class="k">if</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Version</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Bundler</span><span class="o">::</span><span class="no">VERSION</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Version</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"0.9.24"</span><span class="p">)</span>&#x000A;  <span class="k">raise</span> <span class="no">RuntimeError</span><span class="p">,</span> <span class="s2">"Your bundler version is too old for Rails 2.3.</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>&#x000A;   <span class="s2">"Run `gem install bundler` to upgrade."</span>&#x000A;<span class="k">end</span>&#x000A;&#x000A;<span class="k">begin</span>&#x000A;  <span class="c1"># Set up load paths for all bundled gems</span>&#x000A;  <span class="no">ENV</span><span class="o">[</span><span class="s2">"BUNDLE_GEMFILE"</span><span class="o">]</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s2">"../../Gemfile"</span><span class="p">,</span> <span class="kp">__FILE__</span><span class="p">)</span>&#x000A;  <span class="no">Bundler</span><span class="p">.</span><span class="nf">setup</span>&#x000A;<span class="k">rescue</span> <span class="no">Bundler</span><span class="o">::</span><span class="no">GemNotFound</span>&#x000A;  <span class="k">raise</span> <span class="no">RuntimeError</span><span class="p">,</span> <span class="s2">"Bundler couldn't find some gems.</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span>&#x000A;    <span class="s2">"Did you run `bundle install`?"</span>&#x000A;<span class="k">end</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Get all config.gem declarations from your application, and place
-                them into the Gemfile. If you have declarations in development.rb,
-                for instance, place them in a named group. Make sure to include
-                Rails itself and at least one source
+                애플리케이션에 선언된 모든 config.gem을 Gemfile에 넣습니다.
+                development.rb 안에 (다른 환경의 경우라도) 선언이 있다면 선언들을
+                그 이름의 그룹에 넣으세요. 레일스 자신과 적어도 한 개 이상의 소스가
+                있는지도 확인하세요.
               </div>
               <pre class="highlight ruby"><span class="n">source</span> <span class="ss">:gemcutter</span>&#x000A;<span class="n">gem</span> <span class="s1">'rails'</span><span class="p">,</span> <span class="s1">'~&gt; 2.3.5'</span>&#x000A;<span class="n">gem</span> <span class="s1">'sqlite3-ruby'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="s1">'sqlite3'</span>&#x000A;&#x000A;<span class="c1"># bundler requires these gems in all environments</span>&#x000A;<span class="c1"># gem 'nokogiri', '1.4.2'</span>&#x000A;<span class="c1"># gem 'geokit'</span>&#x000A;&#x000A;<span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>&#x000A;  <span class="c1"># bundler requires these gems in development</span>&#x000A;  <span class="c1"># gem 'rails-footnotes'</span>&#x000A;<span class="k">end</span>&#x000A;&#x000A;<span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>&#x000A;  <span class="c1"># bundler requires these gems while running tests</span>&#x000A;  <span class="c1"># gem 'rspec'</span>&#x000A;  <span class="c1"># gem 'faker'</span>&#x000A;<span class="k">end</span></pre>
-              <a href="/bundler-site/v1.3/groups.html">Learn More: Groups</a>
+              <a href="/bundler-site/v1.3/groups.html">자세한 내용은: 그룹</a>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Once you have everything set up, you can use script/console,
-                script/server, and other Rake tasks as usual. From this point
-                on, you can follow the instructions in the Rails 3 guide
+                한 번 전부 설정했다면, script/console, script/server나 다른
+                레이크 작업들도 평범하게 사용할 수 있습니다. 여기서부터는
+                레일스 3의 가이드를 읽으시면 됩니다.
               </div>
               <pre class="highlight plaintext">$ rake db:migrate</pre>
-              <a href="/bundler-site/v1.3/rails3.html#shared_with_23">Learn More: Rails 3</a>
+              <a href="/bundler-site/v1.3/rails3.html#shared_with_23">자세한 내용은: 레일스 3</a>
             </div>
           </div>
         </div>

@@ -17,36 +17,36 @@
       </div>
       <div id='container'>
         <div id='contents'>
-          <h2>Using Bundler with RubyMotion</h2>
+          <h2>번들러를 루비모션과 사용하기</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                If you don't have a RubyMotion app yet, generate one.
+                아직 루비모션 앱이 없다면 만듭니다.
               </div>
               <pre class="highlight plaintext">$ motion create myapp&#x000A;$ cd myapp</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                You'll need to create a Gemfile. Here we're using bubblewrap.
+                Gemfile을 만들 필요가 있습니다. bubblewrap을 사용할 때는 이렇게 합니다.
               </div>
               <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'bubble-wrap'</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Then, set up your Rakefile to require your bundled gems at compile time.
-                Add this to the top of the file, right beneath the line `require 'motion/project'`
+                그러고 나서 Rakefile을 컴파일할 때 번들된 젬을 require하도록 설정합니다.
+                <code>require 'motion/project'</code> 바로 밑의 줄에 다음 코드를 추가합니다.
               </div>
               <pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'bundler'</span>&#x000A;&#x000A;<span class="no">Bundler</span><span class="p">.</span><span class="nf">require</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Next, install your dependencies:
+                다음으로, 의존성을 설치합니다.
                 <pre class="highlight plaintext">$ bundle install&#x000A;</pre>
               </div>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Now you can just compile your app as normal.
+                이제 평범하게 앱을 컴파일 할 수 있습니다.
                 <pre class="highlight plaintext">$ bundle exec rake</pre>
               </div>
             </div>

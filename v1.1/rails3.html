@@ -18,64 +18,67 @@
       <div id='container'>
         <div id='contents'>
           <div id='intro'>
-            Rails 3 comes with baked in support with bundler.
+            레일스 3은 기본적으로 번들러를 지원합니다.
           </div>
-          <h2>Using Bundler with Rails 3</h2>
+          <h2>번들러를 레일스 3과 사용하기</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                Install Rails as you normally would. Use sudo if you would normally use
-                sudo to install gems.
+                평범하게 레일스를 설치하세요. 평소에 젬을 설치할 때
+                sudo로 쓰신다면 sudo도 사용해 주세요.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ gem install rails</pre>
                 <div class='notes'>
-                  We recommend using rvm for dependable Ruby installations, especially if
-                  you are switching between different versions of Ruby
+                  다른 루비 버전을 사용하실 일이 있다면, 신뢰할 수
+                  있는 루비 설치관리를 위해 rvm을 추천합니다.
                 </div>
               </div>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Generate a Rails app as usual
+                평소처럼 레일스 앱을 생성합니다.
               </div>
               <pre class="highlight plaintext">$ rails new myapp&#x000A;$ cd myapp&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Run the server. Bundler is transparently managing your dependencies!
+                서버를 실행합니다. 이미 번들러는 의존성을 투명하게
+                관리하고 있습니다!
               </div>
               <pre class="highlight plaintext">$ rails server&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Add new dependencies to your Gemfile as you need them.
+                필요한 새 의존성을 Gemfile에 추가합니다.
               </div>
               <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'nokogiri'</span>&#x000A;<span class="n">gem</span> <span class="s1">'geokit'</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                If you want a dependency to be loaded only in a certain Rails environment,
-                place it in a group named after that Rails environment
+                특정 레일스 환경에서만 로드하고 싶은 의존성이 있다면,
+                레일스 환경을 이름으로 한 그룹에 넣으세요.
               </div>
               <pre class="highlight ruby"><span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>&#x000A;  <span class="n">gem</span> <span class="s1">'rspec'</span>&#x000A;  <span class="n">gem</span> <span class="s1">'faker'</span>&#x000A;<span class="k">end</span>&#x000A;</pre>
             </div>
             <div class='bullet' id='shared_with_23'>
               <div class='description'>
-                You can place a dependency in multiple groups at once as well
+                한 번에 여러 그룹에 의존성을 넣을 수도 있습니다.
               </div>
               <pre class="highlight ruby"><span class="n">group</span> <span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span> <span class="k">do</span>&#x000A;  <span class="n">gem</span> <span class="s1">'wirble'</span>&#x000A;  <span class="n">gem</span> <span class="s1">'ruby-debug'</span>&#x000A;<span class="k">end</span></pre>
-              <a href="/bundler-site/v1.1/groups.html">Learn More: Groups</a>
+              <a href="/bundler-site/v1.1/groups.html">자세한 내용은: 그룹</a>
             </div>
             <div class='bullet'>
               <div class='description'>
-                After adding a dependency, if it is not yet installed, install it
+                의존성을 추가하고 아직 설치하지 않았다면
+                설치하세요.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle install</pre>
                 <div class='notes'>
-                  This will update all dependencies in your Gemfile to the latest versions
-                  that do not conflict with other dependencies
+                  이 명령은 Gemfile 안의 모든 의존성을
+                  다른 의존성과 충돌하지 않는 최신 버전으로
+                  갱신합니다.
                 </div>
               </div>
             </div>

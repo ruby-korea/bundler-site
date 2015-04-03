@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://bundler.io/bundler-site/blog/2015/03/21/hello-bundler-19.html"/>
     <id>http://bundler.io/bundler-site/blog/2015/03/21/hello-bundler-19.html</id>
     <published>2015-03-21T09:00:00+09:00</published>
-    <updated>2015-04-03T09:55:46+09:00</updated>
+    <updated>2015-04-03T13:50:15+09:00</updated>
     <author>
       <name>Samuel Giddins</name>
     </author>
@@ -42,7 +42,7 @@ $ [sudo] gem install bundler
     <link rel="alternate" href="http://bundler.io/bundler-site/blog/2015/03/20/moving-bins-to-exe.html"/>
     <id>http://bundler.io/bundler-site/blog/2015/03/20/moving-bins-to-exe.html</id>
     <published>2015-03-20T09:00:00+09:00</published>
-    <updated>2015-04-03T09:55:46+09:00</updated>
+    <updated>2015-04-03T13:50:15+09:00</updated>
     <author>
       <name>Benjamin Fleischer</name>
     </author>
@@ -190,7 +190,7 @@ specify it as the only executable.&lt;/p&gt;
     <link rel="alternate" href="http://bundler.io/bundler-site/blog/2015/03/19/announcing-ruby-together.html"/>
     <id>http://bundler.io/bundler-site/blog/2015/03/19/announcing-ruby-together.html</id>
     <published>2015-03-19T11:56:00+09:00</published>
-    <updated>2015-04-03T09:55:46+09:00</updated>
+    <updated>2015-04-03T13:50:15+09:00</updated>
     <author>
       <name/>
     </author>
@@ -213,7 +213,7 @@ specify it as the only executable.&lt;/p&gt;
     <link rel="alternate" href="http://bundler.io/bundler-site/blog/2014/08/15/gem-not-found-error-on-1-7-0.html"/>
     <id>http://bundler.io/bundler-site/blog/2014/08/15/gem-not-found-error-on-1-7-0.html</id>
     <published>2014-08-16T02:02:00+09:00</published>
-    <updated>2015-04-03T09:55:46+09:00</updated>
+    <updated>2015-04-03T13:50:15+09:00</updated>
     <author>
       <name>André Arko</name>
     </author>
@@ -227,7 +227,7 @@ specify it as the only executable.&lt;/p&gt;
     <link rel="alternate" href="http://bundler.io/bundler-site/blog/2014/08/14/bundler-may-install-gems-from-a-different-source-than-expected-cve-2013-0334.html"/>
     <id>http://bundler.io/bundler-site/blog/2014/08/14/bundler-may-install-gems-from-a-different-source-than-expected-cve-2013-0334.html</id>
     <published>2014-08-14T10:22:00+09:00</published>
-    <updated>2015-04-03T09:55:46+09:00</updated>
+    <updated>2015-04-03T13:50:15+09:00</updated>
     <author>
       <name>André Arko</name>
     </author>
@@ -271,7 +271,7 @@ specify it as the only executable.&lt;/p&gt;
     <link rel="alternate" href="http://bundler.io/bundler-site/blog/2014/07/16/bundler-api-outages.html"/>
     <id>http://bundler.io/bundler-site/blog/2014/07/16/bundler-api-outages.html</id>
     <published>2014-07-17T08:29:00+09:00</published>
-    <updated>2015-04-03T09:55:46+09:00</updated>
+    <updated>2015-04-03T13:50:15+09:00</updated>
     <author>
       <name>André Arko</name>
     </author>
