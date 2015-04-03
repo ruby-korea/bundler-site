@@ -11,14 +11,14 @@
 .contents
   .bullet
     .description
-      Gemfile에는 최소한 하나의 젬 소스가 필요합니다. 젬 소스에는 루비젬 서버가 URL 형식으로 적혀있어야 합니다. <code>bundle init</code>을 실행함으로써 rubygems.org를 소스로 한 기본 값의 Gemfile을 만듭니다. 할 수만 있다면 <code>https</code>를 사용하여 rubygems.org 서버로의 연결이 SSL 인증되도록 하세요.
+      Gemfile에는 최소한 하나의 gem 소스가 필요합니다. gem 소스에는 루비젬 서버가 URL 형식으로 적혀있어야 합니다. <code>bundle init</code>을 실행함으로써 rubygems.org를 소스로 한 기본 값의 Gemfile을 만듭니다. 할 수만 있다면 <code>https</code>를 사용하여 rubygems.org 서버로의 연결이 SSL 인증되도록 하세요.
     :code
       # lang: ruby
       source 'https://rubygems.org'
 
   .bullet
     .description
-      필요한 젬을 버전 번호와 함께 선언합니다. 의존성을 지원하기 위한 버전 지정에는 루비젬에서
+      필요한 gem을 버전 번호와 함께 선언합니다. 의존성을 지원하기 위한 버전 지정에는 루비젬에서
       사용하는 것과 같은 문법을 사용합니다.
     :code
       # lang: ruby
@@ -36,25 +36,25 @@
 
   .bullet
     .description
-      젬의 메인 파일이 젬의 이름과 다르다면, require하는 방법을 지정할 필요가 있습니다.
+      gem의 메인 파일이 gem의 이름과 다르다면, require하는 방법을 지정할 필요가 있습니다.
     :code
       # lang: ruby
       gem 'rspec', :require => 'spec'
       gem 'sqlite3'
     .description
-      <code>:require => false</code>를 지정함으로써 번들러가 젬을 require하는 것을 방지할 수 있습니다. 하지만 여전히 설치와 의존성의 유지보수는 이루어집니다.
+      <code>:require => false</code>를 지정함으로써 번들러가 gem을 require하는 것을 방지할 수 있습니다. 하지만 여전히 설치와 의존성의 유지보수는 이루어집니다.
     :code
       # lang: ruby
       gem 'rspec', :require => false
       gem 'sqlite3'
     .notes
-      <code>Gemfile</code> 안의 젬을 require하려면, 애플리케이션에서
+      <code>Gemfile</code> 안의 gem을 require하려면, 애플리케이션에서
       <code>Bundler.require</code>를 콜할 필요가 있습니다.
     = link_to '자세한 내용은: Bundler.require', './groups.html'
 
   .bullet
     .description
-      깃 저장소들도 유효한 젬 소스입니다. 저장소가 하나 이상의 유효한 젬을 가지고 있다면 말이죠.
+      깃 저장소들도 유효한 gem 소스입니다. 저장소가 하나 이상의 유효한 gem을 가지고 있다면 말이죠.
       <code>:tag</code>나 <code>:branch</code>, <code>:ref</code>로 어느 걸 체크아웃할지 정할 수
       있습니다. 기본 값은 <code>master</code> 브랜치입니다.
     :code
@@ -63,13 +63,13 @@
     .notes
       깃 저장소가 <code>.gemspec</code> 파일을 가지고 있지 않다면, 번들러가 의존성, 실행 파일,
       C 확장 설정이 없는 간단한 <code>.gemspec</code> 파일을 생성합니다.
-      아마도 간단한 젬에서는 동작할 테지만, 동작하지 않을 수도 있습니다.
-      <code>.gemspec</code> 파일이 없다면 깃에서 젬을 사용하지 않는 것이 좋습니다.
+      아마도 간단한 gem에서는 동작할 테지만, 동작하지 않을 수도 있습니다.
+      <code>.gemspec</code> 파일이 없다면 깃에서 gem을 사용하지 않는 것이 좋습니다.
     = link_to '자세한 내용은: 깃', './git.html'
 
   .bullet
     .description
-      파일시스템에서 직접 젬을 언팩하고 싶다면, <code>:path</code> 옵션에 젬의 파일들이 들어있는 경로를 지정하면 간단합니다.
+      파일시스템에서 직접 gem을 언팩하고 싶다면, <code>:path</code> 옵션에 gem의 파일들이 들어있는 경로를 지정하면 간단합니다.
     :code
       # lang: ruby
       gem 'extracted_library', :path => './vendor/extracted_library'
