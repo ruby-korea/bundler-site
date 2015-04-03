@@ -1,60 +1,55 @@
 %h2#sharing
-  Sharing
+  공유하기
 .contents
   .bullet
     .description
       %h3#checking-your-code-into-version-control
-        Checking Your Code into Version Control
+        코드를 버전 관리하기
 
       %p
-        After developing your application for a while, check in the application together with the
-        <code>Gemfile</code> and <code>Gemfile.lock</code> snapshot. Now, your repository has a
-        record of the exact versions of all of the gems that you used the last time you know for
-        sure that the application worked. Keep in mind that while your <code>Gemfile</code>
-        lists only three gems (with varying degrees of version strictness), your application
-        depends on dozens of gems, once you take into consideration all of the implicit
-        requirements of the gems you depend on.
+        한동안 애플리케이션을 개발한 다음 애플리케이션을 <code>Gemfile</code>,
+        <code>Gemfile.lock</code>과 함께 체크인하세요. 이때 저장소는 마지막으로 애플리케이션이
+        동작했을 때 사용한 gem의 정확한 버전의 기록을 가지고 있습니다.
+        <code>Gemfile</code>에(버전의 엄격함의 정도에 차이도 있겠지만)
+        3개의 gem만 있다고 하더라도 애플리케이션은 수십 개의 gem을 의존하고 의존하는
+        모든 암시적인 gem의 요구사항을 고려해야 합니다.
 
     %p.description
-      This is important: <strong>the <code>Gemfile.lock</code> makes your application a single
-      package of both your own code and the third-party code it ran the last time you know for
-      sure that everything worked</strong>. Specifying exact versions of the third-party code
-      you depend on in your <code>Gemfile</code> would not provide the same guarantee, because
-      gems usually declare a range of versions for their dependencies.
+      <strong><code>Gemfile.lock</code>이 애플리케이션의 코드와 gem이 제대로 동작했다는
+      확신이 있는 최후의 순간을 하나의 묶음으로 만든다</strong>는 점은 중요합니다.
+      <code>Gemfile</code>에 gem의 정확한 버전을 지정한다 하여도 같은 수준의 보장은 안 됩니다.
+      왜냐하면 gem은 보통 의존성을 범위로 지정하기 때문입니다.
 
     %p.description
-      The next time you run <code>bundle install</code> on the same machine, bundler will see
-      that it already has all of the dependencies you need, and skip the installation process.
+      이후 같은 기기에서 <code>bundle install</code>을 실행하면, 모든 필요한 의존성을 만족하므로
+      번들러가 설치 과정을 생략하는 것을 볼 수 있습니다.
 
     %p.description
-      Do not check in the <code>.bundle</code> directory, or any of the files inside it. Those
-      files are specific to each particular machine, and are used to persist installation options
-      between runs of the <code>bundle install</code> command.
+      <code>.bundle</code> 디렉터리와 그 안의 어떤 내용도 체크인하지 말아 주세요. 그 파일들을
+      각각의 기기의 특성에 따라 달라지고 <code>bundle install</code> 명령어 간의 영속적인 설치
+      옵션을 사용합니다.
 
     %p.description
-      If you have run <code>bundle pack</code>, the gems (although not the git gems) required
-      by your bundle will be downloaded into <code>vendor/cache</code>. Bundler can run without
-      connecting to the internet (or the RubyGems server) if all the gems you need are present
-      in that folder and checked in to your source control. This is an <strong>optional</strong>
-      step, and not recommended, due to the increase in size of your source control repository.
+      <code>bundle pack</code> 명령어를 실행했고 git의 gem이 아니라면, 번들러에서 요구된 gem은
+      모두 <code>vendor/cache</code>에 다운로드 됩니다. 모든 필요한 gem이 폴더에 들어있고
+      버전관리에 체크인 되어있다면 인터넷이나 루비젬스 서버에 접속하지 않고 실행할 수 있습니다.
+      이것은 <strong>생략가능</strong>한 과정이며, 버전관리 저장소의 크기를 늘리므로 추천하지
+      않습니다.
 
   .bullet
     %h3#sharing-your-application-with-other-developers
-      Sharing Your Application With Other Developers
+      애플리케이션을 다른 개발자와 공유하기
 
     %p.description
-      When your co-developers (or you on another machine) check out your code, it will come
-      with the exact versions of all the third-party code your application used on the machine
-      that you last developed on (in the <code>Gemfile.lock</code>). When **they** run
-      <code>bundle install</code>, bundler will find the <code>Gemfile.lock</code> and skip
-      the dependency resolution step. Instead, it will install all of the same gems that you
-      used on the original machine.
+      동료 개발자가 코드를 채크아웃하거나 당신이 다른 기기에 체크아웃하면 개발할 때 애플리케이션에서
+      사용했던 모든 gem의 정확한 버전도(<code>Gemfile.lock</code> 안에) 함께 옵니다.
+      **거기서** <code>bundle install</code>을 실행하면 번들러는 <code>Gemfile.lock</code>을 찾고
+      의존성 해결과정을 생략합니다. 대신에 원래 기기에서 사용했던 것과 같은 모든 gem을 설치합니다.
 
     %p.description
-      In other words, you don't have to guess which versions of the dependencies you should
-      install. In the example we've been using, even though <code>rack-cache</code> declares a
-      dependency on <code>rack >= 0.4</code>, we know for sure it works with <code>rack
-      1.2.1</code>. Even if the Rack team releases <code>rack 1.2.2</code>, bundler will
-      always install <code>1.2.1</code>, the exact version of the gem that we know works. This
-      relieves a large maintenance burden from application developers, because all machines
-      always run the exact same third-party code.
+      다시 말하자면 어떤 버전의 의존성을 설치해야 하는지 고민할 필요가 없습니다. 아까 보았던
+      예제에서 <code>rack-cache</code>가 <code>rack >= 0.4</code>에 의존성이 있다고 정의되어도
+      <code>rack 1.2.1</code>에서 움직인다고 확신할 수 있습니다. Rack 팀이 <code>rack 1.2.2</code>를
+      릴리스하더라도 번들러는 항상 동작이 보장되는 <code>1.2.1</code>을 설치합니다. 이것은
+      개발자로 하여금 많은 관리부담을 덜게 합니다. 왜냐하면, 모든 기기에서 똑같은 gem을 사용하기
+      때문입니다.
