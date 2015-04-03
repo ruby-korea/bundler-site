@@ -11,17 +11,17 @@
       %p
         옵션:
       %p
-        <code>--local</code>: 리모트에서 젬을 가져오지 않고 로컬 젬 캐시를 사용하게 합니다.
+        <code>--local</code>: 리모트에서 gem을 가져오지 않고 로컬 gem 캐시를 사용하게 합니다.
       %p
-        <code>--source</code>: 특정 소스(와 관련된 모든 젬을) 갱신합니다.
+        <code>--source</code>: 특정 소스(와 관련된 모든 gem을) 갱신합니다.
 
     .description
-      <code>Gemfile.lock</code> 안에 기술된 이전에 설치된 젬을 제외하고, 지정한 젬을
+      <code>Gemfile.lock</code> 안에 기술된 이전에 설치된 gem을 제외하고, 지정한 gem을
       갱신합니다. (지정하지 않았다면 전부 갱신합니다.)
-      일반적으로, 기기 간에 정확히 같은 젬을 설치하려면 <code>bundle install</code>을
+      일반적으로, 기기 간에 정확히 같은 gem을 설치하려면 <code>bundle install</code>을
       사용해야 합니다.
 
-      <code>bundle update</code>는 명시적으로 젬 버전의 갱신이 필요할 때만 사용합시다.
+      <code>bundle update</code>는 명시적으로 gem 버전의 갱신이 필요할 때만 사용합시다.
 
   .bullet
     .description
@@ -31,17 +31,17 @@
         $ bundle update
     .notes
       매개변수 없이 <code>bundle update</code>를 실행하면, 번들러는 전에 설치한
-      젬을 점부 무시하고 모든 의존성을 소스 서버의 최신버전을 기준으로 다시 해결합니다.
+      gem을 점부 무시하고 모든 의존성을 소스 서버의 최신버전을 기준으로 다시 해결합니다.
 
   .bullet#source
     .description
-      지정된 소스로부터 젬(과 관련된 모든 젬)을 갱신합니다.
+      지정된 소스로부터 gem(과 관련된 모든 gem)을 갱신합니다.
     .how
       :code
         $ bundle update --source=SOURCE
     .notes
       <code>Gemfile</code> 안에서 사용된 <code>:git</code>이나 <code>:path</code>
-      소스가 사용된 젬의 이름입니다. 예를 들어, <code>:git</code> 소스
+      소스가 사용된 gem의 이름입니다. 예를 들어, <code>:git</code> 소스
       <code>http://github.com/rails/rails.git</code>의 경우,
       <code>bundle update --source rails</code>를 불러야 합니다.
 
@@ -51,7 +51,7 @@
     .description
       %p
         매개변수 없이 <code>bundle update</code>를 실행했다면, 번들러는 모든
-        이전에 설치된 젬을 무시하고 소스 안의 모든 젬의 가능한 최신버전을
+        이전에 설치된 gem을 무시하고 소스 안의 모든 gem의 가능한 최신버전을
         기반으로 모든 의존성을 다시 해결하려 합니다.
 
       %p
@@ -96,15 +96,15 @@
           Your bundle is complete! Use `bundle show [gemname]` to see where a
           bundled gem is installed.
       %p
-        보시다시피, <code>Gemfile</code> 안에 두 개의 젬만 있다고해도, 실제
-        애플리케이션을 실행하려면 25개의 다른 젬이 필요합니다. 번들러는
-        설치된 젬의 정확한 버전을 <code>Gemfile.lock</code> 안에 기억해둡니다.
+        보시다시피, <code>Gemfile</code> 안에 두 개의 gem만 있다고해도, 실제
+        애플리케이션을 실행하려면 25개의 다른 gem이 필요합니다. 번들러는
+        설치된 gem의 정확한 버전을 <code>Gemfile.lock</code> 안에 기억해둡니다.
         다음에 <code>bundle install</code>을 실행할 때에는, 번들러는 마지막으로
-        설치 됐던 모든 젬의 의존성 해결과 설치를 생략합니다.
+        설치 됐던 모든 gem의 의존성 해결과 설치를 생략합니다.
 
       %p
         <code>Gemfile.lock</code>을 버전관리에 넣고 다른 기기에서 클론한 후에
-        <code>bundle install</code>을 실행하면 _여전히_ 마지막에 설치했던 젬을
+        <code>bundle install</code>을 실행하면 _여전히_ 마지막에 설치했던 gem을
         설치합니다.  <code>erubis</code>, <code>mail</code>의 새 버전이 나왔는지
         걱정할 필요가 없어요.
 
@@ -115,8 +115,8 @@
       %p
         이럴 때엔 <code>bundle update</code>를 실행하시면 <code>Gemfile.lock</code>을
         무시하고 모든 의존성을 다시 해결합니다. 이 과정은 마지막으로
-        <code>bundle update</code>를 실행한 이후 젬의 저자들한 새로 릴리즈한 젬을
-        기반으로 새로운 젬을 요청하므로 25개의 잼 모두 현저히 달라질 수 있으므로
+        <code>bundle update</code>를 실행한 이후 gem의 저자들한 새로 릴리즈한 gem을
+        기반으로 새로운 gem을 요청하므로 25개의 잼 모두 현저히 달라질 수 있으므로
         주의하세요.
 
 %h2 Update a list of gems.
@@ -124,8 +124,8 @@
   .bullet#update_list_of_gems
     .description
       %p
-        가끔 <code>Gemfile</code> 안의 나머지 젬들은 <code>Gemfile.lock</code> 안의
-        버전으로 고정하고 하나의 젬만 갱신해야 할 때가 있습니다.
+        가끔 <code>Gemfile</code> 안의 나머지 gem은 <code>Gemfile.lock</code> 안의
+        버전으로 고정하고 하나의 gem만 갱신해야 할 때가 있습니다.
 
       %p
         예를 들어 위의 시나리오에서 <code>nokogiri</code>의 릴리즈 버전이
@@ -144,7 +144,7 @@
   .bullet#overlapping_dependencies
     .description
       %p
-        가끔 <code>Gemfile</code> 안에 여러 젬이 같은 하위(second-level) 의존성을
+        가끔 <code>Gemfile</code> 안에 여러 gem이 같은 하위(second-level) 의존성을
         만족할 수 있습니다. 예를 들어 <code>thin</code>과
         <code>rack-perftools-profiler</code>가 있다고 해보죠.
 
@@ -156,7 +156,7 @@
           gem 'rack-perftools-profiler'
 
       %p
-        <code>thin</code> 젬은 <code>rack >= 1.0</code>에 의존합니다. 한편
+        <code>thin</code> gem은 <code>rack >= 1.0</code>에 의존합니다. 한편
         <code>rack-perftools-profiler</code>는 <code>rack ~> 1.0</code>에 의존
         합니다. 번들을 설치하면 다음 결과를 얻게 됩니다.
 
@@ -172,7 +172,7 @@
           Using bundler (1.0.0.rc.3)
 
       %p
-        이 경우 두 젬이 각각의 의존성을 가지고 있지만, 공통으로 <code>rack</code>을
+        이 경우 두 gem이 각각의 의존성을 가지고 있지만, 공통으로 <code>rack</code>을
         공유하고 있습니다. <code>bundle update thin</code>을 실행하면 번들은
         <code>thin</code>에 의존성이 있는 <code>daemons</code>,
         <code>eventmachine</code>, <code>rack</code>을 갱신하지만
@@ -182,8 +182,8 @@
         의존성이 있음에도 불구하고 <code>rack</code>을 갱신함에 주의하세요.
 
       %p
-        요약하면 <code>bundle update</code>를 이용해 젬을 갱신할 때는 번들러는
-        다른 젬에 의존성이 있는 젬도 포함해 그 젬의 모든 의존성도 같이 갱신합니다.
+        요약하면 <code>bundle update</code>를 이용해 gem을 갱신할 때는 번들러는
+        다른 gem에 의존성이 있는 gem도 포함해 그 gem의 모든 의존성도 같이 갱신합니다.
 
       %p
         이 시나리오에서 <code>Gemfile</code>에서 <code>thin</code>의 버전을
