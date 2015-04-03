@@ -54,18 +54,18 @@
 
   .bullet
     .description
-      깃 저장소들도 유효한 gem 소스입니다. 저장소가 하나 이상의 유효한 gem을 가지고 있다면 말이죠.
+      git 저장소들도 유효한 gem 소스입니다. 저장소가 하나 이상의 유효한 gem을 가지고 있다면 말이죠.
       <code>:tag</code>나 <code>:branch</code>, <code>:ref</code>로 어느 걸 체크아웃할지 정할 수
       있습니다. 기본 값은 <code>master</code> 브랜치입니다.
     :code
       # lang: ruby
       gem 'nokogiri', :git => 'https://github.com/tenderlove/nokogiri.git', :branch => '1.4'
     .notes
-      깃 저장소가 <code>.gemspec</code> 파일을 가지고 있지 않다면, 번들러가 의존성, 실행 파일,
+      git 저장소가 <code>.gemspec</code> 파일을 가지고 있지 않다면, 번들러가 의존성, 실행 파일,
       C 확장 설정이 없는 간단한 <code>.gemspec</code> 파일을 생성합니다.
       아마도 간단한 gem에서는 동작할 테지만, 동작하지 않을 수도 있습니다.
-      <code>.gemspec</code> 파일이 없다면 깃에서 gem을 사용하지 않는 것이 좋습니다.
-    = link_to '자세한 내용은: 깃', './git.html'
+      <code>.gemspec</code> 파일이 없다면 git에서 gem을 사용하지 않는 것이 좋습니다.
+    = link_to '자세한 내용은: git', './git.html'
 
   .bullet
     .description
