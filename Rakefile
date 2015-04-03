@@ -68,7 +68,7 @@ task :build => [:repo_pages] do
 end
 
 desc "Release the current commit to ruby-korea/bundler-site@gh-pages"
-task :release => [:update_vendor, :build, :man, :issues] do
+task :release => [:update_vendor, :build, :man, :repo_pages] do
   commit = `git rev-parse HEAD`.chomp
 
   Dir.chdir "vendor/bundler" do
