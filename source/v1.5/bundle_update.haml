@@ -31,7 +31,7 @@
         $ bundle update
     .notes
       매개변수 없이 <code>bundle update</code>를 실행하면, 번들러는 전에 설치한
-      gem을 점부 무시하고 모든 의존성을 소스 서버의 최신버전을 기준으로 다시 해결합니다.
+      gem을 점부 무시하고 모든 의존성을 소스 서버의 최신 버전을 기준으로 다시 해결합니다.
 
   .bullet#source
     .description
@@ -51,7 +51,7 @@
     .description
       %p
         매개변수 없이 <code>bundle update</code>를 실행했다면, 번들러는 모든
-        이전에 설치된 gem을 무시하고 소스 안의 모든 gem의 가능한 최신버전을
+        이전에 설치된 gem을 무시하고 소스 안의 모든 gem의 가능한 최신 버전을
         기반으로 모든 의존성을 다시 해결하려 합니다.
 
       %p
@@ -96,16 +96,16 @@
           Your bundle is complete! Use `bundle show [gemname]` to see where a
           bundled gem is installed.
       %p
-        보시다시피, <code>Gemfile</code> 안에 두 개의 gem만 있다고해도, 실제
+        보시다시피, <code>Gemfile</code> 안에 두 개의 gem만 있다고 해도, 실제
         애플리케이션을 실행하려면 25개의 다른 gem이 필요합니다. 번들러는
         설치된 gem의 정확한 버전을 <code>Gemfile.lock</code> 안에 기억해둡니다.
         다음에 <code>bundle install</code>을 실행할 때에는, 번들러는 마지막으로
         설치 됐던 모든 gem의 의존성 해결과 설치를 생략합니다.
 
       %p
-        <code>Gemfile.lock</code>을 버전관리에 넣고 다른 기기에서 클론한 후에
+        <code>Gemfile.lock</code>을 버전 관리 시스템에 추가하고 다른 기기에서 클론한 후에
         <code>bundle install</code>을 실행하면 _여전히_ 마지막에 설치했던 gem을
-        설치합니다.  <code>erubis</code>, <code>mail</code>의 새 버전이 나왔는지
+        설치합니다. <code>erubis</code>, <code>mail</code>의 새 버전이 나왔는지
         걱정할 필요가 없어요.
 
       %p
@@ -115,8 +115,8 @@
       %p
         이럴 때엔 <code>bundle update</code>를 실행하시면 <code>Gemfile.lock</code>을
         무시하고 모든 의존성을 다시 해결합니다. 이 과정은 마지막으로
-        <code>bundle update</code>를 실행한 이후 gem의 저자들한 새로 릴리즈한 gem을
-        기반으로 새로운 gem을 요청하므로 25개의 잼 모두 현저히 달라질 수 있으므로
+        <code>bundle update</code>를 실행한 이후 gem의 저자들이 새로 릴리스한 gem을
+        기반으로 새로운 gem을 요청하므로 25개의 gem 모두 현저히 달라질 수 있으므로
         주의하세요.
 
 %h2 Update a list of gems.
@@ -128,9 +128,9 @@
         버전으로 고정하고 하나의 gem만 갱신해야 할 때가 있습니다.
 
       %p
-        예를 들어 위의 시나리오에서 <code>nokogiri</code>의 릴리즈 버전이
+        예를 들어 위의 시나리오에서 <code>nokogiri</code>의 릴리스 버전이
         <code>1.4.4</code>이고 레일스와 모든 의존성의 _갱신 없이_ <code>nokogiri</code>만
-        릴리즈 해야할 경우, 다음과 같이 하면 됩니다.
+        릴리스 해야할 경우, 다음과 같이 하면 됩니다.
 
         :code
           bundle update nokogiri

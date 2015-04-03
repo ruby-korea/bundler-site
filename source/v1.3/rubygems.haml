@@ -3,16 +3,16 @@
 .contents
   .bullet
     .description
-      젬을 처음부터 만든다면, 번들러의 내장 젬 스켈레톤을 사용해, 수정할 기반 젬을 만들 수 있습니다.
+      gem을 처음부터 만든다면, 번들러의 내장 gem 뼈대를 사용해, 수정할 기반 gem을 만들 수 있습니다.
     .how
       :code
         $ bundle gem my_gem
       .notes
-        이 명령어는 젬 스켈레톤을 <code>my_gem</code> 디렉터리에 만듭니다.
+        이 명령어는 gem 뼈대를 <code>my_gem</code> 디렉터리에 만듭니다.
 
   .bullet
     .description
-      gemspec으로 관리되는 젬이 이미 있다면 젬을 위한 Gemfile을 생성할 수 있습니다.
+      gemspec으로 관리되는 gem이 이미 있다면 gem을 위한 Gemfile을 생성할 수 있습니다.
     :code
       $ bundle init
     .notes
@@ -30,7 +30,7 @@
 
   .bullet
     .description
-      또 <code>:path</code>를 이용해 특정 젬스펙을 지정할 수도 있습니다. gemspec이 <code>/gemspec/path</code> 안에 있다면 이렇게 하세요.
+      또 <code>:path</code>를 이용해 특정 gemspec을 지정할 수도 있습니다. gemspec이 <code>/gemspec/path</code> 안에 있다면 이렇게 하세요.
     :code
       # lang: ruby
       gemspec :path => '/gemspec/path'

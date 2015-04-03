@@ -27,7 +27,7 @@
 
       %p
         <code>bundle package</code>를 실행했다면 자동으로
-        캐시된 젬이 사용됩니다.
+        캐시된 gem이 사용됩니다.
 
       = link_to '자세한 내용은: Packing', './bundle_package.html'
 
@@ -65,7 +65,7 @@
   .bullet
     .description
       %h3 배포 이후
-      번들 안의 젬의 실행 파일을 실행할 때 <code>bundle exec</code>을
+      번들 안의 gem의 실행 파일을 실행할 때 <code>bundle exec</code>을
       사용하는지 확인하세요.
     :code
       $ bundle exec rake db:setup
@@ -90,13 +90,13 @@
 
   .bullet
     .description
-      <code>bundle install</code>을 실행할 때 번들러는 (기본 값으로) 젬을 시스템 젬 저장소에
+      <code>bundle install</code>을 실행할 때 번들러는 (기본 값으로) gem을 시스템 gem 저장소에
       설치합니다. 이 말은 <code>gem list</code>에서 볼 수 있다는 의미입니다. 추가적으로
       여러 애플리케이션을 개발 중이라면 각각의 애플리케이션에서 다운로드해 설치할 필요가
       없습니다. 이렇게 하면 개발할 때는 편하지만, 배포할 때는 다소 문제가 될 수 있습니다.
 
     %p.description
-      배포 시나리오에서 유닉스 유저는 시스템 영역에 젬을 설치할 권한이 없을 것입니다.
+      배포 시나리오에서 유닉스 유저는 시스템 영역에 gem을 설치할 권한이 없을 것입니다.
       배포하는 유저에게 권한이 있(거나 <code>sudo</code>를 사용한)다 하더라도 애플리케이션을
       실행하는 유저에게는 권한이 없을 수도 있습니다. 예를 들어 패신저는 루비 서브 프로세스를
       제한된 유저인 <code>nobody</code>로 실행합니다.
@@ -113,15 +113,15 @@
     .description
       %ul
         %li
-          시스템에 젬을 설치하는 대신 번들러는 애플리케이션 안의 <code>vendor/bundle</code>에
+          시스템에 gem을 설치하는 대신 번들러는 애플리케이션 안의 <code>vendor/bundle</code>에
           설치할 것입니다. 애플리케이션 안에서 (<code>Bundler.setup</code>과
           <code>Bundler.require</code>를 사용해) 번들러를 실행하면 번들러는 이 위치를
           투명하게 기억할 것입니다.
         %li
-          번들러는 시스템에 설치된 젬이 이미 있다고 해도 사용하지 않을 것입니다.
+          번들러는 시스템에 설치된 gem이 이미 있다고 해도 사용하지 않을 것입니다.
         %li
           <code>bundle pack</code>을 실행한 적이 있고 <code>vendor/cache</code> 디렉터리가
-          체크인 되어있고 git 젬을 가지고 있지 않다면, 번들러는 번들을 설치할 때 인터넷에
+          체크인 되어있고 git gem을 가지고 있지 않다면, 번들러는 번들을 설치할 때 인터넷에
           접속하지 않을 것입니다.
         %li
           번들러는 <code>Gemfile.lock</code> 스냅샷을 요청하고 없다면 실패합니다.
@@ -132,7 +132,7 @@
     %p.description
       카피스트라노를 사용하시고 계신다면 <code>vendor/bundle</code>을
       <code>shared/vendor_bundle</code>의 심볼릭 링크로 만드실 수 있습니다. 이렇게 하면 번들러는
-      배포판 사이에 설치된 젬을 공유해 (변경되지 않았다면 배포 과정을 단축하면서) 다른
+      배포판 사이에 설치된 gem을 공유해 (변경되지 않았다면 배포 과정을 단축하면서) 다른
       애플리케이션과 격리되는 장점은 유지 할 수 있습니다.
 
     %p.description

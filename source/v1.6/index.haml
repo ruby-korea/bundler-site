@@ -1,11 +1,11 @@
 %h2 What is Bundler?
 
 %p#intro
-  번들러는 필요한 정확한 젬과 버전을 추적하고 설치하여 루비 프로젝트를 위한
+  번들러는 필요한 정확한 gem과 버전을 추적하고 설치하여 루비 프로젝트를 위한
   일관된 환경을 제공합니다.
   %br
   %br
-  번들러는 의존성 지옥에서 벗어나게 하고, 필요한 젬이 개발, 스테이징, 프로덕션에
+  번들러는 의존성 지옥에서 벗어나게 하고, 필요한 gem이 개발, 스테이징, 프로덕션에
   있는지 확인해 줍니다.
   <code>bundle install</code>을 실행해 간단히 프로젝트에서 사용해 보세요.
 
@@ -36,7 +36,7 @@
 
   .bullet
     .description
-      필요한 모든 젬을 지정된 소스로부터 설치하세요.
+      필요한 모든 gem을 지정된 소스로부터 설치하세요.
     :code
       $ bundle install
       $ git add Gemfile Gemfile.lock
@@ -54,18 +54,18 @@
       require 'rubygems'
       require 'bundler/setup'
 
-      # 평소처럼 젬을 require하세요
+      # 평소처럼 gem을 require하세요
       require 'nokogiri'
     = link_to '자세한 내용은: Bundler.setup', './bundler_setup.html'
   .bullet
     .description
-      번들 안의 젬에 들어있는 실행 파일 실행하기
+      번들 안의 gem에 들어있는 실행 파일 실행하기
     :code
       $ bundle exec rspec spec/models
     .notes
       %p
         어떤 때는, <code>bundle exec</code> 없이도 실행 파일을 실행할 수 있습니다.
-        번들러 안의 어떤 젬과도 충돌하지 않고 시스템에 실행 파일이 설치되어
+        번들러 안의 어떤 gem과도 충돌하지 않고 시스템에 실행 파일이 설치되어
         있는 경우가 그 경우죠.
       %p
         하지만, 이 상황은 신뢰하기 힘들고 고통의 근원이 됩니다.
@@ -73,7 +73,7 @@
         가능성이 있습니다.
 
     .description
-      마지막으로, 원한다면 번들 안의 젬의 단축 실행 파일을 만들 수 있습니다.
+      마지막으로, 원한다면 번들 안의 gem의 단축 실행 파일을 만들 수 있습니다.
     :code
       $ bundle install --binstubs
       $ bin/rspec spec/models
