@@ -1,14 +1,13 @@
-%h2 Using Groups
+%h2 그룹 사용하기
 
 .contents
   .bullet
     .description
-      Grouping your dependencies allows you
-      to perform operations on the entire
-      group.
+      의존성을 그룹화하면 전체 그룹에 대한
+      작업을 수행할 수 있습니다.
     :code
       # lang: ruby
-      # These gems are in the :default group
+      # 이 gem들은 :default 그룹에 포함됩니다.
       gem 'nokogiri'
       gem 'sinatra'
 
@@ -28,53 +27,50 @@
 
   .bullet
     .description
-      Install all gems, except those in the
-      listed groups. Gems in at least one
-      non-excluded group will still be installed.
+      나열된 그룹을 제외한 모든 gem을 설치합니다.
+      제외되지 않은 그룹에 속해 있는 gem들은 여전히
+      설치됩니다.
     :code
       $ bundle install --without test development
 
   .bullet
     .description
-      Require the gems in particular groups,
-      noting that gems outside of a named group
-      are in the :default group
+      특정 그룹을 요청(require)할 때, 명명된 그룹
+      밖의 gem은 :default 그룹인 것에 주의합시다.
     :code
       # lang: ruby
       Bundler.require(:default, :development)
 
   .bullet
     .description
-      Require the default gems, plus the gems
-      in a group named the same as the current
-      Rails environment
+      기본 그룹과 현재 레일스 환경과 같은 이름의
+      그룹의 gem을 요정합니다.
     :code
       # lang: ruby
       Bundler.require(:default, Rails.env)
 
   .bullet
     .description
-      Restrict the groups of gems that you
-      want to add to the load path. Only gems
-      in these groups will be require'able
+      로드 경로에 넣고 싶은 gem을 제한합니다.
+      그 그룹에 포함된 gem만 요청가능합니다.
     :code
       # lang: ruby
       require 'rubygems'
       require 'bundler'
       Bundler.setup(:default, :ci)
       require 'nokogiri'
-    = link_to 'Learn More: Bundler.setup', './bundler_setup.html'
+    = link_to '자세한 내용은: Bundler.setup', './bundler_setup.html'
 
   %h2#grouping-your-dependencies
-    Grouping Your Dependencies
+    의존성을 그룹화하기
   .bullet
     .description
-      You'll sometimes have groups of gems that only make sense in particular environments.
-      For instance, you might develop your app (at an early stage) using SQLite, but deploy it
-      using <code>mysql2</code> or <code>pg</code>. In this example, you might not have MySQL
-      or Postgres installed on your development machine, and want bundler to skip it.
+      가끔 특정 환경에만 맞는 gem의 그룹이 있습니다. 예를 들어, 초기 단계에 SQLite를 사용해
+      애플리케이션을 개발했지만, 배포할 때는 <code>mysql2</code>나 <code>pg</code>를
+      사용할 경우가 있습니다. 이 경우, 아마도 개발 환경에는 MySQL이나 Postgres가
+      안 깔려 있고 번들러에서 이를 생략하길 원할 것입니다.
 
-      To do this, you can group your dependencies:
+      이렇게 하려면, 의존성을 그룹지으면 됩니다.
 
     :code
       # lang: ruby
@@ -94,44 +90,44 @@
 
   .bullet
     .description
-      Now, in development, you can instruct bundler to skip the <code>production</code> group:
+      이제, 개발환경에서 번들러에게 <code>production</code> 그룹을 무시하도록 지시할 수 있습니다.
 
     :code
       $ bundle install --without production
 
   .bullet
     .description
-      Bundler will remember that you installed the gems using <code>--without
-      production</code>. For curious readers, bundler stores the flag in
-      <code>APP_ROOT/.bundle/config</code>. You can see all of the settings that bundler saved
-      there by running <code>bundle config</code>, which will also print out global settings
-      (stored in <code>~/.bundle/config</code>), and settings set via environment variables.
-      For more information on configuring bundler, please see:
+      번들러는 <code>--without production</code>을 사용하여 설치한 것을 기억합니다.
+      호기심이 많은 독자를 위해 말하자면, 번들러는 <code>APP_ROOT/.bundle/config</code>에
+      플래그를 저장합니다. 모든 저장된 번들러의 옵션을 확인하고 싶으시면,
+      <code>bundle config</code>을 실행하시면 됩니다. 이 명령어는
+      (<code>~/.bundle/config</code> 안에 저장된) 전역 설정과 환경변수에 의한 설정도 출력합니다.
+      번들러 설정에 관한 더 자세한 정보는 밑의 링크를 확인해 주세요.
       #{link_to 'bundle config', './bundle_config.html'}
 
   .bullet
     %p.description
-      If you run <code>bundle install</code> later, without any flags, bundler will remember
-      that you last called <code>bundle install --without production</code>, and use that flag
-      again. When you <code>require 'bundler/setup'</code>, bundler will ignore gems in these
-      groups.
+      나중에 <code>bundle install</code>을 플래그 없이 실행 한다면, 번들러는 전에 부른
+      <code>bundle install --without production</code> 명령어를 기억해 두었다가 이 플래그를
+      다시 사용합니다. <code>require 'bundler/setup'</code>할 때, 번들러는 그 그룹의 gem을
+      무시합니다.
 
     %p.description
-      You can also specify which groups to automatically require through the parameters to
-      <code>Bundler.require</code>. The <code>:default</code> group includes all gems not
-      listed under any group. If you call <code>Bundler.require(:default, :development)</code>,
-      bundler will <code>require</code> all the gems in the <code>:default</code> group, as
-      well as the gems in the <code>:development</code> group.
+      매개변수를 통해 <code>Bundler.require</code>에 사용할 그룹을 자동으로 지정하게 할 수도
+      있습니다. <code>:default</code> 그룹은 어떤 그룹에도 포함되지 않은 모든 gem을 가리킵니다.
+      <code>Bundler.require(:default, :development)</code>를 불렀다면, 번들러는
+      <code>:default</code> 그룹의 모든 gem과 <code>:development</code> 그룹의 모든 gem을
+      <code>require</code>합니다.
 
     %p.description
-      By default, a Rails generated app calls <code>Bundler.require(:default,
-      Rails.env)</code> in your <code>application.rb</code>, which links the groups in your
-      <code>Gemfile</code> to the Rails environment. If you use other groups (not linked to a
-      Rails environment), you can add them to the call to <code>Bundler.require</code>, if you
-      want them to be automatically required.
+      기본 값으로, 레일스는 <code>application.rb</code>에서
+      <code>Bundler.require(:default, Rails.env)</code>를 부르는 애플리케이션을 생성합니다.
+      <code>Rails.env</code>는 <code>Gemfile</code> 안의 그룹을 레일스 환경과 연결합니다.
+      레일스 환경과 연결되지 않은 다른 그룹을 사용한고 자동으로 요청(require)하길 원한다면,
+      <code>Bundler.require</code>를 부름으로써 그 그룹을 추가할 수 있습니다.
 
     %p.description
-      Remember that you can always leave groups of gems out of <code>Bundler.require</code>,
-      and then require them manually using Ruby's <code>require</code> at the appropriate
-      place in your app. You might do this because requiring a certain gem takes some time,
-      and you don't need it every time you boot your application.
+      <code>Bundler.require</code>에서 gem 그룹을 제외하고 루비의 <code>require</code>를 이용해
+      적당한 곳에서 수동으로 요청할 수도 있다는 것을 기억하세요.
+      아마도 특정 gem을 사용하는데 시간이 걸리거나, 부팅할 때마다 로드할 필요 없는 경우에 이 방법을
+      사용할 수 있습니다.
