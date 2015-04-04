@@ -174,16 +174,16 @@
       %p
         이 경우 두 gem이 각각의 의존성을 가지고 있지만, 공통으로 <code>rack</code>을
         공유하고 있습니다. <code>bundle update thin</code>을 실행하면 번들은
-        <code>thin</code>에 의존성이 있는 <code>daemons</code>,
+        <code>thin</code>에 의존하는 <code>daemons</code>,
         <code>eventmachine</code>, <code>rack</code>을 갱신하지만
-        <code>rack-perftools_profiler</code>에 의존성이 있는 <code>open4</code>,
+        <code>rack-perftools_profiler</code>에 의존하는 <code>open4</code>,
         <code>perftools.rb</code>는 갱신하지 않습니다.
         <code>bundle update thin</code>은 <code>rack-perftools_profiler</code>_에도_
         의존성이 있음에도 불구하고 <code>rack</code>을 갱신함에 주의하세요.
 
       %p
         요약하면 <code>bundle update</code>를 이용해 gem을 갱신할 때는 번들러는
-        다른 gem에 의존성이 있는 gem도 포함해 그 gem의 모든 의존성도 같이 갱신합니다.
+        다른 gem에 의존하는 gem도 포함해 그 gem의 모든 의존성도 같이 갱신합니다.
 
       %p
         이 시나리오에서 <code>Gemfile</code>에서 <code>thin</code>의 버전을

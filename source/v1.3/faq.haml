@@ -1,167 +1,148 @@
 %h2#faq
-  FAQ - Frequently Asked Questions
+  FAQ - 자주 묻는 질문
 .contents
   .bullet
     .description
       %h3
-        Why Can't I Just Specify Only <code>=</code> Dependencies?
+        <code>=</code>으로만 의존성을 설정하면 안 되나요?
       %p
-        <strong>Q:</strong> I understand the value of locking my gems down
-        to specific versions, but why can't I just specify <code>=</code> versions
-        for all my dependencies in the <code>Gemfile</code> and forget about
-        the <code>Gemfile.lock</code>?
+        <strong>Q:</strong> gem을 고정할 만한 가치가 있다고 생각합니다만, <code>=</code>으로만
+        버전을 적어 모든 의존성을 <code>Gemfile</code>에서 해결하고 <code>Gemfile.lock</code>을
+        안 쓸 수는 없을까요?
 
       %p
-        <strong>A:</strong> Many of your gems will have their own
-        dependencies, and they are unlikely to specify <code>=</code> dependencies.
-        Moreover, it is probably unwise for gems to lock down all of *their*
-        dependencies so strictly. The <code>Gemfile.lock</code> allows you to
-        specify the versions of the dependencies that your application needs in
-        the <code>Gemfile</code>, while remembering all of the exact versions of
-        third-party code that your application used when it last worked correctly.
+        <strong>A:</strong> gem은 각각의 의존성을 가집니다. 그리고 gem은 <code>=</code>으로
+        의존성을 설정하지 않을 가능성이 있습니다. 더욱이, 모든 *gem들*의 의존성을 너무
+        엄격하게 고정하는 것은 좋은 생각이 아닙니다. <code>Gemfile.lock</code>은 마지막으로
+        정상적으로 동작할 때의 애플리케이션의 모든 서드파티 코드를 정확히 기억하는 대신에,
+        애플리케이션에서 필요로 하는 의존성의 버전을 <code>Gemfile</code>에 지정할 수 있도록 합니다.
 
       %p
-        By specifying looser dependencies in your <code>Gemfile</code>
-        (such as <code>nokogiri ~> 1.4.2</code>), you gain the ability to run
-        <code>bundle update nokogiri</code>, and let bundler handle updating **only**
-        <code>nokogiri</code> and its dependencies to the latest version that still
-        satisfied the <code>~> 1.4.2</code> version requirement. This also allows you
-        to say "I want to use the current version of nokogiri" (<code>gem 'nokogiri'</code>
-        in your <code>Gemfile</code>) without having to look up the exact version number,
-        while still getting the benefits of ensuring that your application always runs with
-        exactly the same versions of all third-party code.
+        <code>nokogiri ~> 1.4.2</code>처럼 <code>Gemfile</code>에서 느슨하게 의존성을 지정하면
+        <code>bundle update nokogiri</code>를 실행해 <code>~> 1.4.2</code>의 요구 버전 범위를 여전히
+        만족하는 <code>nokogiri</code>와 의존 gem**만** 업데이트할 수 있게 됩니다.
+        또, 정확한 버전 번호를 모르더라도 <code>Gemfile</code>에서 <code>gem 'nokogiri'</code>라고
+        적어 "난 nokogiri의 최신 버전을 쓰고 싶어."라고 말할 수 있습니다.
+        이 경우에도 여전히 애플리케이션이 서드파티 코드와 정확히 같은 버전으로 동작하는 것이
+        보장됩니다.
 
       %h3
-        Why Can't I Just Submodule Everything?
+        모든 걸 서브모듈로 관리하면 안 될까요?
 
       %p
-        <strong>Q:</strong> I don't understand why I need bundler to manage
-        my gems in this manner. Why can't I just get the gems I need and stick them
-        in submodules, then put each of the submodules on the load path?
+        <strong>Q:</strong> 왜 gem을 관리하는데 번들러가 필요한지 이해하지 못하겠습니다.
+        그냥 gem을 받아서 서브모듈로 지정하고 각각의 서브모듈에 로드 경로를 지정하면 안 될까요?
 
       %p
-        <strong>A:</strong> Unfortunately, that solution requires that you
-        manually resolve all of the dependencies in your application, including dependencies
-        of dependencies. And even once you do that successfully, you would need to redo that
-        work if you wanted to update a particular gem. For instance, if you wanted to update
-        the <code>rails</code> gem, you would need to find all of the gems that depended on
-        dependencies of Rails (<code>rack</code>, <code>erubis</code>, <code>i18n</code>,
-        <code>tzinfo</code>, etc.), and find new versions that satisfy the new versions of
-        Rails' requirements.
+        <strong>A:</strong> 불행히도 그 해결책은 의존성의 의존성을 포함해서 모든 의존성을
+        수동으로 해결해야 할 필요가 있습니다. 한 번은 성공했다 하더라도, gem을 부분적으로 업데이트
+        할 때마다 재작업이 필요합니다. 예를 들어 <code>rails</code> gem을 업데이트 하려 한다면
+        레일스의 의존성을 위한 모든 gem(<code>rack</code>, <code>erubis</code>, <code>i18n</code>,
+        <code>tzinfo</code> 등)을 찾고 새 버전의 레일스의 의존성을 만족하는 버전을 찾을 필요가
+        있습니다.
 
       %p
-        Frankly, this is the sort of problem that computers are good at, and which you,
-        a developer, should not need to spend time doing.
+        솔직히, 이 문제는 컴퓨터가 풀기 좋은 문제입니다. 개발자가 시간을 낭비할 필요는 없죠.
 
       %p
-        More concerningly, if you made a mistake in the manual dependency resolution
-        process, you would not get any feedback about conflicts between different dependencies,
-        resulting in subtle runtime errors. For instance, if you accidentally stuck the wrong
-        version of <code>rack</code> in a submodule, it would likely break at runtime, when
-        Rails or another dependency tried to rely on a method that was not present.
+        더 걱정되는 것은, 수동 의존성 해결 과정에서 실수를 하면, 다른 의존성 간의 충돌에 대한
+        피드백 대신에 미묘한 런타임 에러를 받게 된다는 점입니다. 예를 들어 서브모듈에서 실수로
+        잘못된 <code>rack</code> 버전을 사용한다면, 레일스나 다른 의존성 관계의 gem이
+        존재하지 않는 메소드를 호출하려 해 정상적으로 실행되지 않습니다.
 
       %p
         %strong
-          Bottom line:
+          결론:
 
-        even though it might seem simpler at first glance, it is decidedly significantly
-        more complex.
+        처음엔 간단해 보일지 몰라도 확실히 더 복잡합니다.
 
       %h3
-        Why Is Bundler Downloading Gems From <code>--without</code> Groups?
+        왜 번들러가 <code>--without</code> 그룹 안에 있는 gem을 다운로드하죠?
 
       %p
-        <strong>Q:</strong> I ran <code>bundle install --without production</code> and
-        bundler is still downloading the gems in the <code>:production</code> group. Why?
+        <strong>Q:</strong> <code>bundle install --without production</code>을 실행했지만
+        번들러가 여전히 <code>:production</code> 그룹에 있는 gem을 다운로드 합니다. 왜죠?
 
       %p
-        <strong>A:</strong> Bundler's <code>Gemfile.lock</code> has to contain exact
-        versions of all dependencies in your <code>Gemfile</code>, regardless of any options
-        you pass in. If it did not, deploying your application to production might change all
-        your dependencies, eliminating the benefit of Bundler. You could no longer be sure that
-        your application uses the same gems in production that you used to develop and test with.
-        Additionally, adding a dependency in production might result in an application that is
-        impossible to deploy.
+        <strong>A:</strong> 번들러의 <code>Gemfile.lock</code>은 넘기는 옵션에 관계없이
+        <code>Gemfile</code>의 모든 의존성에 대한 정확한 버전정보를 가지고 있습니다. 그렇게
+        안 한다면 프로덕션에 배포할 때 모든 의존성을 바꾸게 되고, 번들러의 장점을 없애게 될
+        것입니다. 더 이상 애플리케이션에서 개발, 테스트에 사용하는 gem이 프로덕션에서
+        사용하는 gem과 같은 gem이라는 확신을 못하게 됩니다. 덤으로 프로덕션의 의존성 추가는
+        배포 불가능 상태를 만들 수도 있습니다.
 
       %p
-        For instance, imagine you have a production-only gem (let's call it
-        <code>rack-debugging</code>) that depends on <code>rack =1.1</code>. If we did not evaluate
-        the production group when you ran <code>bundle install --without production</code>, you
-        would deploy your application, only to receive an error that <code>rack-debugging</code>
-        conflicted with <code>rails </code> (which depends on <code>actionpack</code>, which depends
-        on <code>rack ~> 1.2.1</code>).
+        프로덕션에서만 사용하는 gem <code>rack-debugging</code>이 있다고 해봅시다. <code>rack-debugging</code>은
+        <code>rack =1.1</code>에 의존합니다. <code>bundle install --without production</code>으로
+        실행할 때는 프로덕션 그룹이 평가되지 않지만, 애플리케이션을 배포할 때 <code>rack-debugging</code>이
+        <code>rails</code>와 충돌한다는 메시지를 받게 될 것입니다. 왜냐하면 <code>rails</code>가
+        의존하는 <code>actionpack</code>은 <code>rack ~> 1.2.1</code>을 필요로 하기 때문입니다.
 
       %p
-        Another example: imagine a simple Rack application that has <code>gem 'rack'</code>
-        in the <code>Gemfile</code>. Again, imagine that you put <code>rack-debugging</code> in the
-        <code>:production</code> group. If we did not evaluate the <code>:production</code> group when
-        you installed via <code>bundle install --without production</code>, your app would use
-        <code>rack 1.2.1</code> in development, and you would learn, at deployment time, that
-        <code>rack-debugging</code> conflicts with the version of Rack that you tested with.
+        다른 예로 <code>Gemfile</code>에 <code>gem 'rack'</code>이 있는 간단한 Rack 애플리케이션이
+        있다고 해봅시다. 거기의 <code>:production</code>그룹에 <code>rack-debugging</code>을
+        넣었다고 하죠. <code>bundle install --without production</code>을 통해 설치했을 때는
+        <code>:production</code> 그룹은 평가되지 않고 애플리케이션은 개발환경에서
+        <code>rack 1.2.1</code>을 사용하게 됩니다. 그리고 이 상황은 이미 배우셨지만,
+        <code>rack-debugging</code>이 테스트했던 Rack의 버전과 충돌하게 됩니다.
 
       %p
-        In contrast, by evaluating the gems in **all** groups when you call <code>bundle install</code>,
-        regardless of the groups you actually want to use in that environment, we will discover the
-        <code>rack-debugger</code> requirement, and install <code>rack 1.1</code>, which is also compatible
-        with the <code>gem 'rack'</code> requirement in your <code>Gemfile</code>.
+        반면에, <code>bundle install</code>을 호출할 때 환경에 상관없이 **모든** 그룹을 평가하면,
+        <code>rack-debugger</code>의 의존성을 발견하고 <code>rack 1.1</code>을 합니다.
+        <code>rack 1.1</code>은 <code>Gemfile</code> 안의 <code>gem 'rack'</code>과도 호환되죠.
 
       %p
         %strong
-          In short,
-          by always evaluating all of the dependencies in your Gemfile, regardless of the dependencies
-        you intend to use in a particular environment, you avoid nasty surprises when switching to a different
-        set of groups in a different environment. And because we just download (but do not install) the gems,
-        you won't have to worry about the possibility of a difficult **installation** process for a gem that
-        you only use in production (or in development).
+          요약하자면,
+          Gemfile 안의 의존성과 관계없이 모든 의존성을 항상 평가함으로써,
+        다른 환경에서 다른 그룹들을 사용하다 특정으로 환경을 바꾸려 할 때 발생할 수 있는 불편한 점을 미리
+        방지할 수 있습니다. 그리고 gem을 설치하지 않고 다운로드만 하므로, 프로덕션이나 개발 환경에서
+        gem의 **설치** 프로세스가 어려워질 것을 걱정할 필요가 없습니다.
 
       %h3
-        I Have a C Extension That Requires Special Flags to Install
+        설치할 때 특별한 플래그가 필요한 C 확장이 있습니다.
 
       %p
-        <strong>Q</strong>: I have a C extension gem, such as <code>mysql</code>, which requires
-        special flags in order to compile and install. How can I pass these flags into the installation
-        process for those gems?
+        <strong>Q</strong>: <code>mysql</code>과 같은 설치할 때 특별한 플래그를 필요로 하는 C 확장 gem이 있습니다.
+        설치할 때 어떻게 플래그 값을 넘길 수 있을까요?
 
       %p
-        <strong>A</strong>: First of all, this problem does not exist for the <code>mysql2</code>
-        gem, which is a drop-in replacement for the <code>mysql</code> gem. In general, modern C extensions
-        properly discover the needed headers.
+        <strong>A</strong>: 먼저, <code>mysql</code> gem의 대용품(drop-in replacement)인 <code>mysql2</code> gem을
+        사용하면 문제 없습니다. 일반적으로 요즘 C 확장들은 필요한 헤더를 찾을 수 있습니다.
 
       %p
-        If you really need to pass flags to a C extension, you can use the <code>bundle config</code>
-        command:
+        만약 정말로 플래그를 넘길 필요가 있다면, <code>bundle config</code> 명령어를 사용하시면 됩니다.
 
       :code
         $ bundle config build.mysql --with-mysql-config=/usr/local/mysql/bin/mysql_config
 
       %p
-        Bundler will store this configuration in <code>~/.bundle/config</code>, and bundler will use
-        the configuration for any <code>bundle install</code> performed by the same user. As a result, once
-        you specify the necessary build flags for a gem, you can successfully install that gem as many times
-        as necessary.
+        번들러는 <code>~/.bundle/config</code>에 설정을 저장할 것이고, 이 설정은 같은 유저가 <code>bundle install</code>을
+        하면 매번 사용될 것입니다. 결과적으로 한 번만 필요한 gem에 빌드 플래그를 지정하면 그 gem은 언제나 성공적으로
+        설치 할 수 있습니다.
 
       %h3
-        I Do Not Have an Internet Connection and Bundler Keeps Trying to Connect to the Gem Server
+        인터넷에 접속할 수 없는 상황인데 계속 gem 서버에 연결을 시도합니다.
       %p
-        <strong>Q</strong>:  I do not have an internet connection but I have installed the gem before.
-        How do I get bundler to use my local gem cache and not connect to the gem server?
+        <strong>Q</strong>: 지금 인터넷에 접속할 수 없지만, 이전에 gem을 설치해 두었습니다.
+        어떻게 하면 번들러에서 gem 서버에 접속하지 않고 로컬 gem 캐시를 사용하게 할 수 있을까요?
 
       %p
-        <strong>A</strong>: Use the --local flag with bundle install. The --local flag tells bundler
-        to use the local gem cache instead of reaching out to the remote gem server.
+        <strong>A</strong>: bundle install 할 때 --local 플래그를 사용하시면 됩니다. --local 플래그는 번들러에게
+        원격 gem 서버 대신 로컬 gem 캐시를 사용하게 합니다.
 
       :code
         $ bundle install --local
 
       %h3
-        Bundling From RubyGems is Really Slow
+        RubyGems 서버에서 번들러를 실행하면 매우 느립니다.
 
       %p
-        <strong>Q</strong>: When I bundle from rubygems it is really slow. Is there anything I can do to make it faster?
+        <strong>Q</strong>: rubygems 서버에서 번들러를 실행하면 매우 느립니다. 좀 더 빠르게 할 수는 없을까요?
 
       %p
-        <strong>A</strong>: Add the --full-index flag when bundling from the rubygems server. This downloads
-        the index all at once instead of making numerous small requests to the api.
+        <strong>A</strong>: rubygems 서버에서 번들러를 실행할 때 --full-index 플래그를 사용하세요. 이렇게 하면
+        api에 매번 요청을 보내는 대신에 모든 인덱스를 한 번에 다운로드합니다.
 
       :code
         $ bundle install --full-index
