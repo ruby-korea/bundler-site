@@ -27,13 +27,13 @@
                   <code>=</code>으로만 의존성을 설정하면 안되나요?
                 </h3>
                 <p>
-                  <strong>Q:</strong> 젬을 고정할 만한 가치가 있다고 생각합니다만, <code>=</code>으로만
+                  <strong>Q:</strong> gem을 고정할 만한 가치가 있다고 생각합니다만, <code>=</code>으로만
                   버전을 적어 모든 의존성을 <code>Gemfile</code>에서 해결하고 <code>Gemfile.lock</code>을
                   안 쓸 수는 없을까요?
                 </p>
                 <p>
-                  <strong>A:</strong> 젬은 각각의 의존성을 가집니다. 그리고 젬은 <code>=</code>으로
-                  의존성을 설정하지 않을 가능성이 있습니다. 더욱이, 모든 *젬들*의 의존성을 너무
+                  <strong>A:</strong> gem은 각각의 의존성을 가집니다. 그리고 gem은 <code>=</code>으로
+                  의존성을 설정하지 않을 가능성이 있습니다. 더욱이, 모든 *gem들*의 의존성을 너무
                   엄격하게 고정하는 것은 좋은 생각이 아닙니다. <code>Gemfile.lock</code>은 마지막으로
                   정상적으로 동작할 때의 애플리케이션의 모든 서드파티 코드를 정확히 기억하는 대신에
                   애플리케이션의 <code>Gemfile</code>에서 필요로 하는 의존성의 버전을 지정하게 합니다.
@@ -41,7 +41,7 @@
                 <p>
                   <code>nokogiri ~> 1.4.2</code>처럼 <code>Gemfile</code>에서 느슨하게 의존성을 지정하면
                   <code>bundle update nokogiri</code>를 실행해 <code>~> 1.4.2</code>의 버전 지정을 여전히
-                  만족하는 <code>nokogiri</code>와 의존성이 있는 젬**만** 업데이트할 수 있게 됩니다.
+                  만족하는 <code>nokogiri</code>와 의존성이 있는 gem**만** 업데이트할 수 있게 됩니다.
                   또, <code>Gemfile</code>에서 <code>gem 'nokogiri'</code>라고 적으면 정확한 버전 번호를
                   모르더라도 "난 nokogiri의 최신 버전을 쓰고 싶어."라고 말할 수 있게 됩니다.
                   이 경우에도 여전히 애플리케이션이 서드파티 코드와 정확히 같은 버전으로 움직일 것이
@@ -51,14 +51,14 @@
                   모든 걸 서브모듈로 관리하면 안될까요?
                 </h3>
                 <p>
-                  <strong>Q:</strong> 왜 젬을 관리하는데 번들러가 필요한지 이해하지 못하겠습니다.
-                  그냥 젬을 받아서 서브모듈로 지정하고 각각의 서브모듈에 로드 경로를 지정하면 안 될까요?
+                  <strong>Q:</strong> 왜 gem을 관리하는데 번들러가 필요한지 이해하지 못하겠습니다.
+                  그냥 gem을 받아서 서브모듈로 지정하고 각각의 서브모듈에 로드 경로를 지정하면 안 될까요?
                 </p>
                 <p>
                   <strong>A:</strong> 불행히도 그 해결책은 의존성의 의존성을 포함해서 모든 의존성을
-                  수동으로 해결해야 할 필요가 있습니다. 한 번은 성공했다 하더라도, 젬을 부분적으로 업데이트
-                  할 때마다 재작업이 필요합니다. 예를 들어 <code>rails</code> 젬을 업데이트 하려 한다면
-                  레일스의 의존성을 위한 모든 젬(<code>rack</code>, <code>erubis</code>, <code>i18n</code>,
+                  수동으로 해결해야 할 필요가 있습니다. 한 번은 성공했다 하더라도, gem을 부분적으로 업데이트
+                  할 때마다 재작업이 필요합니다. 예를 들어 <code>rails</code> gem을 업데이트 하려 한다면
+                  레일스의 의존성을 위한 모든 gem(<code>rack</code>, <code>erubis</code>, <code>i18n</code>,
                   <code>tzinfo</code> 등)을 찾고 새 버전의 레일스의 의존성을 만족하는 버전을 찾을 필요가
                   있습니다.
                 </p>
@@ -68,7 +68,7 @@
                 <p>
                   더 걱정되는 것은, 수동 의존성 해결 과정에서 실수를 하면, 다른 의존성 간의 충돌에 대한
                   피드백 대신에 미묘한 런타임 에러를 받게 된다는 점입니다. 예를 들어 서브모듈에서 실수로
-                  잘못된 <code>rack</code> 버전을 사용한다면, 레일스나 다른 의존성 관계의 젬이
+                  잘못된 <code>rack</code> 버전을 사용한다면, 레일스나 다른 의존성 관계의 gem이
                   존재하지 않는 메소드를 호출하려 해 실행될 때 망가집니다.
                 </p>
                 <p>
@@ -78,22 +78,22 @@
                   처음엔 간단해 보일지 몰라도 확실히 더 복잡합니다.
                 </p>
                 <h3>
-                  왜 번들러가 <code>--without</code> 그룹 안에 있는 젬을 다운로드하죠?
+                  왜 번들러가 <code>--without</code> 그룹 안에 있는 gem을 다운로드하죠?
                 </h3>
                 <p>
                   <strong>Q:</strong> <code>bundle install --without production</code>을 실행했지만
-                  번들러가 여전히 <code>:production</code> 그룹에 있는 젬을 다운로드 합니다. 왜죠?
+                  번들러가 여전히 <code>:production</code> 그룹에 있는 gem을 다운로드 합니다. 왜죠?
                 </p>
                 <p>
                   <strong>A:</strong> 번들러의 <code>Gemfile.lock</code>은 넘겨지는 옵션에 관계없이
                   <code>Gemfile</code>의 모든 의존성에 대한 정확한 버전정보를 가지고 있습니다. 그렇게
                   안 한다면 프로덕션에 배포할 때 모든 의존성을 바꾸게 되고, 번들러의 장점을 없애게 될
-                  것입니다. 더 이상 애플리케이션에서 개발, 테스트에 사용하는 젬이 프로덕션에서
-                  사용하는 젬과 같은 젬이라는 확신을 못하게 됩니다. 덤으로 프로덕션의 의존성 추가는
+                  것입니다. 더 이상 애플리케이션에서 개발, 테스트에 사용하는 gem이 프로덕션에서
+                  사용하는 gem과 같은 gem이라는 확신을 못하게 됩니다. 덤으로 프로덕션의 의존성 추가는
                   배포 불가능 상태를 만들 수도 있습니다.
                 </p>
                 <p>
-                  프로덕션에서만 사용하는 젬 <code>rack-debugging</code>이 있다고 해봅시다. <code>rack-debugging</code>은
+                  프로덕션에서만 사용하는 gem <code>rack-debugging</code>이 있다고 해봅시다. <code>rack-debugging</code>은
                   <code>rack =1.1</code>에 의존합니다. <code>bundle install --without production</code>으로
                   실행할 때는 프로덕션 그룹이 평가되지 않지만, 애플리케이션을 배포할 때 <code>rack-debugging</code>이
                   <code>rails</code>와 충돌한다는 메시지를 받게 될 것입니다. 왜냐하면 <code>rails</code>가
@@ -118,18 +118,18 @@
                     Gemfile 안의 의존성과 관계없이 모든 의존성을 항상 평가함으로써,
                   </strong>
                   다른 환경에서 다른 그룹들을 사용하다 특정으로 환경을 바꾸려 할 때 발생할 수 있는 불편한 일들을 미리
-                  방지할 수 있습니다. 그리고 젬을 설치하지 않고 다운로드만 하므로, 프로덕션이나 개발 환경에서
-                  젬의 **설치** 프로세스가 어려워질 것을 걱정할 필요가 없습니다.
+                  방지할 수 있습니다. 그리고 gem을 설치하지 않고 다운로드만 하므로, 프로덕션이나 개발 환경에서
+                  gem의 **설치** 프로세스가 어려워질 것을 걱정할 필요가 없습니다.
                 </p>
                 <h3>
                   설치할 때 특별한 플래그가 필요한 C 확장이 있습니다
                 </h3>
                 <p>
-                  <strong>Q</strong>: <code>mysql</code>과 같은 설치할 때 특별한 플레그를 필요로 하는 C 확장 젬이 있습니다.
+                  <strong>Q</strong>: <code>mysql</code>과 같은 설치할 때 특별한 플레그를 필요로 하는 C 확장 gem이 있습니다.
                   설치할 때 어떻게 플래그 값을 넘길 수 있을까요?
                 </p>
                 <p>
-                  <strong>A</strong>: 먼저, <code>mysql</code> 젬의 대용품(drop-in replacement)인 <code>mysql2</code> 젬을
+                  <strong>A</strong>: 먼저, <code>mysql</code> gem의 대용품(drop-in replacement)인 <code>mysql2</code> gem을
                   사용하면 문제 없습니다. 일반적으로 요즘 C 확장들은 필요한 헤더를 찾을 수 있습니다.
                 </p>
                 <p>
@@ -138,19 +138,19 @@
                 <pre class="highlight plaintext">$ bundle config build.mysql --with-mysql-config=/usr/local/mysql/bin/mysql_config&#x000A;</pre>
                 <p>
                   번들러는 <code>~/.bundle/config</code>에 설정을 저장할 것이고, 이 설정은 같은 유저가 <code>bundle install</code>을
-                  하면 매번 사용될 것입니다. 결과적으로 한 번 필요한 젬에 빌드 플래그를 지정하면 성공적으로 필요한 만큼
+                  하면 매번 사용될 것입니다. 결과적으로 한 번 필요한 gem에 빌드 플래그를 지정하면 성공적으로 필요한 만큼
                   설치 할 수 있습니다.
                 </p>
                 <h3>
-                  인터넷에 접속할 수 없는 상황인데 계속 젬 서버에 연결을 시도합니다.
+                  인터넷에 접속할 수 없는 상황인데 계속 gem 서버에 연결을 시도합니다.
                 </h3>
                 <p>
-                  <strong>Q</strong>: 지금 인터넷에 접속할 수 없지만, 이전에 젬을 설치해 두었습니다.
-                  어떻게 하면 번들러에서 젬 서버에 접속하지 않고 로컬 젬 캐시를 사용하게 할 수 있을까요?
+                  <strong>Q</strong>: 지금 인터넷에 접속할 수 없지만, 이전에 gem을 설치해 두었습니다.
+                  어떻게 하면 번들러에서 gem 서버에 접속하지 않고 로컬 gem 캐시를 사용하게 할 수 있을까요?
                 </p>
                 <p>
                   <strong>A</strong>: bundle install 할때 --local 플래그를 사용하시면 됩니다. --local 플래그는 번들러에게
-                  원격 젬 서버 대신 로컬 젬 캐시를 사용하게 합니다.
+                  원격 gem 서버 대신 로컬 gem 캐시를 사용하게 합니다.
                 </p>
                 <pre class="highlight plaintext">$ bundle install --local&#x000A;</pre>
                 <h3>

@@ -17,172 +17,167 @@
       </div>
       <div id='container'>
         <div id='contents'>
-          <h2>Recommended Workflow with Version Control</h2>
+          <h2>버전 관리의 추천 워크플로우</h2>
           <div class='contents'>
             <div class='bullet' id='recommended_workflow'>
               <div class='description'>
                 <p>
-                  In general, when working with an application managed with bundler, you
-                  should use the following workflow:
+                  일반적으로, 번들러로 관리된 애플리케이션으로 일할 때에는 이하의
+                  워크플로우를 사용하는 게 바람직합니다.
                 </p>
                 <p>
-                  After you create your <code>Gemfile</code> for the first time, run
+                  처음 <code>Gemfile</code>을 생성한 다음에 다음 명령어를 실행합니다.
                   <pre class="highlight plaintext">$ bundle install</pre>
                 </p>
                 <p>
-                  Check the resulting <code>Gemfile.lock</code> into version control
+                  결과로 나온 <code>Gemfile.lock</code>을 버전 관리합니다.
                   <pre class="highlight plaintext">$ git add Gemfile.lock</pre>
                 </p>
                 <p>
-                  When checking out this repository on another development machine, run
+                  이 저장소를 다른 기기에서 체크아웃할 때엔 다음 명령어를 실행합니다.
                   <pre class="highlight plaintext">$ bundle install</pre>
                 </p>
                 <p>
-                  When checking out this repository on a deployment machine, run
+                  이 저장소를 배포 기기에 체크아웃할 때엔 다음 명령어를 실행합니다.
                   <pre class="highlight plaintext">$ bundle install --deployment</pre>
                 </p>
                 <p>
-                  After changing the <code>Gemfile</code> to reflect a new or update
-                  dependency, run
+                  <code>Gemfile</code>을 변경한 후에, 새로운 의존성이나 갱신된 의존성을
+                  반영하기 위해서는 다음 명령어를 실행합니다.
                   <pre class="highlight plaintext">$ bundle install</pre>
                 </p>
                 <p>
-                  Make sure to check the updated <code>Gemfile.lock</code> into version
-                  control
+                  갱신된 <code>Gemfile.lock</code>이 버전 관리되는지 확인합니다.
                   <pre class="highlight plaintext">$ git add Gemfile.lock</pre>
                 </p>
                 <p>
-                  If <code>bundle install</code> reports a conflict, manually update the
-                  specific gems that you changed in the <code>Gemfile</code>
+                  <code>bundle install</code>이 충돌을 보고하면, <code>Gemfile</code>
+                  에서 변경한 특정 gem을 수동으로 갱신해야 합니다.
                   <pre class="highlight plaintext">$ bundle update rails thin</pre>
                 </p>
                 <p>
-                  If you want to update all the gems to the latest possible versions that
-                  still match the gems listed in the <code>Gemfile</code>, run
+                  <code>Gemfile</code> 안에 있는 gem의 조건을 만족하면서 가능한 최신 버전으로
+                  갱신하려면, 다음 명령어를 실행합니다.
                   <pre class="highlight plaintext">$ bundle update&#x000A;</pre>
                 </p>
               </div>
             </div>
           </div>
-          <h2>A Thorough Bundler Workflow</h2>
+          <h2>번들러 워크플로우 철저하게 살펴보기</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                Getting started with bundler is easy! Open a terminal window and run this command:
+                번들러는 시작하기 쉽습니다! 터미널 윈도우를 열고 이 명령어를 실행합니다.
               </div>
               <pre class="highlight plaintext">$ gem install bundler</pre>
               <div class='notes'>
                 <li>
-                  When you first create a Rails application, it already comes with a
-                  <code>Gemfile</code>.  For another kind of application (such as Sinatra), run:
+                  처음 레일스 애플리케이션을 생성했을 때부터 <code>Gemfile</code>이 이미 포함되어 있습니다.
+                  (시나트라 같은) 다른 종류의 애플리케이션은 이 명령어를 실행합니다.
                   <pre class="highlight plaintext">$ bundle init&#x000A;</pre>
                 </li>
                 <li>
-                  The <code>bundle init</code> command creates a simple <code>Gemfile</code> which you
-                  can edit.
+                  <code>bundle init</code> 명령어는 수정할 수 있는 간단한 <code>Gemfile</code>을 생성합니다.
                 </li>
               </div>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Specify your dependencies in the root of your application, called the <code>Gemfile</code>.
-                It looks something like this:
+                <code>Gemfile</code>은 애플리케이션 루트에 의존성을 특정한 것입니다.
+                이런 내용들이 들어있습니다.
               </div>
               <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>&#x000A;<span class="n">gem</span> <span class="s1">'nokogiri'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rack'</span><span class="p">,</span> <span class="s1">'~&gt;1.1'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rspec'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="s1">'spec'</span>&#x000A;</pre>
               <div class='notes'>
-                This <code>Gemfile</code> says a few things. First, it says that bundler should
-                look for gems declared in the <code>Gemfile</code> at <code>https://rubygems.org</code>.
-                You can declare multiple RubyGems sources, and bundler will look for gems in the order
-                you declared the sources.
+                이 <code>Gemfile</code>은 여러 가지를 말해줍니다. 첫째, 번들러는
+                <code>Gemfile</code> 안에 선언된 gem을 <code>https://rubygems.org</code>
+                안에서 찾을 것입니다. 여러 개의 루비젬스 소스를 선언 할 수도 있고, 번들러는
+                소스가 선언된 순서대로 gem을 찾을 것입니다.
               </div>
-              <a href="/bundler-site/v1.6/gemfile.html">Learn More: Gemfiles</a>
+              <a href="/bundler-site/v1.6/gemfile.html">자세한 내용은: Gemfile</a>
             </div>
             <div class='bullet'>
               <div class='description'>
                 <p>
-                  After declaring your first set of dependencies, you tell bundler to go get them:
-                  <pre class="highlight plaintext">$ bundle install    # &lt;code&gt;bundle&lt;/code&gt; is a shortcut for &lt;code&gt;bundle install&lt;/code&gt;&#x000A;</pre>
+                  첫 의존성을 선언한 이후, 번들러에게 받도록 해야합니다.
+                  <pre class="highlight plaintext">$ bundle install    # &lt;code&gt;bundle&lt;/code&gt;은 &lt;code&gt;bundle install&lt;/code&gt;의 단축입니다.&#x000A;</pre>
                 </p>
                 <p>
-                  Bundler will connect to <code>rubygems.org</code> (and any other sources that you declared),
-                  and find a list of all of the required gems that meet the requirements you specified.
-                  Because all of the gems in your <code>Gemfile</code> have dependencies of their own
-                  (and some of those have their own dependencies), running <code>bundle install</code> on the
-                  <code>Gemfile</code> above will install quite a few gems.
+                  번들러는 <code>rubygems.org</code>(아니면 다른 선언된 소스)에 접속해, 모든 필요한 gem의
+                  목록(지정된 요구사항을 충족하는 gem 목록)을 찾습니다. <code>Gemfile</code> 안의 모든 gem은
+                  각자 의존성을 가지고 있고 또 그 의존성의 일부는 각자의 의존성을 가지고 있기 때문에,
+                  <code>bundle install</code>을 실행하면 위의 <code>Gemfile</code>로도 꽤 많은 gem이 설치됩니다.
                   <pre class="highlight plaintext">  $ bundle install&#x000A;  Fetching gem metadata from https://rubygems.org/&#x000A;  Resolving dependencies...&#x000A;  Using rake (0.8.7)&#x000A;  Using abstract (1.0.0)&#x000A;  Installing activesupport (3.0.0.rc)&#x000A;  Using builder (2.1.2)&#x000A;  Using i18n (0.4.1)&#x000A;  Installing activemodel (3.0.0.rc)&#x000A;  Using erubis (2.6.6)&#x000A;  Using rack (1.2.1)&#x000A;  Installing rack-mount (0.6.9)&#x000A;  Using rack-test (0.5.4)&#x000A;  Using tzinfo (0.3.22)&#x000A;  Installing actionpack (3.0.0.rc)&#x000A;  Using mime-types (1.16)&#x000A;  Using polyglot (0.3.1)&#x000A;  Using treetop (1.4.8)&#x000A;  Using mail (2.2.5)&#x000A;  Installing actionmailer (3.0.0.rc)&#x000A;  Using arel (0.4.0)&#x000A;  Installing activerecord (3.0.0.rc)&#x000A;  Installing activeresource (3.0.0.rc)&#x000A;  Using bundler (1.0.0.rc.3)&#x000A;  Installing nokogiri (1.4.3.1) with native extensions&#x000A;  Installing rack-cache (0.5.2)&#x000A;  Installing thor (0.14.0)&#x000A;  Installing railties (3.0.0.rc)&#x000A;  Installing rails (3.0.0.rc)&#x000A;  Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.&#x000A;</pre>
                 </p>
                 <p>
-                  If any of the needed gems are already installed, Bundler will use them. After installing
-                  any needed gems to your system, bundler writes a snapshot of all of the gems and
-                  versions that it installed to <code>Gemfile.lock</code>.
+                  필요한 gem 중 일부가 이미 설치되어 있다면, 번들러는 그것을 사용합니다. 시스템에서 필요한
+                  gem을 모두 설치한 후, 번들러는 <code>Gemfile.lock</code>에 설치된 모든 gem과 버전
+                  정보의 스냅샷을 기록합니다.
                   <div class='notes'>
                     <li>
-                      If <code>bundle install</code> reports a conflict between your <code>Gemfile</code> and
-                      <code>Gemfile.lock</code>, run:
+                      <code>bundle install</code>이 <code>Gemfile</code>과 <code>Gemfile.lock</code> 사이에
+                      충돌을 보고한다면 다음 명령을 실행합니다.
                       <pre class="highlight plaintext">$ bundle update sinatra&#x000A;</pre>
                     </li>
                     <li>
-                      This will update just the Sinatra gem, as well as any of its dependencies.
+                      이 명령어는 Sinatra gem뿐만 아니라 시나트라의 모든 의존성을 갱신합니다.
                     </li>
                     <p>
                       <li>
-                        To update all of the gems in your <code>Gemfile</code> to the latest possible versions, run:
+                        <code>Gemfile</code> 안의 모든 가능한 최신 버전을 갱신하려면, 다음을 실행합니다.
                         <pre class="highlight plaintext">$ bundle update&#x000A;</pre>
                       </li>
                     </p>
                     <li>
-                      Whenever your <code>Gemfile.lock</code> changes, always check it in to version control.
-                      It keeps a history of the exact versions of all third-party code that you used to successfully
-                      run your application.
+                      <code>Gemfile.lock</code>이 변경되었다면, 반드시 버전 관리에 넣도록 합니다.
+                      이렇게 하면, 성공적으로 애플리케이션이 동작했을 때의 모든 서드파티 코드의 정확한 버전 이력이 남습니다.
                     </li>
                     <li>
-                      The <code>git add Gemfile*</code> command adds the Gemfile and Gemfile.lock to your repository. This ensures that
-                      other developers on your app, as well as your deployment environment, will all use the same
-                      third-party code that you are using now.
+                      <code>git add Gemfile*</code> 명령어는 Gemfile과 Gemfile.lock 파일을 저장소에 추가합니다. 이렇게 하면
+                      애플리케이션의 다른 개발자가 당신의 개발 환경과 같은 서드 파티 코드를 사용하도록 할 수 있습니다.
                     </li>
                   </div>
                 </p>
               </div>
             </div>
             <div class='buttons'>
-              <a href="/bundler-site/v1.6/bundle_install.html">Learn More: bundle install</a>
-              <a href="/bundler-site/v1.6/bundle_update.html">Learn More: bundle update</a>
+              <a href="/bundler-site/v1.6/bundle_install.html">자세한 내용은: bundle install</a>
+              <a href="/bundler-site/v1.6/bundle_update.html">자세한 내용은: bundle update</a>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Inside your app, load up the bundled environment:
+                애플리케이션 안에서 번들된 환경을 로드합니다.
               </div>
               <pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'rubygems'</span>&#x000A;<span class="nb">require</span> <span class="s1">'bundler/setup'</span>&#x000A;&#x000A;<span class="c1"># require your gems as usual</span>&#x000A;<span class="nb">require</span> <span class="s1">'nokogiri'</span></pre>
-              <a href="/bundler-site/v1.6/bundler_setup.html">Learn More: Bundler.setup</a>
+              <a href="/bundler-site/v1.6/bundler_setup.html">자세한 내용은: Bundler.setup</a>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Run an executable that comes with a gem in your bundle:
+                번들 안의 gem과 같이 오는 실행 파일을 실행합니다.
               </div>
               <pre class="highlight plaintext">$ bundle exec rspec spec/models</pre>
               <div class='notes'>
                 <p>
-                  In some cases, running executables without <code>bundle exec</code>
-                  may work, if the executable happens to be installed in your system
-                  and does not pull in any gems that conflict with your bundle.
+                  어떤 경우에는, <code>bundle exec</code> 없이 실행 파일이 실행 될 수
+                  있습니다. 시스템에 실행 파일이 설치 되어있고 번들에 있는 어떤 gem과도
+                  충돌 하지 않을 때라면요.
                 </p>
                 <p>
-                  However, this is unreliable and is the source of considerable pain.
-                  Even if it looks like it works, it may not work in the future or
-                  on another machine.
+                  하지만 이 상태는 신뢰할 수 없고 나중에 상당한 문제가 될 수 있습니다.
+                  움직이는 것처럼 보인다고 하더라도, 미래나 다른 기기에서는 움직이지
+                  않을 수 있습니다.
                 </p>
               </div>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Finally, if you want a way to get a shortcut to gems in your bundle:
+                마지막으로, 번들 안에 있는 gem의 단축 명령이 필요하다면 이렇게 할 수 있습니다.
               </div>
               <pre class="highlight plaintext">$ bundle install --binstubs&#x000A;$ bin/rspec spec/models</pre>
               <div class='notes'>
-                The executables installed into <code>bin</code> are scoped to the
-                bundle, and will always work.
+                이 실행 파일들은 번들의 범위로 <code>bin</code> 안에 설치되며 언제나
+                동작할 것입니다.
               </div>
-              <a href="/v1.6/man/bundle-exec.1.html">Learn More: Executables</a>
+              <a href="/v1.6/man/bundle-exec.1.html">자세한 내용은: 실행파일</a>
             </div>
           </div>
         </div>

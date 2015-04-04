@@ -21,11 +21,11 @@
           <p id='intro'>
             번들러는 루비 애플리케이션을 위한 일관된 환경을 관리합니다. 번들러는 애플리케이션
             코드와 실행하는데 필요한 루비젬을 추적하여 애플리케이션으로 하여금 항상 실행할 때
-            필요한 정확한 젬과 버전을 쓰도록 합니다.
+            필요한 정확한 gem과 버전을 쓰도록 합니다.
             <br>
             <br>
             번들러를 사용하면 개발, 스테이징, 프로덕션 기기에서의 코드 공유가 쉬워집니다.
-            당연히 애플리케이션이나 젬을 공유하는 방법을 아시겠지만, 깃허브에 붙여넣고 필요한
+            당연히 애플리케이션이나 gem을 공유하는 방법을 아시겠지만, GitHub에 붙여넣고 필요한
             곳에서 클론하시면 됩니다.
             번들러는 애플리케이션이 에러 없이 켜지고 실행하는데 필요한 의존성을 해결하는 일을
             쉽게 합니다.
@@ -53,7 +53,7 @@
             </div>
             <div class='bullet'>
               <div class='description'>
-                필요한 모든 젬을 지정된 sources로부터 설치하세요.
+                필요한 모든 gem을 지정된 소스로부터 설치하세요.
               </div>
               <pre class="highlight plaintext">$ bundle install&#x000A;$ git add Gemfile Gemfile.lock</pre>
               <a href="/bundler-site/v1.5/bundle_install.html">자세한 내용은: bundle install</a>
@@ -67,28 +67,28 @@
               <div class='description'>
                 애플리케이션의 안에서, 번들이 적용된 환경 로드하기
               </div>
-              <pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'rubygems'</span>&#x000A;<span class="nb">require</span> <span class="s1">'bundler/setup'</span>&#x000A;&#x000A;<span class="c1"># 평소처럼 젬을 require하세요</span>&#x000A;<span class="nb">require</span> <span class="s1">'nokogiri'</span></pre>
+              <pre class="highlight ruby"><span class="nb">require</span> <span class="s1">'rubygems'</span>&#x000A;<span class="nb">require</span> <span class="s1">'bundler/setup'</span>&#x000A;&#x000A;<span class="c1"># 평소처럼 gem을 require하세요</span>&#x000A;<span class="nb">require</span> <span class="s1">'nokogiri'</span></pre>
               <a href="/bundler-site/v1.5/bundler_setup.html">자세한 내용은: Bundler.setup</a>
             </div>
             <div class='bullet'>
               <div class='description'>
-                번들 안의 젬에 들어있는 실행 파일 실행하기
+                번들 안의 gem에 들어있는 실행 파일 실행하기
               </div>
               <pre class="highlight plaintext">$ bundle exec rspec spec/models</pre>
               <div class='notes'>
                 <p>
                   어떤 때는, <code>bundle exec</code> 없이도 실행 파일을 실행할 수 있습니다.
-                  번들러 안의 어떤 젬과도 충돌하지 않고 시스템에 실행 파일이 설치되어
+                  번들러 안의 어떤 gem과도 충돌하지 않고 시스템에 실행 파일이 설치되어
                   있는 경우가 그 경우죠.
                 </p>
                 <p>
-                  하지만, 이 상황은 신뢰하기 힘들고 고통의 근원이 됩니다.
+                  하지만 이 상황은 신뢰하기 힘들고 고통의 근원이 됩니다.
                   동작하는 것처럼 보이더래도, 다른 기기에서나 미래에 움직이지 않게 될
                   가능성이 있습니다.
                 </p>
               </div>
               <div class='description'>
-                마지막으로, 원한다면 번들 안의 젬의 단축 실행 파일을 만들 수 있습니다.
+                마지막으로, 원한다면 번들 안의 gem의 단축 실행 파일을 만들 수 있습니다.
               </div>
               <pre class="highlight plaintext">$ bundle install --binstubs&#x000A;$ bin/rspec spec/models</pre>
               <div class='notes'>
@@ -102,9 +102,11 @@
             <a href="/bundler-site/v1.5/rails3.html">레일스 3</a>
             <a href="/bundler-site/v1.5/rails23.html">레일스 2.3</a>
             <a href="/bundler-site/v1.5/sinatra.html">시나트라</a>
-            <a href="/bundler-site/v1.5/rubygems.html">루비젬</a>
+            <a href="/bundler-site/v1.5/rubygems.html">루비젬스</a>
             <a href="/bundler-site/v1.5/rubymotion.html">루비모션</a>
           </div>
+          <h2 id='get-involved'>기여하기</h2>
+          <p>번들러는 많은 기여자와 사용자를 가지고 있고 상당히 많이 논의되고 있습니다. 질문이 있으시다면, <a href="http://webchat.freenode.net/?channels=bundler">IRC 채널</a>이나 <a href="http://groups.google.com/group/ruby-bundler">메일링 리스트</a>에 해보세요. 프로젝트에 기여하는데 관심이 있으시다면(프로그래밍 스킬은 필요 없습니다), <a href="https://github.com/bundler/bundler/blob/master/DEVELOPMENT.md">기여하기 가이드</a>를 읽으세요. 번들러 프로젝트에 참여하는 동안, <a href="/bundler-site/conduct.html">행동강령</a>을 명심하고, 모두에게 포용적이고 우호적으로 행동해 주시길 바랍니다. 스폰서를 하실 생각이 있으시거나 보안 관련 질문이 있으시면, 코어 팀에 직접 연락 주세요.</p>
           <div class='buttons'>
             <a href="/bundler-site/conduct.html">행동 강령</a>
             <a href="http://webchat.freenode.net/?channels=bundler">IRC의 #bundler 채널</a>

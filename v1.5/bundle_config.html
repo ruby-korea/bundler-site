@@ -130,11 +130,11 @@
             <div class='bullet' id='build_options'>
               <div class='description'>
                 <p>
-                  <code>bundle config</code>는 특정 젬을 설치할 때마다 인스톨러에 플래그를
+                  <code>bundle config</code>는 특정 gem을 설치할 때마다 인스톨러에 플래그를
                   넘겨주는 용도로도 사용할 수 있습니다.
                 </p>
                 <p>
-                  매우 일반적인 예로 <code>mysql</code> 젬은 스노우 레퍼드에서 <code>gem
+                  매우 일반적인 예로 <code>mysql</code> gem은 스노우 레퍼드에서 <code>gem
                   install</code>을 할 때 <code>mysql_config</code> 실행 파일을 찾기 위한 설정
                   플래그를 필요로 합니다.
                 </p>
@@ -143,13 +143,13 @@
                 </div>
                 <p>
                   <code>mysql_config</code>의 실행 파일의 구체적인 위치가 기기마다 다를 수
-                  있으므로 각 머신마다 이 플래그를 지정할 수 있습니다.
+                  있으므로 각 기기마다 이 플래그를 지정할 수 있습니다.
                 </p>
                 <div class='how'>
                   <pre class="highlight plaintext">$ bundle config build.mysql --with-mysql-config=/usr/local/mysql/bin/mysql_config</pre>
                 </div>
                 <p>
-                  이 명령어를 실행하면 <code>mysql</code> 젬을 설치해야 할 때마다 지정한
+                  이 명령어를 실행하면 <code>mysql</code> gem을 설치해야 할 때마다 지정한
                   플레그를 함께 넘겨 줍니다.
                 </p>
               </div>
@@ -167,7 +167,7 @@
                   예를 들어, <code>bundle install</code>에 <code>--without</code> 플래그를
                   넘겨주어 번들러가 <code>Gemfile</code>의 특정그룹을 설치하는 것을 막는
                   경우 번들러는 이 값을 <code>app/.bundle/config</code> 안에 남겨두어
-                  <code>Bundler.setup</code>이 <code>Gemfile</code>에서 설치되지 않은 젬을
+                  <code>Bundler.setup</code>이 <code>Gemfile</code>에서 설치되지 않은 gem을
                   찾으려 하지 않도록 합니다. 덤으로 <code>bundle install</code>을 또 실행
                   할 때 이 설정을 기억해 두었다가 그 그룹들을 생략합니다.
                 </p>
@@ -190,7 +190,7 @@
                 </p>
                 <ul>
                   <li>
-                    <code>path</code> (<code>BUNDLE_PATH</code>): 젬을 설치할 디스크에서의
+                    <code>path</code> (<code>BUNDLE_PATH</code>): gem을 설치할 디스크에서의
                     위치입니다. 기본 값은 개발환경에서는 <code>$GEM_HOME</code>,
                     <code>--deployment</code>가 사용되었다면 <code>vendor/bundle</code>입니다.
                   </li>
@@ -204,7 +204,7 @@
                     그룹의 목록입니다. <code>:</code>으로 구분됩니다.
                   </li>
                   <li>
-                    <code>bin</code> (<code>BUNDLE_BIN</code>): 번들 안의 젬에서 실행 파일을
+                    <code>bin</code> (<code>BUNDLE_BIN</code>): 번들 안의 gem에서 실행 파일을
                     특정 디렉터리에 설치합니다. 기본 값은 <code>false</code>입니다.
                   </li>
                   <li>
@@ -226,12 +226,12 @@
               </div>
             </div>
           </div>
-          <h2>로컬 깃 저장소</h2>
+          <h2>로컬 git 저장소</h2>
           <div class='contents'>
             <div class='bullet' id='local_git_repos'>
               <div class='description'>
                 <p>
-                  번들러는 리모트 버전이 아닌 로컬 깃 저장소로 작업하게 할 수도 있습니다.
+                  번들러는 리모트 버전이 아닌 로컬 git 저장소로 작업하게 할 수도 있습니다.
                   이렇게 하려면 로컬 우선으로 설정하실 필요가 있습니다.
                 </p>
                 <pre class="highlight plaintext">$ bundle config local.GEM_NAME /path/to/local/git/repository&#x000A;</pre>
@@ -240,11 +240,11 @@
                 </p>
                 <pre class="highlight plaintext">$ bundle config local.rack ~/Work/git/rack&#x000A;</pre>
                 <p>
-                  이제 리모트 깃 저장소에서 체크아웃 하는 대신, 로컬 저장소가 우선됩니다.
-                  소스 패스와 비슷하게 로컬 깃 저장소가 변경 될 때마다 변경 내용은
-                  자동으로 번들러가 반영해줍니다. 이 말은 로컬 깃 저장소의 커밋은
-                  <code>Gemfile.lock</code> 안의 리비전을 로컬 깃 저장소의 리비전으로
-                  갱신한다는 뜻입니다. 이것은 깃 서브모듈을 사용할 때처럼 주의가
+                  이제 리모트 git 저장소에서 체크아웃 하는 대신, 로컬 저장소가 우선됩니다.
+                  소스 패스와 비슷하게 로컬 git 저장소가 변경 될 때마다 변경 내용은
+                  자동으로 번들러가 반영해줍니다. 이 말은 로컬 git 저장소의 커밋은
+                  <code>Gemfile.lock</code> 안의 리비전을 로컬 git 저장소의 리비전으로
+                  갱신한다는 뜻입니다. 이것은 git 서브모듈을 사용할 때처럼 주의가
                   필요합니다. 리모트에 푸시하기 전에 로컬에 있는 게 전부 푸시되어 있는지
                   확인하셔야 합니다. 그렇지 않으면 로컬 기기에만 있는 커밋을 가리키게
                   됩니다.
@@ -259,20 +259,20 @@
                 </p>
                 <p>
                   마지막으로 번들러는 <code>Gemfile.lock</code> 안의 맞는 리비전이
-                  로컬 깃 저장소에 있는지도 확인합니다. 이렇게 함으로써 번들러는
+                  로컬 git 저장소에 있는지도 확인합니다. 이렇게 함으로써 번들러는
                   리모트의 마지막 변경들을 가져오도록 합니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2>젬 소스 미러</h2>
+          <h2>gem 소스 미러</h2>
           <div class='contents'>
             <div class='bullet' id='gem-source-mirrors'>
               <div class='description'>
                 <p>
                   환경이 rubygems.org 서버의 로컬 미러를 가지고 있다면,
                   <code>mirror.URL</code>에 미러의 주소를 설정합니다. 그 시점에서 번들러는
-                  Gemfile 안의 소스 대신, 미러에서 젬과 젬스펙을 다운로드 합니다.
+                  Gemfile 안의 소스 대신, 미러에서 gem과 gemspec을 다운로드 합니다.
                 </p>
                 <pre class="highlight plaintext">$ bundle config mirror.https://rubygems.org https://localgems.lan&#x000A;  &lt;code&gt;--deployment&lt;/code&gt; is used.</pre>
               </div>
