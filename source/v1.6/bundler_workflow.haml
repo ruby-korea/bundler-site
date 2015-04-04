@@ -1,71 +1,69 @@
-%h2 Recommended Workflow with Version Control
+%h2 버전 관리의 추천 워크플로우
 .contents
   .bullet#recommended_workflow
     .description
       %p
-        In general, when working with an application managed with bundler, you
-        should use the following workflow:
+        일반적으로, 번들러로 관리된 애플리케이션으로 일할 때에는 이하의
+        워크플로우를 사용하는 게 바람직합니다.
       %p
-        After you create your <code>Gemfile</code> for the first time, run
+        처음 <code>Gemfile</code>을 생성한 다음에 다음 명령어를 실행합니다.
         :code
           $ bundle install
       %p
-        Check the resulting <code>Gemfile.lock</code> into version control
+        결과로 나온 <code>Gemfile.lock</code>을 버전 관리합니다.
         :code
           $ git add Gemfile.lock
       %p
-        When checking out this repository on another development machine, run
+        이 저장소를 다른 기기에서 체크아웃할 때엔 다음 명령어를 실행합니다.
         :code
           $ bundle install
       %p
-        When checking out this repository on a deployment machine, run
+        이 저장소를 배포 기기에 체크아웃할 때엔 다음 명령어를 실행합니다.
         :code
           $ bundle install --deployment
       %p
-        After changing the <code>Gemfile</code> to reflect a new or update
-        dependency, run
+        <code>Gemfile</code>을 변경한 후에, 새로운 의존성이나 갱신된 의존성을
+        반영하기 위해서는 다음 명령어를 실행합니다.
         :code
           $ bundle install
       %p
-        Make sure to check the updated <code>Gemfile.lock</code> into version
-        control
+        갱신된 <code>Gemfile.lock</code>이 버전 관리되는지 확인합니다.
         :code
           $ git add Gemfile.lock
       %p
-        If <code>bundle install</code> reports a conflict, manually update the
-        specific gems that you changed in the <code>Gemfile</code>
+        <code>bundle install</code>이 충돌을 보고하면, <code>Gemfile</code>
+        에서 변경한 특정 gem을 수동으로 갱신해야 합니다.
         :code
           $ bundle update rails thin
       %p
-        If you want to update all the gems to the latest possible versions that
-        still match the gems listed in the <code>Gemfile</code>, run
+        <code>Gemfile</code> 안에 있는 gem의 조건을 만족하면서 가능한 최신 버전으로
+        갱신하려면, 다음 명령어를 실행합니다.
         :code
           $ bundle update
 
-%h2 A Thorough Bundler Workflow
+%h2 번들러 워크플로우 철저하게 살펴보기
 
 .contents
   .bullet
     .description
-      Getting started with bundler is easy! Open a terminal window and run this command:
+      번들러는 시작하기 쉽습니다! 터미널 윈도우를 열고 이 명령어를 실행합니다.
     :code
       $ gem install bundler
     .notes
       %li
-        When you first create a Rails application, it already comes with a
-        <code>Gemfile</code>.  For another kind of application (such as Sinatra), run:
+        처음 레일스 애플리케이션을 생성했을 때부터 <code>Gemfile</code>이 이미 포함되어 있습니다.
+        (시나트라 같은) 다른 종류의 애플리케이션은 이 명령어를 실행합니다.
 
         :code
           $ bundle init
 
       %li
-        The <code>bundle init</code> command creates a simple <code>Gemfile</code> which you
-        can edit.
+        <code>bundle init</code> 명령어는 수정할 수 있는 간단한 <code>Gemfile</code>을 생성합니다.
 
   .bullet
     .description
-      Specify your dependencies in the root of your application, called the <code>Gemfile</code>. 
-      It looks something like this:
+      <code>Gemfile</code>은 애플리케이션 루트에 의존성을 특정한 것입니다.
+      이런 내용들이 들어있습니다.
     :code
       # lang: ruby
       source 'https://rubygems.org'
@@ -74,26 +72,25 @@
       gem 'rspec', :require => 'spec'
 
     .notes
-      This <code>Gemfile</code> says a few things. First, it says that bundler should 
-      look for gems declared in the <code>Gemfile</code> at <code>https://rubygems.org</code>. 
-      You can declare multiple RubyGems sources, and bundler will look for gems in the order 
-      you declared the sources.
-    = link_to 'Learn More: Gemfiles', '/v1.6/gemfile.html'
+      이 <code>Gemfile</code>은 여러 가지를 말해줍니다. 첫째, 번들러는
+      <code>Gemfile</code> 안에 선언된 gem을 <code>https://rubygems.org</code>
+      안에서 찾을 것입니다. 여러 개의 루비젬스 소스를 선언 할 수도 있고, 번들러는
+      소스가 선언된 순서대로 gem을 찾을 것입니다.
+    = link_to '자세한 내용은: Gemfile', '/v1.6/gemfile.html'
 
   .bullet
     .description
       %p
-        After declaring your first set of dependencies, you tell bundler to go get them:
+        첫 의존성을 선언한 이후, 번들러에게 받도록 해야합니다.
 
         :code
-          $ bundle install    # <code>bundle</code> is a shortcut for <code>bundle install</code>
+          $ bundle install    # <code>bundle</code>은 <code>bundle install</code>의 단축입니다.
 
       %p
-        Bundler will connect to <code>rubygems.org</code> (and any other sources that you declared), 
-        and find a list of all of the required gems that meet the requirements you specified. 
-        Because all of the gems in your <code>Gemfile</code> have dependencies of their own 
-        (and some of those have their own dependencies), running <code>bundle install</code> on the 
-        <code>Gemfile</code> above will install quite a few gems.
+        번들러는 <code>rubygems.org</code>(아니면 다른 선언된 소스)에 접속해, 모든 필요한 gem의
+        목록(지정된 요구사항을 충족하는 gem 목록)을 찾습니다. <code>Gemfile</code> 안의 모든 gem은
+        각자 의존성을 가지고 있고 또 그 의존성의 일부는 각자의 의존성을 가지고 있기 때문에,
+        <code>bundle install</code>을 실행하면 위의 <code>Gemfile</code>로도 꽤 많은 gem이 설치됩니다.
 
         :code
             $ bundle install
@@ -128,44 +125,42 @@
             Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.
 
       %p
-        If any of the needed gems are already installed, Bundler will use them. After installing
-        any needed gems to your system, bundler writes a snapshot of all of the gems and
-        versions that it installed to <code>Gemfile.lock</code>.
+        필요한 gem 중 일부가 이미 설치되어 있다면, 번들러는 그것을 사용합니다. 시스템에서 필요한
+        gem을 모두 설치한 후, 번들러는 <code>Gemfile.lock</code>에 설치된 모든 gem과 버전
+        정보의 스냅샷을 기록합니다.
 
         .notes
 
           %li
-            If <code>bundle install</code> reports a conflict between your <code>Gemfile</code> and 
-            <code>Gemfile.lock</code>, run:
+            <code>bundle install</code>이 <code>Gemfile</code>과 <code>Gemfile.lock</code> 사이에
+            충돌을 보고한다면 다음 명령을 실행합니다.
 
             :code
               $ bundle update sinatra
 
           %li
-            This will update just the Sinatra gem, as well as any of its dependencies.
+            이 명령어는 Sinatra gem뿐만 아니라 시나트라의 모든 의존성을 갱신합니다.
 
           %p
             %li
-              To update all of the gems in your <code>Gemfile</code> to the latest possible versions, run:
+              <code>Gemfile</code> 안의 모든 가능한 최신 버전을 갱신하려면, 다음을 실행합니다.
 
               :code
                 $ bundle update
 
           %li
-            Whenever your <code>Gemfile.lock</code> changes, always check it in to version control. 
-            It keeps a history of the exact versions of all third-party code that you used to successfully 
-            run your application.
+            <code>Gemfile.lock</code>이 변경되었다면, 반드시 버전 관리에 넣도록 합니다.
+            이렇게 하면, 성공적으로 애플리케이션이 동작했을 때의 모든 서드파티 코드의 정확한 버전 이력이 남습니다.
 
           %li
-            The <code>git add Gemfile*</code> command adds the Gemfile and Gemfile.lock to your repository. This ensures that
-            other developers on your app, as well as your deployment environment, will all use the same 
-            third-party code that you are using now.
+            <code>git add Gemfile*</code> 명령어는 Gemfile과 Gemfile.lock 파일을 저장소에 추가합니다. 이렇게 하면
+            애플리케이션의 다른 개발자가 당신의 개발 환경과 같은 서드 파티 코드를 사용하도록 할 수 있습니다.
   .buttons
-    = link_to 'Learn More: bundle install', '/v1.6/bundle_install.html'
-    = link_to 'Learn More: bundle update', '/v1.6/bundle_update.html'
+    = link_to '자세한 내용은: bundle install', '/v1.6/bundle_install.html'
+    = link_to '자세한 내용은: bundle update', '/v1.6/bundle_update.html'
   .bullet
     .description
-      Inside your app, load up the bundled environment:
+      애플리케이션 안에서 번들된 환경을 로드합니다.
     :code
       # lang: ruby
       require 'rubygems'
@@ -173,28 +168,28 @@
 
       # require your gems as usual
       require 'nokogiri'
-    = link_to 'Learn More: Bundler.setup', '/v1.6/bundler_setup.html'
+    = link_to '자세한 내용은: Bundler.setup', '/v1.6/bundler_setup.html'
   .bullet
     .description
-      Run an executable that comes with a gem in your bundle:
+      번들 안의 gem과 같이 오는 실행 파일을 실행합니다.
     :code
       $ bundle exec rspec spec/models
     .notes
       %p
-        In some cases, running executables without <code>bundle exec</code>
-        may work, if the executable happens to be installed in your system
-        and does not pull in any gems that conflict with your bundle.
+        어떤 경우에는, <code>bundle exec</code> 없이 실행 파일이 실행 될 수
+        있습니다. 시스템에 실행 파일이 설치 되어있고 번들에 있는 어떤 gem과도
+        충돌 하지 않을 때라면요.
       %p
-        However, this is unreliable and is the source of considerable pain.
-        Even if it looks like it works, it may not work in the future or
-        on another machine.
+        하지만 이 상태는 신뢰할 수 없고 나중에 상당한 문제가 될 수 있습니다.
+        움직이는 것처럼 보인다고 하더라도, 미래나 다른 기기에서는 움직이지
+        않을 수 있습니다.
   .bullet
     .description
-      Finally, if you want a way to get a shortcut to gems in your bundle:
+      마지막으로, 번들 안에 있는 gem의 단축 명령이 필요하다면 이렇게 할 수 있습니다.
     :code
       $ bundle install --binstubs
       $ bin/rspec spec/models
     .notes
-      The executables installed into <code>bin</code> are scoped to the
-      bundle, and will always work.
-    = link_to 'Learn More: Executables', '/v1.6/man/bundle-exec.1.html'
+      이 실행 파일들은 번들의 범위로 <code>bin</code> 안에 설치되며 언제나
+      동작할 것입니다.
+    = link_to '자세한 내용은: 실행파일', '/v1.6/man/bundle-exec.1.html'
