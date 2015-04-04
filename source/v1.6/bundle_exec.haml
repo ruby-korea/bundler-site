@@ -3,17 +3,17 @@
 .contents
   .bullet
     .description
-      Run the command in context of the bundle
+      번들의 컨텍스트에서 명령어를 실행합니다.
     :code
       $ bundle exec [--keep-file-descriptors]
     .notes
       %p
-        Options:
+        옵션:
       %p
-        <code>--keep-file-descriptors</code>: For Ruby versions less than 2.0,
-        keeps non-standard file descriptors on Kernel#exec
+        <code>--keep-file-descriptors</code>: 2.0 이전의 루비 버전을 위해
+        Kernel#exec의 비 표준 파일 디스크립터를 유지합니다.
 
     .description
-      Exec runs a command, providing it access to the gems in the bundle. While using
-      bundle exec you can require and call the bundled gems as if they were installed
-      into the systemwide RubyGems repository.
+      exec은 명령어로 하여금 번들 안의 gem에 접근할 수 있게 하면서 명령어를
+      실행합니다. bundle exec을 사용하면 시스템에 설치된 RubyGems 저장소처럼
+      번들된 gem을 요청하거나 부를 수 있습니다.
