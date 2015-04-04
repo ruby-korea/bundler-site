@@ -19,9 +19,13 @@
       %p
         <code>--deployment</code>: 배포 환경에 최적화된 기본 값으로 설치합니다.
       %p
-        <code>--frozen</code>: 이번 설치 이후 Gemfile.lock을 업데이트 못하게 합니다.
+        <code>--frozen</code>: 이번 설치 이후 Gemfile.lock을 업데이트 할 수 없게 합니다.
       %p
         <code>--full-index</code>: API 엔드포인트 대신 rubygems의 모던 인덱스를 사용합니다.
+      %p
+        <code>--gemfile</code>: Gemfile 대신 지정한 젬파일을 사용합니다.
+      %p
+        <code>--local</code>: 원격에서 gem을 가져오지 않는 대신 캐시된 gem을 사용합니다.
       %p
         <code>--no-cache</code>: 갱신에 캐시된 gem을 사용하지 않습니다.
       %p
@@ -35,24 +39,24 @@
       %p
         <code>--standalone</code>: 번들러 런타임 없이 실행되는 번들을 만듭니다.
       %p
-        <code>--system</code>: 시스템 로케이션($BUNDLE_PATH 나 $GEM_HOME)에 설치합니다.
+        <code>--system</code>: 시스템($BUNDLE_PATH 나 $GEM_HOME)에 설치합니다.
         이전에 이 애플리케이션의 번들이 어디에 설치되었든지 관계없습니다.
       %p
         <code>--without</code>: 지정된 그룹의 gem을 제외합니다.
       %p
         <code>--jobs</code>: 병렬 워커를 사용해 설치합니다.
       %p
-        <code>--retry</code>: 실패한 네트워크, git 리퀘스트를 재시도합니다.
+        <code>--retry</code>: 실패한 네트워크, git 요청을 재시도합니다.
     .notes
       %p
-        gem은 기본 시스템 로케이션에 설치될 것입니다. 시스템 gem이 루트 권한의 장소(맥 OSX처럼)에
-        설치 된다면 번들은 설치를 위해 루트 패스워드를 물어볼 것입니다.
+        gem은 기본 시스템에 설치될 것입니다. 시스템 gem이 루트 권한의 장소(맥 OSX처럼)에
+        설치 된다면 번들은 설치를 위해 관리자 비밀번호를 물어볼 것입니다.
       %p
         gem을 설치할 동안, 번들러는 <code>vendor/cache</code>와 시스템 gem을 체크합니다. gem이
         캐시되거나 설치되지 않았다면, 번들러는 Gemfile에서 선언한 소스에서 설치할 것입니다.
       %p
         <code>--system</code> 옵션은 기본 값입니다. 아래에 설명된 대로 <code>--path</code> 옵션을
-        사용한 이후에 기본 값으로 되돌리고 싶을때 넘기세요.
+        사용한 이후에 기본 값으로 되돌리고 싶을 때 넘기세요.
 
   .bullet#path
     .description
@@ -77,7 +81,7 @@
   .bullet#deployment
     .description
       프로덕션 서버에 모든 의존성을 설치합니다.
-      개발 기기에 이 플래그를 사용하지 <b>마세요.</b>
+      개발 기기에서 이 플래그를 사용하지 <b>마세요.</b>
     :code
       $ bundle install --deployment
     .notes
@@ -94,12 +98,12 @@
 
   .bullet#jobs
     .description
-      지정된 수의 워커를 시작하여 병행설치 합니다.
+      지정된 수의 워커를 사용하여 동시에 여러 개의 gem을 설치합니다.
     :code
       $ bundle install --jobs 4
 
   .bullet#retry
     .description
-      실패한 네트워크, git 리퀘스트를 재시도합니다.
+      실패한 네트워크, git 요청을 재시도합니다.
     :code
       $ bundle install --retry 3
