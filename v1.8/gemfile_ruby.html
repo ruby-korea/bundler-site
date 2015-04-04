@@ -17,47 +17,55 @@
       </div>
       <div id='container'>
         <div id='contents'>
-          <h2>Specifying a Ruby Version</h2>
+          <h2>루비 버전 지정하기</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                Like gems, developers can setup a dependency on Ruby. This makes your app fail faster in case you depend on specific features in a Ruby VM. This way, the Ruby VM on your deployment server will match your local one. You can do this by using the <code>ruby</code> directive in the <code>Gemfile</code>:
+                개발자는 gem처럼 루비의 의존성도 지정할 수 있습니다.
+                이렇게 함으로써 애플리케이션이 루비 VM의 특정 기능에 의존하는 경우 빠르게 실패하도록 합니다.
+                이런 식으로, 배포 서버의 루비 VM이 로컬의 루비와 일치하는지 확인할 수 있습니다.
+                의존성 지정은 <code>Gemfile</code>에 <code>ruby</code> 지시자를 사용함으로써 할 수 있습니다.
               </div>
               <pre class="highlight ruby"><span class="n">ruby</span> <span class="s1">'RUBY_VERSION'</span><span class="p">,</span> <span class="ss">:engine</span> <span class="o">=&gt;</span> <span class="s1">'ENGINE'</span><span class="p">,</span> <span class="ss">:engine_version</span> <span class="o">=&gt;</span> <span class="s1">'ENGINE_VERSION'</span><span class="p">,</span>&#x000A;  <span class="ss">:patchlevel</span> <span class="o">=&gt;</span> <span class="s1">'RUBY_PATCHLEVEL'</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                If you wanted to use JRuby 1.6.7 using Ruby 1.9.3, you would simply do the following:
+                루비 1.9.3을 사용해 JRuby 1.6.7을 사용하고 싶을 때엔, 이렇게 하면 됩니다.
               </div>
               <pre class="highlight ruby"><span class="n">ruby</span> <span class="s1">'1.9.3'</span><span class="p">,</span> <span class="ss">:engine</span> <span class="o">=&gt;</span> <span class="s1">'jruby'</span><span class="p">,</span> <span class="ss">:engine_version</span> <span class="o">=&gt;</span> <span class="s1">'1.6.7'</span>&#x000A;</pre>
             </div>
             <div class='bullet' id='patchlevel'>
               <div class='description'>
-                It's also possible to restrict the patchlevel of the Ruby used by doing the following:
+                루비의 패치레벨을 제한하는 것도 가능합니다.
               </div>
               <pre class="highlight ruby"><span class="n">ruby</span> <span class="s1">'1.9.3'</span><span class="p">,</span> <span class="ss">:patchlevel</span> <span class="o">=&gt;</span> <span class="s1">'448'</span>&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Bundler will make checks against the current running Ruby VM to make sure it matches what is specified in the <code>Gemfile</code>. If things don't match, Bundler will raise an Exception explaining what doesn't match.
+                번들러는 현재 실행 중인 루비 VM이 <code>Gemfile</code> 안에서 지정한 루비 버전과 일치하는지 확인합니다.
+                일치하지 않는다면, 번들러는 일치하지 않음을 설명하는 예외를 발생시킵니다.
               </div>
               <pre class="highlight plaintext">Your Ruby version is 1.8.7, but your Gemfile specified 1.9.3&#x000A;</pre>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Both <code>:engine</code> and <code>:engine_version</code> are optional. When these options are omitted, this means the app is compatible with a particular Ruby ABI but the engine is irrelevant. When <code>:engine</code> is used, <code>:engine_version</code> must also be specified.
+                <code>:engine</code>과 <code>:engine_version</code>은 선택적입니다.
+                이 옵션을 생략할 경우, 이 애플리케이션이 특정 루비 ABI와 호환하지만 엔진은 무관하다는 의미가 됩니다.
+                <code>:engine</code>을 사용할 경우 반드시 <code>:engine_version</code>도 지정해야 합니다.
               </div>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Using the <code>platform</code> command with the <code>--ruby</code> flag, you can see what <code>ruby</code> directive is specified in the <code>Gemfile</code>.
+                <code>platform</code> 명령어를 <code>--ruby</code> 플래그와 사용할 경우, <code>Gemfile</code> 안에 어떤 <code>ruby</code> 지시자가 지정되었는지 볼 수 있습니다.
               </div>
               <pre class="highlight plaintext">ruby 1.9.3 (jruby 1.6.7)</pre>
-              <a href="/bundler-site/v1.8/bundle_platform.html">Learn More: bundle platform</a>
+              <a href="/bundler-site/v1.8/bundle_platform.html">자세한 내용은: bundle platform</a>
             </div>
             <div class='bullet'>
               <div class='description'>
-                In the <code>ruby</code> directive, <code>:patchlevel</code> is optional, as patchlevel releases are usually compatible and include important security fixes. The patchlevel option checks the <code>RUBY_PATCHLEVEL</code> constant, and if not specified then bundler will simply ignore it.
+                <code>ruby</code> 지시자에서, <code>:patchlevel</code>은 선택적입니다.
+                패치레벨 릴리스는 보통 호환가능하며 중요한 보안 픽스를 포함하고 있습니다.
+                패치레벨 옵션은 <code>RUBY_PATCHLEVEL</code> 상수를 확인하며, 지정되어 있지 않으면 그냥 무시합니다.
               </div>
             </div>
           </div>
