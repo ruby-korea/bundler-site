@@ -75,25 +75,25 @@
       # lang: ruby
       gem 'rails', :github => 'rails'
     .description
-      <b>NB:</b> This shorthand is insecure in versions of Bundler prior to 2.0! Use HTTPS instead
+      <b>NB:</b> 이 단축은 2.0 이전 버전에서는 안전하지 않습니다! 대신 HTTPS를 사용하세요.
     :code
       # lang: ruby
       gem 'rails', :git => 'https://github.com/rails/rails'
     .description
-      Alternatively, you can specify a full commit hash
+      대신 전체 커밋 해시를 지정할 수도 있습니다.
     :code
       # lang: ruby
       gem 'rails', :github => 'rails', :ref => 'a9752dcfd15bcddfe7b6f7126f3a6e0ba5927c56'
 
-%h2 Security
+%h2 보안
 .contents
   .bullet
     .description
-      <code>http://</code> and <code>git://</code> URLs are insecure, and should
-      be avoided if at all possible. These protocols are unauthenticated, so a
-      man-in-the-middle attacker can tamper with the code and compromise your system.
-      Note that the <code>:github</code> shortcut translates to a <code>git://</code>
-      URL in pre-2.0 versions.
+      <code>http://</code>와 <code>git://</code> URL은 안전하지 않습니다. 가능하다면
+      전혀 사용하지 않는 것이 좋습니다. 이 프로토콜은 인증을 하지 않아, 중계 공격자
+      (man-in-the-middle attacker)가 코드를 변조하거나 시스템을 손상 시킬 수 있습니다.
+      <code>:github</code> 단축은 2.0 이전 버전에서는 <code>git://</code> URL로
+      변환되는 것에 주의하세요.
 
 %h2#local 로컬 git 저장소
 .contents
@@ -110,7 +110,7 @@
     :code
       bundle config local.rack ~/Work/git/rack
     .description
-      그리고 git 저장소의 브렌치를 지정합니다.
+      그리고 git 저장소의 브랜치를 지정합니다.
     :code
       # lang: ruby
       gem 'rack', :github => 'rack/rack', :branch => 'master'
@@ -119,29 +119,29 @@
     .description
       %p
         이제 리모트 git 저장소를 체크아웃하는 대신에 로컬 오버라이드가
-        사용됩니다. 패스 소스와 비슷하지만 git 저장소가 변경될 때마다
+        사용됩니다. 경로(path) 소스와 비슷하게 git 저장소가 변경될 때마다
         변경사항이 번들러에 의해 자동으로 반영됩니다. 이 말은 로컬 git
-        저장소에 커밋되면 <code>Gemfile.lock</code> 안의 리비전이 갱신
+        저장소에 커밋이 추가되면 <code>Gemfile.lock</code> 안의 리비전이 갱신
         된다는 뜻입니다. 이렇게 하면 git 서브모듈을 사용하는 것과 같은
         주의가 필요합니다. 리모트에 푸시하기 전에 로컬 오버라이드가
         푸시되었는지 확인해야 합니다. 그렇지 않다면 로컬 기기에만 있는
         커밋을 지정하게 됩니다.
 
       %p
-        번들러는 개발자가 동작하지 않는 참조를 하는지에 대해 많은 검사를
-        합니다. 특히 이 기능을 사용할 때는 <code>Gemfile</code>에 브랜치를
+        번들러는 개발자가 유효하지 않은 참조를 사용하지 않도록 많은 검사를
+        수행합니다. 특히 이 기능을 사용할 때는 <code>Gemfile</code>에 브랜치를
         지정하도록 강제합니다. <code>Gemfile</code>에 적혀있는 브랜치와
         로컬 git 저장소의 현재 브랜치가 다르다면 번들러는 중단됩니다.
-        언제나 맞는 브랜치에서 작업하는지 확인하고 다른 브랜치를 봤을 때의
-        사고를 예방할 수 있습니다.
+        언제나 올바른 브랜치에서 작업하는지 확인하고 다른 브랜치를 사용할 때
+        발생할 수 있는 사고를 예방할 수 있습니다.
 
       %p
         마지막으로 번들러는 <code>Gemfile.lock</code> 안의 현재 리비전이
         로컬 git 저장소에도 있는지 확인합니다. 이렇게 함으로써 번들러는
-        리모트의 마지막 변경을 가져오도록 강제 할 수 있습니다.
+        리모트의 최신 변경 사항을 가져오도록 강제 할 수 있습니다.
 
   .bullet
     .description
-      %p 브랜치를 확인하길 원치 않는다면 이 옵션을 오버라이드 하세요.
+      %p 번들러가 브랜치를 확인하길 원치 않는다면 이 옵션을 오버라이드 하세요.
     :code
       bundle config disable_local_branch_check true
