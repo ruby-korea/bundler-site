@@ -3,16 +3,16 @@
 .contents
   .bullet
     .description
-      Add the named gem(s), with version requirements, to the resolved Gemfile
+      결정된 Gemfile에 gem 이름과 버전을 추가합니다.
     :code
       $ bundle inject [GEM] [VERSION]
 
   .bullet
     .description
-      When injecting a gem, it adds it to both your Gemfile and Gemfile.lock if
-      it doesn't yet exist in them. Example below:
+      gem을 주입할 때, Gemfile과 Gemfile.lock에 아직 없는 경우 양쪽에 해당 gem을 추가하게 됩니다.
+      밑의 예제를 보세요.
     :code
       $ bundle install
 
       $ bundle inject 'rack' '> 0'
-      # Injects rack gem greater than version 0 in your Gemfile and Gemfile.lock
+      # 버전 0 이상의 rack gem을 Gemfile, Gemfile.lock에 주입
