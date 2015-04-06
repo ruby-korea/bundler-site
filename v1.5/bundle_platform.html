@@ -21,7 +21,7 @@
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                플랫폼 호환성 정보를 표시
+                플랫폼 호환성 정보를 표시합니다.
               </div>
               <pre class="highlight plaintext">$ bundle platform [--ruby]</pre>
               <div class='notes'>
@@ -29,24 +29,24 @@
                   옵션:
                 </p>
                 <p>
-                  <code>--ruby</code>: 루비와 관련된 플랫폼 정보만 표시
+                  <code>--ruby</code>: 루비와 관련된 플랫폼 정보만 표시합니다.
                 </p>
               </div>
             </div>
             <div class='bullet'>
               <div class='description'>
                 아무런 옵션도 넘기지 않으면 platform은 플랫폼의 <code>Gemfile</code>, <code>Gemfile.lock</code>,
-                Ruby VM에서 정보를 출력합니다. 다음과 같은 출력을 보실 수 있습니다.
+                루비 VM에서 정보를 출력합니다. 다음과 같은 출력을 보실 수 있습니다.
               </div>
               <pre class="highlight plaintext">$ bundle platform&#x000A;Your platform is: x86_64-linux&#x000A;&#x000A;Your app has gems that work on these platforms:&#x000A;* ruby&#x000A;&#x000A;Your Gemfile specifies a Ruby version requirement:&#x000A;* ruby 1.9.3&#x000A;&#x000A;Your current platform satisfies the Ruby version requirement.</pre>
               <div class='description'>
-                <code>ruby</code> 지정이 실행되는 Ruby VM과 일치하지 않으면 어느 부분이 일치하지 않는지 말해줍니다.
+                <code>ruby</code> 지정이 실행되는 루비 VM과 일치하지 않으면 어느 부분이 일치하지 않는지 말해줍니다.
               </div>
               <pre class="highlight plaintext">Your Ruby version is 1.9.3, but your Gemfile specified 1.8.7&#x000A;</pre>
             </div>
             <div class='bullet' id='ruby'>
               <div class='description'>
-                <code>--ruby</code> 플래그를 사용하면 <code>ruby</code> 지정 정보만 표시합니다. 이걸 이용하면 Gemfile에서부터 파싱할 필요가 없죠.
+                <code>--ruby</code> 플래그를 사용하면 Gemfile로부터 파싱하지 않고도 <code>ruby</code> 지정 정보만 표시할 수 있습니다.
               </div>
               <pre class="highlight plaintext">$ bundle platform --ruby&#x000A;ruby 1.9.3 (jruby 1.6.7)</pre>
             </div>

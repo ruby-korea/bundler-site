@@ -89,7 +89,7 @@
               <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>&#x000A;<span class="n">gem</span> <span class="s1">'nokogiri'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rack'</span><span class="p">,</span> <span class="s1">'~&gt;1.1'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rspec'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="s1">'spec'</span>&#x000A;</pre>
               <div class='notes'>
                 이 <code>Gemfile</code>은 여러 가지를 말해줍니다. 첫째, 번들러는
-                <code>Gemfile</code> 안에 선언된 gem을 기본값인
+                <code>Gemfile</code> 안에 선언된 gem을 기본 값인
                 <code>https://rubygems.org</code> 안에서 찾을 것입니다.
               </div>
               <a href="/bundler-site/v1.9/gemfile.html">자세한 내용은: Gemfile</a>
@@ -102,7 +102,7 @@
                 </p>
                 <p>
                   번들러는 <code>rubygems.org</code>(아니면 다른 선언된 소스)에 접속해, 모든 필요한 gem의
-                  목록(지정된 요구사항을 충족하는 gem 목록)을 찾습니다. <code>Gemfile</code> 안의 모든 gem은
+                  목록(지정한 요구사항을 충족하는 gem 목록)을 찾습니다. <code>Gemfile</code> 안의 모든 gem은
                   각자 의존성을 가지고 있고 또 그 의존성의 일부는 각자의 의존성을 가지고 있기 때문에,
                   <code>bundle install</code>을 실행하면 위의 <code>Gemfile</code>로도 꽤 많은 gem이 설치됩니다.
                   <pre class="highlight plaintext">  $ bundle install&#x000A;  Fetching gem metadata from https://rubygems.org/&#x000A;  Resolving dependencies...&#x000A;  Using rake (0.8.7)&#x000A;  Using abstract (1.0.0)&#x000A;  Installing activesupport (3.0.0.rc)&#x000A;  Using builder (2.1.2)&#x000A;  Using i18n (0.4.1)&#x000A;  Installing activemodel (3.0.0.rc)&#x000A;  Using erubis (2.6.6)&#x000A;  Using rack (1.2.1)&#x000A;  Installing rack-mount (0.6.9)&#x000A;  Using rack-test (0.5.4)&#x000A;  Using tzinfo (0.3.22)&#x000A;  Installing actionpack (3.0.0.rc)&#x000A;  Using mime-types (1.16)&#x000A;  Using polyglot (0.3.1)&#x000A;  Using treetop (1.4.8)&#x000A;  Using mail (2.2.5)&#x000A;  Installing actionmailer (3.0.0.rc)&#x000A;  Using arel (0.4.0)&#x000A;  Installing activerecord (3.0.0.rc)&#x000A;  Installing activeresource (3.0.0.rc)&#x000A;  Using bundler (1.0.0.rc.3)&#x000A;  Installing nokogiri (1.4.3.1) with native extensions&#x000A;  Installing rack-cache (0.5.2)&#x000A;  Installing thor (0.14.0)&#x000A;  Installing railties (3.0.0.rc)&#x000A;  Installing rails (3.0.0.rc)&#x000A;  Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.&#x000A;</pre>
