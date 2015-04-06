@@ -3,24 +3,24 @@
 .contents
   .bullet
     .description
-      Run the command in context of the bundle
+      번들의 컨텍스트에서 명령어를 실행합니다.
     :code
       $ bundle exec [--keep-file-descriptors] <command>
     .notes
       %p
-        Options:
+        옵션:
       %p
-        <code>--keep-file-descriptors</code>: For Ruby versions less than 2.0,
-        keeps non-standard file descriptors on Kernel#exec
+        <code>--keep-file-descriptors</code>: 2.0 이전의 루비 버전을 위해
+        Kernel#exec의 비 표준 파일 디스크립터를 유지합니다.
 
     .description
-      This command executes the command, making all gems specified in the
-      <code>Gemfile(5)</code> available to <code>require</code> in Ruby programs.
+      이 명령어는 <code>Gemfile(5)</code> 안에 지정된 모든 gem을 루비 프로그램에서
+      <code>require</code>할 수 있게 만들면서 명령어를 실행합니다.
 
-      Essentially, if you would normally have run something like
-      <code>rspec spec/my_spec.rb</code>, and you want to use the gems specified
-      in the <code>Gemfile</code> and installed via <code>bundle install</code>, you
-      should run <code>bundle exec rspec spec/my_spec.rb</code>.
+      원래 <code>rspec spec/my_spec.rb</code>처럼 일반적으로 실행하던 명령어를,
+      <code>Gemfile</code>에 지정되고 <code>bundle install</code>로 설치된 gem을
+      통해 사용하고 싶은 경우는 <code>bundle exec rspec spec/my_spec.rb</code>로
+      실행하셔야 합니다.
 
-      Note that <code>bundle exec</code> does not require that an executable is
-      available on your shell's <code>$PATH</code>.
+      <code>bundle exec</code>를 하기 위해 실행파일이 셸의 <code>$PATH</code>에서
+      사용 가능할 필요는 없습니다.
