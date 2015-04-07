@@ -21,57 +21,60 @@
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                Locks and then caches the gems into <code>./vendor/cache</code>.
+                gem을 <code>./vendor/cache</code>에 고정하고 캐시합니다.
               </div>
               <pre class="highlight plaintext">$ bundle package [--no-prune] [--all]</pre>
               <div class='notes'>
                 <p>
-                  Options:
+                  옵션:
                 </p>
                 <p>
-                  <code>--no-prune</code>: Don't remove stale gems from the cache.
+                  <code>--no-prune</code>: 오래된 gem을 캐시에서 제거하지 않습니다.
                 </p>
                 <p>
-                  <code>--all</code>: package <code>:git</code>, <code>:path</code>, and <code>.gem</code> dependencies. Once used, the <code>--all</code> option will be remembered.
+                  <code>--all</code>: <code>:git</code>, <code>:path</code>,
+                  <code>.gem</code> 의존성을 패키징합니다. 한 번 사용되면 <code>--all</code>
+                  옵션을 기억합니다.
                 </p>
               </div>
               <div class='description'>
                 <p>
-                  The package command will copy the <code>.gem</code> files for your gems in the
-                  bundle into <code>./vendor/cache</code>. Afterward, when you run <code>bundle install</code>,
-                  Bundler will use the gems in the cache in preference to the ones on rubygems.org.
+                  package 명령어는 번들 안의 gem을 위한 <code>.gem</code> 파일을
+                  <code>./vendor/cache</code>에 복사합니다. 그 후
+                  <code>bundle install</code>을 실행하면 번들러는 rubygems.org보다 높은
+                  우선순위로 캐시 안의 gem을 사용합니다.
                 </p>
                 <p>
-                  Additionally, if you then check that directory into your source control repository,
-                  others who check out your source will be able to install the bundle without having
-                  to download any additional gems.
+                  추가적으로 버전 관리 저장소에 캐시 디렉터리를 체크인하면 다른 사람들이
+                  체크아웃할 때 추가적인 gem의 다운로드 없이 설치하게 할 수 있습니다.
                 </p>
               </div>
             </div>
             <div class='bullet'>
               <div class='description'>
-                Lock and cache gems from RubyGems into <code>./vendor/cache</code>.
+                RubyGems의 gem을 <code>./vendor/cache</code>에 고정하고 캐시합니다.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle package&#x000A;</pre>
               </div>
               <div class='notes'>
                 <p>
-                  By default, if you simply run <code>bundle install</code> after running
-                  <code>bundle package</code>, Bundler will still connect to rubygems.org to check
-                  whether a platform-specific gem exists for any of the gems in <code>vendor/cache</code>.
+                  기본 값으로 <code>bundle package</code> 후에 <code>bundle
+                  install</code>을 실행하면 번들러는 여전히 rubygems.org에 접속해
+                  <code>vendor/cache</code>안의 gem 중 플랫폼 지정 gem이 있는지 확인합니다.
                 </p>
                 <p>
-                  This behavior can be avoided by instead running <code>bundle install --local</code>.
-                  Note that this requires you to have the correctly platformed version for all of your gems
-                  already cached. The easiest way to achieve this is to run <code>bundle package</code>
-                  on an identical machine and then check in those vendored gems.
+                  이 행동은 <code>bundle install --local</code>을 실행함으로써 회피할 수
+                  있습니다. 이 명령은 캐시된 모든 gem에 대해 정확한 플랫폼 버전이 필요하니
+                  주의하세요. 이 목표를 달성하기 위한 가장 쉬운 방법은 동일한 기기에서
+                  <code>bundle package</code>를 실행하고 벤더의 gem을 확인하는 것입니다.
                 </p>
               </div>
             </div>
             <div class='bullet' id='no-prune'>
               <div class='description'>
-                Lock and cache gems from RubyGems into <code>./vendor/cache</code>, and don't remove any stale gems from the existing cache.
+                gem을 <code>./vendor/cache</code>에 고정, 캐시하고 오래된 gem을 캐시에서
+                제거하지 않습니다.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle package --no-prune&#x000A;</pre>
@@ -79,17 +82,18 @@
             </div>
             <div class='bullet' id='all'>
               <div class='description'>
-                Lock and cache all gems into <code>./vendor/cache</code>, including <code>:git</code>, <code>:path</code>, and <code>.gem</code> dependencies.
+                <code>:git</code>, <code>:path</code>, <code>.gem</code> 의존성을 포함해
+                gem을 <code>./vendor/cache</code>에 고정하고 캐시합니다.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle package --all</pre>
               </div>
               <div class='notes'>
                 <p>
-                  Once used, the <code>--all</code> option will be remembered.
+                  한 번 사용되면 <code>--all</code> 옵션을 기억합니다.
                 </p>
                 <p>
-                  This will be the default on Bundler 2.0.
+                  이 옵션은 번들러 2.0에서 기본 값이 됩니다.
                 </p>
               </div>
             </div>

@@ -21,312 +21,289 @@
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                Retrieve or set a configuration value
+                설정 값을 검색하거나 설정합니다.
               </div>
               <pre class="highlight plaintext">$ bundle config [NAME [VALUE]] [--local] [--global] [--delete]</pre>
               <div class='notes'>
                 <p>
-                  Options:
+                  옵션:
                 </p>
                 <p>
-                  <code>--local</code>: Get/set local configuration
+                  <code>--local</code>: 로컬 설정을 읽고 씁니다.
                 </p>
                 <p>
-                  <code>--global</code>: Get/set global configuration
+                  <code>--global</code>: 전역 설정을 읽고 씁니다.
                 </p>
                 <p>
-                  <code>--delete</code>: Delete <code>NAME</code> value
+                  <code>--delete</code>: <code>NAME</code> 값을 제거합니다.
                 </p>
               </div>
               <div class='description'>
                 <p>
-                  Retrieves or sets a configuration value. If only parameter is provided,
-                  retrieve the value. If two parameters are provided, replace the existing
-                  value with the newly provided one.
+                  설정 값을 검색하거나 설정합니다. 하나의 매개변수만 주어지면 값을 검색합니다.
+                  두 개의 매개변수가 주어지면 기존의 값을 주어진 값으로 대체합니다.
                 </p>
                 <p>
-                  By default, setting a configuration value sets it for all projects on
-                  the machine.
+                  기본 값으로 설정 값을 설정하면 기기의 모든 프로젝트에 설정됩니다.
                 </p>
                 <p>
-                  If a global setting is superceded by local configuration, this command
-                  will show the current value, as well as any superceded values and where
-                  they were specified.
+                  전역 설정이 로컬 설정에 의해 대체된다면 이 명령어는 현재 값뿐만 아니라
+                  대체 값과 그 값들이 어디에 지정되었는지를 보여줍니다.
                 </p>
               </div>
             </div>
             <div class='bullet' id='config'>
               <div class='description'>
-                Get your bundle configuration.
+                번들 설정을 읽습니다.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config</pre>
                 <div class='notes'>
-                  Executing <code>bundle config</code> with no parameters will print a
-                  list of all bundler configuration for the current bundle, and where
-                  that configuration was set.
+                  매개변수 없이 <code>bundle config</code>을 실행하면 현재 번들을 위한
+                  모든 번들러 설정과 그 값이 어디에서 설정되었는지를 출력합니다.
                 </div>
               </div>
             </div>
             <div class='bullet' id='get'>
               <div class='description'>
-                Get your bundle configuration for <code>NAME</code> variable.
+                <code>NAME</code> 변수의 번들 설정을 읽습니다.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config NAME</pre>
                 <div class='notes'>
-                  Will print the value of that configuration setting for
-                  <code>NAME</code>, and where it was set. Will print both local and
-                  global configuration.
+                  <code>NAME</code>의 설정된 값과 그 값이 어디에서 설정되었는지를 출력합니다.
+                  로컬과 전역 모두 출력합니다.
                 </div>
               </div>
             </div>
             <div class='bullet' id='set'>
               <div class='description'>
-                Set your bundle configuration for <code>NAME</code> variable to
-                <code>VALUE</code>.
+                번들 설정 변수 <code>NAME</code>에 <code>VALUE</code>를 씁니다.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config NAME VALUE</pre>
                 <div class='notes'>
-                  Will set <code>NAME</code> to <code>VALUE</code> for all bundles
-                  executed as the current user (i.e. global setting). The configuration
-                  will be stored in  <code>~/.bundle/config</code>. If <code>NAME</code>
-                  already is set, <code>NAME</code> will be overridden and user will be
-                  warned.
+                  전역 설정의 경우라면 현재 사용자로서 실행하는 모든 번들에 대해
+                  <code>NAME</code>에 <code>VALUE</code>를 설정합니다. 설정은
+                  <code>~/.bundle/config</code>에 저장됩니다. <code>NAME</code>이
+                  이미 설정되어 있다면 경고와 함께 <code>NAME</code>을 덮어 씁니다.
                 </div>
               </div>
             </div>
             <div class='bullet' id='global'>
               <div class='description'>
-                Set your bundle global/user configuration for <code>NAME</code> variable
-                to <code>VALUE</code>.
+                전역/사용자 번들 설정 변수 <code>NAME</code>에 <code>VALUE</code>를 씁니다.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config --global NAME VALUE</pre>
                 <div class='notes'>
-                  Works the same as the command above.
+                  위의 명령어와 같은 동작을 합니다.
                 </div>
               </div>
             </div>
             <div class='bullet' id='local'>
               <div class='description'>
-                Set your bundle local configuration for <code>NAME</code> variable to
-                <code>VALUE</code>.
+                로컬 번들 설정 변수 <code>NAME</code>에 <code>VALUE</code>를 씁니다.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config --local NAME VALUE</pre>
                 <div class='notes'>
-                  Works the same as the two command above but for the local application.
-                  The configuration will be stored in <code>app/.bundle/config</code>.
+                  위의 명령어와 같은 동작을 하지만 로컬 애플리케이션용입니다.
+                  설정은 <code>app/.bundle/config</code>에 저장됩니다.
                 </div>
               </div>
             </div>
             <div class='bullet' id='delete'>
               <div class='description'>
-                Delete the configuration for <code>NAME</code> in both local and global sources.
+                전역과 로컬에서 <code>NAME</code>의 설정을 삭제합니다.
               </div>
               <div class='how'>
                 <pre class="highlight plaintext">$ bundle config --delete NAME</pre>
                 <div class='notes'>
-                  Will delete the configuration for <code>NAME</code> variable in both local and global sources. Not compatible with --global or --local flag.
+                  전역과 로컬에서 <code>NAME</code>의 설정 값을
+                  삭제합니다. --global이나 --local 플래그와는 호환되지 않습니다.
                 </div>
               </div>
             </div>
           </div>
-          <h2>Build options</h2>
+          <h2>빌드 옵션</h2>
           <div class='contents'>
             <div class='bullet' id='build_options'>
               <div class='description'>
                 <p>
-                  You can use <code>bundle config</code> to give bundler the flags to
-                  pass to the gem installer every time bundler tries to install a
-                  particular gem.
+                  <code>bundle config</code>는 특정 gem을 설치할 때마다 인스톨러에 플래그를
+                  넘겨주는 용도로도 사용할 수 있습니다.
                 </p>
                 <p>
-                  A very common example, the <code>mysql</code> gem, requires Snow
-                  Leopard users to pass configuration flags to <code>gem install</code>
-                  to specify where to find the <code>mysql_config</code> executable.
+                  매우 일반적인 예로 <code>mysql</code> gem은 스노우 레퍼드에서 <code>gem
+                  install</code>을 할 때 <code>mysql_config</code> 실행 파일을 찾기 위한 설정
+                  플래그를 필요로 합니다.
                 </p>
                 <div class='how'>
                   <pre class="highlight plaintext">$ gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config&#x000A;</pre>
                 </div>
                 <p>
-                  Since the specific location of that executable can change from machine
-                  to machine, you can specify these flags on a per-machine basis.
+                  <code>mysql_config</code>의 실행 파일의 구체적인 위치가 기기마다 다를 수
+                  있으므로 각 기기마다 이 플래그를 지정할 수 있습니다.
                 </p>
                 <div class='how'>
                   <pre class="highlight plaintext">$ bundle config build.mysql --with-mysql-config=/usr/local/mysql/bin/mysql_config</pre>
                 </div>
                 <p>
-                  After running this command, every time bundler needs to install the
-                  <code>mysql</code> gem, it will pass along the flags you specified.
+                  이 명령어를 실행하면 <code>mysql</code> gem을 설치해야 할 때마다 지정한
+                  플래그를 함께 넘겨 줍니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2>Configuration keys</h2>
+          <h2>설정 키</h2>
           <div class='contents'>
             <div class='bullet' id='configuration_keys'>
               <div class='description'>
                 <p>
-                  Configuration keys in bundler have two forms: the canonical form and
-                  the environment variable form.
+                  번들러에서의 설정 키는 두 가지 양식이 있습니다. 표준 양식과 환경 변수
+                  양식입니다.
                 </p>
                 <p>
-                  For instance, passing the <code>--without</code> flag to
-                  <code>bundle install</code> prevents Bundler from installing
-                  certain groups specified in the <code>Gemfile</code>. Bundler persists
-                  this value in <code>app/.bundle/config</code> so that calls to
-                  <code>Bundler.setup</code> do not try to find gems from the
-                  <code>Gemfile</code> that you didn't install. Additionally, subsequent
-                  calls to <code>bundle install</code> remember this setting and
-                  skip those groups.
+                  예를 들어, <code>bundle install</code>에 <code>--without</code> 플래그를
+                  넘겨주어 번들러가 <code>Gemfile</code>의 특정 그룹을 설치하지 않도록 할
+                  경우 번들러는 이 값을 <code>app/.bundle/config</code> 안에 남겨 두어
+                  <code>Bundler.setup</code>이 <code>Gemfile</code>에서 설치되지 않은 gem을
+                  찾으려 하지 않도록 합니다. 덤으로 <code>bundle install</code>을 또 실행
+                  할 때 이 설정을 기억해 두었다가 그 그룹들을 생략합니다.
                 </p>
                 <p>
-                  The canonical form of this configuration is <code>"without"</code>. To
-                  convert the canonical form to the environment variable form, capitalize
-                  it, and prepend <code>BUNDLE_</code>. The environment variable form of
-                  <code>"without"</code> is <code>BUNDLE_WITHOUT</code>.
+                  이 설정의 표준 양식은 <code>"without"</code>입니다. 표준 양식에서 환경
+                  변수 양식으로 변경하려면 대문자로 바꾸고 앞에 <code>BUNDLE_</code>을
+                  붙이세요. <code>"without"</code>의 환경 변수 양식은
+                  <code>BUNDLE_WITHOUT</code>입니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2>List of available keys</h2>
+          <h2>가능한 키의 목록</h2>
           <div class='contents'>
             <div class='bullet' id='available_keys'>
               <div class='description'>
                 <p>
-                  The following is a list of all configuration keys and their purpose.
-                  You can learn more about their operation in
-                  <code>bundle install</code>.
+                  전체 설정 키와 그 기능은 다음과 같습니다.
+                  <code>bundle install</code>을 실행하면 작업에 대해 더 많이 배울 수 있습니다.
                 </p>
                 <ul>
                   <li>
-                    <code>auto_install</code> (<code>1</code>): Setting auto_install config
-                    to 1 or any other truthy value will enable automatic installing of gems
-                    instead of raising an error. This behavior applies to the following
-                    commands: <code>show</code>, <code>binstubs</code>,
+                    <code>auto_install</code> (<code>1</code>): auto_install 설정을
+                    1이나 다른 참 값으로 하면 에러를 일으키는 대신 gem 자동 설치를
+                    활성화합니다. 이 행동은 밑의 명령어에 영향을 미칩니다.
+                    <code>show</code>, <code>binstubs</code>,
                     <code>outdated</code>, <code>exec</code>, <code>open</code>,
                     <code>console</code>, <code>license</code>, <code>clean</code>.
                   </li>
                   <li>
-                    <code>path</code> (<code>BUNDLE_PATH</code>): The location on disk
-                    to install gems. Defaults to <code>$GEM_HOME</code> in development
-                    and <code>vendor/bundle</code> when <code>--deployment</code> is used.
+                    <code>path</code> (<code>BUNDLE_PATH</code>): gem을 설치할 디스크
+                    경로입니다. 개발 환경에서는 <code>$GEM_HOME</code>,
+                    <code>--deployment</code>가 사용되었다면 <code>vendor/bundle</code>이 기본 값입니다.
                   </li>
                   <li>
-                    <code>frozen</code> (<code>BUNDLE_FROZEN</code>): Disallow changes to
-                    the <code>Gemfile</code>. Defaults to <code>true</code> when
-                    <code>--deployment</code> is used.
+                    <code>frozen</code> (<code>BUNDLE_FROZEN</code>): <code>Gemfile</code>의
+                    변경을 금지합니다. <code>--deployment</code>가 사용되었다면 기본 값은
+                    <code>true</code>입니다.
                   </li>
                   <li>
-                    <code>without</code> (<code>BUNDLE_WITHOUT</code>): A
-                    <code>:</code>-separated list of groups whose gems bundler should not
-                    installer
+                    <code>without</code> (<code>BUNDLE_WITHOUT</code>): 설치하지 말아야 할
+                    그룹의 목록입니다. <code>:</code>으로 구분됩니다.
                   </li>
                   <li>
-                    <code>bin</code> (<code>BUNDLE_BIN</code>): Install executables from
-                    gems in the bundle to the specified directory. Defaults to
-                    <code>false</code>.
+                    <code>bin</code> (<code>BUNDLE_BIN</code>): 번들 안의 gem에서 실행 파일을
+                    특정 디렉터리에 설치합니다. 기본 값은 <code>false</code>입니다.
                   </li>
                   <li>
-                    <code>gemfile</code> (<code>BUNDLE_GEMFILE</code>): The name of the
-                    file that bundler should use as the <code>Gemfile</code>. This location
-                    of this file also sets the root of the project, which is used to
-                    resolve relative paths in the <code>Gemfile</code>, among other things.
-                    By default, bundler will search up from the current working directory
-                    until it finds a <code>Gemfile</code>.
+                    <code>gemfile</code> (<code>BUNDLE_GEMFILE</code>): 번들러가
+                    <code>Gemfile</code>로 사용할 파일의 이름입니다. 이 파일의 위치는
+                    프로젝트의 루트도 설정합니다. 프로젝트의 루트는 무엇보다도
+                    <code>Gemfile</code>의 상대 경로를 확인하는 데 사용됩니다.
                   </li>
                   <li>
                     <code>ssl_ca_cert</code> (<code>BUNDLE_SSL_CA_CERT</code>):
-                    Path to a designated CA certificate file or folder containing multiple
-                    certificates for trusted CAs in PEM format.
+                    지정된 CA 인증서 파일이나 PEM 형식의 신뢰된 CA 인증서가 여럿 들어있는
+                    폴더의 경로입니다.
                   </li>
                   <li>
                     <code>ssl_client_cert</code> (<code>BUNDLE_SSL_CLIENT_CERT</code>):
-                    Path to a designated file containing a X.509 client certificate
-                    and key in PEM format.
+                    PEM 형식의 X.509 클라이언트 인증서와 키가 들어있는 지정된 파일의
+                    경로입니다.
                   </li>
                   <li>
-                    <code>cache_path</code> (<code>BUNDLE_CACHE_PATH</code>): The directory
-                    that bundler will place cached gems in when running <code>bundle
-                    package</code> and that bundler will look in when installing with the
-                    <code>--deployment</code> option.
+                    <code>cache_path</code> (<code>BUNDLE_CACHE_PATH</code>):
+                    <code>bundle package</code>를 실행할 때 번들러가 캐시할 gem을 넣을
+                    디렉터리입니다. <code>--deployment</code> 옵션으로 설치할 때 번들러가
+                    해당 디렉터리를 들여다보게 됩니다.
                   </li>
                   <li>
                     <code>disable_multisource</code> (<code>BUNDLE_DISABLE_MULTISOURCE</code>):
-                    When set, Gemfiles containing multiple sources will produce an error
-                    instead of a warning. Use <code>bundle config --delete
-                    disable_multisource</code> to unset.
+                    이 값이 설정되어 있으면 Gemfile에 여러 소스가 있을 경우 경고 대신 에러를 출력합니다.
+                    <code>bundle config --delete disable_multisource</code>로 해제할 수
+                    있습니다.
                   </li>
                 </ul>
                 <p>
-                  In general, you should set these settings per-application by using the
-                  applicable flag to the <code>bundle install</code> or <code>bundle
-                  package</code> command.
+                  일반적으로 해당 플래그를 <code>bundle install</code>이나 <code>bundle
+                  package</code> 명령어에 사용함으로써 애플리케이션별 설정을 해야합니다.
                 </p>
                 <p>
-                  You can set them globally either via environment variables or
-                  <code>bundle config</code>, whichever is preferable for your setup. If
-                  you use both, environment variables will take preference over global
-                  settings.
+                  환경 변수나 <code>bundle config</code> 어느 쪽이든 좀 더 상황에 맞는 쪽을 골라
+                  전역 설정할 수 있습니다. 양쪽 다 사용한다면 환경 변수가 전역 설정보다
+                  우선됩니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2>Local git repositories</h2>
+          <h2>로컬 git 저장소</h2>
           <div class='contents'>
             <div class='bullet' id='local_git_repos'>
               <div class='description'>
                 <p>
-                  Bundler also allows you to work against a git repository locally
-                  instead of using the remote version. This can be achieved by setting
-                  up a local override:
+                  번들러는 리모트 버전이 아닌 로컬 git 저장소로 작업하게 할 수도 있습니다.
+                  이렇게 하려면 로컬 우선으로 설정하실 필요가 있습니다.
                 </p>
                 <pre class="highlight plaintext">$ bundle config local.GEM_NAME /path/to/local/git/repository&#x000A;</pre>
                 <p>
-                  For example, in order to use a local Rack repository, a developer
-                  could call:
+                  예를 들어 로컬 Rack 저장소를 사용하시려면 이렇게 하시면 됩니다.
                 </p>
                 <pre class="highlight plaintext">$ bundle config local.rack ~/Work/git/rack&#x000A;</pre>
                 <p>
-                  Now instead of checking out the remote git repository, the local
-                  override will be used. Similar to a path source, every time the local
-                  git repository change, changes will be automatically picked up by
-                  Bundler. This means a commit in the local git repo will update the
-                  revision in the <code>Gemfile.lock</code> to the local git repo
-                  revision. This requires the same attention as git submodules. Before
-                  pushing to the remote, you need to ensure the local override was
-                  pushed, otherwise you may point to a commit that only exists in your
-                  local machine.
+                  이제 리모트 git 저장소에서 체크아웃 하는 대신, 로컬 저장소가 우선됩니다.
+                  경로(path) 소스와 비슷하게 로컬 git 저장소가 변경 될 때마다 변경 내용은
+                  자동으로 번들러가 반영해줍니다. 이 말은 로컬 git 저장소의 커밋은
+                  <code>Gemfile.lock</code> 안의 리비전을 로컬 git 저장소의 리비전으로
+                  갱신한다는 뜻입니다. 이것은 git 서브모듈을 사용할 때처럼 주의가
+                  필요합니다. 리모트에 푸시하기 전에 로컬에 있는 게 전부 푸시되어 있는지
+                  확인하셔야 합니다. 그렇지 않으면 로컬 기기에만 있는 커밋을 가리키게
+                  됩니다.
                 </p>
                 <p>
-                  Bundler does many checks to ensure a developer won't work with
-                  invalid references. Particularly, we force a developer to specify a
-                  branch in the <code>Gemfile</code> in order to use this feature. If the
-                  branch specified in the `Gemfile` and the current branch in the local
-                  git repository do not match, Bundler will abort. This ensures that a
-                  developer is always working against the correct branches, and prevents
-                  accidental locking to a different branch.
+                  번들러에는 잘못된 참조로 작동하지 않는지 확신하기 위한 많은 확인 과정이 있습니다.
+                  특히 이 기능을 사용하기 위해서는 <code>Gemfile</code>에서 브랜치를
+                  명시해야 합니다. <code>Gemfile</code> 안에 지정되어 있는 브랜치와 로컬
+                  저장소의 현재 브랜치가 맞지 않으면 번들러는 실행을 정지합니다. 이것은
+                  항상 정확한 브랜치에 대해 작업하고 있는지 확인하고 의도치 않게 다른
+                  브랜치를 보는 것을 예방합니다.
                 </p>
                 <p>
-                  Finally, Bundler also ensures that the current revision in the
-                  <code>Gemfile.lock</code> exists in the local git repository. By doing
-                  this, Bundler forces you to fetch the latest changes in the remotes.
+                  마지막으로 번들러는 <code>Gemfile.lock</code> 안의 맞는 리비전이
+                  로컬 git 저장소에 있는지도 확인합니다. 이렇게 함으로써 번들러는
+                  리모트의 마지막 변경 사항을 가져오도록 합니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2>Gem Source Mirrors</h2>
+          <h2>gem 소스 미러</h2>
           <div class='contents'>
             <div class='bullet' id='gem-source-mirrors'>
               <div class='description'>
                 <p>
-                  If your environment contains a local mirror of the rubygems.org server,
-                  use the <code>mirror.URL</code> configuration option to supply the URL
-                  of the mirror. At that point, Bundler will download gems and gemspecs
-                  from that mirror instead of the source listed in the Gemfile.
+                  환경이 rubygems.org 서버의 로컬 미러를 가지고 있다면,
+                  <code>mirror.URL</code>에 미러의 주소를 설정합니다. 그 시점에서 번들러는
+                  Gemfile 안의 소스 대신, 미러에서 gem과 gemspec을 다운로드 합니다.
                 </p>
                 <pre class="highlight plaintext">$ bundle config mirror.https://rubygems.org https://localgems.lan</pre>
               </div>
