@@ -1,47 +1,50 @@
-%h2 In Depth
+%h2 깊이 보기
 
 .contents
   .bullet
     .description
-      Read the manual for an in-depth discussion of all of the options available in the
-      <code>Gemfile</code> and how to use them.
-    = link_to 'Gemfile manual', './man/gemfile.5.html'
+      <code>Gemfile</code>에서 사용 가능한 모든 옵션과 각 옵션의 상세한 사용법은
+      매뉴얼에 나와 있습니다.
+    = link_to 'Gemfile 매뉴얼', './man/gemfile.5.html'
 
 %h2 Gemfiles
 
 .contents
   .bullet
     .description
-      Gemfiles require at least one gem source, in the form of the URL for a RubyGems server. Generate a Gemfile with the default rubygems.org source by running <code>bundle init</code>. If you can, use <code>https</code> so your connection to the rubygems.org server will be verified with SSL.
+      Gemfile에는 최소한 하나의 gem 소스가 필요합니다. gem 소스에는 루비젬스
+      서버가 URL 형식으로 적혀있어야 합니다. <code>bundle init</code>을
+      실행함으로써 rubygems.org를 소스로 한 기본 값의 Gemfile을 만듭니다. 할
+      수만 있다면 <code>https</code>를 사용하여 rubygems.org 서버로의 연결이 SSL
+      인증되도록 하세요.
     :code
       # lang: ruby
       source 'https://rubygems.org'
     .notes
-      It is possible, but not recommended as of Bundler 1.7, to add multiple global source lines. These are searched from last to first.
+      여러 전역 소스를 추가하는 것은 가능하지만 번들러 1.7에서는 권장하지
+      않습니다. 이 소스들은 끝에서 처음 순으로 검색됩니다.
 
   .bullet
     .description
-      Some gem sources require a username and password. Use
-      <code>bundle config</code> to set the username and password for any
-      sources that need it. The command must be run once on each computer that
-      will install the Gemfile, but this keeps the credentials from being stored
-      in plain text in version control.
+      어떤 gem 소스는 사용자이름과 비밀번호가 필요합니다. 이를
+      위한 사용자이름과 비밀번호를 설정하려면 <code>bundle config</code>를
+      사용하세요. 이 명령어는 Gemfile이 설치되는 각 컴퓨터에서 한 번은 실행해야
+      하지만, 버전 관리 시스템에 평문으로 인증 정보를 저장하지 않도록 합니다.
     :code
       $ bundle config https://gems.example.com/ user:password
     .description
-      For some sources, like a company Gemfury account, it may be easier to
-      simply include the credentials in the Gemfile as part of the source URL.
+      Gemfury 회사 계정 같은 어떤 소스는 인증을 Gemfile 안의 소스 URL의 일부로
+      포함시키는 것이 더 간단할 수도 있습니다.
     :code
       # lang: ruby
       source "https://user:password@gems.example.com"
     .description
-      Credentials in the source URL will take precedence over credentials set
-      using <code>config</code>.
+      소스 URL 내의 인증은 <code>config</code>로 설정된 인증보다 우선됩니다.
 
   .bullet
     .description
-      Declare the gems that you need, including version numbers. Specify versions using the same
-      syntax that RubyGems supports for dependencies.
+      필요한 gem을 버전 번호와 함께 선언합니다. 의존성을 지원하기 위한 버전
+      지정에는 루비젬스에서 사용하는 것과 같은 문법을 사용합니다.
     :code
       # lang: ruby
       gem 'nokogiri'
@@ -49,41 +52,48 @@
       gem 'rack',  '>=1.0'
       gem 'thin',  '~>1.1'
     .notes
-      Most of the version specifiers, like <code>>= 1.0</code>, are self-explanatory.
-      The specifier <code>~></code> has a special meaning, best shown by example.
-      <code>~> 2.0.3</code> is identical to <code>>= 2.0.3</code> and <code>< 2.1</code>.
-      <code>~> 2.1</code> is identical to <code>>= 2.1</code> and <code>< 3.0</code>.
-      <code>~> 2.2.beta</code> will match prerelease versions like <code>2.2.beta.12</code>.
-    = link_to 'RubyGems version specifiers', 'http://guides.rubygems.org/patterns/#pessimistic_version_constraint'
+      <code>>= 1.0</code> 같은 대부분의 버전 지정자는 따로 설명할 필요가 없습니다.
+      <code>~></code> 지정자는 특별한 의미가 있습니다. 예제로 설명하겠습니다.
+      <code>~> 2.0.3</code>는 <code>>= 2.0.3</code>과 <code>< 2.1</code>를 함께
+      사용한 것과 같습니다. <code>~> 2.1</code>은 <code>>= 2.1</code>과
+      <code>< 3.0</code>을 함께 사용한 것과 같습니다. <code>~> 2.2.beta</code>는
+      <code>2.2.beta.12</code>같은 사전 릴리스 버전과 일치합니다.
+    = link_to '루비젬스 버전 지정자', 'http://guides.rubygems.org/patterns/#pessimistic_version_constraint'
 
   .bullet
     .description
-      If a gem's main file is different than the gem name, specify how to require it.
+      gem의 메인 파일이 gem의 이름과 다르다면, require하는 방법을 지정할 필요가
+      있습니다.
     :code
       # lang: ruby
       gem 'rspec', :require => 'spec'
       gem 'sqlite3'
     .description
-      Specify <code>:require => false</code> to prevent bundler from requiring the gem, but still install it and maintain dependencies.
+      <code>:require => false</code>를 지정함으로써 번들러가 gem을 require하는
+      것을 방지할 수 있습니다. 하지만 여전히 설치와 의존성의 유지보수는
+      이루어집니다.
     :code
       # lang: ruby
       gem 'rspec', :require => false
       gem 'sqlite3'
     .notes
-      In order to require gems in your <code>Gemfile</code>, you will need to call
-      <code>Bundler.require</code> in your application.
-    = link_to 'Learn More: Bundler.require', './groups.html'
+      <code>Gemfile</code> 안의 gem을 require하려면, 애플리케이션에서
+      <code>Bundler.require</code>를 호출할 필요가 있습니다.
+    = link_to '자세한 내용은: Bundler.require', './groups.html'
 
   .bullet
     .description
-      If some of your gems need to be fetched from a private gem server, this default source can be overridden for those gems.
+      어떤 gem을 사설 gem 서버에서 가져와야 한다면, 이 기본 값 소스는 해당
+      gem에서 덮어쓸 수 있습니다.
 
-      For a gem server that contains a single gem, it is easiest to use the <code>:source</code> option on that gem.
+      한 gem을 가지고 있는 gem 서버를 위한 가장 간단한 방법은 그 gem에만
+      <code>:source</code> 옵션을 사용하는 것 입니다.
     :code
       # lang: ruby
       gem 'my_gem', '1.0', :source => 'https://gems.example.com'
     .description
-      If several gems come from the same server, you can use a <code>source</code> block to group them together.
+      같은 서버에서 여러 gem을 받아야 한다면, <code>source</code> 블록을 사용해
+      그룹지을 수 있습니다.
     :code
       # lang: ruby
       source 'https://gems.example.com' do
@@ -91,34 +101,39 @@
         gem 'another_gem', '1.2.1'
       end
     .description
-      Credentials for gem servers can be specified either in the URL or using
-      <code>bundle config</code>, as described above.
+      gem 서버의 인증은 위에 설명한 것처럼 URL의 안이나 <code>bundle
+      config</code>를 사용해 지정할 수 있습니다.
 
   .bullet
     .description
-      Git repositories are also valid gem sources, as long as the repo contains one or
-      more valid gems. Specify what to check out with <code>:tag</code>,
-      <code>:branch</code>, or <code>:ref</code>. The default is the <code>master</code> branch.
+      git 저장소도 유효한 gem 소스입니다. 저장소가 하나 이상의 유효한 gem을
+      가지고 있다면 말이죠. <code>:tag</code>나 <code>:branch</code>,
+      <code>:ref</code>로 어느 걸 체크아웃할지 정할 수 있습니다. 기본 값은
+      <code>master</code> 브랜치입니다.
     :code
       # lang: ruby
       gem 'nokogiri', :git => 'https://github.com/tenderlove/nokogiri.git', :branch => '1.4'
     .notes
-      If the git repository does not contain a <code>.gemspec</code> file, bundler
-      will create a simple one, without any dependencies, executables or C extensions.
-      This may work for simple gems, but not work for others. If there is no .gemspec,
-      you probably shouldn't use the gem from git.
-    = link_to 'Learn more: Git', './git.html'
+      git 저장소가 <code>.gemspec</code> 파일을 가지고 있지 않다면, 번들러가
+      의존성, 실행 파일, C 확장 설정이 없는 간단한 <code>.gemspec</code> 파일을
+      생성합니다. 아마도 간단한 gem에서는 동작할 테지만, 동작하지 않을 수도
+      있습니다. <code>.gemspec</code> 파일이 없다면 git에서 gem을 사용하지 않는
+      것이 좋습니다.
+    = link_to '자세한 내용은: git', './git.html'
 
   .bullet
     .description
-      If you would like to use a unpacked gem directly from the filesystem, simply set the <code>:path</code> option to the path containing the gem's files.
+      파일 시스템에서 직접 gem을 언팩하고 싶다면, <code>:path</code> 옵션에 gem의
+      파일이 들어있는 경로를 지정하면 간단합니다.
     :code
       # lang: ruby
       gem 'extracted_library', :path => './vendor/extracted_library'
 
   .bullet
     .description
-      If you would like to use multiple local gems directly from the filesystem, you can set a global `path` option to the path containing the gem's files. This will automatically load gemspec files from subdirectories.
+      여러 로컬 gem을 파일 시스템에서 직접 사용하려 한다면, 전역 `path` 옵션에
+      gem의 파일이 들어있는 경로를 설정할 수 있습니다. 이렇게 하면 하위
+      디렉터리에서 gemspec 파일을 자동으로 로드합니다.
     :code
       # lang: ruby
       path 'components' do
@@ -128,7 +143,9 @@
 
   .bullet
     .description
-      Dependencies can be placed into groups. Groups can be ignored at install-time (using <code>--without</code>) or required all at once (using <code>Bundler.require</code>).
+      의존성은 그룹 안에 있을 수 있습니다. 그룹은 설치 시에
+      무시(<code>--without</code>을 사용)하거나 한 번에
+      require(<code>Bundler.require</code>를 사용)할 수 있습니다.
     :code
       # lang: ruby
       gem 'wirble', :group => :development
@@ -137,19 +154,25 @@
       group :test do
         gem 'rspec'
       end
-    = link_to 'Learn more: Groups', './groups.html'
+    = link_to '자세한 내용은: 그룹', './groups.html'
 
   .bullet
     .description
-      You can specify the required version of Ruby in the <code>Gemfile</code> with <code>ruby</code>. If the <code>Gemfile</code> is loaded on a different Ruby version, Bundler will raise an exception with an explanation.
+      <code>Gemfile</code>에 <code>ruby</code>를 사용하여 필요한 루비 버전을
+      지정할 수 있습니다. <code>Gemfile</code>이 다른 루비 버전에서 로드
+      되었다면, 번들러는 설명과 함께 예외를 발생시킬 것입니다.
     :code
       # lang: ruby
       ruby '1.9.3'
 
   .bullet
     .description
-      What this means is that this app has a dependency to a Ruby VM that is ABI compatible with 1.9.3. If the version check does not match, Bundler will raise an exception. This will ensure the running code matches. You can be more specific with the <code>:engine</code> and <code>:engine_version</code> options.
+      이것이 의미하는 것은 1.9.3과 ABI 호환이 있는 루비 VM에 의존성이 있다는
+      것입니다. 버전을 확인해 맞지 않으면, 번들러는 예외를 발생시킵니다. 이것은
+      실행 중의 코드가 매치하는지 확인합니다. <code>:engine</code>과
+      <code>:engine_version</code> 버전 옵션을 사용해 좀 더 자세한 설정을 할 수
+      있습니다.
     :code
       # lang: ruby
       ruby '1.9.3', :engine => 'jruby', :engine_version => '1.6.7'
-    = link_to 'Learn More: Ruby Directive', './gemfile_ruby.html'
+    = link_to '자세한 내용은: 루비 지시자', './gemfile_ruby.html'
