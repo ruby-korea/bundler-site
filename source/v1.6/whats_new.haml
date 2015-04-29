@@ -1,35 +1,43 @@
 = partial "shared/whats_new"
 
-%h2#version16 What's New in v1.6
+%h2#version16 v1.6의 새로운 기능
 
 .contents
   .bullet
     .description
-      In this section, you'll find the major features introduced in the release. All the changes are documented in the Bundler 1.6 changelog.
-      = link_to 'Full 1.6 changelog', 'https://github.com/bundler/bundler/blob/1-6-stable/CHANGELOG.md'
+      이 단락에서는 이번 릴리스에 도입된 주요 기능을 확인할 수 있습니다. 모든 변경점은 번들러 1.6의 changelog에 문서화되어 있습니다.
+      = link_to '1.6의 전체 changelog', 'https://github.com/bundler/bundler/blob/1-6-stable/CHANGELOG.md'
 
 %h2#new-resolver
 
 .contents
   .bullet
     .description
-      The resolver has been rewritten to avoid recursion and can now resolve Gemfiles up to 10x faster than before.
+      재귀를 예방하고, 전보다 Gemfile 파일을 100배 빠르게 해결하도록 하기 위해
+      해결기를 다시 구현했습니다.
 
 %h2#bundle-console-irb-alternatives
 
 .contents
   .bullet
     .description
-      <code>bundle console</code> now supports IRB alternatives Pry and Ripl. If we want to use Pry, set the <code>console</code> Bundler setting: <code>bundle config console pry</code>. You'll need make sure <code>pry</code> is in your Gemfile. Now when running <code>bundle console</code> it will open Pry instead of IRB.
-    = link_to 'Learn More: Bundle Console', './bundle_console.html'
+      <code>bundle console</code>는 이제 Pry, Ripl 같은 대안 IRB를 지원합니다.
+      Pry를 사용하고 싶다면 다음 번들러 <code>console</code> 설정을 하세요.
+      <code>bundle config console pry</code> Gemfile 안에 <code>pry</code>가
+      있는지 확인 하셔야 합니다. 이제 <code>bundle console</code>을 실행하면
+      IRB 대신 Pry가 열립니다.
+    = link_to '자세한 내용은: Bundle Console', './bundle_console.html'
 
 %h2#bundle-gem-ext
 
 .contents
   .bullet
     .description
-      Now when creating a new gem, <code>bundle gem</code> supports the <code>--ext</code> flag which creates skeleton files for a C-extension. When running <code>bundle gem newgem --ext</code>, it will create some new files in a <code>ext</code> directory: <code>extconf.rb</code>, <code>newgem.c</code>, <code>newgem.h</code>
-    = link_to 'Learn More: Bundle Gem', './bundle_gem.html'
+      이제 새로운 gem을 만들 때, <code>bundle gem</code>은 C 확장의 뼈대를 만드는
+      <code>--ext</code> 플래그를 지원합니다. <code>bundle gem newgem --ext</code>을
+      실행하면, <code>ext</code> 디렉터리 안에 <code>extconf.rb</code>,
+      <code>newgem.c</code>, <code>newgem.h</code> 같은 새로운 파일을 만듭니다.
+    = link_to '자세한 내용은: Bundle Gem', './bundle_gem.html'
 
 
 %h2#other-changes
@@ -37,11 +45,11 @@
 .contents
   .bullet
     .description
-      Bundler 1.6 also includes:
+      번들러 1.6은 다음 패치도 포함합니다.
       %ul
-        %li other performance improvements to make resolving and installing faster
-        %li <code>:git_source</code> for custom options like :github and :gist
-        %li color highlighting installed or updated gems
-        %li HTTP auth may now be stored in <code>bundle config</code>
-        = link_to 'Full 1.6 changelog', 'https://github.com/bundler/bundler/blob/1-6-stable/CHANGELOG.md'
+        %li 해결과 설치를 빠르게 하는 성능 개선
+        %li :github, :gist 같은 사용자 정의 옵션을 위한 <code>:git_source</code>
+        %li 설치되거나 업데이트된 gem의 색 하일라이트
+        %li HTTP 인증은 이제 <code>bundle config</code>에 저장됩니다.
+        = link_to '1.6의 전체 changelog', 'https://github.com/bundler/bundler/blob/1-6-stable/CHANGELOG.md'
 
