@@ -29,141 +29,130 @@
             <a href="https://github.com/bundler/bundler/blob/master/CHANGELOG.md#110-mar-7-2012">v1.1</a>
             <a href="https://github.com/bundler/bundler/blob/master/CHANGELOG.md#100-august-29-2010">v1.0</a>
           </div>
-          <h2 id='version17'>What's New in v1.7</h2>
+          <h2 id='version17'>v1.7의 새로운 기능</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                Bundler 1.7 is a security release, addressing a vulnerability where a gem
-                might be installed from an unintended source server. The changes are
-                limited to fixes for this vulnerability.
-                <a href="https://github.com/bundler/bundler/blob/1-7-stable/CHANGELOG.md">Full 1.7 changelog</a>
+                번들러 1.7은 의도치 않은 소스 서버에서 gem이 설치될 수 있는 취약점을 개선한
+                보안 릴리스입니다. 변경은 이 취약성을 개선한는 것뿐입니다.
+                <a href="https://github.com/bundler/bundler/blob/1-7-stable/CHANGELOG.md">1.7의 전체 changelog</a>
               </div>
             </div>
           </div>
-          <h2 id='overview'>Overview</h2>
+          <h2 id='overview'>개요</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
                 <p>
-                  Bundler has always supported fetching gems from multiple gem servers,
-                  but it isn't always clear what gems come from what source. Complicating
-                  this, Bundler has not been consistent about source priority ordering
-                  from one version to another.
+                  번들러는 항상 여러 gem 서버에서 gem을 가져오도록 지원 했지만, 어떤 gem이
+                  어떤 소스에서 오는지 항상 확실하지는 않았습니다. 더욱이 번들러는 버전업할
+                  때 소스의 우선순위에 일관성이 없었습니다.
                 </p>
                 <p>
-                  Because of this, a <code>Gemfile</code> with multiple top-level
-                  <code>source</code> lines cannot reliably control the gem server that
-                  a particular gem is fetched from. This might result in installation of
-                  gem code from an unexpected source.
+                  이런 이유로, 여러 최상위 <code>source</code>를 가진
+                  <code>Gemfile</code>은 특정 gem이 어떤 gem 서버에서 가져올지를 확실하게
+                  제어할 수 없었습니다. 이는 예상치 못한 소스에서 gem 코드를 설치하는
+                  결과를 만들 수 있습니다.
                 </p>
                 <p>
-                  Applications that only have a single <code>source</code> in their
-                  <code>Gemfile</code> are not affected.
+                  <code>Gemfile</code>에 하나의 <code>source</code>만 가지는
+                  애플리케이션은 영향이 없습니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2 id='source-selection'>Source Selection</h2>
+          <h2 id='source-selection'>소스 선택</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                You can explicitly select an alternate RubyGems repository for one or more
-                gems in your <code>Gemfile</code> using the <code>:source</code> option or
-                a <code>source</code> block. Using multiple top-level gem sources is now
-                deprecated.
+                <code>Gemfile</code>에 <code>:source</code> 옵션이나 <code>source</code>
+                블록을 이용해 명시적으로 한 개 이상의 다른 루비젬스 저장소를 선택할 수
+                있습니다. 여러 최상위 gem 소스를 사용하는 것은 이제 권장하지 않습니다.
               </div>
-              <a href="/bundler-site/v1.7/gemfile.html">Learn More: Gemfiles</a>
+              <a href="/bundler-site/v1.7/gemfile.html">자세한 내용은: Gemfiles</a>
             </div>
           </div>
-          <h2 id='ambiguous-source-detection'>Ambiguous Source Detection</h2>
+          <h2 id='ambiguous-source-detection'>모호한 소스 탐지</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                If a <code>Gemfile</code> <em>does</em> have multiple top-level gem
-                sources, <code>bundle install</code> now warns when a gem is found in more
-                than one source. This is designed to prevent a situation where a gem that
-                is expected to be found on one gem server is "hijacked" by another server.
-                For backwards compatibility, the gem is still installed, but Bundler
-                prints a warning detailing the gem server URL that was used, and listing
-                others where a gem with the same name was found. Using explicit source
-                selection suppresses this warning.
+                <code>Gemfile</code>이 여러 최상위 gem 소스를 가지고 <em>있다면</em>,
+                <code>bundle install</code>이 하나 이상의 소스를 가진 gem을 발견할 때
+                경고를 합니다. 이는 예상한 서버가 아닌 다른 gem 서버에서 "가로채는" 상황을
+                방지하기 위해 만들었습니다. 하위 호환성을 위해, gem은 여전히 설치 되지만,
+                번들러가 사용된 gem 서버 URL과 같은 이름의 gem이 발견된 다른 서버의 목록을
+                경고로 표시합니다. 명시적인 소스 선택으로 이 경고를 없앨 수 있습니다.
               </div>
             </div>
           </div>
-          <h2 id='global-source-ordering'>Global Source Ordering</h2>
+          <h2 id='global-source-ordering'>전역 소스 순서</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                The order that top-level sources are searched is documented as last added
-                to first added, but prior to version 1.7.0, there was not an automated
-                test for this ordering, and it was inadvertently reversed in versions
-                1.5.0 through 1.6.5. The documented ordering is restored in this version,
-                and is now included in the test suite to prevent regression.
+                최상위 소스는 마지막에 추가된 것부터 검색하는 것으로 문서화 되어있지만, 1.7.0
+                이전 버전에서는 자동화된 테스트가 없었고, 버전 1.5.0에서 1.6.5까지는
+                부주의하게 거꾸로 되어있었습니다. 문서화된 순서는 이 버전에서 복원되었고,
+                회귀를 방지하기 위해 테스트 스위트에도 포함되었습니다.
               </div>
             </div>
           </div>
-          <h2 id='upgrading'>Upgrading</h2>
+          <h2 id='upgrading'>업그레이드 하기</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                Bundler adheres strictly to semantic versioning, and version 1.7.0 is
-                fully backwards compatible with any <code>Gemfile</code> that worked with
-                earlier versions. If you have an application that uses multiple gem
-                servers in its <code>Gemfile</code>, you may see warnings about ambiguous
-                gem sources after upgrading. Whether or not you see these warnings, the
-                Bundler team highly recommends that users of multiple gem servers update
-                your <code>Gemfile</code> to use the new syntax.
+                번들러는 유의적 버전을 엄격하게 사용하고, 버전 1.7.0은 이전 버전에서
+                동작하던 모든 <code>Gemfile</code>에 대해 완벽하게 하위 호환성이 있습니다.
+                <code>Gemfile</code>에서 여러 gem 서버를 사용하는 애플리케이션을 가지고
+                있다면, 업그레이드 이후 모호한 gem 소스에 대한 경고를 보게될 수 있습니다.
+                경고가 나오건 나오지 않건, 번들러 팀은 여러 gem 서버를 사용하는 유저에게
+                <code>Gemfile</code>에서 새로운 구문을 사용하는 것을 강력히 권합니다.
               </div>
               <div class='note'>
-                Use of the new <code>source</code> syntax will cause your
-                <code>Gemfile</code> to become incompatible with Bundler versions earlier
-                than 1.7.0. You should only perform this change after updating Bundler in
-                all of your environments.
+                <code>Gemfile</code>에서 새로운 <code>source</code> 구문을 사용하면
+                1.7.0 이전 버전의 번들러와 호환하지 않을 수 있습니다. 이 작업은 사용하는
+                모든 환경의 번들러를 업데이트한 이후에 해야 합니다.
                 <ol>
                   <li>
-                    Choose your primary gem source (usually
-                    <code>https://rubygems.org</code>) and keep that at the top of the
-                    <code>Gemfile</code>
+                    주 gem 소스(보통은 <code>https://rubygems.org</code>)를 고르고
+                    <code>Gemfile</code>의 제일 위에 둡니다.
                   </li>
                   <li>
-                    For each additional gem source, add a block to the <code>source</code>
-                    line and move the relevant gem declarations inside it.
-                    <p>For example, this <code>Gemfile</code>:</p>
+                    다른 gem 소스는 각각 <code>source</code> 줄에 블록으로 추가하고
+                    관련된 gem의 선언을 그 안으로 옮깁니다.
+                    <p>예를 들어, 이 <code>Gemfile</code>은</p>
                     <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>&#x000A;<span class="n">source</span> <span class="s1">'https://gems.example.com'</span>&#x000A;&#x000A;<span class="n">gem</span> <span class="s1">'rails'</span><span class="p">,</span> <span class="s1">'4.1.4'</span>&#x000A;<span class="n">gem</span> <span class="s1">'sqlite3'</span>&#x000A;<span class="n">gem</span> <span class="s1">'my_gem'</span><span class="p">,</span> <span class="s1">'1.0'</span>&#x000A;<span class="n">gem</span> <span class="s1">'another_gem'</span><span class="p">,</span> <span class="s1">'1.2.1'</span></pre>
-                    <p>might change to this:</p>
+                    <p>이렇게 바뀔 수 있습니다.</p>
                     <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>&#x000A;&#x000A;<span class="n">gem</span> <span class="s1">'rails'</span><span class="p">,</span> <span class="s1">'4.1.4'</span>&#x000A;<span class="n">gem</span> <span class="s1">'sqlite3'</span>&#x000A;&#x000A;<span class="n">source</span> <span class="s1">'https://gems.example.com'</span> <span class="k">do</span>&#x000A;  <span class="n">gem</span> <span class="s1">'my_gem'</span><span class="p">,</span> <span class="s1">'1.0'</span>&#x000A;  <span class="n">gem</span> <span class="s1">'another_gem'</span><span class="p">,</span> <span class="s1">'1.2.1'</span>&#x000A;<span class="k">end</span>&#x000A;</pre>
                   </li>
                 </ol>
               </div>
             </div>
           </div>
-          <h2 id='workarounds'>Workarounds</h2>
+          <h2 id='workarounds'>해결책</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                If you are unable to upgrade all of your environments to 1.7 immediately,
-                there are other ways to mitigate this risk by changing your
-                <code>Gemfile</code> to remove the additional sources:
+                모든 환경을 지금 즉시 1.7으로 업그레이드 할 수 없다면,
+                <code>Gemfile</code>에서 부차적인 소스를 제거해 이 위험성을 완화하는
+                방법이 있습니다.
                 <ul>
                   <li>
-                    First, re-evaluate whether the extra gem sources are even needed. If
-                    your application is using a legacy public gem server such as
-                    <code>gems.github.com</code> or <code>gems.rubyforge.org</code>, all
-                    of your required gems should now be synced to
-                    <code>rubygems.org</code>. Try removing these sources.
+                    먼저, 부가적인 gem 소스가 정말 필요한지 재평가합니다. 애플리케이션이
+                    <code>gems.github.com</code>나 <code>gems.rubyforge.org</code> 같은
+                    오래된 공개 gem 서버를 사용 중이라면, 모든 요구된 gem은
+                    <code>rubygems.org</code>에 동기되어 있어야 합니다. 부가적인 소스를
+                    지워 보세요.
                   </li>
                   <li>
-                    If you do use gems that aren't available on <code>rubygems.org</code>,
-                    but are available from a git source, you can use the <code>:git</code>
-                    option in the gem declaration and it will be guaranteed to come from
-                    that git repository rather than a gem server.
+                    <code>rubygems.org</code>에는 없는 gem을 사용하지만, git 소스로 사용
+                    가능하다면, gem 선언에서 <code>:git</code> 옵션을 사용해서 gem 서버가
+                    아닌 git 저장소에서 가져오도록 할 수 있습니다.
                   </li>
                   <li>
-                    If neither of these situations apply, you can unpack the gem into your
-                    <code>vendor</code> directory and use the <code>:path</code> option
-                    when declaring the gem in your <code>Gemfile</code> to point it to the
-                    unpacked gem directory. In this case, you should commit the vendored
-                    gem to your source control system.
+                    이런 해결책이 적용 불가능 하다면, gem을 <code>vendor</code> 디렉터리에
+                    언팩해서 <code>Gemfile</code>에서 gem을 선언할 때, <code>:path</code>
+                    옵션을 사용해 언팩해둔 gem 디렉터리를 지정할 수 있습니다. 이 경우
+                    소스 관리 시스템에 vendor해둔 gem을 커밋해야 합니다.
                   </li>
                 </ul>
               </div>

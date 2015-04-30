@@ -29,79 +29,85 @@
             <a href="https://github.com/bundler/bundler/blob/master/CHANGELOG.md#110-mar-7-2012">v1.1</a>
             <a href="https://github.com/bundler/bundler/blob/master/CHANGELOG.md#100-august-29-2010">v1.0</a>
           </div>
-          <h2 id='version18'>What's New in v1.8</h2>
+          <h2 id='version18'>v1.8의 새로운 기능</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
                 <p>
-                  Bundler 1.8 comes with a host of new features to improve gem isolation,
-                  better support for using multi-platform gems in deployment, and faster
-                  <code>bundle exec</code> among other changes.
+                  번들러 1.8은 gem의 독립성을 개선한고, 개선된 멀티 플랫폼 gem의 배포
+                  지원과, 빨라진 <code>bundle exec</code>와 다른 수정을 포함합니다.
                 </p>
                 <p>
-                  In this section, you’ll find the major features introduced in this release. All the changes are documented in the Bundler 1.8 changelog.
-                  <a href="https://github.com/bundler/bundler/blob/1-8-stable/CHANGELOG.md">Full 1.8 changelog</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <h2 id='disable-multisource'>Enforce Source Hijacking Protection</h2>
-          <div class='contents'>
-            <div class='bullet'>
-              <div class='description'>
-                <p>
-                  If a <code>Gemfile</code> <em>does</em> have multiple top-level gem
-                  sources, <code>bundle install</code> warns when a gem is found in more
-                  than one source. Setting <code>config disable_multisource</code> turns
-                  this warning into an error.
+                  이 단락에서는 이번 릴리스에 도입된 주요 기능을 확인할 수 있습니다. 모든 변경점은 번들러 1.8의 changelog에 문서화되어 있습니다.
+                  <a href="https://github.com/bundler/bundler/blob/1-8-stable/CHANGELOG.md">1.8의 전체 changelog</a>
                 </p>
               </div>
             </div>
           </div>
-          <h2 id='all-sources'>Improved gem lookup</h2>
+          <h2 id='disable-multisource'>소스 가로채기 방지 강제</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
                 <p>
-                  Gems are now looked up across all sources to satisfy dependencies. In addition, installed gems are now also looked up in remote sources.
+                  <code>Gemfile</code>이 여러 최상위 gem 소스를 가지고 <em>있다면</em>,
+                  <code>bundle install</code>이 하나 이상의 소스를 가진 gem을 발견할 때
+                  경고를 합니다. <code>config disable_multisource</code>를 설정하면 경고가
+                  에러로 변합니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2 id='install-and-package-improvements'>New options for <code>bundle package</code></h2>
+          <h2 id='all-sources'>gem 검색 개선</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
                 <p>
-                  You can now pass the <code>--no-install</code> flag to <code>bundle package</code> in order to update the gem cache, but not actually install gems. <code>bundle package</code> also takes a new <code>--all-platforms</code>, enabling caching of gem files for platforms other than the one bundler is run on. This solves some problems when deploying on a platform that is different from the development platform.
+                  gem은 이제 의존성을 만족하는 모든 소스에서 검색됩니다. 덧붙여 설치된
+                  gem은 이제 원격 소스에서도 검색합니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2 id='new-gem-improvements'>Improved templates for new Gems</h2>
+          <h2 id='install-and-package-improvements'><code>bundle package</code>의 새로운 옵션</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
                 <p>
-                  Creating new gems now includes more metadata in the template, sets the version appropriately, adds a gem code of conduct file, license setting and appropriate config options.
+                  이제 <code>bundle package</code>에 <code>--no-install</code> 플래그를 넘겨
+                  gem 캐시를 업데이트하지만, gem을 실제로 설치하지 않게 할 수 있습니다.
+                  <code>bundle package</code>는 <code>--all-platforms</code> 플래그로
+                  번들러를 실행하지 않는 플랫폼의 gem 파일 캐시도 할 수 있습니다. 이는
+                  개발 플랫폼과 다른 플랫폼에 배포할 때의 문제를 해결합니다.
                 </p>
               </div>
             </div>
           </div>
-          <h2 id='other-changes'>Other changes</h2>
+          <h2 id='new-gem-improvements'>새로운 Gem의 탬플릿 개선</h2>
           <div class='contents'>
             <div class='bullet'>
               <div class='description'>
-                Bundler 1.8 also includes:
+                <p>
+                  이제 새 gem을 만들면 탬플릿에 더 많은 메타데이터가 들어가고, 버전을
+                  적합하게 설정하며, gem의 행동강령, 저작권 설정과 적절한 설정 옵션이
+                  추가됩니다.
+                </p>
+              </div>
+            </div>
+          </div>
+          <h2 id='other-changes'>다른 변경</h2>
+          <div class='contents'>
+            <div class='bullet'>
+              <div class='description'>
+                번들러 1.8는 다음 패치도 포함합니다.
                 <ul>
-                  <li>improved resolver performance</li>
-                  <li>speed improvements when running <code>bundle exec</code> with commands on the <code>$PATH</code></li>
-                  <li>detection of malformed <code>Gemfile.lock</code></li>
-                  <li>improved error handling and better explanations</li>
-                  <li>new shortcuts for git sources from Bitbucket and GitHub Gists</li>
-                  <li>More configurability</li>
+                  <li>해결기 성능 개선</li>
+                  <li><code>$PATH</code>에서 <code>bundle exec</code> 명령을 실행할 때의 속도 개선</li>
+                  <li>변형된 <code>Gemfile.lock</code>의 검출</li>
+                  <li>에러 처리와 설명 개선</li>
+                  <li>Bitbucket, GitHub Gists의 git 소스를 위한 새로운 단축</li>
+                  <li>설정 추가</li>
                 </ul>
-                <a href="https://github.com/bundler/bundler/blob/1-8-stable/CHANGELOG.md">Full 1.8 changelog</a>
+                <a href="https://github.com/bundler/bundler/blob/1-8-stable/CHANGELOG.md">1.8의 전체 changelog</a>
               </div>
             </div>
           </div>
