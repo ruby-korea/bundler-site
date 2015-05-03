@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://ruby-korea.github.io/bundler-site</loc>
-    <lastmod>2015-04-30T23:29:13Z</lastmod>
+    <lastmod>2015-05-03T11:11:07Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1385,5 +1385,29 @@
   </url>
   <url>
     <loc>http://ruby-korea.github.io/bundler-site/v1.9/man/gemfile.5.html</loc>
+  </url>
+  <url>
+    <loc>http://ruby-korea.github.io/bundler-site/man/bundle-config.1.html</loc>
+  </url>
+  <url>
+    <loc>http://ruby-korea.github.io/bundler-site/man/bundle-exec.1.html</loc>
+  </url>
+  <url>
+    <loc>http://ruby-korea.github.io/bundler-site/man/bundle-install.1.html</loc>
+  </url>
+  <url>
+    <loc>http://ruby-korea.github.io/bundler-site/man/bundle-package.1.html</loc>
+  </url>
+  <url>
+    <loc>http://ruby-korea.github.io/bundler-site/man/bundle-platform.1.html</loc>
+  </url>
+  <url>
+    <loc>http://ruby-korea.github.io/bundler-site/man/bundle-update.1.html</loc>
+  </url>
+  <url>
+    <loc>http://ruby-korea.github.io/bundler-site/man/bundle.1.html</loc>
+  </url>
+  <url>
+    <loc>http://ruby-korea.github.io/bundler-site/man/gemfile.5.html</loc>
   </url>
 </urlset>
