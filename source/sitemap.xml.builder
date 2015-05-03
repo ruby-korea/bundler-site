@@ -34,8 +34,13 @@ xml.urlset 'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9' do
   versions.each do |version|
     man_files.each do |path|
       xml.url do
-        xml.loc URI.join(BASE_URL, version + '/', 'man/', path)
+        xml.loc "#{BASE_URL}#{version}/man/#{path}"
       end
+    end
+  end
+  man_files.each do |path|
+    xml.url do
+      xml.loc "#{BASE_URL}man/#{path}"
     end
   end
 end
