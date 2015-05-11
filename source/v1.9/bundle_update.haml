@@ -6,7 +6,8 @@
       현재 환경을 갱신합니다.
 
     :code
-      $ bundle update [GEM] [--full-index] [--group=GROUP] [--jobs=NUMBER] [--local] [--quiet] [--source=SOURCE]
+      $ bundle update [GEM] [--full-index] [--group=GROUP] [--jobs=NUMBER] [--local]
+                            [--quiet] [--source=SOURCE]
     .notes
       %p
         옵션:
@@ -25,12 +26,15 @@
         <code>--source</code>: 특정 소스(와 관련된 모든 gem을) 갱신합니다.
 
     .description
-      <code>Gemfile.lock</code> 안에 기술된 이전에 설치된 gem을 제외하고, 지정한 gem을
-      갱신합니다. (지정하지 않았다면 전부 갱신합니다.)
-      일반적으로, 기기 간에 정확히 같은 gem을 설치하려면 <code>bundle install</code>을
-      사용해야 합니다.
+      %p
+        <code>Gemfile.lock</code> 안에 기술된 이전에 설치된 gem을 제외하고,
+        지정한 gem을 갱신합니다. (지정하지 않았다면 전부 갱신합니다.)
+        일반적으로, 기기 간에 정확히 같은 gem을 설치하려면 <code>bundle
+        install</code>을 사용해야 합니다.
 
-      <code>bundle update</code>는 명시적으로 gem 버전의 갱신이 필요할 때만 사용합시다.
+      %p
+        <code>bundle update</code>는 명시적으로 gem 버전의 갱신이 필요할 때만
+        사용합시다.
 
   .bullet
     .description
