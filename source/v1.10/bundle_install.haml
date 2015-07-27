@@ -3,7 +3,7 @@
 .contents
   .bullet
     .description
-      Make sure all dependencies in your Gemfile are available to your application.
+      애플리케이션이 Gemfile 안에 있는 의존성을 만족하는지 확인합니다.
     :code
       $ bundle install [--binstubs=PATH] [--clean] [--deployment] [--frozen]
                        [--full-index] [--gemfile=FILE] [--local] [--no-cache]
@@ -13,110 +13,106 @@
                        [--trust-policy=SECURITYLEVEL]
     .notes
       %p
-        Options:
+        옵션:
       %p
-        <code>--binstubs</code>: Generate bin stubs for bundled gems to ./bin
+        <code>--binstubs</code>: ./bin 폴더에 실행 파일의 스텁을 생성합니다.
       %p
-        <code>--clean</code>: Run bundle clean automatically after install
+        <code>--clean</code>: 설치 후 자동으로 bundle clean을 실행합니다.
       %p
-        <code>--deployment</code>: Install using defaults tuned for deployment and CI environments
+        <code>--deployment</code>: 배포, CI 환경에 최적화된 기본 값으로 설치합니다.
       %p
-        <code>--frozen</code>: Do not allow the Gemfile.lock to be updated after this install
+        <code>--frozen</code>: 이번 설치 이후 Gemfile.lock을 업데이트 할 수 없게 합니다.
       %p
-        <code>--full-index</code>: Use the rubygems modern index instead of the API endpoint
+        <code>--full-index</code>: API 엔드포인트 대신 rubygems의 모던 인덱스를 사용합니다.
       %p
-        <code>--gemfile</code>: Use the specified gemfile instead of Gemfile
+        <code>--gemfile</code>: Gemfile 대신 지정한 젬파일을 사용합니다.
       %p
-        <code>--jobs</code>: Install gems using parallel workers.
+        <code>--jobs</code>: 병렬 워커를 사용해 설치합니다.
       %p
-        <code>--local</code>: Do not attempt to fetch gems remotely and use the gem cache instead
+        <code>--local</code>: 원격에서 gem을 가져오지 않는 대신 캐시된 gem을 사용합니다.
       %p
-        <code>--no-cache</code>: Don't update the existing gem cache.
+        <code>--no-cache</code>: 갱신에 캐시된 gem을 사용하지 않습니다.
       %p
-        <code>--no-prune</code>: Don't remove stale gems from the cache.
+        <code>--no-prune</code>: 캐시에서 오래된 gem을 제거하지 않습니다.
       %p
-        <code>--path</code>: Specify a different path than the system default ($BUNDLE_PATH or $GEM_HOME). Bundler will remember this value for future installs on this machine
+        <code>--path</code>: 시스템 기본 값($BUNDLE_PATH나 $GEM_HOME) 대신 다른 경로를 지정합니다. 번들러는 이 기기에서 이 값을 기억할 것입니다.
       %p
-        <code>--quiet</code>: Only output warnings and errors.
+        <code>--quiet</code>: 경고와 에러만 출력합니다.
       %p
-        <code>--retry</code>: Retry network and git requests that have failed.
+        <code>--retry</code>: 실패한 네트워크, git 요청을 재시도합니다.
       %p
-        <code>--shebang</code>: Specify a different shebang executable name than the default (usually 'ruby')
+        <code>--shebang</code>: 시스템 기본 값(보통 'ruby') 대신 다른 쉬뱅(#!) 실행 이름을 지정합니다.
       %p
-        <code>--standalone</code>: Make a bundle that can work without the Bundler runtime
+        <code>--standalone</code>: 번들러 런타임 없이 실행되는 번들을 만듭니다.
       %p
-        <code>--system</code>: Install to the system location ($BUNDLE_PATH or $GEM_HOME) even if the bundle was previously installed somewhere else for this application
+        <code>--system</code>: 시스템($BUNDLE_PATH 나 $GEM_HOME)에 설치합니다.
+        이전에 이 애플리케이션의 번들이 어디에 설치되었든지 관계없습니다.
       %p
-        <code>--trust-policy</code>: Sets level of security when dealing with signed gems. Accepts `LowSecurity`, `MediumSecurity` and `HighSecurity` as values.
+        <code>--trust-policy</code>: 인증된 gem을 다루기 위한 보안 수준을 설정합니다. 값으로 `LowSecurity`, `MediumSecurity`, `HighSecurity`를 사용할 수 있습니다.
       %p
-        <code>--without</code>: Exclude gems that are part of the specified named group.
+        <code>--without</code>: 지정한 그룹의 gem을 제외합니다.
     .notes
       %p
-        Gems will be installed to your default system location for gems. If your
-        system gems are stored in a root-owned location (such as in Mac OSX),
-        bundle will ask for your root password to install them there.
+        gem은 기본 시스템에 설치될 것입니다. 시스템 gem이 루트 권한의 장소(맥 OSX처럼)에
+        설치 된다면 번들은 설치를 위해 관리자 비밀번호를 물어볼 것입니다.
       %p
-        While installing gems, Bundler will check <code>vendor/cache</code> and then
-        your system's gems. If a gem isn't cached or installed, Bundler will try to
-        install it from the sources you have declared in your Gemfile.
+        gem을 설치할 동안, 번들러는 <code>vendor/cache</code>와 시스템 gem을 체크합니다. gem이
+        캐시되거나 설치되지 않았다면, 번들러는 Gemfile에서 선언한 소스에서 설치할 것입니다.
       %p
-        The <code>--system</code> option is the default. Pass it to switch back after
-        using the <code>--path</code> option as described below.
+        <code>--system</code> 옵션은 기본 값입니다. 아래에 설명된 대로 <code>--path</code> 옵션을
+        사용한 이후에 기본 값으로 되돌리고 싶을 때 넘기세요.
 
   .bullet#path
     .description
-      Install your dependencies, even gems that are already installed
-      to your system gems, to a location other than your system's gem
-      repository. In this case, install them to <code>vendor/bundle</code>.
+      이미 시스템 gem에 설치되어 있어도 시스템 gem의 저장소가 아닌 곳에 의존성을 설치합니다.
+      이 경우에는, <code>vendor/bundle</code>에 설치합니다.
     .how
       :code
         $ bundle install --path vendor/bundle
       .notes
-        Further <code>bundle</code> commands or calls to <code>Bundler.setup</code> or
-        <code>Bundler.require</code> will remember this location.
-      = link_to 'Learn More: Bundler.setup', './bundler_setup.html'
-      = link_to 'Learn More: Bundler.require', './groups.html'
+        또한 <code>bundle</code> 명령어, <code>Bundler.setup</code>, <code>Bundler.require</code>를
+        위해 이 위치를 기억해둡니다.
+      = link_to '자세한 내용은: Bundler.setup', './bundler_setup.html'
+      = link_to '자세한 내용은: Bundler.require', './groups.html'
 
   .bullet#without
     .description
-      Install all dependencies except those in groups that are explicitly excluded.
+      명시적으로 제외한 그룹 외의 모든 의존성을 설치합니다.
     :code
       $ bundle install --without development test
-    = link_to 'Learn More: Groups', './groups.html'
+    = link_to '자세한 내용은: 그룹', './groups.html'
 
   .bullet#deployment
     .description
-      Install all dependencies onto a production or CI server.
-      Do <b>not</b> use this flag on a development machine.
+      프로덕션이나 CI 서버에 모든 의존성을 설치합니다.
+      개발 기기에서 이 플래그를 사용하지 <b>마세요.</b>
     :code
       $ bundle install --deployment
     .notes
       %p
-        The <code>--deployment</code> flag activates a number of deployment- and
-        CI-friendly conventions:
+        <code>--deployment</code> 플래그는 여러 가지의 배포나 CI에 친화적인 규칙을 활성화시킵니다.
 
       %ul
         %li
-          Isolate all gems into <code>vendor/bundle</code>
-          (equivalent to <code>--path vendor/bundle</code>)
+          모든 gem을 <code>vendor/bundle</code>에 격리합니다.
+          (<code>--path vendor/bundle</code>과 같음)
         %li
-          Require an up-to-date <code>Gemfile.lock</code>
-          (equivalent to <code>--frozen</code>)
-        %li Disable ANSI color output
+          최신 <code>Gemfile.lock</code>을 필요로 합니다.
+          (<code>--frozen</code>과 같음)
+        %li ANSI 색상 출력을 비활성화 합니다.
         %li
-          If <code>bundle package</code> was run, do not fetch gems
-          from rubygems.org. Instead, only use gems in the checked
-          in <code>vendor/cache</code>
-    = link_to 'Learn More: Deploying', './deploying.html'
+          <code>bundle package</code>가 실행되었다면, rubygems.org에서 가져오지 않고,
+          <code>vendor/cache</code> 안의 gem만 사용합니다.
+    = link_to '자세한 내용은: 배포하기', './deploying.html'
 
   .bullet#jobs
     .description
-      Install gems parallely by starting the number of workers specificed.
+      지정한 수의 워커를 사용하여 동시에 여러 개의 gem을 설치합니다.
     :code
       $ bundle install --jobs 4
 
   .bullet#retry
     .description
-      Retry failed network or git requests.
+      실패한 네트워크, git 요청을 재시도합니다.
     :code
       $ bundle install --retry 3

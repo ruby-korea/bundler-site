@@ -1,69 +1,69 @@
 = partial "shared/whats_new"
 
-%h2#version110 What's New in v1.10
+%h2#version19 v1.10의 새로운 기능
 
 .contents
   .bullet
     .description
       %p
-        Bundler 1.10 comes with a new `lock` command, support for inline gemfiles in scripts, the ability to disable post-install messages, optional groups, conditional gem installation, dramatically improved `outdated` output, and the option to force installed gems to be downloaded and installed again.
+        번들러 1.10에는 `lock` 명령어, 인라인 gemfiles 지원, post-install 메세지 비활성화 기능, 선택적인 그룹, 조건적 gem 설치, `outdated` 출력의 극적인 향상, 설치된 gem을 다시 다운로드하고 설피하는 강제 옵션이 새로 생겼습니다. 
       %p
-        In this section, you’ll find the major features introduced in this release. All the changes are documented in the Bundler 1.10 changelog.
-        = link_to 'Full 1.10 changelog', 'https://github.com/bundler/bundler/blob/1-10-stable/CHANGELOG.md'
+        이 문단에서 이 릴리스에 포함된 주요 기능을 살펴보실 수 있습니다. 모든 변경을 보고 싶으신 분은 번들러 1.10 변경이력을 확인하세요.
+        = link_to '1.10의 전체 변경이력', 'https://github.com/bundler/bundler/blob/1-10-stable/CHANGELOG.md'
 
-%h2#lock The `lock` command
+%h2#lock `lock` 명령어
 
 .contents
   .bullet
     .description
       %p
-        Bundler now provides a <code>lock</code> command. Running <code>bundle lock</code> will resolve the Gemfile and write a Gemfile.lock, but will not download or install any gems.
+        번들러는 이제 <code>lock</code> 명령어를 제공합니다. <code>bundle lock</code>을 실행하면 Gemfile을 해결해  Gemfile.lock파일을 만들지만 gem을 다운로드하거나 설치하지는 않습니다.
 
-%h2#inline Inline Gemfiles
+%h2#inline 인라인 Gemfiles
 
 .contents
   .bullet
     .description
       %p
-        For single-file scripts that still depend on gems, a <code>gemfile</code> method is provided by <code>require "bundler/inline"</code>. This method will not generate a lock, so be careful what gem versions you allow!
+        gem에 의존하는 단일 파일 스크립트를 위해, <code>gemfile</code> 메소드 <code>require "bundler/inline"</code>를 지원합니다. 이 메소드는 lock을 만들지는 않으므로 허락할 gem 버전에 조심해야 합니다!
       = link_to 'bundler/inline', 'https://github.com/bundler/bundler/blob/master/lib/bundler/inline.rb'
 
-%h2#ignore-messages Ignore gem post-install messages
+%h2#ignore-messages gem post-install 메세지 비활성화
 
 .contents
   .bullet
     .description
       %p
-        Are you tired of being told to HTTParty hard? This option's for you. Run <code>bundle config ignore_messages.httparty true</code> to silence HTTParty for good, or run <code>bundle config ignore_messages true</code> to turn off all messages forever.
+        HTTParty에게 넘기기 힘들었다면 이 옵션은 당신을 위한 것입니다. <code>bundle config ignore_messages.httparty true</code>를 실행하면 HTTParty에 적합하게 침묵시킵니다. <code>bundle config ignore_messages true</code>를 실행하면 모든 메세지를 영구적으로 끕니다.
       = link_to 'config ignore_messages', '/v1.10/man/bundle-config.1.html#LIST-OF-AVAILABLE-KEYS'
 
-%h2#optional-groups Optional groups and <code>--with</code>
+%h2#optional-groups 선택적인 그룹과 <code>--with</code>
 
 .contents
   .bullet
     .description
       %p
-        Who needs a jetpack future when you can have optional groups? The long-requested ability to create groups of gems that are not installed by default is finally here. Mark a group as optional using <code>group :name, optional: true do</code>, and then opt in to installing an optional group with <code>bundle install --with name</code>.
+        옵셔널 그룹이 있다면 다른것은 필요 없을 겁니다. 많이 요청되었던 기능인 기본 값으로 설치되지 않는 그룹이 마침내 나왔습니다. <code>group :name, optional: true do</code>를 사용해 그룹을 선택적으로 만들 수 있고, <code>bundle install --with name</code>으로 선택적인 그룹을 설치할 수 있습니다.
       = link_to 'install --force', '/v1.10/man/bundle-install.1.html#OPTIONS'
 
-%h2#install-if Conditional groups via <code>install_if</code>
+%h2#install-if <code>install_if</code>를 통한 조건적인 그룹
 
 .contents
   .bullet
     .description
       %p
-        At the same time as adding the long-awaited optional groups, we added groups that can be installed (or not) completely automatically! Provide a lambda or proc to determine if gems in the <code>install_if</code> group should be installed, and they will be. Or not.
+        많이 기다려야하는(long-awaited) 선택적인 그룹 동시에, 완전 자동으로 설치하거나 안할 수 있는 그룹을 추가했습니다! lambda나 proc으로 <code>install_if</code>안의 그룹이 설치되야 하는지 말아야하는지 아닌지를 지정할 수 있습니다.
       = link_to 'install_if', '/v1.10/man/bundle-gemfile.1.html#INSTALL_IF'
 
 .contents
   .bullet
     .description
-      Bundler 1.10 also includes:
+      번들러 1.10는 다음 패치도 포함합니다.
       %ul
-        %li add <code>install --force</code> to re-install installed gems
-        %li show more information, including groups, in <code>outdated</code>
-        %li improved error reports for Gemfile errors
-        %li improved <code>gem</code> minitest template
-        %li glob arguments for <code>gemspec</code> in Gemfile
-        %li timeouts and retries are now configurable
-      = link_to 'Full 1.10 changelog', 'https://github.com/bundler/bundler/blob/1-10-stable/CHANGELOG.md'
+        %li 설치된 gem의 재설치를 위한 <code>install --force</code> 추가
+        %li <code>outdated</code>에서 그룹을 포함해 더 많은 정보 표시
+        %li Gemfile 에러 출력 향상
+        %li <code>gem</code> minitest 탬플릿 향상
+        %li Gemfile의 <code>gemspec</code> glob 인자
+        %li 이제 타임아웃, 재시도가 설정가능 합니다.
+      = link_to '1.10 의 전체 변경이력', 'https://github.com/bundler/bundler/blob/1-10-stable/CHANGELOG.md'

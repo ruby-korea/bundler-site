@@ -1,116 +1,123 @@
-%h2 Updating Gems
+%h2 gem 업데이트하기
 .contents
   .bullet
     .description
       %h3#updating-a-dependency
-        Updating a Dependency
+        의존성 업데이트하기
 
     %p.description
-      Of course, at some point, you might want to update the version of a particular
-      dependency your application relies on. For instance, you might want to update
-      <code>rails</code> to <code>3.0.0</code> final. Importantly, just because you're
-      updating one dependency, it doesn't mean you want to re-resolve all of your dependencies
-      and use the latest version of everything. In our example, you only have three
-      dependencies, but even in this case, updating everything can cause complications.
+      물론 어떤 경우에는 애플리케이션에서 사용하는 특정 의존성만 업데이트하길
+      원할 수 있습니다. 예를 들어, <code>rails</code>를 <code>3.0.0</code>
+      최종으로 업데이트한다고 합시다. 중요한 것은 하나의 의존성을 업데이트 해야
+      하기 때문에 모든 의존성을 업데이트할 필요는 없다는 점입니다. 예제의
+      의존성은 3개뿐이지만, 이 경우에도 모든 것을 업데이트하는 것은 귀찮은
+      문제의 원인이 될 수 있습니다.
 
     %p.description
-      To illustrate, the <code>rails 3.0.0.rc</code> gem depends on <code>actionpack
-      3.0.0.rc</code> gem, which depends on <code>rack ~> 1.2.1</code> (which means <code>>=
-      1.2.1</code> and <code>< 1.3.0</code>). The <code>rack-cache</code> gem depends on
-      <code>rack >= 0.4</code>. Let's assume that the <code>rails 3.0.0</code> final gem also
-      depends on <code>rack ~> 1.2.1</code>, and that since the release of <code>rails
-      3.0.0</code>, the Rack team released <code>rack 1.2.2</code>.
+      설명하자면 <code>rails 3.0.0.rc</code> gem은 <code>actionpack
+      3.0.0.rc</code> gem에 의존하고 있고, 이는 다시 <code>rack ~> 1.2.1</code>에
+      의존합니다.(<code>>= 1.2.1</code>과 <code>< 1.3.0</code>을 동시에 만족)
+      <code>rack-cache</code> gem은 <code>rack >= 0.4</code>에 의존합니다.
+      <code>rails 3.0.0</code> 최종 gem이 <code>rack ~> 1.2.1</code>에도 의존하고
+      <code>rails 3.0.0</code> 릴리스 이후에 Rack 팀이 <code>rack 1.2.2</code>를
+      릴리스했다고 가정해 봅시다.
 
     %p.description
-      If we naïvely update all of our gems in order to update Rails, we'll get <code>rack
-      1.2.2</code>, which satisfies the requirements of both <code>rails 3.0.0</code> and
-      <code>rack-cache</code>. However, we didn't specifically ask to update
-      <code>rack-cache</code>, which may not be compatible with <code>rack 1.2.2</code> (for
-      whatever reason). And while an update from <code>rack 1.2.1</code> to <code>rack
-      1.2.2</code> probably won't break anything, similar scenarios can happen that involve
-      much larger jumps. (see [1] below for a larger discussion)
+      레일스를 업데이트하기 위해 단순하게 모든 gem을 업데이트한다고 하면,
+      <code>rails 3.0.0</code>과 <code>rack-cache</code>의 요구사항을 모두
+      만족하는 <code>rack 1.2.2</code>를 얻게될 것입니다. 하지만
+      <code>rack 1.2.2</code>와 비호환일 수도 있는 <code>rack-cache</code>의
+      업데이트는 요청한 적이 없습니다.(이유가 무엇이든 간에) 그리고 <code>rack
+      1.2.1</code>에서 <code>rack 1.2.2</code>로 업데이트 하면 아마 아무것도 망가뜨리지
+      않을 것입니다만, 훨씬 큰 변경에서는 비슷한 시나리오가 생길 수
+      있습니다.(더 자세한 논의는 밑의 [1]을 참조하세요.)
 
     %p.description
-      In order to avoid this problem, when you update a gem, bundler will not update a
-      dependency of that gem if another gem still depends on it. In this example, since
-      <code>rack-cache</code> still depends on <code>rack</code>, bundler will not update the
-      <code>rack</code> gem. This ensures that updating <code>rails</code> doesn't
-      inadvertently break <code>rack-cache</code>. Since <code>rails 3.0.0</code>'s dependency
-      <code>actionpack 3.0.0</code> remains compatible with <code>rack 1.2.1</code>, bundler
-      leaves it alone, and <code>rack-cache</code> continues to work even in the face of an
-      incompatibility with <code>rack 1.2.2</code>.
+      이 문제를 피하기 위해, gem을 업데이트할 때 번들러는 다른 gem이 의존하고
+      있는 gem의 의존성은 업데이트하지 않습니다. 이 예제의
+      <code>rack-cache</code>가 여전히 <code>rack</code>에 의존하고 있기 때문에
+      번들러는 <code>rack</code> gem을 업데이트하지 않습니다. 이는
+      <code>rails</code>의 업데이트가 실수로 <code>rack-cache</code>를 망가트리지
+      않도록 보증해 줍니다. <code>rails 3.0.0</code>의 의존성인 <code>actionpack
+      3.0.0</code>이 <code>rack 1.2.1</code>과 호환하기 때문에, 번들러는 그대로
+      두고, <code>rack-cache</code>는 <code>rack 1.2.2</code>와 비호환임에도
+      계속 동작하게 됩니다.
 
     %p.description
-      Since you originally declared a dependency on <code>rails 3.0.0.rc</code>, if you want
-      to update to <code>rails 3.0.0</code>, simply update your <code>Gemfile</code> to
-      <code>gem 'rails', '3.0.0'</code> and run:
+      원래의 의존성을 <code>rails 3.0.0.rc</code>로 정의했기 때문에,
+      <code>rails 3.0.0</code>으로 업데이트하려 한다면, <code>Gemfile</code>을
+      <code>gem 'rails', '3.0.0'</code>으로 업데이트하고 다음을 실행하면 됩니다.
 
     :code
       $ bundle install
 
     %p.description
-      As described above, the <code>bundle install</code> command always does a conservative
-      update, refusing to update gems (or their dependencies) that you have not explicitly
-      changed in the <code>Gemfile</code>. This means that if you do not modify
-      <code>rack-cache</code> in your <code>Gemfile</code>, bundler will treat it **and its
-      dependencies** (<code>rack</code>) as a single, unmodifiable unit. If <code>rails
-      3.0.0</code> was incompatible with <code>rack-cache</code>, bundler will report a
-      conflict between your snapshotted dependencies (<code>Gemfile.lock</code>) and your
-      updated <code>Gemfile</code>.
+      위에서 설명한 것처럼, <code>bundle install</code> 명령은 항상 보수적으로
+      업데이트를 하고, <code>Gemfile</code>에서 명시적으로 변경하지 않은
+      gem(또는 그 의존성)을 업데이트하지 않습니다. 이 말은 <code>Gemfile</code>에서
+      <code>rack-cache</code>를 변경하지 않았다면 번들러는 그것**과 그
+      의존성**(<code>rack</code>)을 하나의 변경할 수 없는 단위로 취급합니다.
+      <code>rails 3.0.0</code>이 <code>rack-cache</code>와 비호환이라면 번들러는
+      의존성 스냅숏(<code>Gemfile.lock</code>)과 업데이트된 <code>Gemfile</code>
+      사이의 충돌을 보고해 줍니다.
 
     %p.description
-      If you update your <code>Gemfile</code>, and your system already has all of the needed
-      dependencies, bundler will transparently update the <code>Gemfile.lock</code> when you
-      boot your application. For instance, if you add <code>mysql</code> to your
-      <code>Gemfile</code>, and have already installed it in your system, you can boot your
-      application without running <code>bundle install</code>, and bundler will persist the
-      "last known good" configuration to the <code>Gemfile.lock</code> snapshot.
+      <code>Gemfile</code>을 업데이트할 때 시스템이 모든 필요한 의존성을 가지고
+      있다면, 번들러는 애플리케이션을 시동할 때 <code>Gemfile.lock</code>을
+      투명하게 업데이트해 줍니다. 예를 들어, <code>Gemfile</code>에
+      시스템에는 이미 설치되어 있는 <code>mysql</code>을 추가한 경우,
+      <code>bundle install</code>을 실행하지 않고도 애플리케이션을 시동할 수
+      있고, 번들러는 "마지막으로 성공한" <code>Gemfile.lock</code> 스냅숏 설정을
+      지속합니다.
 
     %p.description
-      This can come in handy when adding or updating gems with minimal dependencies (database
-      drivers, <code>wirble</code>, <code>ruby-debug</code>). It will probably fail if you
-      update gems with significant dependencies (<code>rails</code>), or that a lot of gems
-      depend on (<code>rack</code>). If a transparent update fails, your application will fail
-      to boot, and bundler will print out an error instructing you to run <code>bundle
-      install</code>.
+      이것은 gem을 최소한의 의존성으로 추가하거나 업데이트할 때
+      유용합니다.(데이터베이스 드라이버, <code>wirble</code>,
+      <code>ruby-debug</code>) 이는 중요한 의존성(<code>rails</code>)이 있는 gem을
+      업데이트 하거나 gem에 의존성이 많을 경우(<code>rack</code>) 아마도 실패하게
+      될 것입니다. 투명하게 업데이트가 실패한 경우, 애플리케이션은 기동에
+      실패하게 되고 <code>bundle install</code>을 실행할 때 번들러는 에러 메세지를
+      출력할 것입니다.
 
   .bullet
     .description
       %h3#updating-a-gem-without-modifying-the-gemfile
-        Updating a Gem Without Modifying the Gemfile
+        Gemfile을 수정하지 않고 gem 업데이트하기
 
       %p
-        Sometimes, you want to update a dependency without modifying the Gemfile. For example,
-        you might want to update to the latest version of <code>rack-cache</code>. Because you
-        did not declare a specific version of <code>rack-cache</code> in the
-        <code>Gemfile</code>, you might want to periodically get the latest version of
-        <code>rack-cache</code>. To do this, you want to use the <code>bundle update</code>
-        command:
+        가끔 Gemfile을 수정하지 않고 의존성을 업데이트하고 싶을 때가 있습니다.
+        예를 들어 <code>rack-cache</code>를 최신 버전으로 업데이트하고 싶다고
+        하면 <code>Gemfile</code>에 <code>rack-cache</code>의 버전을 지정하지
+        않았기 때문에, 아마 정기적으로 <code>rack-cache</code>의 최신 버전을
+        얻길 원할 것입니다. 이렇게 하려면 <code>bundle update</code> 명령을
+        사용하시면 됩니다.
 
       :code
         $ bundle update rack-cache
 
       %p
-        This command will update <code>rack-cache</code> and its dependencies to the latest
-        version allowed by the <code>Gemfile</code> (in this case, the latest version
-        available). It will not modify any other dependencies.
+        이 명령어는 <code>rack-cache</code>와 그 의존성을 <code>Gemfile</code>에서
+        허용하는 최신 버전으로 업데이트합니다.(이 경우, 최신 버전 사용가능) 이
+        명령은 다른 의존성을 수정하지 않습니다.
 
       %p
-        It will, however, update dependencies of other gems if necessary. For instance, if the
-        latest version of <code>rack-cache</code> specifies a dependency on <code>rack >=
-        1.2.2</code>, bundler will update <code>rack</code> to <code>1.2.2</code> even though
-        you have not asked bundler to update <code>rack</code>. If bundler needs to update a
-        gem that another gem depends on, it will let you know after the update has completed.
+        하지만 필요한 경우에는 다른 gem의 의존성을 업데이트할 수 있습니다. 예를
+        들어 <code>rack-cache</code>의 최신 버전이 <code>rack >= 1.2.2</code>을
+        의존성으로 지정하고 있다면, 번들러는 당신이 <code>rack</code>의
+        업데이트를 시킨 적이 없더라도 <code>rack</code>을 <code>1.2.2</code>로
+        업데이트할 것입니다. 번들러가 다른 gem에 의존하는 gem을 업데이트 했다면
+        업데이트가 끝난 후 알 수 있습니다.
 
       %p
-        If you want to update every gem in the Gemfile to the latest possible versions, run:
+        모든 gem의 가능한 최신 버전으로 업데이트하고 싶다면, 다음 명령을
+        실행하세요.
 
       :code
         $ bundle update
 
       %p
-        This will resolve dependencies from scratch, ignoring the <code>Gemfile.lock</code>. If
-        you do this, keep <code>git reset --hard</code> and your test suite in your back pocket.
-        Resolving all dependencies from scratch can have surprising results, especially if a
-        number of the third-party packages you depend on have released new versions since you
-        last did a full update.
+        이 명령은 <code>Gemfile.lock</code>을 무시하고 의존성을 다시 해결합니다.
+        이렇게 하려면, <code>git reset --hard</code>와 테스트 스위트를 준비해
+        두세요. 모든 의존성을 해결 하는 것은 놀라운 결과를 얻을 수 있습니다. 특히
+        마지막으로 업데이트한 후에 많은 서드 파티 패키지가 새 버전을 발표했다면
+        더더욱 그렇습니다.
