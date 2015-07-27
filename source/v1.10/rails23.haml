@@ -1,27 +1,27 @@
 #intro
-  Rails 2.3 comes with its own gem handling. We're going to
-  override that and replace it with support for Bundler.
+  레일스 2.3은 독자적으로 gem을 관리합니다. 하지만 번들러 설정을
+  덮어씌워 번들러를 지원하게 할 수 있습니다.
   .notes
-    <b>NB:</b> This <i>may</i> work with Rails versions lower than 2.3.
-    The Bundler team has not tested those versions, and will not provide
-    support for anyone on Rails older than 2.3, but feel free to try it. :)
+    <b>NB:</b> <i>아마도</i> 2.3보다 낮은 버전의 레일스에서 움직일 수 있지만,
+    번들러 팀에서는 테스트하지 않았고 2.3보다 낮은 버전의 레일스를
+    지원할 계획도 없습니다. 하지만 시도는 자유죠. :)
 
 
-%h2 Using Bundler with Rails 2.3
+%h2 번들러를 레일스 2.3과 사용하기
 
 .contents
 
   .bullet
     .description
-      If you don't have a Rails 2.3 app yet, generate one
+      레일스 2.3 앱이 아직없다면, 생성합니다.
     :code
       $ rails myapp
       $ cd myapp
 
   .bullet
     .description
-      Insert the following code at the bottom of config/boot.rb,
-      right above the line `Rails.boot!`
+      <code>config/boot.rb</code>의 밑에 있는
+      <code>Rails.boot!</code>의 바로 다음 줄에 아래 코드를 넣으세요.
     :code
       # lang: ruby
       class Rails::Boot
@@ -40,9 +40,9 @@
 
   .bullet
     .description
-      Create a new file, <code>config/preinitializer.rb</code>,
-      and insert the following. That is <code>config</code> <strong>NOT</strong>
-      <code>config/initializers</code>.
+      새 파일 <code>config/preinitializer.rb</code>를 생성해,
+      밑의 코드를 넣으세요. <code>config</code>입니다.
+      <code>config/initializers</code>가 <strong>아닙니다</strong>.
     :code
       # lang: ruby
       begin
@@ -68,10 +68,10 @@
 
   .bullet
     .description
-      Get all config.gem declarations from your application, and place
-      them into the Gemfile. If you have declarations in development.rb,
-      for instance, place them in a named group. Make sure to include
-      Rails itself and a default gem source.
+      애플리케이션에 선언된 모든 config.gem을 Gemfile에 넣습니다.
+      development.rb 안에 (다른 환경의 경우라도) 선언이 있다면 선언들을
+      그 이름의 그룹에 넣으세요. 레일스 자신과 적어도 한 개 이상의 소스가
+      있는지도 확인하세요.
     :code
       # lang: ruby
       source 'https://rubygems.org'
@@ -92,13 +92,13 @@
         # gem 'rspec'
         # gem 'faker'
       end
-    = link_to 'Learn More: Groups', './groups.html'
+    = link_to '자세한 내용은: 그룹', './groups.html'
 
   .bullet
     .description
-      Once you have everything set up, you can use script/console,
-      script/server, and other Rake tasks as usual. From this point
-      on, you can follow the instructions in the Rails 3 guide
+      한 번 전부 설정했다면, script/console, script/server나 다른
+      레이크 작업들도 평범하게 사용할 수 있습니다. 여기서부터는
+      레일스 3의 가이드를 읽으시면 됩니다.
     :code
-      $ bundle exec rake db:migrate
-    = link_to 'Learn More: Rails 3', './rails3.html#shared_with_23'
+      $ rake db:migrate
+    = link_to '자세한 내용은: 레일스 3', './rails3.html#shared_with_23'
