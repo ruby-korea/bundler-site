@@ -12,22 +12,22 @@
       %p
         <code>--bin, -b</code>: 라이브러리를 위한 바이너리를 생성합니다.
       %p
-        <code>--coc</code>: 행동강령 파일을 생성합니다.
+        <code>--coc</code>: 행동 강령 파일을 생성합니다.
       %p
-        <code>--edit</code>: 생성된 gemspec을 특정 에디터에서 엽니다.(기본 값은<code>$EDITOR</code>, <code>$BUNDLER_EDITOR</code>)
+        <code>--edit</code>: 생성된 gemspec을 특정 편집기에서 엽니다.(기본 값은<code>$EDITOR</code>, <code>$BUNDLER_EDITOR</code>)
       %p
         <code>--ext</code>: C 확장기능을 위한 뼈대를 생성합니다.
       %p
-        <code>--mit</code>: MIT 라이센스 파일을 만듭니다.
+        <code>--mit</code>: MIT 라이선스 파일을 만듭니다.
       %p
         <code>--test</code>: 라이브러리를 위한 테스트 디렉터리를 생성합니다.
-        기본 값은 <code>rspec</code>이지만, <code>rspec</code>도 지원합니다.
+        기본 값은 <code>rspec</code>이지만, <code>minitest</code>도 지원합니다.
     .notes
       %p
-        처음 실행할 때, <code>bundle gem</code>은 테스트 프레임워크, 행동강령, MIT 라이센스의 설정을 물어봅니다. 이 설정은 앞으로 실행할 때를 위해 <code>~/.bundle/config</code>에 저장됩니다.
+        처음 실행할 때, <code>bundle gem</code>은 테스트 프레임워크, 행동 강령, MIT 라이선스의 설정을 물어봅니다. 이 설정은 앞으로 실행할 때를 위해 <code>~/.bundle/config</code>에 저장됩니다.
   .bullet
     .description
-      생성된 프로젝트는 README와 gemspec 탬플릿을 포함해 필요한 모든 뼈대를 가지고 있습니다. 또 gem 개발에 필요한 태스크도 Rakefile에 넣어줍니다.
+      생성된 프로젝트는 README와 gemspec 템플릿을 포함해 필요한 모든 뼈대를 가지고 있습니다. 또 gem 개발에 필요한 작업도 Rakefile에 넣어줍니다.
     .how
       :code
         $ rake -T
