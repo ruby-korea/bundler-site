@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
   <head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
     <title>
       Bundler: The best way to manage a Ruby application's gems
     </title>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
-    <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href="/bundler-site/images/favicon.png" rel="icon" type="image/png" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic|Source+Code+Pro' rel='stylesheet'>
+    
     <link href="/bundler-site/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/images/favicon.png" rel="icon" type="image/png" />
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
   </head>
-  <body>
+  <body class=''>
     <div id='body'>
       <div id='header'>
-        <a class="image" href="/bundler-site/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
+        <a class="image" href="/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
       </div>
       <div id='container'>
         <div id='contents'>
@@ -34,8 +38,7 @@
                 문제의 원인이 될 수 있습니다.
               </p>
               <p class='description'>
-                설명하자면 <code>rails 3.0.0.rc</code> gem은 <code>actionpack
-                3.0.0.rc</code> gem에 의존하고 있고, 이는 다시 <code>rack ~> 1.2.1</code>에
+                설명하자면 <code>rails 3.0.0.rc</code> gem은 <code>actionpack&#x000A;      3.0.0.rc</code> gem에 의존하고 있고, 이는 다시 <code>rack ~> 1.2.1</code>에
                 의존합니다.(<code>>= 1.2.1</code>과 <code>< 1.3.0</code>을 동시에 만족)
                 <code>rack-cache</code> gem은 <code>rack >= 0.4</code>에 의존합니다.
                 <code>rails 3.0.0</code> 최종 gem이 <code>rack ~> 1.2.1</code>에도 의존하고
@@ -47,8 +50,7 @@
                 <code>rails 3.0.0</code>과 <code>rack-cache</code>의 요구사항을 모두
                 만족하는 <code>rack 1.2.2</code>를 얻게될 것입니다. 하지만
                 <code>rack 1.2.2</code>와 비호환일 수도 있는 <code>rack-cache</code>의
-                업데이트는 요청한 적이 없습니다.(이유가 무엇이든 간에) 그리고 <code>rack
-                1.2.1</code>에서 <code>rack 1.2.2</code>로 업데이트 하면 아마 아무것도 망가뜨리지
+                업데이트는 요청한 적이 없습니다.(이유가 무엇이든 간에) 그리고 <code>rack&#x000A;      1.2.1</code>에서 <code>rack 1.2.2</code>로 업데이트 하면 아마 아무것도 망가뜨리지
                 않을 것입니다만, 훨씬 큰 변경에서는 비슷한 시나리오가 생길 수
                 있습니다.(더 자세한 논의는 밑의 [1]을 참조하세요.)
               </p>
@@ -58,8 +60,7 @@
                 <code>rack-cache</code>가 여전히 <code>rack</code>에 의존하고 있기 때문에
                 번들러는 <code>rack</code> gem을 업데이트하지 않습니다. 이는
                 <code>rails</code>의 업데이트가 실수로 <code>rack-cache</code>를 망가트리지
-                않도록 보증해 줍니다. <code>rails 3.0.0</code>의 의존성인 <code>actionpack
-                3.0.0</code>이 <code>rack 1.2.1</code>과 호환하기 때문에, 번들러는 그대로
+                않도록 보증해 줍니다. <code>rails 3.0.0</code>의 의존성인 <code>actionpack&#x000A;      3.0.0</code>이 <code>rack 1.2.1</code>과 호환하기 때문에, 번들러는 그대로
                 두고, <code>rack-cache</code>는 <code>rack 1.2.2</code>와 비호환임에도
                 계속 동작하게 됩니다.
               </p>
@@ -94,7 +95,7 @@
                 <code>ruby-debug</code>) 이는 중요한 의존성(<code>rails</code>)이 있는 gem을
                 업데이트 하거나 gem에 의존성이 많을 경우(<code>rack</code>) 아마도 실패하게
                 될 것입니다. 투명하게 업데이트가 실패한 경우, 애플리케이션은 기동에
-                실패하게 되고 <code>bundle install</code>을 실행할 때 번들러는 에러 메세지를
+                실패하게 되고 <code>bundle install</code>을 실행할 때 번들러는 에러 메시지를
                 출력할 것입니다.
               </p>
             </div>
@@ -141,66 +142,7 @@
             </div>
           </div>
         </div>
-        <div id='sidebar'>
-          <h2>Would you like to</h2>
-          <ul>
-            <li><a href="/bundler-site/#getting-started">시작하기</a></li>
-            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
-            <li><a href="/bundler-site/v1.9/whats_new.html">새로운 기능 확인하기</a></li>
-            <li><a href="/bundler-site/v1.9/man/bundle.1.html">문서 읽기</a></li>
-            <li><a href="/bundler-site/#get-involved">토론하고 기여하기</a></li>
-            <li><a href="/bundler-site/v1.9/faq.html">FAQ 보기</a></li>
-          </ul>
-          <h2>최신 뉴스 읽기</h2>
-          <ul>
-            <li>
-              <a href="/bundler-site/blog/2015/03/21/hello-bundler-19.html">Hello, Bundler 1.9!</a>
-            </li>
-            <li>
-              <a href="/bundler-site/blog/2015/03/20/moving-bins-to-exe.html">Bundler template moves bins to exe</a>
-            </li>
-            <div class='buttons'>
-              <a href="/bundler-site/blog/">모든 기사</a>
-            </div>
-          </ul>
-          <h2>번들러 명령어</h2>
-          <ul>
-            <li><a href="/bundler-site/v1.9/bundle_install.html">bundle install</a></li>
-            <li><a href="/bundler-site/v1.9/bundle_update.html">bundle update</a></li>
-            <div class='buttons'>
-              <a href="/bundler-site/v1.9/commands.html">모든 명령어 보기</a>
-            </div>
-          </ul>
-          <h2>사용법</h2>
-          <ul>
-            <li><a href="/bundler-site/v1.9/gemfile.html">Gemfile</a></li>
-            <li><a href="/bundler-site/v1.9/groups.html">그룹</a></li>
-            <li><a href="/bundler-site/v1.9/git.html">git으로부터의 gem</a></li>
-            <li><a href="/bundler-site/v1.9/bundler_setup.html">Bundler.setup</a></li>
-            <li><a href="/bundler-site/v1.9/deploying.html">배포하기</a></li>
-            <li><a href="/bundler-site/v1.9/bundler_sharing.html">공유하기</a></li>
-            <li><a href="/bundler-site/v1.9/updating_gems.html">gem 갱신하기</a></li>
-            <li><a href="/bundler-site/compatibility.html">호환가능한 버전</a></li>
-            <li><a href="/bundler-site/older_versions.html">이전 버전</a></li>
-          </ul>
-          <h2>Use Bundler with</h2>
-          <ul>
-            <li><a href="/bundler-site/v1.9/rails3.html">레일스 3</a></li>
-            <li><a href="/bundler-site/v1.9/rails23.html">레일스 2.3</a></li>
-            <li><a href="/bundler-site/v1.9/sinatra.html">시나트라</a></li>
-            <li><a href="/bundler-site/v1.9/rubygems.html">루비젬스</a></li>
-            <li><a href="/bundler-site/v1.9/rubymotion.html">루비모션</a></li>
-          </ul>
-          <div class='shirts'>
-            <div class='content'>
-              <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
-              </a>
-              <p>
-                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">Buy Bundler Shirts & Stickers!</a>
-              </p>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
     <div id='footer'>
@@ -221,8 +163,8 @@
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v1.8/">Previous Version (v1.8)</a>
-      <a class="current" href="/">Current Version (v1.9)</a>
+      <a class="current" href="/bundler-site/v1.9/">Previous Version (v1.9)</a>
+      <a href="/">Current Version (v1.10)</a>
     </div>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -232,5 +174,7 @@
       ga('create', 'UA-39559982-1', 'bundler.io');
       ga('send', 'pageview');
     </script>
+    <script src="/bundler-site/javascripts/application.js" type="text/javascript"></script>
+    
   </body>
 </html>

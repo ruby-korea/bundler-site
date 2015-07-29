@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
   <head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
     <title>
       Bundler: The best way to manage a Ruby application's gems
     </title>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
-    <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
-    <link href="/bundler-site/images/favicon.png" rel="icon" type="image/png" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic|Source+Code+Pro' rel='stylesheet'>
+    
     <link href="/bundler-site/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/images/favicon.png" rel="icon" type="image/png" />
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
   </head>
-  <body>
+  <body class=''>
     <div id='body'>
       <div id='header'>
-        <a class="image" href="/bundler-site/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
+        <a class="image" href="/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
       </div>
       <div id='container'>
         <div id='contents'>
@@ -177,8 +181,7 @@
               업데이트하는 것은 부작용이 있을 수 있습니다.
             </p>
             <p>
-              설명하자면, <code>rails 4.1.0.rc2</code> gem은 <code>actionpack
-              4.1.0.rc2</code> gem에 의존하고 있고 이 gem은 <code>rack ~> 1.5.2</code>에
+              설명하자면, <code>rails 4.1.0.rc2</code> gem은 <code>actionpack&#x000A;    4.1.0.rc2</code> gem에 의존하고 있고 이 gem은 <code>rack ~> 1.5.2</code>에
               의존 합니다.(<code>>= 1.5.2</code>, <code>< 1.6.0</code>를 의미함)
               <code>rack-cache</code> gem은 <code>rack >= 0.4</code>에 의존합니다.
               <code>rails 4.1.0</code> 최종 gem도 <code>rack ~> 1.5.2</code>에 의존하고,
@@ -200,16 +203,12 @@
               있는 gem은 업데이트 하지 않습니다. 이 예제에서는, <code>rack-cache</code>가
               <code>rack</code>에 의존하고 있기 때문에, 번들러는 <code>rack</code> gem을
               업데이트하지 않습니다. 이렇게 함으로써 <code>rails</code>의 업데이트가
-              무심코 <code>rack-cache</code>를 망가트리지 않게 합니다. <code>rails
-              4.1.0</code>이 의존하는 <code>actionpack 4.1.0</code>이 <code>rack
-              1.5.2</code>도 호환하고 있기 때문에, 번들러는 그대로 두고,
+              무심코 <code>rack-cache</code>를 망가트리지 않게 합니다. <code>rails&#x000A;    4.1.0</code>이 의존하는 <code>actionpack 4.1.0</code>이 <code>rack&#x000A;    1.5.2</code>도 호환하고 있기 때문에, 번들러는 그대로 두고,
               <code>rack-cache</code>는 <code>rack 1.5.3</code>에서 비호환이 일어나더라도
               계속 동작하게 됩니다.
             </p>
             <p>
-              원래 의존성을 <code>rails 4.1.0.rc2</code>로 정의했기 때문에, <code>rails
-              4.1.0</code>으로 업데이트를 원한다면, <code>Gemfile</code>을 <code>gem
-              'rails', '4.1.0'</code> 업데이트하고 다음을 실행하세요.
+              원래 의존성을 <code>rails 4.1.0.rc2</code>로 정의했기 때문에, <code>rails&#x000A;    4.1.0</code>으로 업데이트를 원한다면, <code>Gemfile</code>을 <code>gem&#x000A;    'rails', '4.1.0'</code> 업데이트하고 다음을 실행하세요.
             </p>
             <pre class="highlight plaintext">$ bundle install&#x000A;</pre>
             <p>
@@ -217,8 +216,7 @@
               업데이트하고, <code>Gemfile</code>에서 명확하게 변경하지 않은 gem과 그
               의존성의 업데이트를 하지 않습니다. 이 말은 <code>Gemfile</code>에서
               <code>rack-cache</code>를 변경하지 않았다면, 번들러는 그것과 **그것의
-              의존성**(<code>rack</code>)을 하나의 변경할 수 없는 단위로 봅니다. <code>rails
-              4.1.0</code>이 <code>rack-cache</code>와 비호환이었다면, 번들러는 스냅숏해둔
+              의존성**(<code>rack</code>)을 하나의 변경할 수 없는 단위로 봅니다. <code>rails&#x000A;    4.1.0</code>이 <code>rack-cache</code>와 비호환이었다면, 번들러는 스냅숏해둔
               의존성(<code>Gemfile.lock</code>)과 업데이트된 <code>Gemfile</code> 사이의
               충돌을 보고하게 됩니다.
             </p>
@@ -385,8 +383,8 @@
     </a>
     <div id='prod-versions'>
       Docs:
-      <a href="/bundler-site/v1.8/">Previous Version (v1.8)</a>
-      <a href="/">Current Version (v1.9)</a>
+      <a href="/bundler-site/v1.9/">Previous Version (v1.9)</a>
+      <a href="/">Current Version (v1.10)</a>
     </div>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -396,5 +394,7 @@
       ga('create', 'UA-39559982-1', 'bundler.io');
       ga('send', 'pageview');
     </script>
+    <script src="/bundler-site/javascripts/application.js" type="text/javascript"></script>
+    
   </body>
 </html>
