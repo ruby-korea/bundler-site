@@ -1,0 +1,27 @@
+%h2 bundle viz
+
+.contents
+  .bullet
+    .description
+      비주얼 의존성 그래프를 생성합니다.
+    :code
+      $ bundle viz [--file=FILE] [--format=FORMAT] [--requirements] [--version]
+                   [--without=GROUP GROUP]
+    .notes
+      %p
+        옵션:
+      %p
+        <code>--file or -f</code>: 만들어질 파일의 이름. format 옵션 참조
+      %p
+        <code>--format or -F</code>: 아웃풋 포맷 옵션. 지원되는 포맷은 png, jpg, svg, dot ...
+      %p
+        <code>--requirements or -r</code>: 각 요구된 의존성의 버전을 표시하도록 설정.
+      %p
+        <code>--version or -v</code>: 각 gem의 버전을 표시하도록 설정.
+      %p
+        <code>--without</code>: 특정 이름의 그룹의 일부인 gem을 제외
+        = link_to '자세한 내용은: 그룹', './groups.html'
+    .description
+      Viz는 현재 Gemfile의 의존성 그래프를 PNG 파일로 생성합니다.
+      Viz는 ruby-graphviz gem(과 그 의존성들)이 요구됩니다.
+      관련 gem은 'bundle install'을 통해서도 설치되어야 합니다.

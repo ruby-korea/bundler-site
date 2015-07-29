@@ -1,0 +1,17 @@
+%h2 bundle init
+
+.contents
+  .bullet
+    .description
+      현재 작업 디렉터리에 Gemfile을 생성합니다.
+    :code
+      $ bundle init [--gemspec=FILE]
+    .notes
+      %p
+        옵션:
+      %p
+        <code>--gemspec</code>: 지정한 .gemspec으로 Gemfile을 생성합니다.
+    .description
+      기본 Gemfile을 현재 작업 디렉터리에 생성합니다. gemspec이 이미 있는 gem에
+      Gemfile을 추가할 경우, --gemspec 옵션을 통해 새로 생성하는 Gemfile에
+      gemspec의 의존성을 자동으로 추가할 수 있습니다.

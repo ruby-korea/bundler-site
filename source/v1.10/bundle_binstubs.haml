@@ -1,0 +1,18 @@
+%h2 bundle binstubs
+
+.contents
+  .bullet
+    .description
+      나열된 gem의 binstubs를 설치
+    :code
+      $ bundle binstubs [GEM] [--force] [--path=PATH]
+    .notes
+      %p
+        옵션:
+      %p
+        <code>--force</code>: 이미 binstubs가 있다면 덮어쓰기
+      %p
+        <code>--path</code>: Binstub을 놓을 디렉터리 (bin이 기본 값)
+    .description
+      [GEM] 안의 실행파일의 binstubs를 생성합니다. Binstubs는 bin 안에 들어가거나,
+      \--path 가 지정되어 있으면 지정한 binstubs 디렉터리에 들어갑니다.

@@ -1,0 +1,40 @@
+%h2 bundle platform
+
+.contents
+  .bullet
+    .description
+      플랫폼 호환성 정보를 표시합니다.
+    :code
+      $ bundle platform [--ruby]
+    .notes
+      %p
+        옵션:
+      %p
+        <code>--ruby</code>: 루비와 관련된 플랫폼 정보만 표시합니다.
+
+  .bullet
+    .description
+      아무런 옵션도 넘기지 않으면 platform은 플랫폼의 <code>Gemfile</code>, <code>Gemfile.lock</code>,
+      루비 VM에서 정보를 출력합니다. 다음과 같은 출력을 보실 수 있습니다.
+    :code
+      $ bundle platform
+      Your platform is: x86_64-linux
+
+      Your app has gems that work on these platforms:
+      * ruby
+
+      Your Gemfile specifies a Ruby version requirement:
+      * ruby 1.9.3
+
+      Your current platform satisfies the Ruby version requirement.
+    .description
+      <code>ruby</code> 지정이 실행되는 루비 VM과 일치하지 않으면 어느 부분이 일치하지 않는지 말해줍니다.
+    :code
+      Your Ruby version is 1.9.3, but your Gemfile specified 1.8.7
+
+  .bullet#ruby
+    .description
+      <code>--ruby</code> 플래그를 사용하면 Gemfile로부터 파싱하지 않고도 <code>ruby</code> 지정 정보만 표시할 수 있습니다.
+    :code
+      $ bundle platform --ruby
+      ruby 1.9.3 (jruby 1.6.7)

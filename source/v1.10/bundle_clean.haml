@@ -1,0 +1,16 @@
+%h2 bundle clean
+
+.contents
+  .bullet
+    .description
+      번들러 디렉터리의 사용하지 않는 gem을 청소합니다.
+    :code
+      $ bundle clean [--dry-run] [--force]
+    .notes
+      %p
+        옵션:
+      %p
+        <code>--dry-run</code>: 변경을 출력하기만 하고, 실제로 gem을 청소하지는
+        않습니다.
+      %p
+        <code>--force</code>: --path가 설정되어 있어도 강제로 청소합니다.
