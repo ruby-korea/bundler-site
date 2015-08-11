@@ -65,6 +65,13 @@
 
   .bullet
     .description
+      submodules 옵션을 지정해서 번들러가 git 저장소의 서브모듈을 가져오게 할 수도 있습니다.
+    :code
+      # lang: ruby
+      gem 'rugged', :git => 'git://github.com/libgit2/rugged.git', :submodules => true
+
+  .bullet
+    .description
       공개된 GitHub 저장소에서 gem을 가져오는 경우에는 축약해서 쓸 수 있습니다.
     :code
       # lang: ruby
