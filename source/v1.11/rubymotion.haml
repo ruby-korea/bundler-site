@@ -1,0 +1,36 @@
+%h2 번들러를 루비모션과 사용하기
+.contents
+  .bullet
+    .description
+      아직 루비모션 앱이 없다면 만듭니다.
+    :code
+      $ motion create myapp
+      $ cd myapp
+  .bullet
+    .description
+      Gemfile을 만들 필요가 있습니다. bubblewrap을 사용할 때는 이렇게 합니다.
+    :code
+      # lang: ruby
+      gem 'bubble-wrap'
+
+  .bullet
+    .description
+      그러고 나서 Rakefile을 컴파일할 때 번들된 gem을 require하도록 설정합니다.
+      <code>require 'motion/project'</code> 바로 밑의 줄에 다음 코드를 추가합니다.
+    :code
+      # lang: ruby
+      require 'bundler'
+
+      Bundler.require
+
+  .bullet
+    .description
+      다음으로, 의존성을 설치합니다.
+      :code
+        $ bundle install
+
+  .bullet
+    .description
+      이제 평범하게 앱을 컴파일 할 수 있습니다.
+      :code
+        $ bundle exec rake

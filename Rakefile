@@ -14,7 +14,7 @@ task :update_vendor => ["vendor/bundler"] do
   Dir.chdir("vendor/bundler") { sh "git fetch --all" }
 end
 
-VERSIONS = %w(v1.0 v1.1 v1.2 v1.3 v1.5 v1.6 v1.7 v1.8 v1.9 v1.10).freeze
+VERSIONS = %w(v1.0 v1.1 v1.2 v1.3 v1.5 v1.6 v1.7 v1.8 v1.9 v1.10 v1.11).freeze
 desc "Print the Bundler versions the site documents"
 task :versions do
   puts VERSIONS.join(' ')
@@ -25,19 +25,21 @@ task :man => [:update_vendor] do
   VERSIONS.each do |version|
     branch = (version[1..-1].split('.') + %w(stable)).join('-')
 
-    mkdir_p "build/#{version}/man"
+    rm_rf "source/#{version}/man"
+    mkdir_p "source/#{version}/man"
 
     Dir.chdir "vendor/bundler" do
       sh "git reset --hard HEAD"
       sh "git checkout origin/#{branch}"
       sh "ronn -5 man/*.ronn"
-      cp(FileList["man/*.html"], "../../build/#{version}/man")
+      cp(FileList["man/*.html"], "../../source/#{version}/man")
       sh "git clean -fd"
     end
   end
 
   # Make man pages for the latest version available at the top level, too.
-  cp_r "build/#{VERSIONS.last}/man", "build"
+  rm_rf "source/man"
+  cp_r "source/#{VERSIONS.last}/man", "source"
 end
 
 desc "Pulls in pages maintained in the bundler repo."
@@ -63,12 +65,12 @@ task :update_site => ["vendor/bundler.github.io"] do
 end
 
 desc "Build the static site"
-task :build => [:repo_pages] do
+task :build => [:repo_pages, :man] do
   sh "middleman build --clean"
 end
 
 desc "Release the current commit to ruby-korea/bundler-site@gh-pages"
-task :release => [:update_vendor, :build, :man, :repo_pages] do
+task :release => [:build, :update_site] do
   commit = `git rev-parse HEAD`.chomp
 
   Dir.chdir "vendor/bundler" do

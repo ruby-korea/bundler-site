@@ -1,0 +1,28 @@
+%h2 번들러를 시나트라와 사용하기
+
+.contents
+  .bullet
+    .description
+      번들러를 시나트라 애플리케이션과 사용하려면, 두 가지만 하면 됩니다. 먼저 Gemfile을 만듭니다.
+    :code
+      # lang: ruby
+      gem 'sinatra'
+
+  .bullet
+    .description
+      그런 다음, config.ru 파일에서 Sinatra 앱을 로드하기 전에 번들러를 로드합니다.
+    :code
+      # lang: ruby
+      require 'rubygems'
+      require 'bundler'
+
+      Bundler.require
+
+      require './my_sinatra_app'
+      run MySinatraApp
+
+  .bullet
+    .description
+      rackup으로 개발 서버를 시작하시면, 시나트라는 번들러를 통해 로드됩니다.
+    :code
+      $ bundle exec rackup

@@ -1,0 +1,436 @@
+#intro
+  추천하는 작업 흐름이 알고 싶을 뿐이고 근거에 관심이 없다면, 밑에 있는
+  <a href="#summary">요약</a>만 보셔도 됩니다.
+%br
+
+#standalone
+  %h2#bundlers-purpose-and-rationale
+    번들러의 목적과 근거
+  %p
+    먼저, 이 의존성을 애플리케이션의 루트에 <code>Gemfile</code>이란 파일로
+    정의했습니다. 내용은 이렇습니다.
+
+  :code
+    # lang: ruby
+    source 'https://rubygems.org'
+
+    gem 'rails', '4.1.0.rc2'
+    gem 'rack-cache'
+    gem 'nokogiri', '~> 1.6.1'
+
+  %p
+    이 <code>Gemfile</code>은 몇 가지 이야기를 합니다. 먼저 번들러는
+    <code>Gemfile</code> 안에 선언된 gem을 기본 값으로 설정된
+    <code>https://rubygems.org</code>에서 찾아야 합니다. 사설 gem 서버에서
+    가져와야 하는 gem이 있다면, 이 기본 소스는 그 gem에서만 덮어 쓸 수 있습니다.
+
+  %p
+    다음으로, 몇 가지 의존성을 선언했습니다.
+
+  %ul
+    %li <code>rails</code>의 <code>4.1.0.rc2</code> 버전
+    %li <code>rack-cache</code>의 아무 버전
+    %li <code>nokogiri</code>의 <code>>= 1.6.1</code>지만 <code>< 1.7.0</code>인 버전
+
+  %p
+    첫 번째 의존성을 선언한 후에 번들러에게 받도록 해야합니다.
+
+  :code
+    $ bundle install    # 'bundle'은 'bundle install'의 단축 명령입니다.
+
+  %p
+    번들러는 <code>rubygems.org</code>(또는 선언한 다른 소스)에 연결하고 기술한
+    요구사항에 따라 요구된 모든 gem의 목록을 찾을 것입니다.
+    <code>Gemfile</code>에 있는 모든 gem은 각각의 의존성을 가지고 (또 그 의존성이
+    다른 의존성을 가질 수) 있기 때문입니다. <code>bundle install</code>을
+    실행하면 위의 <code>Gemfile</code>은 꽤 적은 gem을 설치합니다.
+
+  :code
+    $ bundle install
+    Fetching gem metadata from https://rubygems.org/.........
+    Fetching additional metadata from https://rubygems.org/..
+    Resolving dependencies...
+    Using rake 10.3.1
+    Using json 1.8.1
+    Installing minitest 5.3.3
+    Installing i18n 0.6.9
+    Installing thread_safe 0.3.3
+    Installing builder 3.2.2
+    Installing rack 1.5.2
+    Installing erubis 2.7.0
+    Installing mime-types 1.25.1
+    Using bundler 1.6.2
+    Installing polyglot 0.3.4
+    Installing arel 5.0.1.5.240414130214
+    Installing hike 1.2.3
+    Installing mini_portile 0.5.3
+    Installing multi_json 1.9.3
+    Installing thor 0.19.1
+    Installing tilt 1.4.1
+    Installing tzinfo 1.1.0
+    Installing rack-test 0.6.2
+    Installing rack-cache 1.2
+    Installing treetop 1.4.15
+    Installing sprockets 2.12.1
+    Installing activesupport 4.1.0.rc2
+    Installing mail 2.5.4
+    Installing actionview 4.1.0.rc2
+    Installing activemodel 4.1.0.rc2
+    Installing actionpack 4.1.0.rc2
+    Installing activerecord 4.1.0.rc2
+    Installing actionmailer 4.1.0.rc2
+    Installing sprockets-rails 2.0.1
+    Installing railties 4.1.0.rc2
+    Installing rails 4.1.0.rc2
+    Installing nokogiri 1.6.1
+    Your bundle is complete!
+    Use `bundle show [gemname]` to see where a bundled gem is installed.
+
+  %p
+    필요한 gem이 이미 설치되어 있다면, 번들러는 그것을 사용할 것입니다. 필요한
+    gem을 시스템에 설치 후, 번들러는 설치된 모든 gem과 버전 스냅숏을
+    <code>Gemfile.lock</code>에 적습니다.
+
+  %h2#setting-up-your-application-to-use-bundler
+    번들러를 사용하도록 애플리케이션 설정하기
+
+  %p
+    번들러는 루비가 <code>Gemfile</code> 안의 모든 gem(또한 그 gem의 모든 의존성)을
+    찾을 수 있도록 해줍니다. 앱이 레일스 3 이상을 사용하고 있다면, 기본 값을
+    사용하는 애플리케이션은 이미 번들러를 부르는 코드를 가지고 있습니다. 레일스
+    2.3 앱이라면 <a href="./rails23.html">레일스 2.3에서 번들러 설정하기</a>를
+    보세요.
+
+  %p
+    다른 종류의 애플리케이션(시나트라 같은)이라면 다른 gem을 요청하기 전에
+    번들러를 설정할 필요가 있습니다. 애플리케이션에서 로드하는 첫 번째 파일의
+    제일 위(시나트라라면 <code>require 'sinatra'</code>를 부르는 파일)에 다음
+    코드를 넣으세요.
+
+  :code
+    # lang: ruby
+    require 'rubygems'
+    require 'bundler/setup'
+
+  %p
+    이는 자동으로 <code>Gemfile</code>을 찾아, <code>Gemfile</code> 안의 모든
+    gem을 루비에서 사용 가능하게 할 것입니다.(기술적으로 이야기하면, "로드
+    경로"에 모든 gem을 넣습니다.) <code>require 'rubygems'</code>에 좀 더 힘을
+    실어준다고 생각하셔도 됩니다.
+
+  %p
+    이제 코드를 루비에서 사용 가능하고, 필요한 gem을 요청할 수 있습니다. 예를
+    들어, <code>require 'sinatra'</code>를 할 수 있습니다. 만약 의존성이 아주
+    많다면 "<code>Gemfile</code>에 있는 모든 gem을 require"하고 싶을 수도
+    있습니다. 이렇게 하려면, <code>require 'bundler/setup'</code> 바로 뒤에 밑의
+    코드를 넣으세요.
+
+  :code
+    # lang: ruby
+    Bundler.require(:default)
+
+  예제 Gemfile을 기준으로 이 라인은 밑에 구문과 같습니다.
+
+  :code
+    # lang: ruby
+    require 'rails'
+    require 'rack-cache'
+    require 'nokogiri'
+
+  %p
+    눈치 빠른 사람은 <code>rack-cache</code> gem을 require하는 바른 방법은
+    <code>require 'rack-cache'</code>가 아니라
+    <code>require 'rack/cache'</code>라는 걸 눈치 채셨을 겁니다. 번들러가
+    <code>require 'rack/cache'</code>를 하게 하려면 Gemfile을 업데이트해야
+    합니다.
+
+  :code
+    # lang: ruby
+    source 'https://rubygems.org'
+
+    gem 'rails', '4.1.0.rc2'
+    gem 'rack-cache', require: 'rack/cache'
+    gem 'nokogiri', '~> 1.6.1'
+
+  %p
+    이런 작은 <code>Gemfile</code>에서는 <code>Bundler.require</code>를 하지
+    말고 그냥 손으로 gem을 require하기를 권장합니다.(특히 <code>Gemfile</code> 안에
+    <code>:require</code> 지시자를 넣어야 하는 경우는 더욱더) 훨씬 더 큰
+    <code>Gemfile</code>의 경우 <code>Bundler.require</code>를 사용하면 많은
+    require문을 생략할 수 있습니다.
+
+  %h2#checking-your-code-into-version-control
+    버전 관리 시스템에 코드를 체크인하기
+
+  %p
+    한동안 애플리케이션을 개발하면, <code>Gemfile</code>과
+    <code>Gemfile.lock</code> 스냅숏을 체크인 하게 됩니다. 이제 저장소는
+    마지막으로 애플리케이션이 실행에 성공했을 때의 모든 gem의 정확한 버전의
+    기록을 가지게 됩니다. 애플리케이션은 십수 개의 gem을 의존하지만
+    <code>Gemfile</code>에 (다양한 버전 엄격도를 가진) gem이 3개밖에 없으므로
+    모든 묵시적인 의존성을 고려해야 합니다.
+
+  %p
+    중요한 것은 <strong><code>Gemfile.lock</code>이 애플리케이션을 마지막으로
+    모든 것이 동작했을 때의 직접 만든 코드와 서드 파티 코드를 하나의 패키지로
+    만들어 주는 것입니다</strong>. <code>Gemfile</code>에서 의존하는 서드 파티
+    코드의 정확한 버전을 지정하는 것은 아마 같은 보장을 해주지는 못할 것입니다.
+    왜냐하면 gem은 보통 의존성을 버전의 범위로 지정하기 때문입니다.
+
+  %p
+    다음 <code>bundle install</code>을 같은 기기에서 실행했을 때, 번들러는 이미
+    모든 필요한 의존관계가 있는 것을 확인하고 설치과정을 생략합니다.
+
+  %p
+    <code>.bundle</code> 디렉터리나 그 안의 어떤 파일도 체크인하지 마세요. 이
+    파일은 특정 기기에 한정되고, <code>bundle install</code> 명령을 실행할 때의
+    영속적인 설치 옵션에 사용됩니다.
+
+  %p
+    <code>bundle pack</code>을 실행했다면, <code>vendor/cache</code>에 gem(git
+    gem이 아닌 경우)이 다운로드되어야 합니다. 그 폴더에 있는 모든 필요한 gem을
+    버전 관리 시스템에 체크인하면 번들러는 인터넷(이나 루비젬스 서버)에 연결하지
+    않고도 실행할 수 있습니다. 이것은 <strong>선택적</strong>인 단계이고
+    저장소가 커지기 때문에 권장하지는 않습니다.
+
+  %h2#sharing-your-application-with-other-developers
+    다른 개발자와 애플리케이션 공유하기
+
+  %p
+    동료 개발자(나 다른 기기)가 코드를 체크 아웃할 때, 마지막으로 개발 했던
+    기기에서 사용했던 애플리케이션의 모든 서드 파티 코드의 정확한 버전도
+    (<code>Gemfile.lock</code>에) 함께 들어있습니다.
+    **그들이** <code>bundle install</code>을 실행하면, 번들러는
+    <code>Gemfile.lock</code>을 찾아 의존성 해결 단계를 생략하는 대신, 원래
+    기기에서 사용했던 gem과 같은 gem을 전부 설치합니다.
+
+  %p
+    다시 이야기하면 의존성의 어느 버전을 설치해야 할지 추측할 필요가 없습니다.
+    위의 예제에서 <code>rack-cache</code>가 <code>rack >= 0.4</code>에 의존성이
+    있다고 선언하고 있음에도 불구하고, <code>rack 1.5.2</code>에서 동작하리라
+    확신할 수 있습니다. Rack 팀이 <code>rack 1.5.3</code>을 릴리스 하더라도,
+    번들러는 항상 우리가 동작하는 걸 확신할 수 있는 정확한 버전인
+    <code>1.5.2</code>를 설치할 것입니다. 이는 모든 기기에서 정확히 같은 서드
+    파티 코드를 실행하게 하기 때문에 애플리케이션 개발자의 유지 보수 부담을
+    경감합니다.
+
+  %h2#updating-a-dependency
+    의존성 업데이트하기
+
+  %p
+    물론 어떨 때에는 애플리케이션에 관련된 특정 의존성의 버전만 업데이트 해야 할
+    경우가 있습니다. 예를 들면, <code>rails</code>를 <code>4.1.0</code>으로
+    업데이트 하고 싶을 수 있습니다. 여기서 요점은 하나의 의존성만 업데이트 하는
+    것은, 모든 의존성을 다시 해결해 모두 최종버전으로 올리는 것과는 다르다는
+    것입니다. 우리의 예제에서는 3개의 의존성밖에 없지만, 이 경우에도 모든 것을
+    업데이트하는 것은 부작용이 있을 수 있습니다.
+
+  %p
+    설명하자면, <code>rails 4.1.0.rc2</code> gem은 <code>actionpack
+    4.1.0.rc2</code> gem에 의존하고 있고 이 gem은 <code>rack ~> 1.5.2</code>에
+    의존 합니다.(<code>>= 1.5.2</code>, <code>< 1.6.0</code>를 의미함)
+    <code>rack-cache</code> gem은 <code>rack >= 0.4</code>에 의존합니다.
+    <code>rails 4.1.0</code> 최종 gem도 <code>rack ~> 1.5.2</code>에 의존하고,
+    <code>rails 4.1.0</code>이 릴리스한 후에, Rack 팀이 <code>rack 1.5.3</code>을
+    릴리스했다고 가정합니다.
+
+  %p
+    Rails을 업데이트하기 위해, 단순하게 모든 gem을 업데이트 한다고 하면,
+    <code>rails 4.1.0</code>과 <code>rack-cache</code>의 요구사항을 모두 만족하는
+    <code>rack 1.5.3</code>을 얻게 될 것입니다. 하지만 <code>rack 1.5.3</code>과
+    호환성이 없을지도 모르는(이유가 뭐든 간에) <code>rack-cache</code>를
+    업데이트할지 명확하게 묻지 않습니다. 그리고 <code>rack 1.5.2</code>에서
+    <code>rack 1.5.3</code>으로 업데이트 해도 아무것도 망가지지 않을 것입니다.
+    또한 훨씬 큰 업데이트에서도 비슷한 일이 일어날 수 있습니다.(더 자세한 논의는 아래
+    [1]을 보세요)
+
+  %p
+    이 문제를 피하기 위해, gem을 업데이트할 때, 번들러는 다른 gem이 의존하고
+    있는 gem은 업데이트 하지 않습니다. 이 예제에서는, <code>rack-cache</code>가
+    <code>rack</code>에 의존하고 있기 때문에, 번들러는 <code>rack</code> gem을
+    업데이트하지 않습니다. 이렇게 함으로써 <code>rails</code>의 업데이트가
+    무심코 <code>rack-cache</code>를 망가트리지 않게 합니다. <code>rails
+    4.1.0</code>이 의존하는 <code>actionpack 4.1.0</code>이 <code>rack
+    1.5.2</code>도 호환하고 있기 때문에, 번들러는 그대로 두고,
+    <code>rack-cache</code>는 <code>rack 1.5.3</code>에서 비호환이 일어나더라도
+    계속 동작하게 됩니다.
+
+  %p
+    원래 의존성을 <code>rails 4.1.0.rc2</code>로 정의했기 때문에, <code>rails
+    4.1.0</code>으로 업데이트를 원한다면, <code>Gemfile</code>을 <code>gem
+    'rails', '4.1.0'</code> 업데이트하고 다음을 실행하세요.
+
+  :code
+    $ bundle install
+
+  %p
+    위에 설명한 것처럼, <code>bundle install</code> 명령어는 항상 보수적으로
+    업데이트하고, <code>Gemfile</code>에서 명확하게 변경하지 않은 gem과 그
+    의존성의 업데이트를 하지 않습니다. 이 말은 <code>Gemfile</code>에서
+    <code>rack-cache</code>를 변경하지 않았다면, 번들러는 그것과 **그것의
+    의존성**(<code>rack</code>)을 하나의 변경할 수 없는 단위로 봅니다. <code>rails
+    4.1.0</code>이 <code>rack-cache</code>와 비호환이었다면, 번들러는 스냅숏해둔
+    의존성(<code>Gemfile.lock</code>)과 업데이트된 <code>Gemfile</code> 사이의
+    충돌을 보고하게 됩니다.
+
+  %p
+    <code>Gemfile</code>을 업데이트하고, 시스템이 이미 모든 필요한 의존성이
+    있다면, 번들러는 애플리케이션을 기동할 때 투명하게 <code>Gemfile.lock</code>을
+    업데이트합니다. 예를 들어, 시스템에 이미 설치된, <code>mysql</code>을
+    <code>Gemfile</code>에 넣었다면, <code>bundle install</code>을 실행하지
+    않고도 애플리케이션을 기동할 수 있고, 번들러는 <code>Gemfile.lock</code>에
+    스냅숏해둔 "마지막으로 잘 실행되었던" 설정을 지속하게 됩니다.
+
+  %p
+    이는 최소한의 gem(디비 드라이버, <code>wirble</code>, <code>ruby-debug</code>)만
+    추가하거나 업데이트할 때 유용할 수 있습니다. 중대한
+    업데이트(<code>rails</code>)나 많은 gem이 의존하는 gem(<code>rack</code>)의
+    업데이트는 아마 실패할 것입니다. 투명한 업데이트가 실패하면, 애플리케이션은
+    기동에 실패하게 되고, 번들러는 <code>bundle install</code>을 실행하도록 에러
+    화면을 출력합니다.
+
+  %h2#updating-a-gem-without-modyfying-the-gemfile
+    Gemfile을 수정하지 않고 gem 업데이트하기
+
+  %p
+    가끔은 Gemfile을 수정하지 않고 의존성을 업데이트하고 싶을 수 있습니다. 예를
+    들어, 최신 버전의 <code>rack-cache</code>로 업데이트를 하고 싶다고 합시다.
+    <code>Gemfile</code>에 <code>rack-cache</code>의 특정 버전을 지정하지 않았기
+    때문에, <code>rack-cache</code>의 최신 버전을 주기적으로 업데이트하고 싶을
+    수 있습니다. 업데이트 하려면, <code>bundle update</code> 명령어를 사용해
+    보세요.
+
+  :code
+    $ bundle update rack-cache
+
+  %p
+    이 명령어는 <code>bundle update</code>와 그 의존성을 <code>Gemfile</code>에서
+    허용하는 최신 버전으로 업데이트 합니다.(이 경우, 가능한 최신 버전) 이는 다른
+    의존성을 변경하지 않습니다.
+
+  %p
+    하지만, 필요하다면 다른 gem의 의존성을 업데이트 할 수 있습니다. 예를 들어,
+    <code>rack-cache</code>의 최신 버전이 의존성으로 <code>rack >= 1.5.3</code>을
+    지정하고 있다면, 번들러는 <code>rack</code>의 업데이트를 요청하지 않았다고
+    하더라도 <code>rack</code>을 <code>1.5.3</code>으로 업데이트합니다. 다른 gem이
+    의존하고 있는 gem을 업데이트할 필요가 있다면, 번들러는 업데이트가 끝난
+    다음에 알려줍니다.
+
+  %p
+    Gemfile의 모든 gem을 가능한 최신버전으로 업데이트하고 싶다면, 다음을
+    실행하세요.
+
+  :code
+    $ bundle update
+
+  %p
+    이 명령어는 <code>Gemfile.lock</code>을 무시하고 처음부터 의존성을
+    해결합니다. 이 명령을 실행하기 전에는 반드시 <code>git reset --hard</code>와
+    테스트 스위트를 준비해두세요. 처음부터 모든 의존성을 해결하는 것은 예상치
+    못한 결과가 될 수 있습니다. 특히 마지막으로 업데이트 한 이후 의존하는 여러
+    서드 파티 패키지가 새 버전을 릴리스 했다면 더더욱 그렇습니다.
+
+  %h2#summary
+    요약
+  %h2 간단한 번들러 작업 흐름
+
+  %ul
+    %li
+      %p
+        레일스 애플리케이션을 처음 만들 때, 이미 <code>Gemfile</code>이
+        들어있습니다. 시나트라 같은 다른 애플리케이션은 다음을 실행하세요.
+
+      :code
+        $ bundle init
+
+      %p
+        <code>bundle init</code> 명령은 수정할 수 있는 간단한
+        <code>Gemfile</code>을 만듭니다.
+
+    %li
+      %p
+        그런 다음, 애플리케이션이 의존할 gem을 추가하세요. 필요한 특정 gem의
+        버전을 신경써야 한다면, 적절한 버전 제약을 하세요.
+
+      :code
+        # lang: ruby
+        source 'https://rubygems.org'
+
+        gem 'sinatra', '~> 1.3.6'
+        gem 'rack-cache'
+        gem 'rack-bug'
+
+    %li
+      %p
+        아직 시스템에 설치된 gem이 없다면, 다음을 실행하세요.
+
+      :code
+        $ bundle install
+
+    %li
+      %p
+        gem의 버전 요구사항을 업데이트하려면, 먼저 Gemfile을 수정하세요.
+
+      :code
+        # lang: ruby
+        source 'https://rubygems.org'
+
+        gem 'sinatra', '~> 1.4.5'
+        gem 'rack-cache'
+        gem 'rack-bug'
+
+      %p
+        그리고 다음을 실행하세요.
+
+      :code
+        $ bundle install
+
+    %li
+      %p
+        <code>bundle install</code>이 <code>Gemfile</code>과
+        <code>Gemfile.lock</code>이 충돌한다는 보고를 하면 다음을 실행하세요.
+
+      :code
+        $ bundle update sinatra
+
+      %p
+        이는 시나트라 gem과 그 의존성만 업데이트합니다.
+
+    %li
+      %p
+        <code>Gemfile</code>에 있는 모든 gem을 가능한 최신 버전으로 업데이트 하려면, 다음을 실행하세요.
+
+      :code
+        $ bundle update
+
+    %li
+      <code>Gemfile.lock</code>이 변경될 때마다 버전 관리 시스템에 넣으세요. 이는
+      애플리케이션을 성공적으로 실행하는데 필요한 모든 서드 파티 코드의 정확한
+      버전의 이력을 남기게 합니다.
+
+    %li
+      %p
+        스테이징이나 프로덕션 서버에 코드를 배포할 때, 먼저 테스트를 실행하거나
+        지역 개발 서버에서 기동해 보고, 버전 관리 시스템에
+        <code>Gemfile.lock</code>이 들어있는지 확인하세요. 원격 서버에서 다음을
+        실행 하세요.
+
+      :code
+        $ bundle install --deployment
+
+  %h2#notes
+    주의
+
+  %p
+    [1] 예를 들어, <code>rails 4.1.0</code>이 <code>rack 2.0</code>에 의존하고
+    있다고 해봅시다. 이 gem은 여전히 <code>>= 0.4</code>로 정의해둔
+    <code>rack-cache</code>의 의존성을 만족합니다. 물론, <code>rack-cache</code>가
+    의존하는 버전 상한이 없는 것에 대해서는 이견이 있을 수 있습니다. 하지만 이런
+    경우는 실제로 (꽤나) 존재하고, 프로젝트는 자주 어느 버전에 의존해야 할지
+    딜레마에 빠집니다. 의존성을 너무 제약하면(<code>rack =1.5.1</code>) 프로젝트를
+    다른 호환 프로젝트에서 사용하기 힘들어집니다. 너무 제약하지
+    않으면(<code>rack >= 1.0</code>) Rack의 새 버전이 릴리스 되었을 때, 코드가
+    망가집니다. <code>rack ~> 1.5.2</code> 같은 의존성을 사용하고 버전 코드로
+    유의적 버전을 사용하면 이런 문제는 대부분 해결 됩니다만, 이는 모두의 협력이
+    필요합니다. 루비젬스에서는 100,000개가 넘는 패키지가 있기 때문에, 이 가정은
+    실제로는 간단하지 않습니다.

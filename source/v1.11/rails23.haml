@@ -1,0 +1,104 @@
+#intro
+  레일스 2.3은 독자적으로 gem을 관리합니다. 하지만 번들러 설정을
+  덮어씌워 번들러를 지원하게 할 수 있습니다.
+  .notes
+    <b>NB:</b> <i>아마도</i> 2.3보다 낮은 버전의 레일스에서 움직일 수 있지만,
+    번들러 팀에서는 테스트하지 않았고 2.3보다 낮은 버전의 레일스를
+    지원할 계획도 없습니다. 하지만 시도는 자유죠. :)
+
+
+%h2 번들러를 레일스 2.3과 사용하기
+
+.contents
+
+  .bullet
+    .description
+      레일스 2.3 앱이 아직없다면, 생성합니다.
+    :code
+      $ rails myapp
+      $ cd myapp
+
+  .bullet
+    .description
+      <code>config/boot.rb</code>의 밑에 있는
+      <code>Rails.boot!</code>의 바로 다음 줄에 아래 코드를 넣으세요.
+    :code
+      # lang: ruby
+      class Rails::Boot
+        def run
+          load_initializer
+
+          Rails::Initializer.class_eval do
+            def load_gems
+              @bundler_loaded ||= Bundler.require :default, Rails.env
+            end
+          end
+
+          Rails::Initializer.run(:set_load_path)
+        end
+      end
+
+  .bullet
+    .description
+      새 파일 <code>config/preinitializer.rb</code>를 생성해,
+      밑의 코드를 넣으세요. <code>config</code>입니다.
+      <code>config/initializers</code>가 <strong>아닙니다</strong>.
+    :code
+      # lang: ruby
+      begin
+        require 'rubygems'
+        require 'bundler'
+      rescue LoadError
+        raise "Could not load the bundler gem. Install it with `gem install bundler`."
+      end
+
+      if Gem::Version.new(Bundler::VERSION) <= Gem::Version.new("0.9.24")
+        raise RuntimeError, "Your bundler version is too old for Rails 2.3.\n" +
+         "Run `gem install bundler` to upgrade."
+      end
+
+      begin
+        # Set up load paths for all bundled gems
+        ENV["BUNDLE_GEMFILE"] = File.expand_path("../../Gemfile", __FILE__)
+        Bundler.setup
+      rescue Bundler::GemNotFound
+        raise RuntimeError, "Bundler couldn't find some gems.\n" +
+          "Did you run `bundle install`?"
+      end
+
+  .bullet
+    .description
+      애플리케이션에 선언된 모든 config.gem을 Gemfile에 넣습니다.
+      development.rb 안에 (다른 환경의 경우라도) 선언이 있다면 선언들을
+      그 이름의 그룹에 넣으세요. 레일스 자신과 적어도 한 개 이상의 소스가
+      있는지도 확인하세요.
+    :code
+      # lang: ruby
+      source 'https://rubygems.org'
+      gem 'rails', '~> 2.3.5'
+      gem 'sqlite3-ruby', :require => 'sqlite3'
+
+      # bundler requires these gems in all environments
+      # gem 'nokogiri', '1.4.2'
+      # gem 'geokit'
+
+      group :development do
+        # bundler requires these gems in development
+        # gem 'rails-footnotes'
+      end
+
+      group :test do
+        # bundler requires these gems while running tests
+        # gem 'rspec'
+        # gem 'faker'
+      end
+    = link_to '자세한 내용은: 그룹', './groups.html'
+
+  .bullet
+    .description
+      한 번 전부 설정했다면, script/console, script/server나 다른
+      레이크 작업들도 평범하게 사용할 수 있습니다. 여기서부터는
+      레일스 3의 가이드를 읽으시면 됩니다.
+    :code
+      $ rake db:migrate
+    = link_to '자세한 내용은: 레일스 3', './rails3.html#shared_with_23'

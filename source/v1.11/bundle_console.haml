@@ -1,0 +1,18 @@
+%h2 bundle console
+
+.contents
+  .bullet
+    .description
+      대화형 루비 콘솔 세션을 현재 번들의 컨텍스트에서 시작합니다.
+    :code
+      $ bundle console [GROUP]
+
+    .description
+      <code>bundle console</code>은 기본 값으로 irb를 사용합니다. 번들러 설정
+      <code>console</code>을 변경하면 Pry나 Ripl도 bundle console로
+      사용할 수 있습니다. 그런 경우에는 <code>pry</code>나 <code>ripl</code>이 Gemfile에
+      들어있는지도 확인하셔야 합니다.
+    :code
+      $ bundle config console pry
+      $ bundle console
+      [1] pry(main)>
