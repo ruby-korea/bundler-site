@@ -1,5 +1,5 @@
 ---
-title: Version 1.11 released
+title: 버전 1.11 릴리스
 date: 2015-12-12 19:00 UTC
 tags:
 author: Samuel Giddins
@@ -7,69 +7,60 @@ author_url: http://segiddins.me
 category: release
 ---
 
-Bundler 1.11 is here! Six and a half months after the last big release, we're
-finally ready to ship 1.11.
+번들러 1.11이 왔습니다! 저번 릴리스로부터 6개월 반이 지나고나서야 드디어 1.11을 내보낼 준비가
+되었습니다.
 
-I know it's been a while, but there's a pretty good reason for that. Over the
-summer, the team was busy supervising _four_ Google Summer of Code students:
+이것이 좀 오래 걸리긴 했지만, 거기에는 그럴만한 이유가 있었습니다. 이번 여름, 팀은 _4명_의
+Google Summer of Code 학생들을 코칭하는데 분주했습니다.
 
- - We made a significant amount of progress on the new compact gem index, which
-   ought to ship in 1.12 in the near future.
- - We improved the Bundler website and online documentation.
- - We've created a solid base for Bundler 2.0.
- - We prototyped a new plugin system.
+ - 새로운 젬 인덱스 작업을 많이 진전시켰으며, 이는 1.12에 포함될 예정입니다.
+ - 번들러 웹사이트와 온라인 문서를 많이 개선했습니다.
+ - 번들러 2.0을 위한 기초 작업이 진행되었습니다.
+ - 새로운 플러그인 시스템의 시제품을 만들었습니다.
 
-In addition, the Bundler Core team has spent a lot of time focusing on the
-development experience of bundler itself. The bundler codebase is over five
-years old, and contains code from over 400 contributors. That can make it
-rather daunting to start contributing, and also makes it hard to ensure that
-all of the code in bundler is up to the same standards (and is fit to last for
-the next five years!). In order to make things more consistent, we've
-introduced RuboCop (and thus a style guide), we've instituted a build bot to
-ensure that `master` is never failing, and have decided to subject 100% of the
-new code introduced to code review. This is a big step forward, and lets me
-confidently say that this will be our best release yet!
+나아가, 번들러 코어 팀은 번들러 자체의 개발 경험을 향상시키는 데에 많은 시간을 보냈습니다.
+번들러의 코드는 5살이 되었으며, 400명 이상의 기여자들이 작성한 코드들로 구성되어 있습니다.
+이는 점점 코드에 기여하는 것을 어렵게 만들고 있으며, 또한 번들러의 모든 코드들이 같은 기준에
+맞추어져서 작성된 것인지 보증할 수 없게 만들었습니다(그리고 이는 향후 5년간도 그럴 것입니다).
+이 코드들을 좀 더 일관성있게 만들기 위해 RoboCop(과 그 스타일 가이드)를 도입하고,
+`master`가 실패하지 않도록 코드 리뷰를 통과한 모든 새 코드를 담당하는 빌드 봇을 도입했습니다.
+이 것은 무척 큰 진전이며, 최고의 릴리즈가 될 것이라 확신합니다.
 
-That out of the way, what's actually in this long-awaited release?
+이 부분은 제쳐두고, 이렇게 오래 걸린 릴리스에 어떤 것들이 포함되어 있을까요?
 
-### New features
+### 새 기능
 
-First up, we've combed through a few years worth of bundler issues, and have
-improved the error messaging for every single one of them. Our goal is to never
-show an exception with a backtrace, and instead present a friendly and helpful
-error message when things go awry -- and we're now pretty close to that.
+우선, 수년간 쌓여있던 번들러의 이슈를 정리했으며, 이를 에러 메시지에 반영했습니다. 최종 목표는
+예외를 발생시키고 백트레이스를 보여주는 대신, 도움이 되는 에러 메시지를 출력하는 것이고,
+거의 다 했습니다.
 
-The dependency resolver has also seen a few updates. Continuing the theme of
-improved errors, version conflicts will now do a better job of reporting what
-versions of every gem have been activated, making it even easier to figure out
-the best way to resolve said conflict. Additionally, resolution has been sped up
-by over 25x in pathological cases. That's a pretty nice win.
+의존성 해결기에도 몇가지 변경사항이 있었습니다. 에러 메시지의 출력 형태 개선에 더불어, 버전 충돌이
+발생했을 경우 현재 활성화되어 있는 젬의 목록과 각각의 버전 정보를 출력하여, 충돌을 해결하는 가장 좋은
+방법을 찾을 수 있도록 도와줍니다. 나아가, 의존성 해결이 무척 오래 걸리는 특정 상황에서의 속도가 25배
+이상 빨라졌습니다.
 
-Finally, we've laid the groundwork for resolving gems based on the current
-version of Ruby.  Once the new index is rolled out, Bundler will make sure to
-choose gems whose `required_ruby_version` matches the Ruby you are running on.
+마지막으로, 현재 버전에서 젬의 의존성을 해결하기 위한 준비 작업을 진행중입니다. 새 인덱스가 릴리스 되면,
+번들러는 `required_ruby_version`를 통해 현재 실행중인 루비의 버전을 확인하고 맞는 젬을 선택할
+수 있을 것입니다.
 
-### Bugfixes
+### 버그 수정
 
-The real meat of this release comes in the bugfix section, however. Across
-almost four hundred commits, we've squashed upwards of fifty unique bugs.
-Meaning this version of bundler should be the fastest, most stable version we've
-ever released.
+사실 이 릴리스의 가장 중요한 변경점은 400개 이상의 커밋에 걸쳐, 50개의 버그를 수정했다는 점에 있습니다.
+다시 말하자면 이번 버전은 지금까지 중에 가장 빠르고, 가장 안정적인 버전이 될 것입니다.
 
-### What's Next
+### 다음 예정
 
-As I mentioned earlier, this long gap between releases doesn't mean we're
-slowing down development -- quite the opposite, in fact! We're actively working
-on bundler 1.12 and 2.0 _at this very moment_, and are incredibly exited to get
-the new index into people's hands as fast as we possibly can.
+이미 말했듯이, 무척 오래 걸린 이번 릴리즈는 저희의 작업 속도가 느려졌다는 의미가 아닙니다. 실제로는 정반대입니다!
+_현재_ 무척 활발하게 번들러 1.12와 2.0을 작업중이며, 가급적 빠르게 새 인덱스 작업을 마무리지어서
+공개하겠습니다.
 
-#### Updating
+#### 업데이트하기
 
-To install the last release of Bundler, you can run:
+최신 번들러 릴리스를 인스톨하기 위해서는 다음을 실행하세요.
 
 ```
 $ [sudo] gem install bundler
 ```
 
-For all the details, don’t miss the
-[Changelog](https://github.com/bundler/bundler/blob/v1.11.0/CHANGELOG.md#1110-2015-12-12)!
+더 자세한 설명은 
+[Changelog](https://github.com/bundler/bundler/blob/v1.11.0/CHANGELOG.md#1110-2015-12-12)에서 보실 수 있습니다!
