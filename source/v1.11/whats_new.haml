@@ -1,39 +1,38 @@
 = partial "shared/whats_new"
 
-%h2#version111 What's New in v1.11
+%h2#version111 v1.11의 새로운 기능
 
-%h3#error-messages Improved permissions errors
+%h3#error-messages 권한 에러 향상
+.contents
+  .bullet
+    .description
+      %p
+        번들러는 이제 모든 권한 에러에 대해 예외를 발생시키고 백트레이스를 보여주는 대신, 도움이 되는 에러 메세지를 제공합니다.
+
+%h3#git-credentials Git 인증서
 
 .contents
   .bullet
     .description
       %p
-        Bundler now provides a helpful error message for all sorts of permissions errors that used to cause an exception and show a backtrace.
+        번들러는 이제 특정 사용자 정의 git 인증서를 <code>bundle config</code>통해 설정 가능합니다.
 
-%h3#git-credentials Git Credentials
-
-.contents
-  .bullet
-    .description
-      %p
-        Bundler now allows specifying custom git credentials via <code>bundle config</code>.
-
-%h3#lock-update Update gems without installing them
+%h3#lock-update gem을 설치하지 않고 업데이트
 
 .contents
   .bullet
     .description
       %p
-        It is now possible to update the locked version of a gem without also installing it, by running <code>bundle lock --update [GEM [GEM ...]]</code> to update the versions of some gems (or all gems).
+        고정된 버전의 젬을 설치없이 업데이트할 수 있게됩니다. <code>bundle lock --update [GEM [GEM ...]]</code> 를 실행해 몇몇 젬(혹은 전부 다) 업데이트할 수 있습니다.
 
 .contents
   .bullet
     .description
-      Bundler 1.11 also includes:
+      번들러 1.11는 다음 패치도 포함합니다.
       %ul
-        %li up to 25x faster dependency resolution
-        %li vastly improved resolver conflict messages
-        %li configurable timeouts and retries
-        %li configurable git remote and gem server for `rake release`
-        %li many, many, many bugfixes
-      = link_to 'Full 1.11 changelog', 'https://github.com/bundler/bundler/blob/1-11-stable/CHANGELOG.md'
+        %li 최대 25배 빨라진 의존성 해결
+        %li 의존성 해결시의 충돌 메세지의 눈에 띄는 향상
+        %li 타임 아웃 재시도의 설정 가능
+        %li `rake release`의 git remote, gem server 설정 가능
+        %li 아주 아주 많은 버그 수정
+      = link_to '1.11 의 전체 변경이력', 'https://github.com/bundler/bundler/blob/1-11-stable/CHANGELOG.md'
