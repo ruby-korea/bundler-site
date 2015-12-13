@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
+    <title>
+      Bundler: The best way to manage a Ruby application's gems
+    </title>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic|Source+Code+Pro' rel='stylesheet'>
+    
+    <link href="/bundler-site/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/images/favicon.png" rel="icon" type="image/png" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body class=''>
+    <div id='body'>
+      <div id='header'>
+        <a class="image" href="/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
+      </div>
+      <div id='container'>
+        <div id='contents'>
+          <h2>Command Line Reference</h2>
+          <div id='command_reference'>
+            <table cellspacing='0'>
+              <tr>
+                <th>
+                  command
+                </th>
+                <th>
+                  applicable options
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_binstubs.html">bundle binstubs</a>
+                  </div>
+                  <div class='cli_desc'>
+                    나열된 gem의 binstubs를 설치
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_binstubs.html#force">--force</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_binstubs.html#path">--path</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_check.html">bundle check</a>
+                  </div>
+                  <div class='cli_desc'>
+                    Gemfile의 목록이 현재 설치된 gem의 의존성을 만족하는지 확인
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_check.html#dry-run">--dry-run</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_check.html#gemfile">--gemfile</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_check.html#path">--path</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_clean.html">bundle clean</a>
+                  </div>
+                  <div class='cli_desc'>
+                    번들러 디렉터리에서 사용하지 않는 gem을 청소
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_clean.html#dry-run">--dry-run</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_clean.html#force">--force</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_config.html">bundle config</a>
+                  </div>
+                  <div class='cli_desc'>
+                    설정 값을 보거나 지정
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_config.html#local">--local</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_config.html#global">--global</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_config.html#delete">--delete</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_console.html">bundle console</a>
+                  </div>
+                  <div class='cli_desc'>
+                    번들이 프리로드된 IRB 세션 열기
+                  </div>
+                </td>
+                <td>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_exec.html">bundle exec</a>
+                  </div>
+                  <div class='cli_desc'>
+                    번들의 컨텍스트에서 명령어 실행
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_exec.html#keep-file-descriptors">--keep-file-descriptors</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_gem.html">bundle gem</a>
+                  </div>
+                  <div class='cli_desc'>
+                    루비젬을 만들기 위한 뼈대 생성
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_gem.html#bin">--bin or -b</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_gem.html#edit">--edit</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_gem.html#ext">--ext</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_gem.html#test">--test</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_help.html">bundle help</a>
+                  </div>
+                  <div class='cli_desc'>
+                    각 하위 명령어의 자세한 도움말 표시
+                  </div>
+                </td>
+                <td>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_init.html">bundle init</a>
+                  </div>
+                  <div class='cli_desc'>
+                    현재 디렉터리에 Gemfile 생성
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_init.html#gemspec">--gemspec</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_inject.html">bundle inject</a>
+                  </div>
+                  <div class='cli_desc'>
+                    결정된 Gemfile에 gem 이름과 버전 추가
+                  </div>
+                </td>
+                <td>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_install.html">bundle install</a>
+                  </div>
+                  <div class='cli_desc'>
+                    시스템에 현재 환경을 설치
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#binstubs">--binstubs</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#clean">--clean</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#deployment">--deployment</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#frozen">--frozen</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#full-index">--full-index</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#gemfile">--gemfile</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#jobs">--jobs</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#local">--local</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#no-cache">--no-cache</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#no-prune">--no-prune</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#path">--path</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#quiet">--quiet</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#retry">--retry</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#shebang">--shebang</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#standalone">--standalone</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#system">--system</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#trust-policy">--trust-policy</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_install.html#without">--without</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_open.html">bundle open</a>
+                  </div>
+                  <div class='cli_desc'>
+                    주어진 번들 gem의 소스 디렉터리 열기
+                  </div>
+                </td>
+                <td>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_outdated.html">bundle outdated</a>
+                  </div>
+                  <div class='cli_desc'>
+                    새로운 버전이 나온 설치된 gem 목록
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_outdated.html#local">--local</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_outdated.html#pre">--pre</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_outdated.html#source">--source</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_outdated.html#strict">--strict</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_package.html">bundle package</a>
+                  </div>
+                  <div class='cli_desc'>
+                    vendor/cache에 모든 gem을 캐시, 락
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_package.html#all">--all</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_package.html#all-platforms">--all-platforms</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_package.html#gemfile">--gemfile</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_package.html#no-install">--no-install</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_package.html#no-prune">--no-prune</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_package.html#path">--path</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_package.html#quiet">--quiet</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_platform.html">bundle platform</a>
+                  </div>
+                  <div class='cli_desc'>
+                    플랫폼 호환성 정보 표시
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_platform.html#ruby">--ruby</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_show.html">bundle show</a>
+                  </div>
+                  <div class='cli_desc'>
+                    번들에 포함된 모든 gem의 목록이나, 특정 gem의 경로를 표시
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_show.html#paths">--paths</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_update.html">bundle update</a>
+                  </div>
+                  <div class='cli_desc'>
+                    현재 환경을 업데이트
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_update.html#full-index">--full-index</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_update.html#group">--group</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_update.html#jobs">--jobs</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_update.html#local">--local</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_update.html#quiet">--quiet</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_update.html#source">--source</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_version.html">bundle version</a>
+                  </div>
+                  <div class='cli_desc'>
+                    버전 정보 출력
+                  </div>
+                </td>
+                <td>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class='cli_name'>
+                    <a href="/bundler-site/v1.11/bundle_viz.html">bundle viz</a>
+                  </div>
+                  <div class='cli_desc'>
+                    비주얼 의존성 그래프 생성
+                  </div>
+                </td>
+                <td>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_viz.html#file">--file or -f</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_viz.html#format">--format or -F</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_viz.html#requirements">--requirements or -r</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_viz.html#version">--version or -v</a>
+                  </div>
+                  <div class='cli_option'>
+                    <a href="/bundler-site/v1.11/bundle_viz.html#without">--without</a>
+                  </div>
+                  <div class='clear'></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id='sidebar'>
+          <h2>Would you like to</h2>
+          <ul>
+            <li><a href="/bundler-site/#getting-started">시작하기</a></li>
+            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
+            <li><a href="/bundler-site/v1.11/whats_new.html">새로운 기능 확인하기</a></li>
+            <li><a href="/bundler-site/v1.11/man/bundle.1.html">문서 읽기</a></li>
+            <li><a href="/bundler-site/#get-involved">토론하고 기여하기</a></li>
+            <li><a href="/bundler-site/v1.11/faq.html">FAQ 보기</a></li>
+          </ul>
+          <h2>최신 뉴스 읽기</h2>
+          <ul>
+            <li>
+              <a href="/bundler-site/blog/2015/12/12/version-1-11-released.html">Version 1.11 released</a>
+            </li>
+            <li>
+              <a href="/bundler-site/blog/2015/06/24/version-1-10-released.html">Version 1.10 released</a>
+            </li>
+            <div class='buttons'>
+              <a href="/bundler-site/blog/">모든 기사</a>
+            </div>
+          </ul>
+          <h2>번들러 명령어</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.11/bundle_install.html">bundle install</a></li>
+            <li><a href="/bundler-site/v1.11/bundle_update.html">bundle update</a></li>
+            <li><a href="/bundler-site/v1.11/bundle_gem.html">bundle gem</a></li>
+            <div class='buttons'>
+              <a href="/bundler-site/v1.11/commands.html">모든 명령어 보기</a>
+            </div>
+          </ul>
+          <h2>사용법</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.11/gemfile.html">Gemfile</a></li>
+            <li><a href="/bundler-site/v1.11/groups.html">그룹</a></li>
+            <li><a href="/bundler-site/v1.11/git.html">git으로부터의 gem</a></li>
+            <li><a href="/bundler-site/v1.11/bundler_setup.html">Bundler.setup</a></li>
+            <li><a href="/bundler-site/v1.11/deploying.html">배포하기</a></li>
+            <li><a href="/bundler-site/v1.11/bundler_sharing.html">공유하기</a></li>
+            <li><a href="/bundler-site/v1.11/updating_gems.html">gem 갱신하기</a></li>
+            <li><a href="/bundler-site/compatibility.html">호환가능한 버전</a></li>
+            <li><a href="/bundler-site/older_versions.html">이전 버전</a></li>
+          </ul>
+          <h2>Use Bundler with</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.11/rails3.html">레일스 3</a></li>
+            <li><a href="/bundler-site/v1.11/rails23.html">레일스 2.3</a></li>
+            <li><a href="/bundler-site/v1.11/sinatra.html">시나트라</a></li>
+            <li><a href="/bundler-site/v1.11/rubygems.html">루비젬스</a></li>
+            <li><a href="/bundler-site/v1.11/rubymotion.html">루비모션</a></li>
+          </ul>
+          <div class='shirts'>
+            <div class='content'>
+              <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
+              </a>
+              <p>
+                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">Buy Bundler Shirts & Stickers!</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <img src="/bundler-site/images/emocow.png" />
+      <img src="/bundler-site/images/panda.jpg" />
+      <div class='spacer'></div>
+      <div id='credits'>
+        <p>
+          Many thanks to Bundler's <a href="/bundler-site/contributors.html">contributors</a>
+          and <a href="/bundler-site/sponsors.html">sponsors</a>
+        </p>
+      </div>
+      <div class='spacer'></div>
+      <img src="/bundler-site/images/bundler-small.png" />
+    </div>
+    <a href='http://github.com/bundler/bundler/' id='github'>
+      <img alt='Fork me on GitHub' src='http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png'>
+    </a>
+    <div id='prod-versions'>
+      Docs:
+      <a href="/bundler-site/v1.10/">Previous Version (v1.10)</a>
+      <a class="current" href="/">Current Version (v1.11)</a>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-39559982-1', 'bundler.io');
+      ga('send', 'pageview');
+    </script>
+    <script src="/bundler-site/javascripts/application.js" type="text/javascript"></script>
+    
+  </body>
+</html>

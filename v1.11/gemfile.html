@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta content='276VSYOko8B8vIu1i8i5qbj7_ql5PXo0dU69XQy-SL' name='globalsign-domain-verification'>
+    <title>
+      Bundler: The best way to manage a Ruby application's gems
+    </title>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic|Source+Code+Pro' rel='stylesheet'>
+    
+    <link href="/bundler-site/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link href="/bundler-site/images/favicon.png" rel="icon" type="image/png" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/blog/feed.xml" />
+  </head>
+  <body class=''>
+    <div id='body'>
+      <div id='header'>
+        <a class="image" href="/"><img width="725" alt="The best way to manage your application's dependencies" src="/bundler-site/images/gembundler.png" /></a>
+      </div>
+      <div id='container'>
+        <div id='contents'>
+          <h2>깊이 보기</h2>
+          <div class='contents'>
+            <div class='bullet'>
+              <div class='description'>
+                <code>Gemfile</code>에서 사용 가능한 모든 옵션과 각 옵션의 상세한 사용법은
+                매뉴얼에 나와 있습니다.
+              </div>
+              <a href="/bundler-site/v1.11/man/gemfile.5.html">Gemfile 매뉴얼</a>
+            </div>
+          </div>
+          <h2>Gemfiles</h2>
+          <div class='contents'>
+            <div class='bullet'>
+              <div class='description'>
+                Gemfile에는 최소한 하나의 gem 소스가 필요합니다. gem 소스에는 루비젬스
+                서버가 URL 형식으로 적혀있어야 합니다. <code>bundle init</code>을
+                실행함으로써 rubygems.org를 소스로 한 기본 값의 Gemfile을 만듭니다. 할
+                수만 있다면 <code>https</code>를 사용하여 rubygems.org 서버로의 연결이 SSL
+                인증되도록 하세요.
+              </div>
+              <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'https://rubygems.org'</span></pre>
+              <div class='notes'>
+                여러 전역 소스를 추가하는 것은 가능하지만 번들러 1.7에서는 권장하지
+                않습니다. 이 소스들은 끝에서 처음 순으로 검색됩니다.
+              </div>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                어떤 gem 소스는 사용자 이름과 비밀번호가 필요합니다. 이를
+                위한 사용자 이름과 비밀번호를 설정하려면 <code>bundle config</code>를
+                사용하세요. 이 명령어는 Gemfile이 설치되는 각 컴퓨터에서 한 번은 실행해야
+                하지만, 버전 관리 시스템에 평문으로 인증 정보를 저장하지 않도록 합니다.
+              </div>
+              <pre class="highlight plaintext">$ bundle config https://gems.example.com/ user:password</pre>
+              <div class='description'>
+                Gemfury 회사 계정 같은 어떤 소스는 인증을 Gemfile 안의 소스 URL의 일부로
+                포함시키는 것이 더 간단할 수도 있습니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">source</span> <span class="s2">"https://user:password@gems.example.com"</span></pre>
+              <div class='description'>
+                소스 URL 내의 인증은 <code>config</code>로 설정된 인증보다 우선됩니다.
+              </div>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                필요한 gem을 버전 번호와 함께 선언합니다. 의존성을 지원하기 위한 버전
+                지정에는 루비젬스에서 사용하는 것과 같은 문법을 사용합니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'nokogiri'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rails'</span><span class="p">,</span> <span class="s1">'3.0.0.beta3'</span>&#x000A;<span class="n">gem</span> <span class="s1">'rack'</span><span class="p">,</span>  <span class="s1">'&gt;=1.0'</span>&#x000A;<span class="n">gem</span> <span class="s1">'thin'</span><span class="p">,</span>  <span class="s1">'~&gt;1.1'</span></pre>
+              <div class='notes'>
+                <code>>= 1.0</code> 같은 대부분의 버전 지정자는 따로 설명할 필요가 없습니다.
+                <code>~></code> 지정자는 특별한 의미가 있습니다. 예제로 설명하겠습니다.
+                <code>~> 2.0.3</code>는 <code>>= 2.0.3</code>과 <code>< 2.1</code>를 함께
+                사용한 것과 같습니다. <code>~> 2.1</code>은 <code>>= 2.1</code>과
+                <code>< 3.0</code>을 함께 사용한 것과 같습니다. <code>~> 2.2.beta</code>는
+                <code>2.2.beta.12</code>같은 사전 릴리스 버전과 일치합니다.
+              </div>
+              <a href="http://guides.rubygems.org/patterns/#pessimistic-version-constraint">루비젬스 버전 지정자</a>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                gem의 메인 파일이 gem의 이름과 다르다면, require하는 방법을 지정할 필요가
+                있습니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'rspec'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="s1">'spec'</span>&#x000A;<span class="n">gem</span> <span class="s1">'sqlite3'</span></pre>
+              <div class='description'>
+                <code>:require => false</code>를 지정함으로써 번들러가 gem을 require하는
+                것을 방지할 수 있습니다. 하지만 여전히 설치와 의존성의 유지보수는
+                이루어집니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'rspec'</span><span class="p">,</span> <span class="ss">:require</span> <span class="o">=&gt;</span> <span class="kp">false</span>&#x000A;<span class="n">gem</span> <span class="s1">'sqlite3'</span></pre>
+              <div class='notes'>
+                <code>Gemfile</code> 안의 gem을 require하려면, 애플리케이션에서
+                <code>Bundler.require</code>를 호출할 필요가 있습니다.
+              </div>
+              <a href="/bundler-site/v1.11/groups.html">자세한 내용은: Bundler.require</a>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                어떤 gem을 사설 gem 서버에서 가져와야 한다면, 이 기본 값 소스는 해당
+                gem에서 덮어쓸 수 있습니다.
+                한 gem을 가지고 있는 gem 서버를 위한 가장 간단한 방법은 그 gem에만
+                <code>:source</code> 옵션을 사용하는 것입니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'my_gem'</span><span class="p">,</span> <span class="s1">'1.0'</span><span class="p">,</span> <span class="ss">:source</span> <span class="o">=&gt;</span> <span class="s1">'https://gems.example.com'</span></pre>
+              <div class='description'>
+                같은 서버에서 여러 gem을 받아야 한다면, <code>source</code> 블록을 사용해
+                그룹지을 수 있습니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">source</span> <span class="s1">'https://gems.example.com'</span> <span class="k">do</span>&#x000A;  <span class="n">gem</span> <span class="s1">'my_gem'</span><span class="p">,</span> <span class="s1">'1.0'</span>&#x000A;  <span class="n">gem</span> <span class="s1">'another_gem'</span><span class="p">,</span> <span class="s1">'1.2.1'</span>&#x000A;<span class="k">end</span></pre>
+              <div class='description'>
+                gem 서버의 인증은 위에 설명한 것처럼 URL의 안이나 <code>bundle&#x000A;      config</code>를 사용해 지정할 수 있습니다.
+              </div>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                git 저장소도 유효한 gem 소스입니다. 저장소가 하나 이상의 유효한 gem을
+                가지고 있다면 말이죠. <code>:tag</code>나 <code>:branch</code>,
+                <code>:ref</code>로 어느 걸 체크아웃할지 정할 수 있습니다. 기본 값은
+                <code>master</code> 브랜치입니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'nokogiri'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/tenderlove/nokogiri.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'1.4'</span></pre>
+              <div class='notes'>
+                git 저장소가 <code>.gemspec</code> 파일을 가지고 있지 않다면, 번들러가
+                의존성, 실행 파일, C 확장 설정이 없는 간단한 <code>.gemspec</code> 파일을
+                생성합니다. 아마도 간단한 gem에서는 동작할 테지만, 동작하지 않을 수도
+                있습니다. <code>.gemspec</code> 파일이 없다면 git에서 gem을 사용하지 않는
+                것이 좋습니다.
+              </div>
+              <a href="/bundler-site/v1.11/git.html">자세한 내용은: git</a>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                파일 시스템에서 직접 gem을 언팩하고 싶다면, <code>:path</code> 옵션에 gem의
+                파일이 들어있는 경로를 지정하면 간단합니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'extracted_library'</span><span class="p">,</span> <span class="ss">:path</span> <span class="o">=&gt;</span> <span class="s1">'./vendor/extracted_library'</span>&#x000A;</pre>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                여러 로컬 gem을 파일 시스템에서 직접 사용하려 한다면, 전역 `path` 옵션에
+                gem의 파일이 들어있는 경로를 설정할 수 있습니다. 이렇게 하면 하위
+                디렉터리에서 gemspec 파일을 자동으로 로드합니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">path</span> <span class="s1">'components'</span> <span class="k">do</span>&#x000A;  <span class="n">gem</span> <span class="s1">'admin_ui'</span>&#x000A;  <span class="n">gem</span> <span class="s1">'public_ui'</span>&#x000A;<span class="k">end</span>&#x000A;</pre>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                의존성은 그룹 안에 있을 수 있습니다. 그룹은 설치 시에
+                무시(<code>--without</code>을 사용)하거나 한 번에
+                require(<code>Bundler.require</code>를 사용)할 수 있습니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'wirble'</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="ss">:development</span>&#x000A;<span class="n">gem</span> <span class="s1">'debugger'</span><span class="p">,</span> <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:development</span><span class="p">,</span> <span class="ss">:test</span><span class="o">]</span>&#x000A;&#x000A;<span class="n">group</span> <span class="ss">:test</span> <span class="k">do</span>&#x000A;  <span class="n">gem</span> <span class="s1">'rspec'</span>&#x000A;<span class="k">end</span></pre>
+              <a href="/bundler-site/v1.11/groups.html">자세한 내용은: 그룹</a>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                <code>Gemfile</code>에 <code>ruby</code>를 사용하여 필요한 루비 버전을
+                지정할 수 있습니다. <code>Gemfile</code>이 다른 루비 버전에서 로드
+                되었다면, 번들러는 설명과 함께 예외를 발생시킬 것입니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">ruby</span> <span class="s1">'1.9.3'</span>&#x000A;</pre>
+            </div>
+            <div class='bullet'>
+              <div class='description'>
+                이것이 의미하는 것은 1.9.3과 ABI 호환이 있는 루비 VM에 의존성이 있다는
+                것입니다. 버전을 확인해 맞지 않으면, 번들러는 예외를 발생시킵니다. 이것은
+                실행 중의 코드가 매치하는지 확인합니다. <code>:engine</code>과
+                <code>:engine_version</code> 버전 옵션을 사용해 좀 더 자세한 설정을 할 수
+                있습니다.
+              </div>
+              <pre class="highlight ruby"><span class="n">ruby</span> <span class="s1">'1.9.3'</span><span class="p">,</span> <span class="ss">:engine</span> <span class="o">=&gt;</span> <span class="s1">'jruby'</span><span class="p">,</span> <span class="ss">:engine_version</span> <span class="o">=&gt;</span> <span class="s1">'1.6.7'</span></pre>
+              <a href="/bundler-site/v1.11/gemfile_ruby.html">자세한 내용은: 루비 지시자</a>
+            </div>
+          </div>
+        </div>
+        <div id='sidebar'>
+          <h2>Would you like to</h2>
+          <ul>
+            <li><a href="/bundler-site/#getting-started">시작하기</a></li>
+            <li><a href="/bundler-site/issues.html">버그 리포트</a></li>
+            <li><a href="/bundler-site/v1.11/whats_new.html">새로운 기능 확인하기</a></li>
+            <li><a href="/bundler-site/v1.11/man/bundle.1.html">문서 읽기</a></li>
+            <li><a href="/bundler-site/#get-involved">토론하고 기여하기</a></li>
+            <li><a href="/bundler-site/v1.11/faq.html">FAQ 보기</a></li>
+          </ul>
+          <h2>최신 뉴스 읽기</h2>
+          <ul>
+            <li>
+              <a href="/bundler-site/blog/2015/12/12/version-1-11-released.html">Version 1.11 released</a>
+            </li>
+            <li>
+              <a href="/bundler-site/blog/2015/06/24/version-1-10-released.html">Version 1.10 released</a>
+            </li>
+            <div class='buttons'>
+              <a href="/bundler-site/blog/">모든 기사</a>
+            </div>
+          </ul>
+          <h2>번들러 명령어</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.11/bundle_install.html">bundle install</a></li>
+            <li><a href="/bundler-site/v1.11/bundle_update.html">bundle update</a></li>
+            <li><a href="/bundler-site/v1.11/bundle_gem.html">bundle gem</a></li>
+            <div class='buttons'>
+              <a href="/bundler-site/v1.11/commands.html">모든 명령어 보기</a>
+            </div>
+          </ul>
+          <h2>사용법</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.11/gemfile.html">Gemfile</a></li>
+            <li><a href="/bundler-site/v1.11/groups.html">그룹</a></li>
+            <li><a href="/bundler-site/v1.11/git.html">git으로부터의 gem</a></li>
+            <li><a href="/bundler-site/v1.11/bundler_setup.html">Bundler.setup</a></li>
+            <li><a href="/bundler-site/v1.11/deploying.html">배포하기</a></li>
+            <li><a href="/bundler-site/v1.11/bundler_sharing.html">공유하기</a></li>
+            <li><a href="/bundler-site/v1.11/updating_gems.html">gem 갱신하기</a></li>
+            <li><a href="/bundler-site/compatibility.html">호환가능한 버전</a></li>
+            <li><a href="/bundler-site/older_versions.html">이전 버전</a></li>
+          </ul>
+          <h2>Use Bundler with</h2>
+          <ul>
+            <li><a href="/bundler-site/v1.11/rails3.html">레일스 3</a></li>
+            <li><a href="/bundler-site/v1.11/rails23.html">레일스 2.3</a></li>
+            <li><a href="/bundler-site/v1.11/sinatra.html">시나트라</a></li>
+            <li><a href="/bundler-site/v1.11/rubygems.html">루비젬스</a></li>
+            <li><a href="/bundler-site/v1.11/rubymotion.html">루비모션</a></li>
+          </ul>
+          <div class='shirts'>
+            <div class='content'>
+              <a class="image" onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler"><img src="/bundler-site/images/bundler-shirt.png" />
+              </a>
+              <p>
+                <a onclick="ga('send', 'devswag');" href="http://www.devswag.com/collections/bundler">Buy Bundler Shirts & Stickers!</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='footer'>
+      <img src="/bundler-site/images/emocow.png" />
+      <img src="/bundler-site/images/panda.jpg" />
+      <div class='spacer'></div>
+      <div id='credits'>
+        <p>
+          Many thanks to Bundler's <a href="/bundler-site/contributors.html">contributors</a>
+          and <a href="/bundler-site/sponsors.html">sponsors</a>
+        </p>
+      </div>
+      <div class='spacer'></div>
+      <img src="/bundler-site/images/bundler-small.png" />
+    </div>
+    <a href='http://github.com/bundler/bundler/' id='github'>
+      <img alt='Fork me on GitHub' src='http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png'>
+    </a>
+    <div id='prod-versions'>
+      Docs:
+      <a href="/bundler-site/v1.10/">Previous Version (v1.10)</a>
+      <a class="current" href="/">Current Version (v1.11)</a>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-39559982-1', 'bundler.io');
+      ga('send', 'pageview');
+    </script>
+    <script src="/bundler-site/javascripts/application.js" type="text/javascript"></script>
+    
+  </body>
+</html>
