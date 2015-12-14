@@ -1,4 +1,5 @@
 # ruby-korea.github.io/bundler-site
+[![Build Status](https://travis-ci.org/ruby-korea/bundler-site.svg?branch=korean)](https://travis-ci.org/ruby-korea/bundler-site)
 ruby-korea.github.io/bundler-site is intended to serve as a convenient source for documentation on the [bundler](https://github.com/bundler/bundler) gem.
 
 The site ruby-korea.github.io/bundler-site is a static site generated using [Middleman](http://middlemanapp.com/).

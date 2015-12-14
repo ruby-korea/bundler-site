@@ -1,0 +1,12 @@
+language: ruby
+cache: bundler
+sudo: false
+rvm:
+  - 2.2.3
+script:
+  - echo 1
+deploy:
+  provider: script
+  script: bundle exec rake release
+  on:
+    branch: korean
