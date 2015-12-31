@@ -7,7 +7,7 @@
   .bullet
     .description
       %p
-        번들러는 이제 모든 권한 에러에 대해 예외를 발생시키고 백트레이스를 보여주는 대신, 도움이 되는 에러 메세지를 제공합니다.
+        번들러는 이제 모든 권한 에러에 대해 예외를 발생시키고 백트레이스를 보여주는 대신, 도움이 되는 에러 메시지를 제공합니다.
 
 %h3#git-credentials Git 인증서
 
@@ -15,7 +15,7 @@
   .bullet
     .description
       %p
-        번들러는 이제 특정 사용자 정의 git 인증서를 <code>bundle config</code>통해 설정 가능합니다.
+        번들러는 이제 <code>bundle config</code>으로 특정 사용자 정의 git 인증서를 설정할 수 있습니다.
 
 %h3#lock-update gem을 설치하지 않고 업데이트
 
@@ -23,16 +23,16 @@
   .bullet
     .description
       %p
-        고정된 버전의 젬을 설치없이 업데이트할 수 있게됩니다. <code>bundle lock --update [GEM [GEM ...]]</code> 를 실행해 몇몇 젬(혹은 전부 다) 업데이트할 수 있습니다.
+        고정된 버전의 젬을 설치 없이 업데이트할 수 있게 됩니다. <code>bundle lock --update [GEM [GEM ...]]</code>를 실행해 몇몇 젬을(혹은 전부 다) 업데이트할 수 있습니다.
 
 .contents
   .bullet
     .description
-      번들러 1.11는 다음 패치도 포함합니다.
+      번들러 1.11은 다음 패치도 포함합니다.
       %ul
         %li 최대 25배 빨라진 의존성 해결
-        %li 의존성 해결시의 충돌 메세지의 눈에 띄는 향상
-        %li 타임 아웃 재시도의 설정 가능
+        %li 의존성 해결 충돌 메시지의 눈에 띄는 향상
+        %li 타임 아웃과 재시도 설정 가능
         %li `rake release`의 git remote, gem server 설정 가능
         %li 아주 아주 많은 버그 수정
-      = link_to '1.11 의 전체 변경이력', 'https://github.com/bundler/bundler/blob/1-11-stable/CHANGELOG.md'
+      = link_to '1.11의 전체 변경이력', 'https://github.com/bundler/bundler/blob/1-11-stable/CHANGELOG.md'
