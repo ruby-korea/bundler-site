@@ -14,11 +14,11 @@
     <link rel="alternate" href="http://bundler.io/bundler-site/blog/2015/12/12/version-1-11-released.html"/>
     <id>http://bundler.io/bundler-site/blog/2015/12/12/version-1-11-released.html</id>
     <published>2015-12-13T04:00:00+09:00</published>
-    <updated>2016-01-16T11:12:40+09:00</updated>
+    <updated>2016-01-16T11:23:12+09:00</updated>
     <author>
       <name>Samuel Giddins</name>
     </author>
-    <content type="html">&lt;p&gt;번들러 1.11이 왔습니다! 저번 릴리스로부터 6개월 반이 지나고나서야 드디어 1.11을 내보낼 준비가
+    <content type="html">&lt;p&gt;번들러 1.11이 왔습니다! 저번 릴리스로부터 6개월 반이 지나고 나서야 드디어 1.11을 내보낼 준비가
 되었습니다.&lt;/p&gt;
 
 &lt;p&gt;이것이 좀 오래 걸리긴 했지만, 거기에는 그럴만한 이유가 있었습니다. 이번 여름, 팀은 _4명_의
@@ -37,7 +37,7 @@ Google Summer of Code 학생들을 코칭하는데 분주했습니다.&lt;/p&gt;
 맞추어져서 작성된 것인지 보증할 수 없게 만들었습니다(그리고 이는 향후 5년간도 그럴 것입니다).
 이 코드들을 좀 더 일관성있게 만들기 위해 RoboCop(과 그 스타일 가이드)를 도입하고,
 &lt;code&gt;master&lt;/code&gt;가 실패하지 않도록 코드 리뷰를 통과한 모든 새 코드를 담당하는 빌드 봇을 도입했습니다.
-이 것은 무척 큰 진전이며, 최고의 릴리즈가 될 것이라 확신합니다.&lt;/p&gt;
+이것은 무척 큰 진전이며, 최고의 릴리즈가 될 것이라 확신합니다.&lt;/p&gt;
 
 &lt;p&gt;이 부분은 제쳐두고, 이렇게 오래 걸린 릴리스에 어떤 것들이 포함되어 있을까요?&lt;/p&gt;
 
@@ -47,13 +47,13 @@ Google Summer of Code 학생들을 코칭하는데 분주했습니다.&lt;/p&gt;
 예외를 발생시키고 백트레이스를 보여주는 대신, 도움이 되는 에러 메시지를 출력하는 것이고,
 거의 다 했습니다.&lt;/p&gt;
 
-&lt;p&gt;의존성 해결기에도 몇가지 변경사항이 있었습니다. 에러 메시지의 출력 형태 개선에 더불어, 버전 충돌이
+&lt;p&gt;의존성 해결기에도 몇 가지 변경사항이 있었습니다. 에러 메시지의 출력 형태 개선에 더불어, 버전 충돌이
 발생했을 경우 현재 활성화되어 있는 젬의 목록과 각각의 버전 정보를 출력하여, 충돌을 해결하는 가장 좋은
 방법을 찾을 수 있도록 도와줍니다. 나아가, 의존성 해결이 무척 오래 걸리는 특정 상황에서의 속도가 25배
 이상 빨라졌습니다.&lt;/p&gt;
 
 &lt;p&gt;마지막으로, 현재 버전에서 젬의 의존성을 해결하기 위한 준비 작업을 진행중입니다. 새 인덱스가 릴리스 되면,
-번들러는 &lt;code&gt;required_ruby_version&lt;/code&gt;를 통해 현재 실행중인 루비의 버전을 확인하고 맞는 젬을 선택할
+번들러는 &lt;code&gt;required_ruby_version&lt;/code&gt;을 통해 현재 실행중인 루비의 버전을 확인하고 맞는 젬을 선택할
 수 있을 것입니다.&lt;/p&gt;
 
 &lt;h3 id="section-1"&gt;버그 수정&lt;/h3&gt;
@@ -69,13 +69,13 @@ Google Summer of Code 학생들을 코칭하는데 분주했습니다.&lt;/p&gt;
 
 &lt;h4 id="section-3"&gt;업데이트하기&lt;/h4&gt;
 
-&lt;p&gt;최신 번들러 릴리스를 인스톨하기 위해서는 다음을 실행하세요.&lt;/p&gt;
+&lt;p&gt;최신 번들러 릴리스를 설치하기 위해서는 다음을 실행하세요.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;
 $ [sudo] gem install bundler
 &lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;더 자세한 설명은 
+&lt;p&gt;더 자세한 설명은
 &lt;a href="https://github.com/bundler/bundler/blob/v1.11.0/CHANGELOG.md#1110-2015-12-12"&gt;Changelog&lt;/a&gt;에서 보실 수 있습니다!&lt;/p&gt;
 </content>
   </entry>
